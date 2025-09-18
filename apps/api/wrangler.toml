@@ -2,13 +2,16 @@ name = "learnings-api"
 main = "src/index.ts"
 compatibility_date = "2025-09-01"
 
+[dev]
+port = 8787
+
 [vars]
 CORS_ORIGIN = "*" # set to prod origin later
 
 [[d1_databases]]
 binding = "DB"
-database_name = "learnings_db"
-database_id = "REPLACE_WITH_D1_ID"
+database_name = "learnings"
+database_id = "af30f5a0-193d-464f-8019-b82c71bdcfb5"
 
 [[r2_buckets]]
 binding = "R2"
@@ -16,15 +19,11 @@ bucket_name = "learnings-assets"
 
 [[kv_namespaces]]
 binding = "CACHE"
-id = "REPLACE_WITH_KV_ID"
+id = "5c2b6e7727ec4a0bb520e720e8e35eae"
 
 [[queues.producers]]
 binding = "JOBS"
 queue = "learnings-jobs"
-
-[[vectorize]]
-binding = "VEC"
-index_name = "learnings-terms"
 
 [ai]
 binding = "AI"

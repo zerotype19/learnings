@@ -9,7 +9,6 @@ export type Env = {
   R2: R2Bucket;
   CACHE: KVNamespace;
   JOBS: Queue;
-  VEC: any; // vectorize binding type when available
   AI: any;  // Workers AI binding
   CORS_ORIGIN: string;
 };
