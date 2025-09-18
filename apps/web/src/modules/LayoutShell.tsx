@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NotificationBell } from './Notifications';
+import { AuthModal } from './AuthModal';
 
 type Page = 'home' | 'wall' | 'challenges' | 'linkedin' | 'analytics' | 'suggest' | 'admin';
 
@@ -11,9 +12,39 @@ interface LayoutShellProps {
 
 export function LayoutShell({ currentPage, onPageChange, children }: LayoutShellProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [user, setUser] = useState<{ handle: string; email: string } | null>(null);
   
   // Check for admin access
   const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
+  
+  // Handle auth completion
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const session = params.get('session');
+    const handle = params.get('u');
+    
+    if (session && handle) {
+      localStorage.setItem('learnings_session', session);
+      setUser({ handle, email: '' }); // We'll load full user data later
+      // Clear the URL
+      window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+      alert('Welcome! You\'re now signed in.');
+    } else {
+      // Check for existing session
+      const existingSession = localStorage.getItem('learnings_session');
+      if (existingSession) {
+        // TODO: Validate session and load user data
+        setUser({ handle: 'user', email: '' });
+      }
+    }
+  }, []);
+  
+  const signOut = () => {
+    localStorage.removeItem('learnings_session');
+    setUser(null);
+    alert('Signed out successfully.');
+  };
   
   const navigation = [
     { id: 'home', label: 'Terms', icon: '📚' },
@@ -58,10 +89,25 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <NotificationBell user="anon" />
-            <button className="rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors">
-              Sign in
-            </button>
+            <NotificationBell user={user?.handle || "anon"} />
+            {user ? (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-neutral-600">@{user.handle}</span>
+                <button 
+                  onClick={signOut}
+                  className="rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={() => setShowAuthModal(true)}
+                className="rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
+              >
+                Sign in
+              </button>
+            )}
             
             {/* Mobile hamburger */}
             <button 
@@ -119,6 +165,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           </div>
         </div>
       </footer>
+      
+      {/* Auth Modal */}
+      <AuthModal open={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </div>
   );
 }

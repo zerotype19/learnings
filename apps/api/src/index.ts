@@ -11,6 +11,7 @@ import referrals from './routes/referrals';
 import challenges from './routes/challenges';
 import notifications from './routes/notifications';
 import suggest from './routes/suggest';
+import auth from './routes/auth';
 
 export type Env = {
   DB: D1Database;
@@ -19,6 +20,7 @@ export type Env = {
   JOBS: Queue;
   AI: any;  // Workers AI binding
   CORS_ORIGIN: string;
+  JWT_SECRET: string;
 };
 
 const app = new Hono<{ Bindings: Env }>();
@@ -34,6 +36,8 @@ app.route('/v1/profile', profile);
 app.route('/v1/challenges', challenges);
 app.route('/v1/notifications', notifications);
 app.route('/v1/suggest', suggest);
+app.route('/v1/auth', auth);
+app.route('/auth', auth);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
 

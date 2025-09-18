@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Term } from '@learnings/lib';
+import { Card } from './card';
+import { IconButton } from './icon-button';
 
 export function TermCard({ term }: { term: Term }) {
   const handleVote = async (reaction: string) => {
@@ -73,51 +75,57 @@ export function TermCard({ term }: { term: Term }) {
   };
 
   return (
-    <div className="rounded-2xl border p-4 shadow-sm">
-      <div className="text-xl font-semibold">{term.title}</div>
-      <p className="mt-2 text-sm">{term.definition}</p>
+    <Card className="hover:ring-1 hover:ring-brand-100 transition-all">
+      <div className="text-xl font-semibold text-ink">{term.title}</div>
+      <p className="mt-2 text-[0.95rem] leading-6 text-neutral-700">{term.definition}</p>
       {term.translation && (
-        <p className="mt-2 text-xs italic opacity-70">Translation: {term.translation}</p>
+        <p className="mt-1 text-xs italic text-neutral-500">Translation: {term.translation}</p>
       )}
-      <p className="mt-3 text-sm border-l-2 pl-3">"{term.example_sentence}"</p>
-      <div className="mt-4 flex gap-2 flex-wrap">
-        <button 
-          onClick={() => handleVote('cringe')}
-          className="px-3 py-1 text-xs bg-red-100 hover:bg-red-200 rounded-full"
-        >
-          😬 Cringe
-        </button>
-        <button 
-          onClick={() => handleVote('nailedit')}
-          className="px-3 py-1 text-xs bg-green-100 hover:bg-green-200 rounded-full"
-        >
-          🎯 Nailed It
-        </button>
-        <button 
-          onClick={() => handleVote('heard1000x')}
-          className="px-3 py-1 text-xs bg-yellow-100 hover:bg-yellow-200 rounded-full"
-        >
-          🔄 Heard 1000x
-        </button>
-        <button 
-          onClick={() => handleVote('chefskiss')}
-          className="px-3 py-1 text-xs bg-purple-100 hover:bg-purple-200 rounded-full"
-        >
-          👌 Chef's Kiss
-        </button>
-        <button 
-          onClick={handleShare}
-          className="px-3 py-1 text-xs bg-blue-100 hover:bg-blue-200 rounded-full"
-        >
-          📤 Share
-        </button>
-        <button 
-          onClick={handleEmbed}
-          className="px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded-full"
-        >
-          🔗 Embed
-        </button>
+      <p className="mt-3 text-sm border-l-2 border-neutral-200 pl-3 text-neutral-600">
+        "{term.example_sentence}"
+      </p>
+      
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        {/* Reaction Pills */}
+        <div className="flex gap-2">
+          <button 
+            onClick={() => handleVote('cringe')}
+            className="rounded-full border px-3 py-1.5 text-xs hover:bg-red-50 hover:border-red-200 transition-colors"
+          >
+            😬 Cringe
+          </button>
+          <button 
+            onClick={() => handleVote('nailedit')}
+            className="rounded-full border px-3 py-1.5 text-xs hover:bg-green-50 hover:border-green-200 transition-colors"
+          >
+            🎯 Nailed It
+          </button>
+          <button 
+            onClick={() => handleVote('heard1000x')}
+            className="rounded-full border px-3 py-1.5 text-xs hover:bg-yellow-50 hover:border-yellow-200 transition-colors"
+          >
+            🔄 Heard 1000x
+          </button>
+          <button 
+            onClick={() => handleVote('chefskiss')}
+            className="rounded-full border px-3 py-1.5 text-xs hover:bg-purple-50 hover:border-purple-200 transition-colors"
+          >
+            👌 Chef's Kiss
+          </button>
+        </div>
+        
+        {/* Secondary Actions */}
+        <div className="ml-auto flex gap-2">
+          <IconButton onClick={handleShare}>📤 Share</IconButton>
+          <IconButton onClick={handleEmbed}>🔗 Embed</IconButton>
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent('professor:prefill', { detail: `${term.title}: ${term.definition}` }))}
+            className="rounded-xl bg-brand-600 px-3 py-1.5 text-xs text-white hover:bg-brand-700 transition-colors"
+          >
+            🎓 Remix
+          </button>
+        </div>
       </div>
-    </div>
+    </Card>
   );
 }
