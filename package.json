@@ -1,0 +1,17 @@
+{
+  "name": "learnings",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev:api": "pnpm --filter @learnings/api dev",
+    "dev:web": "pnpm --filter @learnings/web dev",
+    "dev": "concurrently -n api,web -c blue,green \"pnpm dev:api\" \"pnpm dev:web\"",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "migrate:local": "cd apps/api && wrangler d1 execute learnings_db --local --file=../../infra/d1-migrations/001_init.sql && wrangler d1 execute learnings_db --local --file=../../infra/d1-migrations/002_seed.sql"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
