@@ -1,2 +1,5 @@
+# Shortlink redirects to API
+/l/*  https://api.learnings.org/l/:splat  302
+
 # SPA fallback
 /*    /index.html   200

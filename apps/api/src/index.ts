@@ -27,7 +27,17 @@ export type Env = {
 };
 
 const app = new Hono<{ Bindings: Env }>();
-app.use('*', cors({ origin: '*' }));
+
+app.use('*', cors({
+  origin: (origin) => {
+    if (!origin) return true; // Allow requests without origin (Postman, curl, etc.)
+    return origin === 'https://learnings.org' || origin === 'https://www.learnings.org' ? origin : '';
+  },
+  allowMethods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization', 'X-Fingerprint'],
+  credentials: true, // allow cookies
+  maxAge: 86400
+}));
 
 app.get('/v1/health', (c) => c.json({ ok: true }));
 app.route('/v1/terms', terms);

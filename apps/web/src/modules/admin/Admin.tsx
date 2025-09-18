@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 export function Admin() {
   const [wall, setWall] = useState<any[]>([]);
   const [submissions, setSubmissions] = useState<any[]>([]);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
   useEffect(() => { 
     // Load flagged wall items

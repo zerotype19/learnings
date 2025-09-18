@@ -7,7 +7,7 @@ export function LinkedInGenerators() {
   const [topic, setTopic] = useState('');
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   const generate = async () => {
     if (!topic.trim()) return;

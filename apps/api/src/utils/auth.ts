@@ -2,12 +2,13 @@ import type { Context } from 'hono';
 import type { Env } from '../index';
 
 export async function requireAuth(c: Context<{ Bindings: Env }>) {
+  // Check for cookie first, then fallback to Authorization header
+  const cookie = c.req.header('cookie') || '';
+  const cookieMatch = cookie.match(/(?:^|; )session=([^;]+)/);
   const auth = c.req.header('Authorization') || '';
-  if (!auth.startsWith('Bearer ')) {
-    return null;
-  }
   
-  const token = auth.substring(7);
+  const token = cookieMatch?.[1] || (auth.startsWith('Bearer ') ? auth.substring(7) : null);
+  if (!token) return null;
   // Simple JWT validation - in production you'd verify the signature
   try {
     const parts = token.split('.');

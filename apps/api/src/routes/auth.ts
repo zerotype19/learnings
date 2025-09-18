@@ -60,11 +60,16 @@ auth.get("/callback", async (c) => {
   await c.env.DB.prepare("INSERT INTO sessions (id,user_id,jwt,created_at,expires_at) VALUES (?,?,?,?,?)")
     .bind(nanoid(), user.id, jwt, Date.now(), payload.exp).run();
 
-  const redirect = new URL(c.req.url);
-  redirect.pathname = "/";
-  redirect.hash = "/auth/complete";
-  redirect.search = `?session=${encodeURIComponent(jwt)}&u=${encodeURIComponent(user.handle)}`;
-  return c.redirect(redirect.toString(), 302);
+  // Set secure cookie instead of URL parameter
+  const cookie = `session=${jwt}; Path=/; Domain=.learnings.org; Secure; HttpOnly; SameSite=Lax; Max-Age=${60*60*24*30}`;
+  
+  return new Response(null, {
+    status: 302,
+    headers: {
+      'Location': 'https://learnings.org/#/auth/complete',
+      'Set-Cookie': cookie
+    }
+  });
 });
 
 auth.post("/claim", async (c) => {
@@ -188,11 +193,16 @@ auth.get("/linkedin/callback", async (c) => {
     await c.env.DB.prepare("INSERT INTO sessions (id,user_id,jwt,created_at,expires_at) VALUES (?,?,?,?,?)")
       .bind(nanoid(), user.id, jwt, Date.now(), payload.exp).run();
     
-    const redirect = new URL(c.req.url);
-    redirect.pathname = "/";
-    redirect.hash = "/auth/complete";
-    redirect.search = `?session=${encodeURIComponent(jwt)}&u=${encodeURIComponent(user.handle)}`;
-    return c.redirect(redirect.toString(), 302);
+    // Set secure cookie for LinkedIn OAuth too
+    const cookie = `session=${jwt}; Path=/; Domain=.learnings.org; Secure; HttpOnly; SameSite=Lax; Max-Age=${60*60*24*30}`;
+    
+    return new Response(null, {
+      status: 302,
+      headers: {
+        'Location': 'https://learnings.org/#/auth/complete',
+        'Set-Cookie': cookie
+      }
+    });
     
   } catch (error) {
     console.error('LinkedIn OAuth error:', error);

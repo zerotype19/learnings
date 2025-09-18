@@ -20,23 +20,21 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   
   // Handle auth completion
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const session = params.get('session');
-    const handle = params.get('u');
+    const hash = window.location.hash;
     
-    if (session && handle) {
-      localStorage.setItem('learnings_session', session);
-      setUser({ handle, email: '' }); // We'll load full user data later
+    if (hash === '#/auth/complete') {
+      // User just completed auth, cookie is already set
+      setUser({ handle: 'user', email: '' }); // We'll load full user data later
       
       // Claim anonymous activity
       const fingerprint = localStorage.getItem('learnings_fingerprint');
       if (fingerprint) {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
         fetch(apiUrl + '/v1/auth/claim', {
           method: 'POST',
+          credentials: 'include', // Use cookies instead of Authorization header
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session}`
           },
           body: JSON.stringify({ fingerprint })
         }).then(() => {
@@ -47,20 +45,16 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       }
       
       // Clear the URL
-      window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+      window.history.replaceState({}, '', window.location.pathname);
       alert('Welcome! You\'re now signed in.');
-    } else {
-      // Check for existing session
-      const existingSession = localStorage.getItem('learnings_session');
-      if (existingSession) {
-        // TODO: Validate session and load user data
-        setUser({ handle: 'user', email: '' });
-      }
     }
+    
+    // TODO: Check if user is already signed in via cookie validation
   }, []);
   
   const signOut = () => {
-    localStorage.removeItem('learnings_session');
+    // Clear the session cookie
+    document.cookie = 'session=; Path=/; Domain=.learnings.org; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     setUser(null);
     alert('Signed out successfully.');
   };

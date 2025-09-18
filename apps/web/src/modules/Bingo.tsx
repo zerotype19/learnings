@@ -7,7 +7,7 @@ export function Bingo() {
   const [boardId, setBoardId] = useState<string>('');
   const [marked, setMarked] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
   const generateBoard = async () => {
     setLoading(true);

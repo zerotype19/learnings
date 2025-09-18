@@ -4,7 +4,7 @@ type AnalyticsItem = { code: string; clicks: number };
 
 export function Analytics() {
   const [shortlinks, setShortlinks] = useState<AnalyticsItem[]>([]);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
   useEffect(() => {
     fetch(apiUrl + '/v1/analytics/shortlinks')

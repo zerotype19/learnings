@@ -9,7 +9,7 @@ export function AuthModal({ open, onClose }: { open: boolean; onClose: () => voi
     if (!email.trim()) return;
     setLoading(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
       await fetch(apiUrl + "/v1/auth/magic", {
         method: "POST", 
         headers: { "Content-Type": "application/json" },
@@ -67,7 +67,7 @@ export function AuthModal({ open, onClose }: { open: boolean; onClose: () => voi
               </div>
               <button 
                 onClick={() => {
-                  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+                  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
                   window.location.href = apiUrl + '/v1/auth/linkedin/start';
                 }}
                 className="mt-3 w-full rounded-xl border border-neutral-200 px-4 py-2 hover:bg-neutral-50 transition-colors flex items-center justify-center gap-2"

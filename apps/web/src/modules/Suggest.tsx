@@ -6,7 +6,7 @@ export function Suggest() {
   const [ex, setEx] = useState('');
   const [done, setDone] = useState('');
   const [loading, setLoading] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
   async function send() {
     if (!title.trim() || !defn.trim() || !ex.trim()) return;
