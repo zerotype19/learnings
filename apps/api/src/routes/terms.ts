@@ -51,6 +51,15 @@ router.post('/:id/vote', async (c) => {
     await c.env.DB.prepare(
       `INSERT INTO votes (id, term_id, user_fingerprint, reaction, created_at) VALUES (?, ?, ?, ?, ?)`
     ).bind(nanoid(), id, user_fingerprint || 'anon', reaction, now).run();
+    
+    // Notify term author and check for badges
+    const owner = await c.env.DB.prepare('SELECT author_id FROM terms WHERE id=?').bind(id).first<{author_id:string|null}>();
+    if (owner?.author_id) {
+      const { pushNotification } = await import('../utils/notify');
+      const { checkAndAwardBadges } = await import('../utils/badges');
+      await pushNotification(c.env as any, owner.author_id, 'vote', { term_id: id, reaction });
+      await checkAndAwardBadges(c.env as any, owner.author_id);
+    }
   } catch {}
   return c.json({ ok: true });
 });

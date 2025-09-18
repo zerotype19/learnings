@@ -5,8 +5,10 @@ import { Wall } from './Wall';
 import { ProfessorWidget } from './ProfessorWidget';
 import { Challenges, DeansList } from './Challenges';
 import { Profile } from './Profile';
+import { NotificationBell } from './Notifications';
+import { LinkedInGenerators } from './LinkedInGenerators';
 
-type Page = 'home' | 'wall' | 'challenges' | 'profile';
+type Page = 'home' | 'wall' | 'challenges' | 'linkedin' | 'profile';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -23,8 +25,13 @@ export function App() {
   return (
     <div className="mx-auto max-w-4xl p-6">
       <header className="mb-6">
-        <h1 className="text-3xl font-bold">Learnings Dot Org — Powered by AI</h1>
-        <p className="opacity-70">Advancing corporate thought one buzzword at a time.</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">Learnings Dot Org — Powered by AI</h1>
+            <p className="opacity-70">Advancing corporate thought one buzzword at a time.</p>
+          </div>
+          <NotificationBell user="anon" />
+        </div>
         <nav className="mt-4 flex gap-4">
           <button 
             onClick={() => setCurrentPage('home')}
@@ -44,6 +51,12 @@ export function App() {
           >
             Challenges
           </button>
+          <button 
+            onClick={() => setCurrentPage('linkedin')}
+            className={`px-4 py-2 rounded ${currentPage === 'linkedin' ? 'bg-black text-white' : 'bg-gray-100'}`}
+          >
+            LinkedIn Tools
+          </button>
         </nav>
       </header>
       
@@ -61,6 +74,8 @@ export function App() {
       {currentPage === 'wall' && <Wall />}
       
       {currentPage === 'challenges' && <Challenges />}
+      
+      {currentPage === 'linkedin' && <LinkedInGenerators />}
       
       <ProfessorWidget />
     </div>

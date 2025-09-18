@@ -14,7 +14,17 @@ profile.get('/:handle', async (c) => {
     (SELECT COUNT(*) FROM follows WHERE followee_id = ?) AS followers,
     (SELECT COUNT(*) FROM follows WHERE follower_id = ?) AS following
   `).bind(row.id, row.id, row.id, row.id).first();
-  return c.json({ ...row, stats });
+  
+  // Get user badges
+  const badges = await c.env.DB.prepare(`
+    SELECT b.id, b.name, b.icon, ub.awarded_at 
+    FROM user_badges ub 
+    JOIN badges b ON b.id = ub.badge_id 
+    WHERE ub.user_id = ?
+    ORDER BY ub.awarded_at DESC
+  `).bind(row.id).all();
+  
+  return c.json({ ...row, stats, badges: badges.results });
 });
 
 profile.post('/', async (c) => {
@@ -34,6 +44,13 @@ profile.post('/follow/:handle', async (c) => {
   const target = await c.env.DB.prepare('SELECT id FROM users WHERE handle=?').bind(handle).first<{id:string}>();
   if (!target) return c.text('Not found', 404);
   await c.env.DB.prepare('INSERT OR IGNORE INTO follows (follower_id, followee_id, created_at) VALUES (?,?,?)').bind(follower, target.id, Date.now()).run();
+  
+  // Notify the followee and check for badges
+  const { pushNotification } = await import('../utils/notify');
+  const { checkAndAwardBadges } = await import('../utils/badges');
+  await pushNotification(c.env as any, target.id, 'follow', { follower_id: follower });
+  await checkAndAwardBadges(c.env as any, target.id);
+  
   return c.json({ ok: true });
 });
 

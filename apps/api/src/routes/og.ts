@@ -65,4 +65,86 @@ og.get('/term/:slug', async (c) => {
   return new Response(png, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
 });
 
+og.get('/wall/:id', async (c) => {
+  const { id } = c.req.param();
+  // 1) Check R2 cache
+  const key = `og/wall/${id}.png`;
+  const head = await c.env.R2.head(key);
+  if (head) {
+    const obj = await c.env.R2.get(key);
+    return new Response(obj!.body, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+  }
+
+  // 2) Load wall item from D1
+  const row = await c.env.DB.prepare('SELECT title, image_key FROM wall_items WHERE id = ?').bind(id).first<{title:string,image_key:string}>();
+  if (!row) return c.text('Not found', 404);
+
+  // 3) Render SVG via Satori
+  const svg = await satori(
+    {
+      type: 'div',
+      props: {
+        style: { display: 'flex', flexDirection: 'column', width: '1200px', height: '630px', background: '#0B0D12', color: '#fff', padding: '64px', fontFamily: 'Inter' },
+        children: [
+          { type: 'div', props: { style: { fontSize: 48, fontWeight: 700, lineHeight: 1.1 }, children: row.title } },
+          { type: 'div', props: { style: { marginTop: 24, fontSize: 28, opacity: 0.9 }, children: 'Wall of Fame' } },
+          { type: 'div', props: { style: { position: 'absolute', bottom: 32, right: 48, fontSize: 20, opacity: 0.8 }, children: 'Learnings Dot Org — Powered by AI' } }
+        ]
+      }
+    },
+    { width: 1200, height: 630, fonts: [{ name: 'Inter', data: await font(c), weight: 700, style: 'normal' }] }
+  );
+
+  // 4) Convert SVG→PNG via resvg-wasm
+  await (globalThis as any).__resvg;
+  const resvg = new Resvg(svg);
+  const png = resvg.render().asPng();
+
+  // 5) Store in R2
+  await c.env.R2.put(key, png, { httpMetadata: { contentType: 'image/png', cacheControl: 'public, max-age=604800' } });
+
+  return new Response(png, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+});
+
+og.get('/challenge/:slug', async (c) => {
+  const { slug } = c.req.param();
+  // 1) Check R2 cache
+  const key = `og/challenge/${slug}.png`;
+  const head = await c.env.R2.head(key);
+  if (head) {
+    const obj = await c.env.R2.get(key);
+    return new Response(obj!.body, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+  }
+
+  // 2) Load challenge from D1
+  const row = await c.env.DB.prepare('SELECT title, prompt FROM challenges WHERE slug = ?').bind(slug).first<{title:string,prompt:string}>();
+  if (!row) return c.text('Not found', 404);
+
+  // 3) Render SVG via Satori
+  const svg = await satori(
+    {
+      type: 'div',
+      props: {
+        style: { display: 'flex', flexDirection: 'column', width: '1200px', height: '630px', background: '#0B0D12', color: '#fff', padding: '64px', fontFamily: 'Inter' },
+        children: [
+          { type: 'div', props: { style: { fontSize: 48, fontWeight: 700, lineHeight: 1.1 }, children: row.title } },
+          { type: 'div', props: { style: { marginTop: 24, fontSize: 28, opacity: 0.9 }, children: row.prompt } },
+          { type: 'div', props: { style: { position: 'absolute', bottom: 32, right: 48, fontSize: 20, opacity: 0.8 }, children: 'Learnings Dot Org — Powered by AI' } }
+        ]
+      }
+    },
+    { width: 1200, height: 630, fonts: [{ name: 'Inter', data: await font(c), weight: 700, style: 'normal' }] }
+  );
+
+  // 4) Convert SVG→PNG via resvg-wasm
+  await (globalThis as any).__resvg;
+  const resvg = new Resvg(svg);
+  const png = resvg.render().asPng();
+
+  // 5) Store in R2
+  await c.env.R2.put(key, png, { httpMetadata: { contentType: 'image/png', cacheControl: 'public, max-age=604800' } });
+
+  return new Response(png, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+});
+
 export default og;

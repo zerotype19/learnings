@@ -9,6 +9,7 @@ import embeds from './routes/embeds';
 import profile from './routes/profile';
 import referrals from './routes/referrals';
 import challenges from './routes/challenges';
+import notifications from './routes/notifications';
 
 export type Env = {
   DB: D1Database;
@@ -30,6 +31,7 @@ app.route('/v1/og', og);
 app.route('/v1/wall', wall);
 app.route('/v1/profile', profile);
 app.route('/v1/challenges', challenges);
+app.route('/v1/notifications', notifications);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
 
