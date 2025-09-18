@@ -11,7 +11,6 @@ import { Admin } from './admin/Admin';
 import { Suggest } from './Suggest';
 import { LayoutShell } from './LayoutShell';
 import { Hero } from './Hero';
-import { Tabs } from './Tabs';
 import { HomeSidebar } from './HomeSidebar';
 import { Bingo } from './Bingo';
 
@@ -51,9 +50,6 @@ export function App() {
           <div>
             {/* Hero Section */}
             <Hero />
-            
-            {/* Tabs Navigation */}
-            <Tabs currentPage={currentPage} onPageChange={setCurrentPage} />
             
             <div className="mt-8 lg:grid lg:grid-cols-[1fr_320px] lg:gap-8">
               {/* Main Content */}
