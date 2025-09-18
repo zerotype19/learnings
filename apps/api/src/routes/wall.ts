@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { nanoid } from 'nanoid';
 import type { Env } from '../index';
+import { checkRate } from '../utils/ratelimit';
 
 const wall = new Hono<{ Bindings: Env }>();
 
@@ -18,7 +19,6 @@ wall.get('/', async (c) => {
 
 wall.post('/', async (c) => {
   // Rate limiting
-  const { checkRate } = await import('../utils/ratelimit');
   const ok = await checkRate(c.env as any, `ip:${c.req.header('cf-connecting-ip')}:wall`, 5, 60);
   if (!ok) return c.text('Slow down', 429);
   

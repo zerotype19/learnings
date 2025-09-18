@@ -1,6 +1,8 @@
 import { Hono } from 'hono';
 import { nanoid } from 'nanoid';
 import type { Env } from '../index';
+import { pushNotification } from '../utils/notify';
+import { checkAndAwardBadges } from '../utils/badges';
 
 const profile = new Hono<{ Bindings: Env }>();
 
@@ -46,8 +48,6 @@ profile.post('/follow/:handle', async (c) => {
   await c.env.DB.prepare('INSERT OR IGNORE INTO follows (follower_id, followee_id, created_at) VALUES (?,?,?)').bind(follower, target.id, Date.now()).run();
   
   // Notify the followee and check for badges
-  const { pushNotification } = await import('../utils/notify');
-  const { checkAndAwardBadges } = await import('../utils/badges');
   await pushNotification(c.env as any, target.id, 'follow', { follower_id: follower });
   await checkAndAwardBadges(c.env as any, target.id);
   

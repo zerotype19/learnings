@@ -2,6 +2,9 @@ import { Hono } from 'hono';
 import { z } from 'zod';
 import { nanoid } from 'nanoid';
 import type { Env } from '../index';
+import { pushNotification } from '../utils/notify';
+import { checkAndAwardBadges } from '../utils/badges';
+import { checkRate } from '../utils/ratelimit';
 
 const router = new Hono<{ Bindings: Env }>();
 
@@ -31,7 +34,6 @@ const TermSchema = z.object({
 
 router.post('/', async (c) => {
   // Rate limiting
-  const { checkRate } = await import('../utils/ratelimit');
   const ok = await checkRate(c.env as any, `ip:${c.req.header('cf-connecting-ip')}:terms`, 10, 60);
   if (!ok) return c.text('Slow down', 429);
   
@@ -60,8 +62,6 @@ router.post('/:id/vote', async (c) => {
     // Notify term author and check for badges
     const owner = await c.env.DB.prepare('SELECT author_id FROM terms WHERE id=?').bind(id).first<{author_id:string|null}>();
     if (owner?.author_id) {
-      const { pushNotification } = await import('../utils/notify');
-      const { checkAndAwardBadges } = await import('../utils/badges');
       await pushNotification(c.env as any, owner.author_id, 'vote', { term_id: id, reaction });
       await checkAndAwardBadges(c.env as any, owner.author_id);
     }

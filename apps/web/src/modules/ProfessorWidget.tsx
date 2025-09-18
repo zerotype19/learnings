@@ -1,19 +1,10 @@
 import React, { useState } from 'react';
 
-export function ProfessorWidget({ onTextRequest }: { onTextRequest?: (callback: (text: string) => void) => void }) {
+export function ProfessorWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [resp, setResp] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  
-  React.useEffect(() => {
-    if (onTextRequest) {
-      onTextRequest((text: string) => {
-        setInput(text);
-        setOpen(true);
-      });
-    }
-  }, [onTextRequest]);
 
   async function ask() {
     if (!input.trim()) return;

@@ -17,23 +17,30 @@ export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [professorCallback, setProfessorCallback] = useState<((text: string) => void) | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   // Check for admin access
   const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
-  
-  const handleRemixWithProfessor = (text: string) => {
-    if (professorCallback) {
-      professorCallback(text);
-    }
-  };
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    console.log('API URL:', apiUrl); // Debug log
     fetch(apiUrl + '/v1/terms')
-      .then((r) => r.json())
-      .then((d) => setTerms(d.items || []))
-      .catch(() => setTerms([]));
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d) => {
+        setTerms(d.items || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Failed to load terms:', err);
+        setError(err.message);
+        setLoading(false);
+        setTerms([]);
+      });
   }, []);
 
   return (
@@ -83,12 +90,27 @@ export function App() {
       
       {currentPage === 'home' && (
         <div>
-          <div className="grid gap-4">
-            {terms.map((t) => (
-              <TermCard key={t.id} term={t} onRemixWithProfessor={handleRemixWithProfessor} />
-            ))}
-          </div>
-          <DeansList />
+          {loading && (
+            <div className="text-center py-8">
+              <div className="text-lg">Loading corporate wisdom...</div>
+            </div>
+          )}
+          {error && (
+            <div className="text-center py-8 text-red-600">
+              <div className="text-lg">Error: {error}</div>
+              <div className="text-sm mt-2">Check console for details</div>
+            </div>
+          )}
+          {!loading && !error && (
+            <>
+              <div className="grid gap-4">
+                {terms.map((t) => (
+                  <TermCard key={t.id} term={t} />
+                ))}
+              </div>
+              <DeansList />
+            </>
+          )}
         </div>
       )}
       
@@ -117,7 +139,7 @@ export function App() {
         </div>
       </footer>
       
-      <ProfessorWidget onTextRequest={setProfessorCallback} />
+      <ProfessorWidget />
     </div>
   );
 }

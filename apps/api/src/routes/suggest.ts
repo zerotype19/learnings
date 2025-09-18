@@ -1,12 +1,12 @@
 import { Hono } from 'hono';
 import { nanoid } from 'nanoid';
 import type { Env } from '../index';
+import { checkRate } from '../utils/ratelimit';
 
 const suggest = new Hono<{ Bindings: Env }>();
 
 suggest.post('/', async (c) => {
   // Rate limiting
-  const { checkRate } = await import('../utils/ratelimit');
   const ok = await checkRate(c.env as any, `ip:${c.req.header('cf-connecting-ip')}:suggest`, 3, 60);
   if (!ok) return c.text('Slow down', 429);
   
