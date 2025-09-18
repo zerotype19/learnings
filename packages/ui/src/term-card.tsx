@@ -7,14 +7,36 @@ export function TermCard({ term }: { term: Term }) {
   const handleVote = async (reaction: string) => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      
+      // Get fingerprint and session
+      const getFingerprint = () => {
+        const key = 'learnings_fingerprint';
+        let fingerprint = localStorage.getItem(key);
+        if (!fingerprint) {
+          fingerprint = 'fp_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+          localStorage.setItem(key, fingerprint);
+        }
+        return fingerprint;
+      };
+      
+      const fingerprint = getFingerprint();
+      const session = localStorage.getItem('learnings_session');
+      
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        'X-Fingerprint': fingerprint,
+      };
+      
+      if (session) {
+        headers['Authorization'] = `Bearer ${session}`;
+      }
+      
       const response = await fetch(`${apiUrl}/v1/terms/${term.id}/vote`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({
           reaction,
-          user_fingerprint: 'dev'
+          user_fingerprint: fingerprint
         })
       });
       if (response.ok) {

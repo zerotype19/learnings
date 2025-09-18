@@ -147,4 +147,89 @@ og.get('/challenge/:slug', async (c) => {
   return new Response(png, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
 });
 
+og.get('/profile/:handle', async (c) => {
+  const { handle } = c.req.param();
+  // 1) Check R2 cache
+  const key = `og/profile/${handle}.png`;
+  const head = await c.env.R2.head(key);
+  if (head) {
+    const obj = await c.env.R2.get(key);
+    return new Response(obj!.body, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+  }
+
+  // 2) Load profile from D1
+  const row = await c.env.DB.prepare('SELECT handle, display_name, bio FROM users WHERE handle = ?').bind(handle).first<{handle:string,display_name:string,bio:string}>();
+  if (!row) return c.text('Not found', 404);
+
+  // 3) Render SVG via Satori
+  const svg = await satori(
+    {
+      type: 'div',
+      props: {
+        style: { display: 'flex', flexDirection: 'column', width: '1200px', height: '630px', background: '#0B0D12', color: '#fff', padding: '64px', fontFamily: 'Inter' },
+        children: [
+          { type: 'div', props: { style: { fontSize: 48, fontWeight: 700, lineHeight: 1.1 }, children: row.display_name } },
+          { type: 'div', props: { style: { marginTop: 12, fontSize: 24, opacity: 0.8 }, children: `@${row.handle}` } },
+          { type: 'div', props: { style: { marginTop: 24, fontSize: 20, opacity: 0.9, maxWidth: '800px' }, children: row.bio || 'Corporate thought leader at Learnings Dot Org' } },
+          { type: 'div', props: { style: { position: 'absolute', bottom: 32, right: 48, fontSize: 20, opacity: 0.8 }, children: 'Learnings Dot Org — Powered by AI' } }
+        ]
+      }
+    },
+    { width: 1200, height: 630, fonts: [{ name: 'Inter', data: await font(c), weight: 700, style: 'normal' }] }
+  );
+
+  // 4) Convert SVG→PNG via resvg-wasm
+  await (globalThis as any).__resvg;
+  const resvg = new Resvg(svg);
+  const png = resvg.render().asPng();
+
+  // 5) Store in R2
+  await c.env.R2.put(key, png, { httpMetadata: { contentType: 'image/png', cacheControl: 'public, max-age=604800' } });
+
+  return new Response(png, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+});
+
+og.get('/bingo/:boardId', async (c) => {
+  const { boardId } = c.req.param();
+  // 1) Check R2 cache
+  const key = `og/bingo/${boardId}.png`;
+  const head = await c.env.R2.head(key);
+  if (head) {
+    const obj = await c.env.R2.get(key);
+    return new Response(obj!.body, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+  }
+
+  // 2) Load bingo board from KV
+  const boardData = await c.env.CACHE.get(`bingo:${boardId}`);
+  if (!boardData) return c.text('Board not found', 404);
+  
+  const board = JSON.parse(boardData);
+
+  // 3) Render SVG via Satori
+  const svg = await satori(
+    {
+      type: 'div',
+      props: {
+        style: { display: 'flex', flexDirection: 'column', width: '1200px', height: '630px', background: '#0B0D12', color: '#fff', padding: '64px', fontFamily: 'Inter' },
+        children: [
+          { type: 'div', props: { style: { fontSize: 48, fontWeight: 700, lineHeight: 1.1 }, children: 'Corporate Buzzword Bingo' } },
+          { type: 'div', props: { style: { marginTop: 24, fontSize: 20, opacity: 0.9 }, children: 'Test your corporate jargon knowledge!' } },
+          { type: 'div', props: { style: { position: 'absolute', bottom: 32, right: 48, fontSize: 20, opacity: 0.8 }, children: 'Learnings Dot Org — Powered by AI' } }
+        ]
+      }
+    },
+    { width: 1200, height: 630, fonts: [{ name: 'Inter', data: await font(c), weight: 700, style: 'normal' }] }
+  );
+
+  // 4) Convert SVG→PNG via resvg-wasm
+  await (globalThis as any).__resvg;
+  const resvg = new Resvg(svg);
+  const png = resvg.render().asPng();
+
+  // 5) Store in R2
+  await c.env.R2.put(key, png, { httpMetadata: { contentType: 'image/png', cacheControl: 'public, max-age=604800' } });
+
+  return new Response(png, { headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800' } });
+});
+
 export default og;

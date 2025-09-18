@@ -27,6 +27,25 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     if (session && handle) {
       localStorage.setItem('learnings_session', session);
       setUser({ handle, email: '' }); // We'll load full user data later
+      
+      // Claim anonymous activity
+      const fingerprint = localStorage.getItem('learnings_fingerprint');
+      if (fingerprint) {
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+        fetch(apiUrl + '/v1/auth/claim', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session}`
+          },
+          body: JSON.stringify({ fingerprint })
+        }).then(() => {
+          console.log('Anonymous activity claimed successfully');
+        }).catch(err => {
+          console.error('Failed to claim activity:', err);
+        });
+      }
+      
       // Clear the URL
       window.history.replaceState({}, '', window.location.pathname + window.location.hash);
       alert('Welcome! You\'re now signed in.');
@@ -50,6 +69,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     { id: 'home', label: 'Terms', icon: '📚' },
     { id: 'wall', label: 'Wall', icon: '📸' },
     { id: 'challenges', label: 'Challenges', icon: '🏆' },
+    { id: 'bingo', label: 'Bingo', icon: '🎯' },
     { id: 'linkedin', label: 'Generators', icon: '📝' },
     { id: 'suggest', label: 'Suggest', icon: '💡' },
     { id: 'analytics', label: 'Analytics', icon: '📊' },

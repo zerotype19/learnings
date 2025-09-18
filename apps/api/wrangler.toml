@@ -8,6 +8,8 @@ port = 8787
 [vars]
 CORS_ORIGIN = "*" # set to prod origin later
 JWT_SECRET = "learnings-jwt-secret-change-in-production-2025"
+LINKEDIN_CLIENT_ID = "REPLACE_WITH_LINKEDIN_CLIENT_ID"
+LINKEDIN_CLIENT_SECRET = "REPLACE_WITH_LINKEDIN_CLIENT_SECRET"
 
 [[d1_databases]]
 binding = "DB"
@@ -33,3 +35,6 @@ script_name = "learnings-api"
 
 [ai]
 binding = "AI"
+
+[triggers]
+crons = ["0 9 * * 1"] # Every Monday at 9 AM UTC

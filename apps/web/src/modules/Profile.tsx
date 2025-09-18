@@ -41,9 +41,21 @@ export function Profile({ handle }: { handle: string }) {
         ))}
       </div>
       {p.ref_code && (
-        <div className="mt-4">
-          <div className="text-xs uppercase opacity-60">Referral link</div>
-          <code className="text-sm">{location.origin + '/r/' + p.ref_code}</code>
+        <div className="mt-4 p-4 bg-brand-50 rounded-xl border border-brand-100">
+          <div className="text-sm font-semibold text-brand-700 mb-2">📨 Invite Colleagues</div>
+          <div className="text-xs text-neutral-600 mb-2">Share your referral link to earn badges and climb the leaderboard!</div>
+          <div className="flex items-center gap-2">
+            <code className="text-xs bg-white border px-2 py-1 rounded flex-1">{location.origin + '/r/' + p.ref_code}</code>
+            <button 
+              onClick={() => {
+                navigator.clipboard.writeText(location.origin + '/r/' + p.ref_code);
+                alert('Referral link copied!');
+              }}
+              className="px-3 py-1 bg-brand-600 text-white text-xs rounded hover:bg-brand-700 transition-colors"
+            >
+              📋 Copy
+            </button>
+          </div>
         </div>
       )}
     </div>

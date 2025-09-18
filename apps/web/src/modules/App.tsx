@@ -13,8 +13,9 @@ import { LayoutShell } from './LayoutShell';
 import { Hero } from './Hero';
 import { Tabs } from './Tabs';
 import { HomeSidebar } from './HomeSidebar';
+import { Bingo } from './Bingo';
 
-type Page = 'home' | 'wall' | 'challenges' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile';
+type Page = 'home' | 'wall' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -86,6 +87,8 @@ export function App() {
       {currentPage === 'wall' && <Wall />}
       
       {currentPage === 'challenges' && <Challenges />}
+      
+      {currentPage === 'bingo' && <Bingo />}
       
       {currentPage === 'linkedin' && <LinkedInGenerators />}
       

@@ -5,6 +5,7 @@ import type { Env } from '../index';
 import { pushNotification } from '../utils/notify';
 import { checkAndAwardBadges } from '../utils/badges';
 import { checkRate } from '../utils/ratelimit';
+import { requireAuth, getFingerprint } from '../utils/auth';
 
 const router = new Hono<{ Bindings: Env }>();
 
@@ -53,11 +54,14 @@ router.post('/', async (c) => {
 router.post('/:id/vote', async (c) => {
   const id = c.req.param('id');
   const { reaction, user_fingerprint } = await c.req.json();
+  const fingerprint = getFingerprint(c);
+  const auth = await requireAuth(c);
   const now = Date.now();
+  
   try {
     await c.env.DB.prepare(
-      `INSERT INTO votes (id, term_id, user_fingerprint, reaction, created_at) VALUES (?, ?, ?, ?, ?)`
-    ).bind(nanoid(), id, user_fingerprint || 'anon', reaction, now).run();
+      `INSERT INTO votes (id, term_id, user_fingerprint, reaction, fingerprint, created_at) VALUES (?, ?, ?, ?, ?, ?)`
+    ).bind(nanoid(), id, auth?.userId || user_fingerprint || 'anon', reaction, fingerprint, now).run();
     
     // Notify term author and check for badges
     const owner = await c.env.DB.prepare('SELECT author_id FROM terms WHERE id=?').bind(id).first<{author_id:string|null}>();

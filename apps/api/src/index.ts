@@ -12,6 +12,7 @@ import challenges from './routes/challenges';
 import notifications from './routes/notifications';
 import suggest from './routes/suggest';
 import auth from './routes/auth';
+import bingo from './routes/bingo';
 
 export type Env = {
   DB: D1Database;
@@ -21,6 +22,8 @@ export type Env = {
   AI: any;  // Workers AI binding
   CORS_ORIGIN: string;
   JWT_SECRET: string;
+  LINKEDIN_CLIENT_ID?: string;
+  LINKEDIN_CLIENT_SECRET?: string;
 };
 
 const app = new Hono<{ Bindings: Env }>();
@@ -37,6 +40,7 @@ app.route('/v1/challenges', challenges);
 app.route('/v1/notifications', notifications);
 app.route('/v1/suggest', suggest);
 app.route('/v1/auth', auth);
+app.route('/v1/bingo', bingo);
 app.route('/auth', auth);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
@@ -49,6 +53,12 @@ export default {
         const { id, key } = msg.body;
         await (await import('./workers/moderate')).moderateWall(env, id, key);
       }
+    }
+  },
+  scheduled: async (event: ScheduledEvent, env: Env) => {
+    // Weekly digest on Mondays
+    if (event.cron === "0 9 * * 1") {
+      await (await import('./workers/digest')).sendWeeklyDigest(env);
     }
   }
 } as ExportedHandler<Env>;
