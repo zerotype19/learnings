@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
+import type { Env } from '../index';
 
-const ai = new Hono();
+const ai = new Hono<{ Bindings: Env }>();
 
 ai.post('/translate', async (c) => {
   const { text } = await c.req.json();

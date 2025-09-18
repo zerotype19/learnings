@@ -1,8 +1,9 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
 import { nanoid } from 'nanoid';
+import type { Env } from '../index';
 
-const router = new Hono();
+const router = new Hono<{ Bindings: Env }>();
 
 router.get('/', async (c) => {
   try {

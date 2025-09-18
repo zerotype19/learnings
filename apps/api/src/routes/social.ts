@@ -1,7 +1,8 @@
 import { Hono } from 'hono';
 import { nanoid } from 'nanoid';
+import type { Env } from '../index';
 
-const social = new Hono();
+const social = new Hono<{ Bindings: Env }>();
 
 social.post('/share/:type/:id', async (c) => {
   const { type, id } = c.req.param();
