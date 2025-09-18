@@ -14,4 +14,11 @@ social.post('/share/:type/:id', async (c) => {
   return c.json({ short: `/l/${code}` });
 });
 
+social.get('/l/:code', async (c) => {
+  const { code } = c.req.param();
+  const row = await c.env.DB.prepare('SELECT target FROM shortlinks WHERE code = ?').bind(code).first<{target:string}>();
+  if (!row) return c.text('Not found', 404);
+  return c.redirect(row.target.startsWith('http') ? row.target : row.target, 302);
+});
+
 export default social;

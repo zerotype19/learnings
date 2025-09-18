@@ -23,6 +23,35 @@ export function TermCard({ term }: { term: Term }) {
     }
   };
 
+  const handleShare = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      const response = await fetch(`${apiUrl}/v1/share/term/${term.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const shortUrl = `${apiUrl}${data.short}`;
+        
+        if (navigator.share) {
+          await navigator.share({
+            title: term.title,
+            text: term.definition,
+            url: shortUrl
+          });
+        } else {
+          await navigator.clipboard.writeText(shortUrl);
+          alert('Short link copied to clipboard!');
+        }
+      }
+    } catch (error) {
+      console.error('Share failed:', error);
+    }
+  };
+
   return (
     <div className="rounded-2xl border p-4 shadow-sm">
       <div className="text-xl font-semibold">{term.title}</div>
@@ -31,7 +60,7 @@ export function TermCard({ term }: { term: Term }) {
         <p className="mt-2 text-xs italic opacity-70">Translation: {term.translation}</p>
       )}
       <p className="mt-3 text-sm border-l-2 pl-3">"{term.example_sentence}"</p>
-      <div className="mt-4 flex gap-2">
+      <div className="mt-4 flex gap-2 flex-wrap">
         <button 
           onClick={() => handleVote('cringe')}
           className="px-3 py-1 text-xs bg-red-100 hover:bg-red-200 rounded-full"
@@ -55,6 +84,12 @@ export function TermCard({ term }: { term: Term }) {
           className="px-3 py-1 text-xs bg-purple-100 hover:bg-purple-200 rounded-full"
         >
           👌 Chef's Kiss
+        </button>
+        <button 
+          onClick={handleShare}
+          className="px-3 py-1 text-xs bg-blue-100 hover:bg-blue-200 rounded-full"
+        >
+          📤 Share
         </button>
       </div>
     </div>
