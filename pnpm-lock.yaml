@@ -39,6 +39,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@learnings/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      '@learnings/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       react:
         specifier: ^18.2.0
         version: 18.3.1

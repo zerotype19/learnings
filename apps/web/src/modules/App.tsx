@@ -6,7 +6,8 @@ export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + '/v1/terms')
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    fetch(apiUrl + '/v1/terms')
       .then((r) => r.json())
       .then((d) => setTerms(d.items || []))
       .catch(() => setTerms([]));

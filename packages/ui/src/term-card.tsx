@@ -4,7 +4,8 @@ import type { Term } from '@learnings/lib';
 export function TermCard({ term }: { term: Term }) {
   const handleVote = async (reaction: string) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8787'}/v1/terms/${term.id}/vote`, {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      const response = await fetch(`${apiUrl}/v1/terms/${term.id}/vote`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
