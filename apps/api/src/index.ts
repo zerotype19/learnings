@@ -10,6 +10,7 @@ import profile from './routes/profile';
 import referrals from './routes/referrals';
 import challenges from './routes/challenges';
 import notifications from './routes/notifications';
+import suggest from './routes/suggest';
 
 export type Env = {
   DB: D1Database;
@@ -32,7 +33,18 @@ app.route('/v1/wall', wall);
 app.route('/v1/profile', profile);
 app.route('/v1/challenges', challenges);
 app.route('/v1/notifications', notifications);
+app.route('/v1/suggest', suggest);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
 
-export default app;
+export default {
+  fetch: app.fetch,
+  queue: async (batch: MessageBatch<any>, env: Env) => {
+    for (const msg of batch.messages) {
+      if (msg.body?.type === 'moderate_wall') {
+        const { id, key } = msg.body;
+        await (await import('./workers/moderate')).moderateWall(env, id, key);
+      }
+    }
+  }
+} as ExportedHandler<Env>;

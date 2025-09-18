@@ -1,6 +1,42 @@
 import React, { useEffect, useState } from 'react';
 
-type WallItem = { id: string; title: string; image_key: string; source_url?: string };
+type WallItem = { id: string; title: string; image_key: string; source_url?: string; flagged?: number };
+
+function WallItemCard({ item, apiUrl }: { item: WallItem; apiUrl: string }) {
+  const [revealed, setRevealed] = useState(false);
+  const isBlurred = item.flagged === 1 && !revealed;
+  
+  return (
+    <figure className="border rounded overflow-hidden">
+      <div className="relative">
+        <img 
+          src={`${apiUrl}/v1/wall/file/${item.image_key}`} 
+          alt={item.title} 
+          className={`w-full h-48 object-cover transition-all ${isBlurred ? 'filter blur-lg' : ''}`}
+        />
+        {isBlurred && (
+          <button
+            onClick={() => setRevealed(true)}
+            className="absolute inset-0 bg-black bg-opacity-50 text-white text-sm flex items-center justify-center hover:bg-opacity-40"
+          >
+            ⚠️ Flagged Content - Click to Reveal
+          </button>
+        )}
+      </div>
+      <figcaption className="p-2 text-sm">
+        <div className="font-semibold">{item.title}</div>
+        {item.source_url && (
+          <a href={item.source_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-xs">
+            Source
+          </a>
+        )}
+        {item.flagged === 1 && (
+          <div className="text-xs text-orange-600 mt-1">⚠️ Flagged for review</div>
+        )}
+      </figcaption>
+    </figure>
+  );
+}
 
 export function Wall() {
   const [items, setItems] = useState<WallItem[]>([]);
@@ -64,21 +100,7 @@ export function Wall() {
       </form>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {items.map(it => (
-          <figure key={it.id} className="border rounded overflow-hidden">
-            <img 
-              src={`${apiUrl}/v1/wall/file/${it.image_key}`} 
-              alt={it.title} 
-              className="w-full h-48 object-cover"
-            />
-            <figcaption className="p-2 text-sm">
-              <div className="font-semibold">{it.title}</div>
-              {it.source_url && (
-                <a href={it.source_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-xs">
-                  Source
-                </a>
-              )}
-            </figcaption>
-          </figure>
+          <WallItemCard key={it.id} item={it} apiUrl={apiUrl} />
         ))}
       </div>
     </div>

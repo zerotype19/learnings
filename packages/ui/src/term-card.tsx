@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Term } from '@learnings/lib';
 
-export function TermCard({ term }: { term: Term }) {
+export function TermCard({ term, onRemixWithProfessor }: { term: Term; onRemixWithProfessor?: (text: string) => void }) {
   const handleVote = async (reaction: string) => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
@@ -117,6 +117,14 @@ export function TermCard({ term }: { term: Term }) {
         >
           🔗 Embed
         </button>
+        {onRemixWithProfessor && (
+          <button 
+            onClick={() => onRemixWithProfessor(`${term.title}: ${term.definition}`)}
+            className="px-3 py-1 text-xs bg-indigo-100 hover:bg-indigo-200 rounded-full"
+          >
+            🎓 Remix with Professor
+          </button>
+        )}
       </div>
     </div>
   );

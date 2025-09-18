@@ -25,5 +25,10 @@ id = "5c2b6e7727ec4a0bb520e720e8e35eae"
 binding = "JOBS"
 queue = "learnings-jobs"
 
+[[queues.consumers]]
+binding = "JOBS"
+queue = "learnings-jobs"
+script_name = "learnings-api"
+
 [ai]
 binding = "AI"

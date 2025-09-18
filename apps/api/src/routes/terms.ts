@@ -30,6 +30,11 @@ const TermSchema = z.object({
 });
 
 router.post('/', async (c) => {
+  // Rate limiting
+  const { checkRate } = await import('../utils/ratelimit');
+  const ok = await checkRate(c.env as any, `ip:${c.req.header('cf-connecting-ip')}:terms`, 10, 60);
+  if (!ok) return c.text('Slow down', 429);
+  
   const body = await c.req.json();
   const parsed = TermSchema.safeParse(body);
   if (!parsed.success) return c.json({ error: parsed.error.flatten() }, 400);

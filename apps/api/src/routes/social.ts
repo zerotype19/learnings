@@ -18,6 +18,12 @@ social.get('/l/:code', async (c) => {
   const { code } = c.req.param();
   const row = await c.env.DB.prepare('SELECT target FROM shortlinks WHERE code = ?').bind(code).first<{target:string}>();
   if (!row) return c.text('Not found', 404);
+  
+  // Record analytics
+  const ip = c.req.header('cf-connecting-ip') || '0.0.0.0';
+  await c.env.DB.prepare('INSERT INTO shortlink_hits (code, ts, ip_hash, ua, ref) VALUES (?,?,?,?,?)')
+    .bind(code, Date.now(), btoa(ip).slice(0,16), c.req.header('user-agent') || '', c.req.header('referer') || '').run();
+  
   return c.redirect(row.target.startsWith('http') ? row.target : row.target, 302);
 });
 
@@ -34,6 +40,11 @@ social.get('/deans-list', async (c) => {
     ORDER BY (cringe + heard) DESC
     LIMIT 10
   `).bind(oneWeekAgo).all();
+  return c.json({ items: results });
+});
+
+social.get('/analytics/shortlinks', async (c) => {
+  const { results } = await c.env.DB.prepare('SELECT code, COUNT(*) AS clicks FROM shortlink_hits GROUP BY code ORDER BY clicks DESC LIMIT 100').all();
   return c.json({ items: results });
 });
 
