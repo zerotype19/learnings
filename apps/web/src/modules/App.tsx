@@ -45,41 +45,43 @@ export function App() {
 
   return (
     <LayoutShell currentPage={currentPage} onPageChange={setCurrentPage}>
-      {/* Hero Section */}
-      <Hero />
-      
-      {/* Tabs Navigation */}
-      <Tabs currentPage={currentPage} onPageChange={setCurrentPage} />
-      
       {/* Content Sections */}
       <div className="mt-8">
         {currentPage === 'home' && (
-          <div className="lg:grid lg:grid-cols-[1fr_320px] lg:gap-8">
-            {/* Main Content */}
-            <div>
-              {loading && (
-                <div className="text-center py-8">
-                  <div className="text-lg text-neutral-600">Loading corporate wisdom...</div>
-                </div>
-              )}
-              {error && (
-                <div className="text-center py-8 text-red-600">
-                  <div className="text-lg">Error: {error}</div>
-                  <div className="text-sm mt-2">Check console for details</div>
-                </div>
-              )}
-              {!loading && !error && (
-                <div className="grid gap-4">
-                  {terms.map((t) => (
-                    <TermCard key={t.id} term={t} />
-                  ))}
-                </div>
-              )}
-            </div>
+          <div>
+            {/* Hero Section */}
+            <Hero />
             
-            {/* Sidebar */}
-            <div className="mt-8 lg:mt-0">
-              <HomeSidebar />
+            {/* Tabs Navigation */}
+            <Tabs currentPage={currentPage} onPageChange={setCurrentPage} />
+            
+            <div className="mt-8 lg:grid lg:grid-cols-[1fr_320px] lg:gap-8">
+              {/* Main Content */}
+              <div>
+                {loading && (
+                  <div className="text-center py-8">
+                    <div className="text-lg text-neutral-600">Loading corporate wisdom...</div>
+                  </div>
+                )}
+                {error && (
+                  <div className="text-center py-8 text-red-600">
+                    <div className="text-lg">Error: {error}</div>
+                    <div className="text-sm mt-2">Check console for details</div>
+                  </div>
+                )}
+                {!loading && !error && (
+                  <div className="grid gap-4">
+                    {terms.map((t) => (
+                      <TermCard key={t.id} term={t} />
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Sidebar */}
+              <div className="mt-8 lg:mt-0">
+                <HomeSidebar />
+              </div>
             </div>
           </div>
         )}
