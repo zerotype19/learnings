@@ -21,4 +21,20 @@ social.get('/l/:code', async (c) => {
   return c.redirect(row.target.startsWith('http') ? row.target : row.target, 302);
 });
 
+// Ranking by (cringe + heard) weekly delta
+social.get('/deans-list', async (c) => {
+  const oneWeekAgo = Date.now() - 7*24*60*60*1000;
+  const { results } = await c.env.DB.prepare(`
+    SELECT t.slug, t.title,
+      SUM(CASE WHEN v.reaction='cringe' THEN 1 ELSE 0 END) AS cringe,
+      SUM(CASE WHEN v.reaction='heard1000x' THEN 1 ELSE 0 END) AS heard
+    FROM terms t
+    LEFT JOIN votes v ON v.term_id = t.id AND v.created_at >= ?
+    GROUP BY t.id
+    ORDER BY (cringe + heard) DESC
+    LIMIT 10
+  `).bind(oneWeekAgo).all();
+  return c.json({ items: results });
+});
+
 export default social;

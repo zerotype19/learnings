@@ -3,8 +3,10 @@ import { TermCard } from '@learnings/ui';
 import type { Term } from '@learnings/lib';
 import { Wall } from './Wall';
 import { ProfessorWidget } from './ProfessorWidget';
+import { Challenges, DeansList } from './Challenges';
+import { Profile } from './Profile';
 
-type Page = 'home' | 'wall';
+type Page = 'home' | 'wall' | 'challenges' | 'profile';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -36,18 +38,29 @@ export function App() {
           >
             Wall of Fame
           </button>
+          <button 
+            onClick={() => setCurrentPage('challenges')}
+            className={`px-4 py-2 rounded ${currentPage === 'challenges' ? 'bg-black text-white' : 'bg-gray-100'}`}
+          >
+            Challenges
+          </button>
         </nav>
       </header>
       
       {currentPage === 'home' && (
-        <div className="grid gap-4">
-          {terms.map((t) => (
-            <TermCard key={t.id} term={t} />
-          ))}
+        <div>
+          <div className="grid gap-4">
+            {terms.map((t) => (
+              <TermCard key={t.id} term={t} />
+            ))}
+          </div>
+          <DeansList />
         </div>
       )}
       
       {currentPage === 'wall' && <Wall />}
+      
+      {currentPage === 'challenges' && <Challenges />}
       
       <ProfessorWidget />
     </div>

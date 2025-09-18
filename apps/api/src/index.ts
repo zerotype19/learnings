@@ -5,6 +5,10 @@ import social from './routes/social';
 import ai from './routes/ai';
 import og from './routes/og';
 import wall from './routes/wall';
+import embeds from './routes/embeds';
+import profile from './routes/profile';
+import referrals from './routes/referrals';
+import challenges from './routes/challenges';
 
 export type Env = {
   DB: D1Database;
@@ -24,5 +28,9 @@ app.route('/v1', social);
 app.route('/v1/ai', ai);
 app.route('/v1/og', og);
 app.route('/v1/wall', wall);
+app.route('/v1/profile', profile);
+app.route('/v1/challenges', challenges);
+app.route('/r', referrals);
+app.route('/', embeds); // exposes /v1/embed/* and /oembed
 
 export default app;

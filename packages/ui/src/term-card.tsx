@@ -52,6 +52,26 @@ export function TermCard({ term }: { term: Term }) {
     }
   };
 
+  const handleEmbed = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      const embedUrl = `${apiUrl}/v1/embed/term/${term.slug}`;
+      const oembedUrl = `${apiUrl}/oembed?url=https://learnings.org/embed/term/${term.slug}`;
+      
+      const embedCode = `<iframe src="${embedUrl}" width="560" height="300" frameborder="0" scrolling="no" style="border:0;border-radius:16px;overflow:hidden"></iframe>`;
+      
+      await navigator.clipboard.writeText(embedCode);
+      alert(`Embed code copied to clipboard!\n\noEmbed URL: ${oembedUrl}`);
+    } catch (error) {
+      console.error('Embed failed:', error);
+      // Fallback - show the embed code in an alert
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      const embedUrl = `${apiUrl}/v1/embed/term/${term.slug}`;
+      const embedCode = `<iframe src="${embedUrl}" width="560" height="300" frameborder="0" scrolling="no" style="border:0;border-radius:16px;overflow:hidden"></iframe>`;
+      prompt('Copy this embed code:', embedCode);
+    }
+  };
+
   return (
     <div className="rounded-2xl border p-4 shadow-sm">
       <div className="text-xl font-semibold">{term.title}</div>
@@ -90,6 +110,12 @@ export function TermCard({ term }: { term: Term }) {
           className="px-3 py-1 text-xs bg-blue-100 hover:bg-blue-200 rounded-full"
         >
           📤 Share
+        </button>
+        <button 
+          onClick={handleEmbed}
+          className="px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded-full"
+        >
+          🔗 Embed
         </button>
       </div>
     </div>
