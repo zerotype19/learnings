@@ -18,6 +18,8 @@ import termsV2 from './routes/terms-v2';
 import search from './routes/search';
 import adminV2 from './routes/admin-v2';
 import wallV2 from './routes/wall-v2';
+import generators from './routes/generators';
+import homeFeed from './routes/home-feed';
 
 export type Env = {
   DB: D1Database;
@@ -75,6 +77,9 @@ app.route('/api/terms', termsV2);
 app.route('/api/wall', wallV2);
 app.route('/api/search', search);
 app.route('/api/admin', adminV2);
+app.route('/api/generators', generators);
+app.route('/api/generate', generators);
+app.route('/api/home-feed', homeFeed);
 
 // Mount voting endpoint at top level
 app.route('/api', wallV2); // This will expose /api/vote
