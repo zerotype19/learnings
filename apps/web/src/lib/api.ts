@@ -191,3 +191,53 @@ export async function getPopularTags(params: { limit?: number } = {}): Promise<{
 
   return response.json();
 }
+
+// Generators API
+export async function getGenerators(): Promise<{ items: Array<{
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  options_schema: Record<string, any>;
+}> }> {
+  const response = await fetch(`${getApiUrl()}/api/generators`, {
+    credentials: 'include'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to load generators: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+export async function runGenerator(
+  slug: string, 
+  params: {
+    inputs: Record<string, any>;
+    options?: Record<string, any>;
+    related_terms?: string[];
+    made_public?: boolean;
+  }
+): Promise<{
+  id: string;
+  generator_id: string;
+  output_text: string;
+  generator_name: string;
+  cached: boolean;
+  run_id: string;
+}> {
+  const response = await fetch(`${getApiUrl()}/api/generators/${slug}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(params)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || `Generation failed: ${response.status}`);
+  }
+
+  return response.json();
+}

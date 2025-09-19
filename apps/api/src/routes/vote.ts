@@ -65,8 +65,32 @@ router.post('/', async (c) => {
           message: 'Vote recorded'
         });
       }
+    } else if (entity_type === 'challenge_entry') {
+      // Handle challenge entries (v3)
+      const entry = await c.env.DB.prepare(
+        'SELECT created_at, votes FROM challenge_entries_v3 WHERE id = ?'
+      ).bind(entity_id).first() as any;
+      
+      if (entry) {
+        const newVoteCount = (entry.votes || 0) + 1;
+        
+        // Calculate hot score: vote_count / (hours_since_post + 2)^1.5
+        const hoursSincePost = (Date.now() - new Date(entry.created_at).getTime()) / (1000 * 60 * 60);
+        const hotScore = newVoteCount / Math.pow(hoursSincePost + 2, 1.5);
+        
+        await c.env.DB.prepare(
+          'UPDATE challenge_entries_v3 SET votes = ?, hot_score = ? WHERE id = ?'
+        ).bind(newVoteCount, hotScore, entity_id).run();
+        
+        return c.json({ 
+          ok: true, 
+          vote_count: newVoteCount,
+          hot_score: hotScore,
+          message: 'Vote recorded'
+        });
+      }
     } else if (entity_type === 'entry') {
-      // Handle challenge entries
+      // Handle legacy challenge entries (v2)
       await c.env.DB.prepare(
         'UPDATE challenge_entries_v2 SET votes = votes + 1 WHERE id = ?'
       ).bind(entity_id).run();

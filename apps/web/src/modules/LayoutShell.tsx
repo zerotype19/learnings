@@ -62,10 +62,10 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },
     { id: 'terms-hub', label: 'Terms', icon: '📚' },
-    { id: 'wall', label: 'Wall', icon: '📸' },
-    { id: 'challenges', label: 'Challenges', icon: '🏆' },
+    { id: 'wall-hub', label: 'Wall', icon: '📸' },
+    { id: 'challenges-hub', label: 'Challenges', icon: '🏆' },
     { id: 'bingo', label: 'Bingo', icon: '🎯' },
-    { id: 'linkedin', label: 'Generators', icon: '📝' },
+    { id: 'generators-hub', label: 'Generators', icon: '📝' },
     { id: 'submit-v2', label: 'Submit', icon: '💡' },
     { id: 'analytics', label: 'Analytics', icon: '📊' },
     ...(isAdmin ? [{ id: 'admin-v2', label: 'Admin', icon: '🛡️' }] : [])

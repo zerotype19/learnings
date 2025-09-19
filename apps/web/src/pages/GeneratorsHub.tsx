@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { GeneratorModal } from '../components/generators/GeneratorModal';
+import { getGenerators, runGenerator } from '../lib/api';
+import { trackEvent } from '../utils/tracking';
 
 type Generator = {
   id: string;
@@ -9,186 +10,295 @@ type Generator = {
   options_schema: Record<string, any>;
 };
 
+type GeneratorRun = {
+  id: string;
+  generator_id: string;
+  output_text: string;
+  generator_name: string;
+  cached: boolean;
+  created_at?: string;
+};
+
 export function GeneratorsHub() {
   const [generators, setGenerators] = useState<Generator[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedGenerator, setSelectedGenerator] = useState<Generator | null>(null);
-  const [modalInputs, setModalInputs] = useState<Record<string, string>>({});
+  const [activeGenerator, setActiveGenerator] = useState<string>('');
+  const [inputs, setInputs] = useState<Record<string, any>>({});
+  const [result, setResult] = useState<GeneratorRun | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [generatorsLoading, setGeneratorsLoading] = useState(true);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
-
+  // Load generators on mount
   useEffect(() => {
-    loadGenerators();
-    
-    // Listen for generator prefill events
-    const handleGeneratorPrefill = (e: CustomEvent) => {
-      const { generator, inputs } = e.detail;
-      const gen = generators.find(g => g.slug === generator);
-      if (gen) {
-        setSelectedGenerator(gen);
-        setModalInputs(inputs || {});
+    const loadGenerators = async () => {
+      try {
+        const data = await getGenerators();
+        setGenerators(data.items || []);
+        if (data.items && data.items.length > 0) {
+          setActiveGenerator(data.items[0].slug);
+        }
+      } catch (error) {
+        console.error('Failed to load generators:', error);
+      } finally {
+        setGeneratorsLoading(false);
       }
     };
 
-    window.addEventListener('generator:open', handleGeneratorPrefill as EventListener);
-    return () => window.removeEventListener('generator:open', handleGeneratorPrefill as EventListener);
-  }, [generators]);
+    loadGenerators();
+  }, []);
 
-  const loadGenerators = async () => {
+  const handleGeneratorSelect = (generator: Generator) => {
+    setActiveGenerator(generator.slug);
+    setInputs({});
+    setResult(null);
+  };
+
+  const handleInputChange = (key: string, value: any) => {
+    setInputs(prev => ({ ...prev, [key]: value }));
+  };
+
+  const handleGenerate = async () => {
+    if (!activeGenerator || !inputs || Object.keys(inputs).length === 0) return;
+
+    setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/api/generators`, {
-        credentials: 'include'
+      const generator = generators.find(g => g.slug === activeGenerator);
+      if (!generator) return;
+
+      const run = await runGenerator(activeGenerator, {
+        inputs,
+        made_public: true
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        setGenerators(data.items || []);
-      }
+      setResult(run);
+
+      // Track usage
+      trackEvent('generator_used', {
+        generator_slug: activeGenerator,
+        generator_name: generator.name,
+        cached: run.cached || false
+      });
+
     } catch (error) {
-      console.error('Failed to load generators:', error);
+      console.error('Generation failed:', error);
+      alert('Generation failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  const openGenerator = (generator: Generator, initialInputs: Record<string, string> = {}) => {
-    setSelectedGenerator(generator);
-    setModalInputs(initialInputs);
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    alert('Copied to clipboard!');
   };
 
-  if (loading) {
+  const getInputComponent = (key: string, schema: any) => {
+    const value = inputs[key] || '';
+    
+    if (schema.type === 'textarea') {
+      return (
+        <textarea
+          value={value}
+          onChange={(e) => handleInputChange(key, e.target.value)}
+          placeholder={schema.placeholder || `Enter ${schema.label?.toLowerCase() || key}`}
+          className="w-full p-3 border rounded-lg resize-none"
+          rows={4}
+        />
+      );
+    }
+    
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
-        <div className="text-neutral-600">Loading generators...</div>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => handleInputChange(key, e.target.value)}
+        placeholder={schema.placeholder || `Enter ${schema.label?.toLowerCase() || key}`}
+        className="w-full p-3 border rounded-lg"
+      />
+    );
+  };
+
+  const currentGenerator = generators.find(g => g.slug === activeGenerator);
+
+  if (generatorsLoading) {
+    return (
+      <div className="mx-auto max-w-4xl p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded mb-6"></div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="h-32 bg-gray-200 rounded"></div>
+              <div className="h-24 bg-gray-200 rounded"></div>
+            </div>
+            <div className="h-64 bg-gray-200 rounded"></div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold mb-2">🤖 AI Generators</h1>
-          <p className="text-neutral-600">
-            Professional corporate content tools powered by AI. Transform jargon, generate posts, and roast buzzwords.
-          </p>
-        </div>
+    <div className="mx-auto max-w-4xl p-6">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">Generators Hub</h1>
+        <p className="text-gray-600">AI-powered tools to create, analyze, and roast corporate content</p>
+      </div>
 
-        {/* Quick Actions */}
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <button
-              onClick={() => {
-                const gen = generators.find(g => g.slug === 'professor');
-                if (gen) openGenerator(gen);
-              }}
-              className="p-4 bg-white border border-neutral-200 rounded-xl hover:shadow-md transition-shadow text-left"
-            >
-              <div className="font-medium mb-1">🎓 Translate Jargon</div>
-              <div className="text-sm text-neutral-600">Get plain English translations</div>
-            </button>
-            
-            <button
-              onClick={() => window.location.hash = '/bingo'}
-              className="p-4 bg-white border border-neutral-200 rounded-xl hover:shadow-md transition-shadow text-left"
-            >
-              <div className="font-medium mb-1">🎯 Buzzword Bingo</div>
-              <div className="text-sm text-neutral-600">Generate bingo cards</div>
-            </button>
-
-            <button
-              onClick={() => {
-                const gen = generators.find(g => g.slug === 'roast');
-                if (gen) openGenerator(gen);
-              }}
-              className="p-4 bg-white border border-neutral-200 rounded-xl hover:shadow-md transition-shadow text-left"
-            >
-              <div className="font-medium mb-1">🔥 Roast Buzzwords</div>
-              <div className="text-sm text-neutral-600">Satirical takes on corporate speak</div>
-            </button>
-          </div>
-        </div>
-
-        {/* All Generators */}
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-4">All Generators</h2>
-          {generators.length === 0 ? (
-            <div className="text-center py-8 text-neutral-500">
-              No generators available
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {generators.map(generator => (
-                <GeneratorCard
+      <div className="grid lg:grid-cols-2 gap-8">
+        {/* Generator Selection & Input */}
+        <div className="space-y-6">
+          {/* Generator Picker */}
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Choose Generator</h2>
+            <div className="grid gap-3">
+              {generators.map((generator) => (
+                <button
                   key={generator.id}
-                  generator={generator}
-                  onRun={(inputs) => openGenerator(generator, inputs)}
-                />
+                  onClick={() => handleGeneratorSelect(generator)}
+                  className={`p-4 text-left border rounded-lg transition-colors ${
+                    activeGenerator === generator.slug
+                      ? 'border-blue-500 bg-blue-50'
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  <div className="font-medium">{generator.name}</div>
+                  <div className="text-sm text-gray-600 mt-1">{generator.description}</div>
+                </button>
               ))}
+            </div>
+          </div>
+
+          {/* Input Form */}
+          {currentGenerator && (
+            <div>
+              <h3 className="text-lg font-medium mb-4">Configure {currentGenerator.name}</h3>
+              <div className="space-y-4">
+                {Object.entries(currentGenerator.options_schema).map(([key, schema]: [string, any]) => (
+                  <div key={key}>
+                    <label className="block text-sm font-medium mb-2">
+                      {schema.label || key}
+                      {schema.required && <span className="text-red-500 ml-1">*</span>}
+                    </label>
+                    {getInputComponent(key, schema)}
+                  </div>
+                ))}
+                
+                <button
+                  onClick={handleGenerate}
+                  disabled={loading || !inputs || Object.keys(inputs).length === 0}
+                  className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
+                >
+                  {loading ? 'Generating...' : `Generate ${currentGenerator.name}`}
+                </button>
+              </div>
             </div>
           )}
         </div>
 
-        {/* Legacy Generators */}
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-4">Classic Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <button
-              onClick={() => window.location.hash = '/linkedin'}
-              className="p-4 bg-white border border-neutral-200 rounded-xl hover:shadow-md transition-shadow text-left"
-            >
-              <div className="font-medium mb-1">📝 LinkedIn Generators</div>
-              <div className="text-sm text-neutral-600">Posts, comments, and emails</div>
-            </button>
-            
-            <button
-              onClick={() => window.location.hash = '/challenges'}
-              className="p-4 bg-white border border-neutral-200 rounded-xl hover:shadow-md transition-shadow text-left"
-            >
-              <div className="font-medium mb-1">🏆 Weekly Challenges</div>
-              <div className="text-sm text-neutral-600">Community competitions</div>
-            </button>
-          </div>
+        {/* Results */}
+        <div>
+          <h2 className="text-xl font-semibold mb-4">Output</h2>
+          
+          {result ? (
+            <div className="space-y-4">
+              {/* Generator Info */}
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div>
+                  <div className="font-medium">{result.generator_name}</div>
+                  <div className="text-sm text-gray-600">
+                    {result.cached ? 'Cached result' : 'Fresh generation'}
+                  </div>
+                </div>
+                {result.run_id && (
+                  <div className="text-xs text-gray-500">
+                    #{result.run_id.slice(-8)}
+                  </div>
+                )}
+              </div>
+
+              {/* Output Content */}
+              <div className="border rounded-lg">
+                <div className="p-4 bg-gray-50 border-b">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Generated Content</span>
+                    <button
+                      onClick={() => copyToClipboard(result.output_text)}
+                      className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded transition-colors"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+                <div className="p-4">
+                  {result.generator_name === 'Professor Translator' ? (
+                    <ProfessorOutput output={result.output_text} />
+                  ) : (
+                    <pre className="whitespace-pre-wrap text-sm font-mono">
+                      {result.output_text}
+                    </pre>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => copyToClipboard(result.output_text)}
+                  className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  Copy to Clipboard
+                </button>
+                <button
+                  onClick={() => setResult(null)}
+                  className="px-4 py-2 border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+              <div className="text-gray-400 mb-2">
+                <svg className="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div className="text-gray-600">Generate content to see results here</div>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Generator Modal */}
-      {selectedGenerator && (
-        <GeneratorModal
-          generator={selectedGenerator}
-          isOpen={!!selectedGenerator}
-          onClose={() => setSelectedGenerator(null)}
-          initialInputs={modalInputs}
-        />
-      )}
     </div>
   );
 }
 
-type GeneratorCardProps = {
-  generator: Generator;
-  onRun: (inputs: Record<string, string>) => void;
-};
-
-function GeneratorCard({ generator, onRun }: GeneratorCardProps) {
-  const handleQuickRun = () => {
-    // For simple generators, open with empty inputs
-    onRun({});
-  };
-
-  return (
-    <div className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
-      <h3 className="font-semibold text-lg mb-2">{generator.name}</h3>
-      <p className="text-sm text-neutral-600 mb-4">{generator.description}</p>
-      
-      <button
-        onClick={handleQuickRun}
-        className="w-full px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
-      >
-        Run Generator
-      </button>
-    </div>
-  );
+// Special component for Professor Translator output
+function ProfessorOutput({ output }: { output: string }) {
+  try {
+    const parsed = JSON.parse(output);
+    return (
+      <div className="space-y-4">
+        <div>
+          <h4 className="font-medium text-blue-600 mb-2">Academic Tone</h4>
+          <p className="text-sm bg-blue-50 p-3 rounded">{parsed.academic_tone}</p>
+        </div>
+        <div>
+          <h4 className="font-medium text-green-600 mb-2">Plain Translation</h4>
+          <p className="text-sm bg-green-50 p-3 rounded">{parsed.plain_translation}</p>
+        </div>
+        {parsed.optional_framework && (
+          <div>
+            <h4 className="font-medium text-purple-600 mb-2">Framework</h4>
+            <p className="text-sm bg-purple-50 p-3 rounded">{parsed.optional_framework}</p>
+          </div>
+        )}
+      </div>
+    );
+  } catch {
+    return (
+      <pre className="whitespace-pre-wrap text-sm font-mono">
+        {output}
+      </pre>
+    );
+  }
 }

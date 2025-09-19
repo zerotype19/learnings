@@ -5,7 +5,7 @@ PRAGMA foreign_keys=ON;
 
 -- Add missing columns to existing tables
 ALTER TABLE wall_posts ADD COLUMN hot_score REAL DEFAULT 0;
-ALTER TABLE wall_posts ADD COLUMN last_activity_at TEXT DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE wall_posts ADD COLUMN last_activity_at TEXT;
 ALTER TABLE wall_posts ADD COLUMN og_site TEXT;
 ALTER TABLE wall_posts ADD COLUMN comment_count INTEGER DEFAULT 0;
 

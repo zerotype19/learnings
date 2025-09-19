@@ -9,6 +9,7 @@ import embeds from './routes/embeds';
 import profile from './routes/profile';
 import referrals from './routes/referrals';
 import challenges from './routes/challenges';
+import challengesV2 from './routes/challenges-v2';
 import notifications from './routes/notifications';
 import suggest from './routes/suggest';
 import auth from './routes/auth';
@@ -86,6 +87,7 @@ app.route('/api/home-feed', homeFeed);
 app.route('/api/vote', vote);
 app.route('/api/feature-flags', featureFlags);
 app.route('/api/track', track);
+app.route('/api/challenges', challengesV2);
 
 export default {
   fetch: app.fetch,
