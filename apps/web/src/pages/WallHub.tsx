@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { listWall, vote, getTags, getVoteCount } from '../lib/api';
+import { listWall, vote, getPopularTags, getVoteCount } from '../lib/api';
 
 type WallPost = {
   id: string;
@@ -68,7 +68,7 @@ export function WallHub() {
 
   const loadPopularTags = async () => {
     try {
-      const data = await getTags({ limit: 20 });
+      const data = await getPopularTags({ limit: 20 });
       setPopularTags(data.tags || []);
     } catch (error) {
       console.error('Failed to load popular tags:', error);

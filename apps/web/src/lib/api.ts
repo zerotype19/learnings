@@ -177,7 +177,7 @@ export function getRelatedTerms(post: WallPost): string[] {
 }
 
 // Get popular tags
-export async function getTags(params: { limit?: number } = {}): Promise<{ tags: Array<{tag: string; count: number}> }> {
+export async function getPopularTags(params: { limit?: number } = {}): Promise<{ tags: Array<{tag: string; count: number}> }> {
   const searchParams = new URLSearchParams();
   if (params.limit) searchParams.set('limit', String(params.limit));
   
