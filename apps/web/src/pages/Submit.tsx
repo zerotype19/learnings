@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { submitWallPost } from '../lib/api';
 
 type SubmitTab = 'term' | 'wall';
 
@@ -266,18 +267,144 @@ function TermSubmissionForm() {
 }
 
 function WallSubmissionForm() {
+  const [formData, setFormData] = useState({
+    title: '',
+    body: '',
+    source_url: '',
+    tags: '',
+    suggested_terms: ''
+  });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.title.trim() || !formData.source_url.trim()) return;
+
+    setSubmitting(true);
+    try {
+      // Use the imported API helper
+      
+      // Parse tags and suggested terms
+      const tags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
+      const suggestedTerms = formData.suggested_terms.split(',').map(t => t.trim()).filter(t => t);
+
+      await submitWallPost({
+        title: formData.title.trim(),
+        body: formData.body.trim() || undefined,
+        source_url: formData.source_url.trim(),
+        tags: tags.length > 0 ? tags : undefined,
+        suggested_terms: suggestedTerms.length > 0 ? suggestedTerms : undefined
+      });
+
+      alert('Wall post submitted for review! Check back later to see if it gets approved.');
+      setFormData({
+        title: '',
+        body: '',
+        source_url: '',
+        tags: '',
+        suggested_terms: ''
+      });
+    } catch (error) {
+      console.error('Wall submission failed:', error);
+      alert('Failed to submit wall post. Please check your input and try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="bg-white rounded-2xl border p-6">
       <h2 className="text-xl font-semibold mb-4">Submit Wall Post</h2>
       <p className="text-sm text-neutral-600 mb-6">
         Share corporate buzzword discoveries from the wild.
       </p>
-      
-      <div className="text-center py-12 text-neutral-500">
-        Wall submissions coming in Phase 2!
-        <br />
-        <span className="text-xs">Use the current Wall page for now.</span>
-      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Title *</label>
+          <input
+            type="text"
+            value={formData.title}
+            onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+            placeholder="e.g., Peak Corporate Excellence in Action"
+            maxLength={200}
+            required
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Source URL *</label>
+          <input
+            type="url"
+            value={formData.source_url}
+            onChange={(e) => setFormData(prev => ({ ...prev, source_url: e.target.value }))}
+            placeholder="https://example.com/corporate-presentation"
+            required
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+          <div className="text-xs text-neutral-500 mt-1">
+            Link to the original content where you found this corporate jargon
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Description (optional)</label>
+          <textarea
+            value={formData.body}
+            onChange={(e) => setFormData(prev => ({ ...prev, body: e.target.value }))}
+            placeholder="Context about where you found this or why it's noteworthy..."
+            maxLength={2000}
+            rows={3}
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+          <div className="text-xs text-neutral-500 mt-1">
+            {formData.body.length}/2000 characters
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Tags</label>
+          <input
+            type="text"
+            value={formData.tags}
+            onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
+            placeholder="corporate, presentation, cringe (comma-separated)"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Related Terms</label>
+          <input
+            type="text"
+            value={formData.suggested_terms}
+            onChange={(e) => setFormData(prev => ({ ...prev, suggested_terms: e.target.value }))}
+            placeholder="synergy, leverage, optimize (comma-separated slugs)"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+          <div className="text-xs text-neutral-500 mt-1">
+            Suggest terms from our dictionary that relate to this post
+          </div>
+        </div>
+
+        <div className="flex gap-4 pt-4">
+          <button
+            type="submit"
+            disabled={submitting || !formData.title.trim() || !formData.source_url.trim()}
+            className="px-6 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 disabled:opacity-50 transition-colors"
+          >
+            {submitting ? 'Submitting...' : 'Submit for Review'}
+          </button>
+          <button
+            type="button"
+            onClick={() => window.location.hash = '/wall'}
+            className="px-6 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
+          >
+            View Wall
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

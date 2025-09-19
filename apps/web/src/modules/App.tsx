@@ -16,8 +16,9 @@ import { Bingo } from './Bingo';
 import { TermsHub } from '../pages/TermsHub';
 import { TermDetail } from '../pages/TermDetail';
 import { Submit } from '../pages/Submit';
+import { WallHub } from '../pages/WallHub';
 
-type Page = 'home' | 'wall' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2';
+type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -46,7 +47,7 @@ export function App() {
           setCurrentPage('submit-v2');
           break;
         case 'wall':
-          setCurrentPage('wall');
+          setCurrentPage('wall-hub');
           break;
         case 'challenges':
           setCurrentPage('challenges');
@@ -108,6 +109,8 @@ export function App() {
       {currentPage === 'term-detail' && <TermDetail slug={routeParams.slug || ''} />}
       
       {currentPage === 'submit-v2' && <Submit />}
+      
+      {currentPage === 'wall-hub' && <WallHub />}
       
       {/* Legacy Pages */}
       {(currentPage === 'home' || currentPage === 'wall' || currentPage === 'challenges' || currentPage === 'bingo' || currentPage === 'linkedin' || currentPage === 'analytics' || currentPage === 'suggest' || currentPage === 'admin') && (
