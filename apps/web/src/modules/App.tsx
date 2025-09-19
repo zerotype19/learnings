@@ -33,14 +33,12 @@ export function App() {
       const parts = hash.split('/').filter(part => part); // Remove empty parts
       const [page, ...params] = parts;
       
-      console.log('Hash changed:', hash, 'Page:', page, 'Params:', params); // Debug
       
       switch (page) {
         case 'terms':
           setCurrentPage('terms-hub');
           break;
         case 'term':
-          console.log('Setting term-detail page with slug:', params[0]); // Debug
           setCurrentPage('term-detail');
           setRouteParams({ slug: params[0] || '' });
           break;
@@ -70,11 +68,8 @@ export function App() {
           setCurrentPage('admin');
           break;
         default:
-          console.log('Unknown page, defaulting to home. Hash:', hash, 'Page:', page);
           setCurrentPage('home');
       }
-      
-      console.log('Route changed - Page:', page, 'CurrentPage set to:', currentPage);
     };
 
     // Handle initial route
@@ -110,16 +105,7 @@ export function App() {
       {/* New v2 Pages - Full Screen */}
       {currentPage === 'terms-hub' && <TermsHub />}
       
-      {currentPage === 'term-detail' && (
-        <div className="min-h-screen bg-white p-8">
-          {console.log('Rendering TermDetail with slug:', routeParams.slug)}
-          <h1>DEBUG: Term Detail Page</h1>
-          <p>Current page: {currentPage}</p>
-          <p>Slug: {routeParams.slug}</p>
-          <p>Hash: {window.location.hash}</p>
-          <TermDetail slug={routeParams.slug || ''} />
-        </div>
-      )}
+      {currentPage === 'term-detail' && <TermDetail slug={routeParams.slug || ''} />}
       
       {currentPage === 'submit-v2' && <Submit />}
       
