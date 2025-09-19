@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getGenerators, runGenerator } from '../lib/api';
-import { trackEvent } from '../utils/tracking';
+import { getGenerators, runGenerator, trackEvent } from '../lib/api';
 
 type Generator = {
   id: string;

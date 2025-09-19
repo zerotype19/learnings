@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { trackEvent } from '../utils/tracking';
+import { trackEvent } from '../lib/api';
 
 type Challenge = {
   id: string;
