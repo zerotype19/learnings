@@ -13,6 +13,7 @@ import notifications from './routes/notifications';
 import suggest from './routes/suggest';
 import auth from './routes/auth';
 import bingo from './routes/bingo';
+import admin from './routes/admin';
 
 export type Env = {
   DB: D1Database;
@@ -60,6 +61,7 @@ app.route('/v1/notifications', notifications);
 app.route('/v1/suggest', suggest);
 app.route('/v1/auth', auth);
 app.route('/v1/bingo', bingo);
+app.route('/v1/admin', admin);
 app.route('/auth', auth);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
