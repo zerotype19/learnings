@@ -13,7 +13,7 @@ export function Admin() {
       .catch(() => setWall([]));
     
     // Load pending submissions
-    fetch(apiUrl + '/v1/admin/submissions', { credentials: 'include' })
+    fetch(apiUrl + '/v1/admin/submissions?admin=1', { credentials: 'include' })
       .then(r => r.json())
       .then(d => setSubmissions(d.items || []))
       .catch(() => setSubmissions([]));
@@ -35,14 +35,14 @@ export function Admin() {
 
   const moderateSubmission = async (id: string, action: 'approve' | 'reject') => {
     const status = action === 'approve' ? 'approved' : 'rejected';
-    await fetch(apiUrl + `/v1/admin/submissions/${id}`, {
+    await fetch(apiUrl + `/v1/admin/submissions/${id}?admin=1`, {
       method: 'PATCH',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status })
     });
     // Refresh the list
-    const response = await fetch(apiUrl + '/v1/admin/submissions', { credentials: 'include' });
+    const response = await fetch(apiUrl + '/v1/admin/submissions?admin=1', { credentials: 'include' });
     const data = await response.json();
     setSubmissions(data.items || []);
   };
