@@ -103,9 +103,22 @@ export function App() {
 
   return (
     <LayoutShell currentPage={currentPage} onPageChange={setCurrentPage}>
-      {/* Content Sections */}
-      <div className="mt-8">
-        {currentPage === 'home' && (
+      {/* New v2 Pages - Full Screen */}
+      {currentPage === 'terms-hub' && <TermsHub />}
+      
+      {currentPage === 'term-detail' && (
+        <div>
+          {console.log('Rendering TermDetail with slug:', routeParams.slug)}
+          <TermDetail slug={routeParams.slug || ''} />
+        </div>
+      )}
+      
+      {currentPage === 'submit-v2' && <Submit />}
+      
+      {/* Legacy Pages */}
+      {(currentPage === 'home' || currentPage === 'wall' || currentPage === 'challenges' || currentPage === 'bingo' || currentPage === 'linkedin' || currentPage === 'analytics' || currentPage === 'suggest' || currentPage === 'admin') && (
+        <div className="mt-8">
+          {currentPage === 'home' && (
           <div>
             {/* Hero Section */}
             <Hero />
@@ -154,19 +167,8 @@ export function App() {
       {currentPage === 'suggest' && <Suggest />}
       
       {currentPage === 'admin' && <Admin />}
-      
-      {/* New v2 Pages */}
-      {currentPage === 'terms-hub' && <TermsHub />}
-      
-      {currentPage === 'term-detail' && (
-        <div>
-          {console.log('Rendering TermDetail with slug:', routeParams.slug)}
-          <TermDetail slug={routeParams.slug || ''} />
         </div>
       )}
-      
-      {currentPage === 'submit-v2' && <Submit />}
-      </div>
       
       <ProfessorWidget />
     </LayoutShell>
