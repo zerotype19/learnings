@@ -32,11 +32,14 @@ export function App() {
       const hash = window.location.hash.slice(1); // Remove #
       const [page, ...params] = hash.split('/');
       
+      console.log('Hash changed:', hash, 'Page:', page, 'Params:', params); // Debug
+      
       switch (page) {
         case 'terms':
           setCurrentPage('terms-hub');
           break;
         case 'term':
+          console.log('Setting term-detail page with slug:', params[0]); // Debug
           setCurrentPage('term-detail');
           setRouteParams({ slug: params[0] || '' });
           break;
@@ -155,7 +158,12 @@ export function App() {
       {/* New v2 Pages */}
       {currentPage === 'terms-hub' && <TermsHub />}
       
-      {currentPage === 'term-detail' && <TermDetail slug={routeParams.slug || ''} />}
+      {currentPage === 'term-detail' && (
+        <div>
+          {console.log('Rendering TermDetail with slug:', routeParams.slug)}
+          <TermDetail slug={routeParams.slug || ''} />
+        </div>
+      )}
       
       {currentPage === 'submit-v2' && <Submit />}
       </div>
