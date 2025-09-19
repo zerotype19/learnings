@@ -32,7 +32,15 @@ const app = new Hono<{ Bindings: Env }>();
 app.use('*', cors({
   origin: (origin) => {
     if (!origin) return true; // Allow requests without origin (Postman, curl, etc.)
-    return origin === 'https://learnings.org' || origin === 'https://www.learnings.org' ? origin : '';
+    // Allow current domains and future production domains
+    const allowedOrigins = [
+      'https://learnings.org',
+      'https://www.learnings.org', 
+      'https://learnings-b6y.pages.dev', // Current Pages domain
+      'http://localhost:5173',
+      'http://localhost:5174'
+    ];
+    return allowedOrigins.includes(origin) ? origin : '';
   },
   allowMethods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization', 'X-Fingerprint'],

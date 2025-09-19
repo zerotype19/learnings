@@ -44,7 +44,7 @@ export function Wall() {
   const [title, setTitle] = useState('');
   const [source, setSource] = useState('');
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
 
   useEffect(() => { 
     fetch(apiUrl + '/v1/wall')

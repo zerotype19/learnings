@@ -23,7 +23,7 @@ export function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
     console.log('API URL:', apiUrl); // Debug log
     fetch(apiUrl + '/v1/terms')
       .then((r) => {

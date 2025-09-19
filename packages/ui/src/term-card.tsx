@@ -6,7 +6,7 @@ import { IconButton } from './icon-button';
 export function TermCard({ term }: { term: Term }) {
   const handleVote = async (reaction: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
       
       // Get fingerprint and session
       const getFingerprint = () => {
@@ -43,7 +43,7 @@ export function TermCard({ term }: { term: Term }) {
 
   const handleShare = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
       const response = await fetch(`${apiUrl}/v1/share/term/${term.id}`, {
         method: 'POST',
         credentials: 'include',
@@ -73,7 +73,7 @@ export function TermCard({ term }: { term: Term }) {
 
   const handleEmbed = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
       const embedUrl = `${apiUrl}/v1/embed/term/${term.slug}`;
       const oembedUrl = `${apiUrl}/oembed?url=https://learnings.org/embed/term/${term.slug}`;
       
@@ -84,7 +84,7 @@ export function TermCard({ term }: { term: Term }) {
     } catch (error) {
       console.error('Embed failed:', error);
       // Fallback - show the embed code in an alert
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
       const embedUrl = `${apiUrl}/v1/embed/term/${term.slug}`;
       const embedCode = `<iframe src="${embedUrl}" width="560" height="300" frameborder="0" scrolling="no" style="border:0;border-radius:16px;overflow:hidden"></iframe>`;
       prompt('Copy this embed code:', embedCode);

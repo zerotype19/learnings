@@ -7,7 +7,7 @@ export function LinkedInGenerators() {
   const [topic, setTopic] = useState('');
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
 
   const generate = async () => {
     if (!topic.trim()) return;
@@ -33,6 +33,7 @@ export function LinkedInGenerators() {
       
       const response = await fetch(apiUrl + endpoint, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });

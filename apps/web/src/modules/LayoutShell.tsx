@@ -29,7 +29,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       // Claim anonymous activity
       const fingerprint = localStorage.getItem('learnings_fingerprint');
       if (fingerprint) {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
         fetch(apiUrl + '/v1/auth/claim', {
           method: 'POST',
           credentials: 'include', // Use cookies instead of Authorization header

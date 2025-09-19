@@ -7,7 +7,7 @@ type ShortlinkStat = { code: string; clicks: number };
 export function HomeSidebar() {
   const [currentChallenge, setCurrentChallenge] = useState<Challenge | null>(null);
   const [topLinks, setTopLinks] = useState<ShortlinkStat[]>([]);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
   
   useEffect(() => {
     // Load current challenge

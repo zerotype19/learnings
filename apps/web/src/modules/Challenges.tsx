@@ -6,7 +6,7 @@ type DeansItem = { slug: string; title: string; cringe: number; heard: number };
 
 export function Challenges() {
   const [items, setItems] = useState<Challenge[]>([]);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
   
   useEffect(() => { 
     fetch(apiUrl + '/v1/challenges')
@@ -34,7 +34,7 @@ export function Challenges() {
 
 export function DeansList() {
   const [items, setItems] = useState<DeansItem[]>([]);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
   
   useEffect(() => { 
     fetch(apiUrl + '/v1/deans-list')
