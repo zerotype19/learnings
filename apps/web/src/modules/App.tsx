@@ -69,8 +69,11 @@ export function App() {
           setCurrentPage('admin');
           break;
         default:
+          console.log('Unknown page, defaulting to home. Hash:', hash, 'Page:', page);
           setCurrentPage('home');
       }
+      
+      console.log('Route changed - Page:', page, 'CurrentPage set to:', currentPage);
     };
 
     // Handle initial route
@@ -107,8 +110,12 @@ export function App() {
       {currentPage === 'terms-hub' && <TermsHub />}
       
       {currentPage === 'term-detail' && (
-        <div>
+        <div className="min-h-screen bg-white p-8">
           {console.log('Rendering TermDetail with slug:', routeParams.slug)}
+          <h1>DEBUG: Term Detail Page</h1>
+          <p>Current page: {currentPage}</p>
+          <p>Slug: {routeParams.slug}</p>
+          <p>Hash: {window.location.hash}</p>
           <TermDetail slug={routeParams.slug || ''} />
         </div>
       )}
