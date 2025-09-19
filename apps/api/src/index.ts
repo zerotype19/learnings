@@ -24,6 +24,7 @@ export type Env = {
   JWT_SECRET: string;
   LINKEDIN_CLIENT_ID?: string;
   LINKEDIN_CLIENT_SECRET?: string;
+  OPENAI_API_KEY: string;
 };
 
 const app = new Hono<{ Bindings: Env }>();
