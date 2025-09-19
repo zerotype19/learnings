@@ -12,8 +12,8 @@ export function Admin() {
       .then(d => setWall(d.items || []))
       .catch(() => setWall([]));
     
-    // Load pending submissions
-    fetch(apiUrl + '/v1/admin/submissions?admin=1', { credentials: 'include' })
+    // Load pending submissions (use new v2 API)
+    fetch(apiUrl + '/api/admin/terms/submissions?admin=1&status=queued', { credentials: 'include' })
       .then(r => r.json())
       .then(d => setSubmissions(d.items || []))
       .catch(() => setSubmissions([]));
@@ -34,17 +34,25 @@ export function Admin() {
   };
 
   const moderateSubmission = async (id: string, action: 'approve' | 'reject') => {
-    const status = action === 'approve' ? 'approved' : 'rejected';
-    await fetch(apiUrl + `/v1/admin/submissions/${id}?admin=1`, {
-      method: 'PATCH',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status })
-    });
-    // Refresh the list
-    const response = await fetch(apiUrl + '/v1/admin/submissions?admin=1', { credentials: 'include' });
-    const data = await response.json();
-    setSubmissions(data.items || []);
+    try {
+      const endpoint = action === 'approve' ? 'approve' : 'reject';
+      await fetch(apiUrl + `/api/admin/terms/${id}/${endpoint}?admin=1`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason: action === 'reject' ? 'Rejected by admin' : undefined })
+      });
+      
+      // Refresh the list
+      const response = await fetch(apiUrl + '/api/admin/terms/submissions?admin=1&status=queued', { credentials: 'include' });
+      const data = await response.json();
+      setSubmissions(data.items || []);
+      
+      alert(`Submission ${action}ed successfully!`);
+    } catch (error) {
+      console.error('Moderation failed:', error);
+      alert('Failed to moderate submission');
+    }
   };
   
   return (

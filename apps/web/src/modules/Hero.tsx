@@ -11,13 +11,13 @@ export function Hero() {
       </p>
       <div className="mt-5 flex gap-2">
         <a 
-          href="#/suggest" 
+          href="#/submit" 
           className="rounded-xl bg-brand-600 px-4 py-2 text-white hover:bg-brand-700 transition-colors"
         >
           Submit buzzword
         </a>
         <a 
-          href="#/linkedin" 
+          href="#/generators" 
           className="rounded-xl border px-4 py-2 hover:bg-neutral-50 transition-colors"
         >
           Open Generators

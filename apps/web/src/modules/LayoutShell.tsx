@@ -60,12 +60,13 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   };
   
   const navigation = [
-    { id: 'home', label: 'Terms', icon: '📚' },
+    { id: 'home', label: 'Home', icon: '🏠' },
+    { id: 'terms-hub', label: 'Terms', icon: '📚' },
     { id: 'wall', label: 'Wall', icon: '📸' },
     { id: 'challenges', label: 'Challenges', icon: '🏆' },
     { id: 'bingo', label: 'Bingo', icon: '🎯' },
     { id: 'linkedin', label: 'Generators', icon: '📝' },
-    { id: 'suggest', label: 'Suggest', icon: '💡' },
+    { id: 'submit-v2', label: 'Submit', icon: '💡' },
     { id: 'analytics', label: 'Analytics', icon: '📊' },
     ...(isAdmin ? [{ id: 'admin', label: 'Admin', icon: '🛡️' }] : [])
   ];
@@ -82,6 +83,23 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           >
             Learnings Dot Org
           </button>
+          
+          {/* Global Search */}
+          <div className="hidden md:block flex-1 max-w-sm mx-8">
+            <input
+              type="text"
+              placeholder="Search terms, wall posts..."
+              className="w-full px-3 py-1 text-sm border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const query = (e.target as HTMLInputElement).value;
+                  if (query.trim()) {
+                    window.location.hash = `/search?q=${encodeURIComponent(query)}`;
+                  }
+                }
+              }}
+            />
+          </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden gap-1 sm:flex">
