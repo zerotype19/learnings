@@ -134,9 +134,9 @@ wallV2.post('/submit', async (c) => {
   }, 201);
 });
 
-// POST /api/vote - Vote on wall posts
+// POST /api/vote - Vote on wall posts and challenge entries
 const VoteSchema = z.object({
-  entity_type: z.enum(['wall']),
+  entity_type: z.enum(['wall', 'entry']),
   entity_id: z.string()
 });
 

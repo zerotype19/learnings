@@ -18,8 +18,9 @@ import { TermDetail } from '../pages/TermDetail';
 import { Submit } from '../pages/Submit';
 import { WallHub } from '../pages/WallHub';
 import { GeneratorsHub } from '../pages/GeneratorsHub';
+import { ChallengesHub } from '../pages/ChallengesHub';
 
-type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub';
+type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -51,7 +52,7 @@ export function App() {
           setCurrentPage('wall-hub');
           break;
         case 'challenges':
-          setCurrentPage('challenges');
+          setCurrentPage('challenges-hub');
           break;
         case 'bingo':
           setCurrentPage('bingo');
@@ -116,6 +117,8 @@ export function App() {
       {currentPage === 'wall-hub' && <WallHub />}
       
       {currentPage === 'generators-hub' && <GeneratorsHub />}
+      
+      {currentPage === 'challenges-hub' && <ChallengesHub />}
       
       {/* Legacy Pages */}
       {(currentPage === 'home' || currentPage === 'wall' || currentPage === 'challenges' || currentPage === 'bingo' || currentPage === 'linkedin' || currentPage === 'analytics' || currentPage === 'suggest' || currentPage === 'admin') && (

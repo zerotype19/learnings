@@ -20,6 +20,7 @@ import adminV2 from './routes/admin-v2';
 import wallV2 from './routes/wall-v2';
 import generators from './routes/generators';
 import homeFeed from './routes/home-feed';
+import challenges from './routes/challenges';
 
 export type Env = {
   DB: D1Database;
@@ -80,6 +81,7 @@ app.route('/api/admin', adminV2);
 app.route('/api/generators', generators);
 app.route('/api/generate', generators);
 app.route('/api/home-feed', homeFeed);
+app.route('/api/challenges', challenges);
 
 // Mount voting endpoint at top level
 app.route('/api', wallV2); // This will expose /api/vote

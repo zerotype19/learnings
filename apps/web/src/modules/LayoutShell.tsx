@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NotificationBell } from './Notifications';
 import { AuthModal } from './AuthModal';
 
-type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub';
+type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
 
 interface LayoutShellProps {
   currentPage: Page;
