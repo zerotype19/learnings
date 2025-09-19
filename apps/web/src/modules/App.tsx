@@ -8,6 +8,8 @@ import { Profile } from './Profile';
 import { LinkedInGenerators } from './LinkedInGenerators';
 import { Analytics } from './Analytics';
 import { Admin } from './admin/Admin';
+import { AdminV2 } from '../pages/AdminV2';
+import { HomeV2 } from '../pages/HomeV2';
 import { Suggest } from './Suggest';
 import { LayoutShell } from './LayoutShell';
 import { Hero } from './Hero';
@@ -20,7 +22,7 @@ import { WallHub } from '../pages/WallHub';
 import { GeneratorsHub } from '../pages/GeneratorsHub';
 import { ChallengesHub } from '../pages/ChallengesHub';
 
-type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -70,10 +72,10 @@ export function App() {
           setCurrentPage('analytics');
           break;
         case 'admin':
-          setCurrentPage('admin');
+          setCurrentPage('admin-v2');
           break;
         default:
-          setCurrentPage('home');
+          setCurrentPage('home-v2');
       }
     };
 
@@ -119,6 +121,10 @@ export function App() {
       {currentPage === 'generators-hub' && <GeneratorsHub />}
       
       {currentPage === 'challenges-hub' && <ChallengesHub />}
+      
+      {currentPage === 'admin-v2' && <AdminV2 />}
+      
+      {currentPage === 'home-v2' && <HomeV2 />}
       
       {/* Legacy Pages */}
       {(currentPage === 'home' || currentPage === 'wall' || currentPage === 'challenges' || currentPage === 'bingo' || currentPage === 'linkedin' || currentPage === 'analytics' || currentPage === 'suggest' || currentPage === 'admin') && (

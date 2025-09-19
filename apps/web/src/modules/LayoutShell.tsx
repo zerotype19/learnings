@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NotificationBell } from './Notifications';
 import { AuthModal } from './AuthModal';
 
-type Page = 'home' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
 
 interface LayoutShellProps {
   currentPage: Page;
@@ -60,7 +60,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   };
   
   const navigation = [
-    { id: 'home', label: 'Home', icon: '🏠' },
+    { id: 'home-v2', label: 'Home', icon: '🏠' },
     { id: 'terms-hub', label: 'Terms', icon: '📚' },
     { id: 'wall', label: 'Wall', icon: '📸' },
     { id: 'challenges', label: 'Challenges', icon: '🏆' },
@@ -68,7 +68,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     { id: 'linkedin', label: 'Generators', icon: '📝' },
     { id: 'submit-v2', label: 'Submit', icon: '💡' },
     { id: 'analytics', label: 'Analytics', icon: '📊' },
-    ...(isAdmin ? [{ id: 'admin', label: 'Admin', icon: '🛡️' }] : [])
+    ...(isAdmin ? [{ id: 'admin-v2', label: 'Admin', icon: '🛡️' }] : [])
   ];
 
   return (
@@ -78,7 +78,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
           {/* Logo */}
           <button 
-            onClick={() => onPageChange('home')}
+            onClick={() => onPageChange('home-v2')}
             className="font-bold tracking-tight text-ink hover:text-brand-600 transition-colors"
           >
             Learnings Dot Org

@@ -1,231 +1,354 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { WallCard } from '../components/wall/WallCard';
-import { WallFilters } from '../components/wall/WallFilters';
-import { listWall, trackEvent, type WallPost } from '../lib/api';
+import React, { useState, useEffect } from 'react';
+import { listWall, vote, getTags, getVoteCount } from '../lib/api';
+
+type WallPost = {
+  id: string;
+  slug: string;
+  title: string;
+  body?: string;
+  source_url: string;
+  og_title?: string;
+  og_desc?: string;
+  og_image?: string;
+  og_site?: string;
+  tags?: string[];
+  related_terms?: string[];
+  vote_count: number;
+  comment_count: number;
+  hot_score: number;
+  created_at: string;
+  updated_at: string;
+  last_activity_at: string;
+};
+
+type FilterState = {
+  tag?: string;
+  sort: 'trending' | 'new';
+  range: '24h' | '7d' | '30d' | 'all';
+};
 
 export function WallHub() {
   const [posts, setPosts] = useState<WallPost[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [filters, setFilters] = useState<FilterState>({
+    sort: 'new',
+    range: 'all'
+  });
+  const [popularTags, setPopularTags] = useState<Array<{tag: string; count: number}>>([]);
 
-  // Filter state
-  const [currentTag, setCurrentTag] = useState<string | undefined>();
-  const [currentSort, setCurrentSort] = useState<'trending' | 'new'>('trending');
-  const [currentRange, setCurrentRange] = useState<'24h' | '7d' | '30d' | 'all'>('7d');
-
-  // Refs for infinite scroll
-  const sentinelRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  // Load posts
-  const loadPosts = useCallback(async (reset = false) => {
+  const loadPosts = async (reset = false) => {
     if (loading) return;
-    
     setLoading(true);
-    setError(null);
 
     try {
       const params = {
-        tag: currentTag,
-        sort: currentSort,
-        range: currentRange,
-        cursor: reset ? undefined : nextCursor || undefined,
+        tag: filters.tag,
+        sort: filters.sort,
+        range: filters.range,
+        cursor: reset ? undefined : nextCursor,
         limit: 20
       };
 
-      const response = await listWall(params);
+      const data = await listWall(params);
       
       if (reset) {
-        setPosts(response.items);
+        setPosts(data.items || []);
       } else {
-        setPosts(prev => [...prev, ...response.items]);
+        setPosts(prev => [...prev, ...(data.items || [])]);
       }
       
-      setNextCursor(response.nextCursor || null);
-      setHasMore(!!response.nextCursor);
-
-      // Track view event
-      await trackEvent('wall_view', {
-        tag: currentTag,
-        sort: currentSort,
-        range: currentRange,
-        count: response.items.length
-      });
-
-    } catch (err) {
-      console.error('Failed to load wall posts:', err);
-      setError('Failed to load posts');
+      setNextCursor(data.nextCursor || null);
+    } catch (error) {
+      console.error('Failed to load wall posts:', error);
     } finally {
       setLoading(false);
     }
-  }, [currentTag, currentSort, currentRange, nextCursor, loading]);
+  };
+
+  const loadPopularTags = async () => {
+    try {
+      const data = await getTags({ limit: 20 });
+      setPopularTags(data.tags || []);
+    } catch (error) {
+      console.error('Failed to load popular tags:', error);
+    }
+  };
 
   // Load posts when filters change
   useEffect(() => {
     setPosts([]);
     setNextCursor(null);
-    setHasMore(true);
     loadPosts(true);
-  }, [currentTag, currentSort, currentRange]);
+  }, [filters]);
 
-  // Set up intersection observer for infinite scroll
+  // Load popular tags on mount
   useEffect(() => {
-    if (!sentinelRef.current) return;
+    loadPopularTags();
+  }, []);
 
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore && !loading) {
-          loadPosts(false);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observerRef.current.observe(sentinelRef.current);
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
+  const handleVote = async (postId: string) => {
+    try {
+      const result = await vote('wall', postId);
+      if (result.ok) {
+        // Update local state
+        setPosts(prev => prev.map(post => 
+          post.id === postId 
+            ? { ...post, vote_count: result.votes }
+            : post
+        ));
       }
-    };
-  }, [hasMore, loading, loadPosts]);
-
-  // Handle filter changes
-  const handleTagChange = async (tag?: string) => {
-    setCurrentTag(tag);
-    await trackEvent('wall_filter_change', { filter: 'tag', value: tag });
+    } catch (error) {
+      console.error('Vote failed:', error);
+      alert('Failed to vote. Please try again.');
+    }
   };
 
-  const handleSortChange = async (sort: 'trending' | 'new') => {
-    setCurrentSort(sort);
-    await trackEvent('wall_filter_change', { filter: 'sort', value: sort });
+  const handleTagClick = (tag: string) => {
+    setFilters(prev => ({
+      ...prev,
+      tag: prev.tag === tag ? undefined : tag
+    }));
   };
 
-  const handleRangeChange = async (range: '24h' | '7d' | '30d' | 'all') => {
-    setCurrentRange(range);
-    await trackEvent('wall_filter_change', { filter: 'range', value: range });
+  const getDomainFromUrl = (url: string) => {
+    try {
+      return new URL(url).hostname.replace('www.', '');
+    } catch {
+      return url;
+    }
   };
-
-  const handleVoted = (postId: string, newCount: number) => {
-    setPosts(prev => 
-      prev.map(post => 
-        post.id === postId 
-          ? { ...post, votes: newCount, vote_count: newCount }
-          : post
-      )
-    );
-  };
-
-  // Extract available tags from loaded posts
-  const availableTags = Array.from(
-    new Set(
-      posts.flatMap(post => getTags(post))
-    )
-  ).slice(0, 10); // Show top 10 tags
 
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold mb-2">📸 Buzzword Wall</h1>
-          <p className="text-neutral-600">
-            Corporate jargon spotted in the wild. Vote for the most cringe-worthy discoveries.
+          <h1 className="text-2xl font-bold mb-4">📸 Buzzword Wall</h1>
+          <p className="text-neutral-600 mb-6">
+            Corporate-speak specimens from the wild. Vote for the most cringe-worthy examples.
           </p>
+
+          {/* Filters */}
+          <div className="flex flex-wrap gap-4 items-center mb-4">
+            <div className="flex gap-2">
+              <label className="text-sm font-medium">Sort:</label>
+              <select
+                value={filters.sort}
+                onChange={(e) => setFilters(prev => ({ ...prev, sort: e.target.value as 'trending' | 'new' }))}
+                className="text-sm border border-neutral-200 rounded px-2 py-1"
+              >
+                <option value="new">New</option>
+                <option value="trending">Trending</option>
+              </select>
+            </div>
+
+            <div className="flex gap-2">
+              <label className="text-sm font-medium">Time:</label>
+              <select
+                value={filters.range}
+                onChange={(e) => setFilters(prev => ({ ...prev, range: e.target.value as any }))}
+                className="text-sm border border-neutral-200 rounded px-2 py-1"
+              >
+                <option value="24h">24h</option>
+                <option value="7d">7d</option>
+                <option value="30d">30d</option>
+                <option value="all">All time</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Popular Tags */}
+          {popularTags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {popularTags.slice(0, 10).map(({ tag, count }) => (
+                <button
+                  key={tag}
+                  onClick={() => handleTagClick(tag)}
+                  className={`px-3 py-1 text-xs rounded-full border transition-colors ${
+                    filters.tag === tag
+                      ? 'bg-brand-100 text-brand-700 border-brand-200'
+                      : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
+                  }`}
+                >
+                  {tag} ({count})
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Filters */}
-      <WallFilters
-        currentTag={currentTag}
-        onTagChange={handleTagChange}
-        currentSort={currentSort}
-        onSortChange={handleSortChange}
-        currentRange={currentRange}
-        onRangeChange={handleRangeChange}
-        availableTags={availableTags}
-      />
-
       {/* Content */}
       <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Filter Summary */}
-        <div className="mb-4 text-sm text-neutral-600">
-          {currentTag && `Tagged "${currentTag}" • `}
-          {currentSort === 'trending' ? 'Trending' : 'Latest'} • 
-          {currentRange === '24h' ? 'Last 24 hours' : 
-           currentRange === '7d' ? 'Last 7 days' : 
-           currentRange === '30d' ? 'Last 30 days' : 'All time'} • 
-          {posts.length} post{posts.length !== 1 ? 's' : ''}
-        </div>
-
-        {/* Error State */}
-        {error && (
-          <div className="text-center py-8">
-            <div className="text-red-600 mb-2">{error}</div>
-            <button
-              onClick={() => loadPosts(true)}
-              className="text-brand-600 hover:text-brand-700"
-            >
-              Try again
-            </button>
+        {filters.tag && (
+          <div className="mb-4 text-sm text-neutral-600">
+            Showing posts tagged "{filters.tag}" • {posts.length} found
           </div>
         )}
 
         {/* Posts Grid */}
-        {!error && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {posts.map(post => (
-              <WallCard
-                key={post.id}
-                post={post}
-                onVoted={(newCount) => handleVoted(post.id, newCount)}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map(post => (
+            <WallCard 
+              key={post.id} 
+              post={post} 
+              onVote={() => handleVote(post.id)}
+              getDomainFromUrl={getDomainFromUrl}
+            />
+          ))}
+        </div>
 
         {/* Loading */}
         {loading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="bg-white border border-neutral-200 rounded-2xl p-4 animate-pulse">
-                <div className="h-4 bg-neutral-200 rounded mb-2"></div>
-                <div className="h-3 bg-neutral-200 rounded mb-4 w-3/4"></div>
-                <div className="h-32 bg-neutral-200 rounded mb-3"></div>
-                <div className="h-3 bg-neutral-200 rounded w-1/2"></div>
-              </div>
-            ))}
+          <div className="text-center py-8">
+            <div className="text-neutral-600">Loading posts...</div>
+          </div>
+        )}
+
+        {/* Load More */}
+        {!loading && nextCursor && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => loadPosts(false)}
+              className="px-6 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
+            >
+              Load More Posts
+            </button>
           </div>
         )}
 
         {/* Empty State */}
-        {!loading && posts.length === 0 && !error && (
+        {!loading && posts.length === 0 && (
           <div className="text-center py-12">
             <div className="text-xl text-neutral-600 mb-2">No posts found</div>
             <div className="text-sm text-neutral-500 mb-4">
-              Be the first to submit a corporate-speak specimen.
+              {filters.tag ? 'Try removing the tag filter' : 'Be the first to submit a corporate-speak specimen.'}
             </div>
             <button
               onClick={() => window.location.hash = '/submit'}
-              className="px-6 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
+              className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
             >
               Submit Wall Post
             </button>
           </div>
         )}
+      </div>
+    </div>
+  );
+}
 
-        {/* Load More Sentinel */}
-        <div ref={sentinelRef} className="h-10 flex items-center justify-center">
-          {hasMore && !loading && posts.length > 0 && (
+type WallCardProps = {
+  post: WallPost;
+  onVote: () => void;
+  getDomainFromUrl: (url: string) => string;
+};
+
+function WallCard({ post, onVote, getDomainFromUrl }: WallCardProps) {
+  const [showFullContent, setShowFullContent] = useState(false);
+  
+  const domain = getDomainFromUrl(post.source_url);
+  const description = post.og_desc || post.body || '';
+  const shouldTruncate = description.length > 200;
+
+  const handleShare = () => {
+    const url = `${window.location.origin}/#/wall`;
+    if (navigator.share) {
+      navigator.share({
+        title: post.title,
+        text: description,
+        url
+      });
+    } else {
+      navigator.clipboard.writeText(url);
+      alert('Link copied to clipboard!');
+    }
+  };
+
+  return (
+    <div className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+      {/* Source Badge */}
+      <div className="flex items-center justify-between mb-3">
+        <a
+          href={post.source_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-brand-600 hover:text-brand-700 font-medium"
+        >
+          🌐 {domain}
+        </a>
+        <button
+          onClick={handleShare}
+          className="text-xs text-neutral-500 hover:text-neutral-700"
+        >
+          📤 Share
+        </button>
+      </div>
+
+      {/* Title */}
+      <h3 className="font-semibold text-lg mb-3 line-clamp-2">{post.title}</h3>
+
+      {/* Content */}
+      {description && (
+        <div className="mb-4">
+          <p className="text-neutral-700 text-sm leading-relaxed">
+            {shouldTruncate && !showFullContent 
+              ? `${description.substring(0, 200)}...` 
+              : description
+            }
+          </p>
+          {shouldTruncate && (
             <button
-              onClick={() => loadPosts(false)}
-              className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
+              onClick={() => setShowFullContent(!showFullContent)}
+              className="text-xs text-brand-600 hover:text-brand-700 mt-1"
             >
-              Load More Posts
+              {showFullContent ? 'Show less' : 'Read more'}
             </button>
           )}
+        </div>
+      )}
+
+      {/* Tags */}
+      {post.tags && post.tags.length > 0 && (
+        <div className="flex flex-wrap gap-1 mb-4">
+          {post.tags.slice(0, 3).map(tag => (
+            <span key={tag} className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Related Terms */}
+      {post.related_terms && post.related_terms.length > 0 && (
+        <div className="mb-4">
+          <div className="text-xs text-neutral-500 mb-1">Related terms:</div>
+          <div className="flex flex-wrap gap-1">
+            {post.related_terms.slice(0, 2).map(term => (
+              <button
+                key={term}
+                onClick={() => window.location.hash = `/term/${term}`}
+                className="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full hover:bg-blue-200"
+              >
+                {term}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Actions */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={onVote}
+          className="flex items-center gap-2 px-3 py-1 border border-neutral-200 rounded-full hover:bg-neutral-50 transition-colors"
+        >
+          <span>👍</span>
+          <span className="text-sm">{post.vote_count}</span>
+        </button>
+
+        <div className="text-xs text-neutral-500">
+          {new Date(post.created_at).toLocaleDateString()}
         </div>
       </div>
     </div>

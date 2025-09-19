@@ -175,3 +175,19 @@ export function getRelatedTerms(post: WallPost): string[] {
   }
   return [];
 }
+
+// Get popular tags
+export async function getTags(params: { limit?: number } = {}): Promise<{ tags: Array<{tag: string; count: number}> }> {
+  const searchParams = new URLSearchParams();
+  if (params.limit) searchParams.set('limit', String(params.limit));
+  
+  const response = await fetch(`${getApiUrl()}/api/wall/tags/popular?${searchParams}`, {
+    credentials: 'include'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to load tags: ${response.status}`);
+  }
+
+  return response.json();
+}

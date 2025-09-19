@@ -15,12 +15,14 @@ import auth from './routes/auth';
 import bingo from './routes/bingo';
 import admin from './routes/admin';
 import termsV2 from './routes/terms-v2';
-import search from './routes/search';
+import searchV2 from './routes/search-v2';
 import adminV2 from './routes/admin-v2';
 import wallV2 from './routes/wall-v2';
 import generators from './routes/generators';
 import homeFeed from './routes/home-feed';
-import challenges from './routes/challenges';
+import vote from './routes/vote';
+import featureFlags from './routes/feature-flags';
+import track from './routes/track';
 
 export type Env = {
   DB: D1Database;
@@ -76,15 +78,14 @@ app.route('/', embeds); // exposes /v1/embed/* and /oembed
 // New v2 API routes
 app.route('/api/terms', termsV2);
 app.route('/api/wall', wallV2);
-app.route('/api/search', search);
+app.route('/api/search', searchV2);
 app.route('/api/admin', adminV2);
 app.route('/api/generators', generators);
 app.route('/api/generate', generators);
 app.route('/api/home-feed', homeFeed);
-app.route('/api/challenges', challenges);
-
-// Mount voting endpoint at top level
-app.route('/api', wallV2); // This will expose /api/vote
+app.route('/api/vote', vote);
+app.route('/api/feature-flags', featureFlags);
+app.route('/api/track', track);
 
 export default {
   fetch: app.fetch,
