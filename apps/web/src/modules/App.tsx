@@ -13,14 +13,70 @@ import { LayoutShell } from './LayoutShell';
 import { Hero } from './Hero';
 import { HomeSidebar } from './HomeSidebar';
 import { Bingo } from './Bingo';
+import { TermsHub } from '../pages/TermsHub';
+import { TermDetail } from '../pages/TermDetail';
+import { Submit } from '../pages/Submit';
 
-type Page = 'home' | 'wall' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile';
+type Page = 'home' | 'wall' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [routeParams, setRouteParams] = useState<Record<string, string>>({});
+
+  // Handle hash-based routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1); // Remove #
+      const [page, ...params] = hash.split('/');
+      
+      switch (page) {
+        case 'terms':
+          setCurrentPage('terms-hub');
+          break;
+        case 'term':
+          setCurrentPage('term-detail');
+          setRouteParams({ slug: params[0] || '' });
+          break;
+        case 'submit':
+          setCurrentPage('submit-v2');
+          break;
+        case 'wall':
+          setCurrentPage('wall');
+          break;
+        case 'challenges':
+          setCurrentPage('challenges');
+          break;
+        case 'bingo':
+          setCurrentPage('bingo');
+          break;
+        case 'linkedin':
+        case 'generators':
+          setCurrentPage('linkedin');
+          break;
+        case 'suggest':
+          setCurrentPage('suggest');
+          break;
+        case 'analytics':
+          setCurrentPage('analytics');
+          break;
+        case 'admin':
+          setCurrentPage('admin');
+          break;
+        default:
+          setCurrentPage('home');
+      }
+    };
+
+    // Handle initial route
+    handleHashChange();
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
@@ -95,6 +151,13 @@ export function App() {
       {currentPage === 'suggest' && <Suggest />}
       
       {currentPage === 'admin' && <Admin />}
+      
+      {/* New v2 Pages */}
+      {currentPage === 'terms-hub' && <TermsHub />}
+      
+      {currentPage === 'term-detail' && <TermDetail slug={routeParams.slug || ''} />}
+      
+      {currentPage === 'submit-v2' && <Submit />}
       </div>
       
       <ProfessorWidget />

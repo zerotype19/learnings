@@ -14,6 +14,9 @@ import suggest from './routes/suggest';
 import auth from './routes/auth';
 import bingo from './routes/bingo';
 import admin from './routes/admin';
+import termsV2 from './routes/terms-v2';
+import search from './routes/search';
+import adminV2 from './routes/admin-v2';
 
 export type Env = {
   DB: D1Database;
@@ -65,6 +68,11 @@ app.route('/v1/admin', admin);
 app.route('/auth', auth);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
+
+// New v2 API routes
+app.route('/api/terms', termsV2);
+app.route('/api/search', search);
+app.route('/api/admin', adminV2);
 
 export default {
   fetch: app.fetch,
