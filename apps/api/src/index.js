@@ -18,41 +18,26 @@ import termsV2 from './routes/terms-v2';
 import search from './routes/search';
 import adminV2 from './routes/admin-v2';
 import wallV2 from './routes/wall-v2';
-
-export type Env = {
-  DB: D1Database;
-  R2: R2Bucket;
-  CACHE: KVNamespace;
-  JOBS: Queue;
-  AI: any;  // Workers AI binding
-  CORS_ORIGIN: string;
-  JWT_SECRET: string;
-  LINKEDIN_CLIENT_ID?: string;
-  LINKEDIN_CLIENT_SECRET?: string;
-  OPENAI_API_KEY: string;
-};
-
-const app = new Hono<{ Bindings: Env }>();
-
+const app = new Hono();
 app.use('*', cors({
-  origin: (origin) => {
-    if (!origin) return true; // Allow requests without origin (Postman, curl, etc.)
-    // Allow current domains and future production domains
-    const allowedOrigins = [
-      'https://learnings.org',
-      'https://www.learnings.org', 
-      'https://learnings-b6y.pages.dev', // Current Pages domain
-      'http://localhost:5173',
-      'http://localhost:5174'
-    ];
-    return allowedOrigins.includes(origin) ? origin : '';
-  },
-  allowMethods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'X-Fingerprint'],
-  credentials: true, // allow cookies
-  maxAge: 86400
+    origin: (origin) => {
+        if (!origin)
+            return true; // Allow requests without origin (Postman, curl, etc.)
+        // Allow current domains and future production domains
+        const allowedOrigins = [
+            'https://learnings.org',
+            'https://www.learnings.org',
+            'https://learnings-b6y.pages.dev', // Current Pages domain
+            'http://localhost:5173',
+            'http://localhost:5174'
+        ];
+        return allowedOrigins.includes(origin) ? origin : '';
+    },
+    allowMethods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization', 'X-Fingerprint'],
+    credentials: true, // allow cookies
+    maxAge: 86400
 }));
-
 app.get('/v1/health', (c) => c.json({ ok: true }));
 app.route('/v1/terms', terms);
 app.route('/v1', social);
@@ -69,30 +54,27 @@ app.route('/v1/admin', admin);
 app.route('/auth', auth);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed
-
 // New v2 API routes
 app.route('/api/terms', termsV2);
 app.route('/api/wall', wallV2);
 app.route('/api/search', search);
 app.route('/api/admin', adminV2);
-
 // Mount voting endpoint at top level
 app.route('/api', wallV2); // This will expose /api/vote
-
 export default {
-  fetch: app.fetch,
-  queue: async (batch: MessageBatch<any>, env: Env) => {
-    for (const msg of batch.messages) {
-      if (msg.body?.type === 'moderate_wall') {
-        const { id, key } = msg.body;
-        await (await import('./workers/moderate')).moderateWall(env, id, key);
-      }
+    fetch: app.fetch,
+    queue: async (batch, env) => {
+        for (const msg of batch.messages) {
+            if (msg.body?.type === 'moderate_wall') {
+                const { id, key } = msg.body;
+                await (await import('./workers/moderate')).moderateWall(env, id, key);
+            }
+        }
+    },
+    scheduled: async (event, env) => {
+        // Weekly digest on Mondays
+        if (event.cron === "0 9 * * 1") {
+            await (await import('./workers/digest')).sendWeeklyDigest(env);
+        }
     }
-  },
-  scheduled: async (event: ScheduledEvent, env: Env) => {
-    // Weekly digest on Mondays
-    if (event.cron === "0 9 * * 1") {
-      await (await import('./workers/digest')).sendWeeklyDigest(env);
-    }
-  }
-} as ExportedHandler<Env>;
+};

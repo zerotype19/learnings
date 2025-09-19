@@ -176,7 +176,7 @@ wallV2.post('/vote', async (c) => {
       fingerprint
     ).run();
 
-    // Update vote count
+    // Update vote count in existing wall_posts table
     const newVoteCount = (post.votes || 0) + 1;
     await c.env.DB.prepare(`
       UPDATE wall_posts 
