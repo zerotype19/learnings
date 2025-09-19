@@ -30,7 +30,8 @@ export function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1); // Remove #
-      const [page, ...params] = hash.split('/');
+      const parts = hash.split('/').filter(part => part); // Remove empty parts
+      const [page, ...params] = parts;
       
       console.log('Hash changed:', hash, 'Page:', page, 'Params:', params); // Debug
       
