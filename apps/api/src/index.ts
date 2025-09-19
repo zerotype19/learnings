@@ -17,6 +17,7 @@ import admin from './routes/admin';
 import termsV2 from './routes/terms-v2';
 import search from './routes/search';
 import adminV2 from './routes/admin-v2';
+import wallV2 from './routes/wall-v2';
 
 export type Env = {
   DB: D1Database;
@@ -71,6 +72,7 @@ app.route('/', embeds); // exposes /v1/embed/* and /oembed
 
 // New v2 API routes
 app.route('/api/terms', termsV2);
+app.route('/api/wall', wallV2);
 app.route('/api/search', search);
 app.route('/api/admin', adminV2);
 

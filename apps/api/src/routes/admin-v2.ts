@@ -212,6 +212,142 @@ adminV2.post('/term-links/:linkId/reject', async (c) => {
   return c.json({ ok: true, message: 'Link rejected' });
 });
 
+// GET /api/admin/wall/submissions - List wall submissions for review
+adminV2.get('/wall/submissions', async (c) => {
+  const auth = await requireAuth(c);
+  const adminParam = c.req.query('admin');
+  
+  if (!auth && adminParam !== '1') {
+    return c.text('Unauthorized', 401);
+  }
+
+  const status = c.req.query('status') || 'queued';
+  const limit = Math.min(parseInt(c.req.query('limit') || '50'), 100);
+
+  const { results } = await c.env.DB.prepare(`
+    SELECT id, title, body, source_url, tags, suggested_terms, submitted_by, 
+           status, reviewer, reviewer_notes, created_at
+    FROM wall_submissions 
+    WHERE status = ?
+    ORDER BY created_at DESC
+    LIMIT ?
+  `).bind(status, limit).all();
+
+  const items = (results || []).map((item: any) => ({
+    ...item,
+    tags: JSON.parse(item.tags || '[]'),
+    suggested_terms: JSON.parse(item.suggested_terms || '[]')
+  }));
+
+  return c.json({ items });
+});
+
+// POST /api/admin/wall/:submissionId/approve - Approve wall submission
+adminV2.post('/wall/:submissionId/approve', async (c) => {
+  const auth = await requireAuth(c);
+  const adminParam = c.req.query('admin');
+  
+  if (!auth && adminParam !== '1') {
+    return c.text('Unauthorized', 401);
+  }
+
+  const { submissionId } = c.req.param();
+  
+  // Get the submission
+  const submission = await c.env.DB.prepare(`
+    SELECT * FROM wall_submissions WHERE id = ? AND status = 'queued'
+  `).bind(submissionId).first();
+
+  if (!submission) {
+    return c.json({ error: 'Submission not found or already processed' }, 404);
+  }
+
+  const postId = nanoid();
+  const slug = generateSlug(submission.title);
+
+  try {
+    // Scrape OG data
+    const ogData = await (await import('../utils/og-scraper')).scrapeOG(c.env, submission.source_url);
+
+    // Create the published post (using existing wall_posts schema)
+    await c.env.DB.prepare(`
+      INSERT INTO wall_posts (
+        id, slug, title, body, source_url, og_title, og_desc, og_image,
+        tags, related_terms, votes, comments, created_at
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, CURRENT_TIMESTAMP)
+    `).bind(
+      postId,
+      slug,
+      submission.title,
+      submission.body || '',
+      submission.source_url,
+      ogData.og_title || '',
+      ogData.og_desc || '',
+      ogData.og_image || '',
+      submission.tags || '[]',
+      submission.suggested_terms || '[]'
+    ).run();
+
+    // Update submission status
+    await c.env.DB.prepare(`
+      UPDATE wall_submissions 
+      SET status = 'approved', reviewer = ?
+      WHERE id = ?
+    `).bind(auth?.userId || 'admin', submissionId).run();
+
+    // Add to feed
+    await c.env.DB.prepare(`
+      INSERT OR REPLACE INTO feed_items (id, type, entity_id, ts, summary, created_at)
+      VALUES (?, 'wall', ?, ?, ?, CURRENT_TIMESTAMP)
+    `).bind(
+      nanoid(),
+      postId,
+      new Date().toISOString(),
+      (submission.body || submission.title).substring(0, 200)
+    ).run();
+
+    return c.json({ 
+      ok: true, 
+      postId, 
+      slug,
+      message: 'Wall post approved and published'
+    });
+
+  } catch (error) {
+    console.error('Wall approval error:', error);
+    return c.json({ error: 'Failed to approve submission' }, 500);
+  }
+});
+
+// POST /api/admin/wall/:submissionId/reject - Reject wall submission
+adminV2.post('/wall/:submissionId/reject', async (c) => {
+  const auth = await requireAuth(c);
+  const adminParam = c.req.query('admin');
+  
+  if (!auth && adminParam !== '1') {
+    return c.text('Unauthorized', 401);
+  }
+
+  const { submissionId } = c.req.param();
+  const { reason } = await c.req.json();
+
+  const result = await c.env.DB.prepare(`
+    UPDATE wall_submissions 
+    SET status = 'rejected', reviewer = ?, reviewer_notes = ?
+    WHERE id = ? AND status = 'queued'
+  `).bind(auth?.userId || 'admin', reason || 'Rejected by admin', submissionId).run();
+
+  if (result.changes === 0) {
+    return c.json({ error: 'Submission not found or already processed' }, 404);
+  }
+
+  return c.json({ 
+    ok: true,
+    message: 'Wall submission rejected'
+  });
+});
+
 // GET /api/admin/metrics - Basic admin metrics
 adminV2.get('/metrics', async (c) => {
   const auth = await requireAuth(c);
