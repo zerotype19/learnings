@@ -90,7 +90,7 @@ export function App() {
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
     console.log('API URL:', apiUrl); // Debug log
-    fetch(apiUrl + '/v1/terms')
+    fetch(apiUrl + '/api/terms')
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();

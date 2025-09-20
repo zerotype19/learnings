@@ -16,13 +16,16 @@ router.get('/', async (c) => {
     const limit = 20;
     const offset = (page - 1) * limit;
     const stmt = c.env.DB.prepare(
-      `SELECT * FROM terms WHERE title LIKE ? OR definition LIKE ? ORDER BY created_at DESC LIMIT ? OFFSET ?`
+      `SELECT * FROM terms_v2 WHERE status = 'published' AND (title LIKE ? OR definition LIKE ?) ORDER BY created_at DESC LIMIT ? OFFSET ?`
     ).bind(`%${q}%`, `%${q}%`, limit, offset);
     const { results } = await stmt.all();
     return c.json({ items: results || [] });
   } catch (error) {
-    console.error('Database error:', error);
-    return c.json({ items: [] });
+    console.error('Terms API error:', error);
+    return c.json({ 
+      items: [], 
+      error: error instanceof Error ? error.message : 'Unknown error' 
+    }, 500);
   }
 });
 

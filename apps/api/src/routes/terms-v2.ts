@@ -87,8 +87,18 @@ router.get('/', async (c) => {
       nextCursor 
     });
   } catch (error) {
-    console.error('Database error:', error);
-    return c.json({ items: [], error: 'Database error' }, 500);
+    console.error('Terms API error:', error);
+    console.error('Query:', query);
+    console.error('Params:', params);
+    return c.json({ 
+      items: [], 
+      error: error instanceof Error ? error.message : 'Unknown error',
+      debug: {
+        query,
+        params,
+        errorType: typeof error
+      }
+    }, 500);
   }
 });
 
