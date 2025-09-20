@@ -61,15 +61,15 @@ router.post('/submit', async (c) => {
 
 // Get wall posts with filtering and pagination
 router.get('/', async (c) => {
+  let query = 'SELECT * FROM wall_posts WHERE 1=1';
+  let params: any[] = [];
+  
   try {
     const tag = c.req.query('tag');
     const sort = c.req.query('sort') || 'new';
     const range = c.req.query('range') || 'all';
     const cursor = c.req.query('cursor');
     const limit = Math.min(Number(c.req.query('limit') || '20'), 50);
-
-    let query = 'SELECT * FROM wall_posts WHERE 1=1';
-    let params: any[] = [];
 
     // Tag filtering
     if (tag) {
@@ -123,7 +123,7 @@ router.get('/', async (c) => {
           params.push(parseFloat(cursorValue), parseFloat(cursorValue), cursorSort);
         } else {
           query += ' AND created_at < ?';
-          params.push(cursorSort);
+          params.push(cursorValue);
         }
       }
     }
@@ -132,7 +132,7 @@ router.get('/', async (c) => {
     params.push(limit + 1);
 
     const stmt = c.env.DB.prepare(query);
-    const { results } = await stmt.all(...params);
+    const { results } = await stmt.bind(...params).all();
     
     const items = (results || []).slice(0, limit);
     const hasMore = (results || []).length > limit;

@@ -61,7 +61,7 @@ router.get('/', async (c) => {
     params.push(limit + 1);
 
     const stmt = c.env.DB.prepare(query);
-    const { results } = await stmt.all(...params);
+    const { results } = await stmt.bind(...params).all();
     
     const items = (results || []).slice(0, limit);
     const hasMore = (results || []).length > limit;
