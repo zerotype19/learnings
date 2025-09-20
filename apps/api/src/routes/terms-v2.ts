@@ -9,15 +9,15 @@ const router = new Hono<{ Bindings: Env }>();
 
 // Get terms with A-Z filtering, search, and pagination
 router.get('/', async (c) => {
+  let query = 'SELECT * FROM terms_v2 WHERE status = "published"';
+  let params: any[] = [];
+  
   try {
     const letter = c.req.query('letter');
     const tag = c.req.query('tag');
     const sort = c.req.query('sort') || 'newest';
     const cursor = c.req.query('cursor');
     const limit = Math.min(Number(c.req.query('limit') || '20'), 50);
-
-    let query = 'SELECT * FROM terms_v2 WHERE status = "published"';
-    let params: any[] = [];
 
     // Letter filtering
     if (letter && letter.length === 1) {
@@ -52,7 +52,7 @@ router.get('/', async (c) => {
           params.push(cursorValue, cursorValue, cursorSort);
         } else {
           query += ' AND created_at < ?';
-          params.push(cursorSort);
+          params.push(cursorValue);
         }
       }
     }
