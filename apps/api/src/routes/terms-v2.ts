@@ -109,7 +109,7 @@ router.get('/:slug', async (c) => {
     const stmt = c.env.DB.prepare(
       'SELECT * FROM terms_v2 WHERE slug = ? AND status = "published"'
     );
-    const result = await stmt.first();
+    const result = await stmt.bind(slug).first();
     
     if (!result) {
       return c.json({ error: 'Term not found' }, 404);
