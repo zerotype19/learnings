@@ -38,7 +38,6 @@ export function App() {
       const parts = hash.split('/').filter(part => part); // Remove empty parts
       const [page, ...params] = parts;
       
-      
       switch (page) {
         case 'terms':
           setCurrentPage('terms-hub');
@@ -110,26 +109,18 @@ export function App() {
   return (
     <LayoutShell currentPage={currentPage} onPageChange={setCurrentPage}>
       {/* New v2 Pages - Full Screen */}
+      {currentPage === 'home-v2' && <HomeV2 />}
       {currentPage === 'terms-hub' && <TermsHub />}
-      
       {currentPage === 'term-detail' && <TermDetail slug={routeParams.slug || ''} />}
-      
       {currentPage === 'submit-v2' && <Submit />}
-      
       {currentPage === 'wall-hub' && <WallHub />}
-      
-      {currentPage === 'generators-hub' && <GeneratorsHub />}
-      
       {currentPage === 'challenges-hub' && <ChallengesHub />}
-      
+      {currentPage === 'generators-hub' && <GeneratorsHub />}
       {currentPage === 'admin-v2' && <AdminV2 />}
       
-      {currentPage === 'home-v2' && <HomeV2 />}
-      
       {/* Legacy Pages */}
-      {(currentPage === 'home' || currentPage === 'wall' || currentPage === 'challenges' || currentPage === 'bingo' || currentPage === 'linkedin' || currentPage === 'analytics' || currentPage === 'suggest' || currentPage === 'admin') && (
+      {currentPage === 'home' && (
         <div className="mt-8">
-          {currentPage === 'home' && (
           <div>
             {/* Hero Section */}
             <Hero />
@@ -163,23 +154,16 @@ export function App() {
               </div>
             </div>
           </div>
-        )}
-      
-      {currentPage === 'wall' && <Wall />}
-      
-      {currentPage === 'challenges' && <Challenges />}
-      
-      {currentPage === 'bingo' && <Bingo />}
-      
-      {currentPage === 'linkedin' && <LinkedInGenerators />}
-      
-      {currentPage === 'analytics' && <Analytics />}
-      
-      {currentPage === 'suggest' && <Suggest />}
-      
-      {currentPage === 'admin' && <Admin />}
         </div>
       )}
+      
+      {currentPage === 'wall' && <Wall />}
+      {currentPage === 'challenges' && <Challenges />}
+      {currentPage === 'bingo' && <Bingo />}
+      {currentPage === 'linkedin' && <LinkedInGenerators />}
+      {currentPage === 'analytics' && <Analytics />}
+      {currentPage === 'suggest' && <Suggest />}
+      {currentPage === 'admin' && <Admin />}
       
       <ProfessorWidget />
     </LayoutShell>
