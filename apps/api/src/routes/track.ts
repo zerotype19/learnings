@@ -69,7 +69,7 @@ router.get('/analytics', async (c) => {
     query += ' GROUP BY name, DATE(ts) ORDER BY date DESC, count DESC';
     
     const stmt = c.env.DB.prepare(query);
-    const { results } = await stmt.all(...params);
+    const { results } = await stmt.bind(...params).all();
     
     return c.json({ 
       events: results || [],
