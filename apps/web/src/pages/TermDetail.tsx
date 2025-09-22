@@ -62,7 +62,7 @@ export function TermDetail({ slug }: TermDetailProps) {
       }
 
       const data = await response.json();
-      setTerm(data);
+      setTerm(data.item);
     } catch (err) {
       console.error('Failed to load term:', err);
       setError('Failed to load term');
@@ -154,7 +154,7 @@ export function TermDetail({ slug }: TermDetailProps) {
               </div>
             )}
 
-            {term.tags.length > 0 && (
+            {term.tags && term.tags.length > 0 && (
               <div className="mb-4">
                 <h3 className="font-semibold mb-2">Tags</h3>
                 <div className="flex flex-wrap gap-2">
@@ -190,7 +190,7 @@ export function TermDetail({ slug }: TermDetailProps) {
 
               {showLinkForm && <LinkSubmissionForm termId={term.id} onSubmit={() => setShowLinkForm(false)} />}
 
-              {term.links.length === 0 ? (
+              {(!term.links || term.links.length === 0) ? (
                 <div className="text-center py-8 text-neutral-500">
                   No examples yet. Be the first to add one!
                 </div>
@@ -226,7 +226,7 @@ export function TermDetail({ slug }: TermDetailProps) {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* Related Terms */}
-            {term.related_terms.length > 0 && (
+            {term.related_terms && term.related_terms.length > 0 && (
               <div className="bg-white rounded-2xl border p-6 mb-6">
                 <h3 className="font-semibold mb-4">Related Terms</h3>
                 <div className="space-y-2">
