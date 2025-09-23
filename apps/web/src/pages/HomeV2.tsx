@@ -138,25 +138,25 @@ export function HomeV2() {
           {/* Navigation Links */}
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="#/terms"
+              href="/terms"
               className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
             >
               📚 Browse Terms
             </a>
             <a
-              href="#/wall"
+              href="/wall"
               className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
             >
               📸 Wall Posts
             </a>
             <a
-              href="#/generators"
+              href="/generators"
               className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
             >
               🤖 Generators
             </a>
             <a
-              href="#/challenges"
+              href="/challenges"
               className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
             >
               🏆 Challenges

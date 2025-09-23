@@ -31,11 +31,11 @@ export function App() {
   const [error, setError] = useState<string | null>(null);
   const [routeParams, setRouteParams] = useState<Record<string, string>>({});
 
-  // Handle hash-based routing
+  // Handle browser history routing
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1); // Remove #
-      const parts = hash.split('/').filter(part => part); // Remove empty parts
+    const handleRouteChange = () => {
+      const path = window.location.pathname;
+      const parts = path.split('/').filter(part => part); // Remove empty parts
       const [page, ...params] = parts;
       
       switch (page) {
@@ -79,11 +79,11 @@ export function App() {
     };
 
     // Handle initial route
-    handleHashChange();
+    handleRouteChange();
     
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    // Listen for popstate events (back/forward buttons)
+    window.addEventListener('popstate', handleRouteChange);
+    return () => window.removeEventListener('popstate', handleRouteChange);
   }, []);
 
   useEffect(() => {
@@ -106,8 +106,30 @@ export function App() {
       });
   }, []);
 
+  // Handle navigation with browser history
+  const handlePageChange = (page: Page) => {
+    const getPath = (pageId: string) => {
+      switch (pageId) {
+        case 'home-v2': return '/';
+        case 'terms-hub': return '/terms';
+        case 'wall-hub': return '/wall';
+        case 'challenges-hub': return '/challenges';
+        case 'bingo': return '/bingo';
+        case 'generators-hub': return '/generators';
+        case 'submit-v2': return '/submit';
+        case 'analytics': return '/analytics';
+        case 'admin-v2': return '/admin';
+        default: return '/';
+      }
+    };
+
+    const path = getPath(page);
+    window.history.pushState({}, '', path);
+    setCurrentPage(page);
+  };
+
   return (
-    <LayoutShell currentPage={currentPage} onPageChange={setCurrentPage}>
+    <LayoutShell currentPage={currentPage} onPageChange={handlePageChange}>
       {/* New v2 Pages - Full Screen */}
       {currentPage === 'home-v2' && <HomeV2 />}
       {currentPage === 'terms-hub' && <TermsHub />}

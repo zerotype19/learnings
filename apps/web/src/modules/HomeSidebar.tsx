@@ -70,7 +70,7 @@ export function HomeSidebar() {
             ))}
           </div>
           <a 
-            href="#/analytics"
+            href="/analytics"
             className="mt-3 inline-block text-xs text-brand-600 hover:text-brand-700 font-medium"
           >
             View Analytics →

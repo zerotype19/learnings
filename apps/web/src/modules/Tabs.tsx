@@ -1,12 +1,12 @@
 import React from 'react';
 
 const tabs = [
-  { href: "#/", label: "Terms" },
-  { href: "#/wall", label: "Wall" },
-  { href: "#/challenges", label: "Challenges" },
-  { href: "#/linkedin", label: "Generators" },
-  { href: "#/suggest", label: "Suggest" },
-  { href: "#/analytics", label: "Analytics" },
+  { href: "/", label: "Terms" },
+  { href: "/wall", label: "Wall" },
+  { href: "/challenges", label: "Challenges" },
+  { href: "/generators", label: "Generators" },
+  { href: "/suggest", label: "Suggest" },
+  { href: "/analytics", label: "Analytics" },
 ];
 
 export function Tabs({ currentPage, onPageChange }: { currentPage: string; onPageChange: (page: string) => void }) {

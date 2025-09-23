@@ -78,7 +78,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
           {/* Logo */}
           <a 
-            href="#/"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
               onPageChange('home-v2');
@@ -98,7 +98,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                 if (e.key === 'Enter') {
                   const query = (e.target as HTMLInputElement).value;
                   if (query.trim()) {
-                    window.location.hash = `/search?q=${encodeURIComponent(query)}`;
+                    window.location.href = `/search?q=${encodeURIComponent(query)}`;
                   }
                 }
               }}
@@ -111,16 +111,16 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               // Map page IDs to URL paths
               const getHref = (id: string) => {
                 switch (id) {
-                  case 'home-v2': return '#/';
-                  case 'terms-hub': return '#/terms';
-                  case 'wall-hub': return '#/wall';
-                  case 'challenges-hub': return '#/challenges';
-                  case 'bingo': return '#/bingo';
-                  case 'generators-hub': return '#/generators';
-                  case 'submit-v2': return '#/submit';
-                  case 'analytics': return '#/analytics';
-                  case 'admin-v2': return '#/admin';
-                  default: return '#/';
+                  case 'home-v2': return '/';
+                  case 'terms-hub': return '/terms';
+                  case 'wall-hub': return '/wall';
+                  case 'challenges-hub': return '/challenges';
+                  case 'bingo': return '/bingo';
+                  case 'generators-hub': return '/generators';
+                  case 'submit-v2': return '/submit';
+                  case 'analytics': return '/analytics';
+                  case 'admin-v2': return '/admin';
+                  default: return '/';
                 }
               };
 
@@ -186,16 +186,16 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   // Map page IDs to URL paths
                   const getHref = (id: string) => {
                     switch (id) {
-                      case 'home-v2': return '#/';
-                      case 'terms-hub': return '#/terms';
-                      case 'wall-hub': return '#/wall';
-                      case 'challenges-hub': return '#/challenges';
-                      case 'bingo': return '#/bingo';
-                      case 'generators-hub': return '#/generators';
-                      case 'submit-v2': return '#/submit';
-                      case 'analytics': return '#/analytics';
-                      case 'admin-v2': return '#/admin';
-                      default: return '#/';
+                      case 'home-v2': return '/';
+                      case 'terms-hub': return '/terms';
+                      case 'wall-hub': return '/wall';
+                      case 'challenges-hub': return '/challenges';
+                      case 'bingo': return '/bingo';
+                      case 'generators-hub': return '/generators';
+                      case 'submit-v2': return '/submit';
+                      case 'analytics': return '/analytics';
+                      case 'admin-v2': return '/admin';
+                      default: return '/';
                     }
                   };
 
@@ -233,10 +233,10 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       <footer className="border-t bg-white">
         <div className="mx-auto max-w-5xl px-4 py-8">
           <div className="flex justify-center gap-6 text-sm text-neutral-600 mb-4">
-            <a href="#/about" className="hover:text-neutral-900 transition-colors">About</a>
-            <a href="#/embeds" className="hover:text-neutral-900 transition-colors">Embeds</a>
-            <a href="#/terms" className="hover:text-neutral-900 transition-colors">Terms</a>
-            <a href="#/privacy" className="hover:text-neutral-900 transition-colors">Privacy</a>
+            <a href="/about" className="hover:text-neutral-900 transition-colors">About</a>
+            <a href="/embeds" className="hover:text-neutral-900 transition-colors">Embeds</a>
+            <a href="/terms" className="hover:text-neutral-900 transition-colors">Terms</a>
+            <a href="/privacy" className="hover:text-neutral-900 transition-colors">Privacy</a>
           </div>
           <div className="text-center text-sm text-neutral-500">
             © 2025 Learnings Dot Org — Operationalizing synergy since yesterday.
