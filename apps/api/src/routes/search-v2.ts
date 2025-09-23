@@ -24,7 +24,7 @@ router.get('/', async (c) => {
           SELECT id, slug, title, short_def, definition
           FROM terms_v2 
           WHERE status = "published" 
-          AND (title LIKE ? OR definition LIKE ? OR short_def LIKE ?)
+          AND (LOWER(title) LIKE LOWER(?) OR LOWER(definition) LIKE LOWER(?) OR LOWER(short_def) LIKE LOWER(?))
           ORDER BY views DESC
           LIMIT ?
         `);
@@ -148,7 +148,7 @@ router.get('/suggest', async (c) => {
         SELECT id, slug, title, short_def
         FROM terms_v2 
         WHERE status = "published" 
-        AND (title LIKE ? OR short_def LIKE ?)
+        AND (LOWER(title) LIKE LOWER(?) OR LOWER(short_def) LIKE LOWER(?))
         ORDER BY views DESC
         LIMIT ?
       `);
