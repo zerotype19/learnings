@@ -150,7 +150,7 @@ export function ChallengesHub() {
   };
 
   const getApiUrl = () => {
-    return import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    return import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   };
 
   const formatDate = (dateString: string) => {
@@ -444,7 +444,7 @@ function ChallengeEntryCard({ entry }: { entry: ChallengeEntry }) {
   };
 
   const getApiUrl = () => {
-    return import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    return import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   };
 
   return (

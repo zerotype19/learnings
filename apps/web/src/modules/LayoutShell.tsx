@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NotificationBell } from './Notifications';
 import { AuthModal } from './AuthModal';
+import { SearchBox } from '../components/SearchBox';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
 
@@ -29,7 +30,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       // Claim anonymous activity
       const fingerprint = localStorage.getItem('learnings_fingerprint');
       if (fingerprint) {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
         fetch(apiUrl + '/v1/auth/claim', {
           method: 'POST',
           credentials: 'include', // Use cookies instead of Authorization header
@@ -90,18 +91,31 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           
           {/* Global Search */}
           <div className="hidden md:block flex-1 max-w-sm mx-8">
-            <input
-              type="text"
-              placeholder="Search terms, wall posts..."
-              className="w-full px-3 py-1 text-sm border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  const query = (e.target as HTMLInputElement).value;
-                  if (query.trim()) {
-                    window.location.href = `/search?q=${encodeURIComponent(query)}`;
+            <SearchBox
+              onNavigate={(url) => {
+                if (url.startsWith('/search')) {
+                  // Use pushState to navigate to search page
+                  window.history.pushState({}, '', url);
+                  onPageChange('search');
+                } else {
+                  // Handle internal navigation
+                  const path = url.replace(/^\/+/, '');
+                  if (path === '') {
+                    onPageChange('home-v2');
+                  } else if (path.startsWith('term/')) {
+                    onPageChange('term-detail');
+                  } else if (path === 'wall') {
+                    onPageChange('wall-hub');
+                  } else if (path === 'generators') {
+                    onPageChange('generators-hub');
+                  } else if (path === 'challenges') {
+                    onPageChange('challenges-hub');
+                  } else {
+                    window.location.href = url;
                   }
                 }
               }}
+              placeholder="Search terms, wall posts..."
             />
           </div>
           

@@ -21,8 +21,9 @@ import { Submit } from '../pages/Submit';
 import { WallHub } from '../pages/WallHub';
 import { GeneratorsHub } from '../pages/GeneratorsHub';
 import { ChallengesHub } from '../pages/ChallengesHub';
+import { SearchResults } from '../pages/SearchResults';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub' | 'search';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -73,6 +74,9 @@ export function App() {
         case 'admin':
           setCurrentPage('admin-v2');
           break;
+        case 'search':
+          setCurrentPage('search');
+          break;
         default:
           setCurrentPage('home-v2');
       }
@@ -87,7 +91,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
     console.log('API URL:', apiUrl); // Debug log
     fetch(apiUrl + '/api/terms')
       .then((r) => {
@@ -119,6 +123,7 @@ export function App() {
         case 'submit-v2': return '/submit';
         case 'analytics': return '/analytics';
         case 'admin-v2': return '/admin';
+        case 'search': return '/search';
         default: return '/';
       }
     };
@@ -139,6 +144,7 @@ export function App() {
       {currentPage === 'challenges-hub' && <ChallengesHub />}
       {currentPage === 'generators-hub' && <GeneratorsHub />}
       {currentPage === 'admin-v2' && <AdminV2 />}
+      {currentPage === 'search' && <SearchResults />}
       
       {/* Legacy Pages */}
       {currentPage === 'home' && (

@@ -4,7 +4,7 @@ type N = { id: string; type: string; payload_json: string; created_at: number; r
 
 export function Notifications({ user = 'anon' }: { user?: string }) {
   const [items, setItems] = useState<N[]>([]);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
   useEffect(() => { 
     fetch(apiUrl + '/v1/notifications?user_id=' + user)
@@ -40,7 +40,7 @@ export function Notifications({ user = 'anon' }: { user?: string }) {
 export function NotificationBell({ user = 'anon' }: { user?: string }) {
   const [showNotifications, setShowNotifications] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
   useEffect(() => {
     fetch(apiUrl + '/v1/notifications?user_id=' + user)

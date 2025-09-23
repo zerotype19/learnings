@@ -23,7 +23,7 @@ export function TermsHub() {
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   const loadTerms = async (reset = false) => {
     if (loading) return;

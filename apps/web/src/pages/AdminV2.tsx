@@ -45,7 +45,7 @@ export function AdminV2() {
   const [stats, setStats] = useState<AdminStats | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   const loadTermSubmissions = async () => {
     setLoading(true);

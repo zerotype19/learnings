@@ -20,7 +20,7 @@ export async function isFeatureEnabled(flag: FeatureFlag): Promise<boolean> {
   }
 
   try {
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
     const response = await fetch(`${apiUrl}/api/feature-flags/${flag}`, {
       credentials: 'include'
     });

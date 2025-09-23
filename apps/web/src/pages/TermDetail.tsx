@@ -37,7 +37,7 @@ export function TermDetail({ slug }: TermDetailProps) {
   const [error, setError] = useState<string | null>(null);
   const [showLinkForm, setShowLinkForm] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   useEffect(() => {
     loadTerm();
@@ -287,7 +287,7 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
   const [note, setNote] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

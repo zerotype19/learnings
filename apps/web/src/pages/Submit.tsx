@@ -58,7 +58,7 @@ function TermSubmissionForm() {
   });
   const [submitting, setSubmitting] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

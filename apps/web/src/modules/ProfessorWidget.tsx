@@ -20,7 +20,7 @@ export function ProfessorWidget() {
     if (!input.trim()) return;
     setLoading(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
       const r = await fetch(apiUrl + '/v1/ai/translate', { 
         method: 'POST',
         credentials: 'include', 

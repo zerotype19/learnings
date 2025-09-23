@@ -42,7 +42,7 @@ export function ChallengeLeaderboard({ challengeId, limit = 10 }: ChallengeLeade
   }, [challengeId, limit]);
 
   const getApiUrl = () => {
-    return import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+    return import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   };
 
   const getRankIcon = (index: number) => {

@@ -40,7 +40,7 @@ export type FeedResponse = {
   nextCursor?: string; 
 };
 
-const getApiUrl = () => import.meta.env.VITE_API_URL || 'https://learnings-api.kevin-mcgovern.workers.dev';
+const getApiUrl = () => import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
 export async function listWall(params: { 
   tag?: string; 
