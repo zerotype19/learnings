@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FeedList } from '../components/feed/FeedList';
 import { trackEvent } from '../lib/api';
+import { SearchBox } from '../components/SearchBox';
 
 type QuickAction = {
   id: string;
@@ -92,19 +93,32 @@ export function HomeV2() {
             
             {/* Global Search */}
             <div className="max-w-md mx-auto">
-              <input
-                type="text"
-                placeholder="Search terms, wall posts..."
-                className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500"
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    const query = (e.target as HTMLInputElement).value;
-                    if (query.trim()) {
-                      trackEvent('search_performed', { source: 'home_hero' });
-                      window.location.hash = `/search?q=${encodeURIComponent(query)}`;
+              <SearchBox
+                onNavigate={(url) => {
+                  if (url.startsWith('/search')) {
+                    trackEvent('search_performed', { source: 'home_hero' });
+                    window.history.pushState({}, '', url);
+                    window.location.reload();
+                  } else {
+                    // Handle internal navigation
+                    const path = url.replace(/^\/+/, '');
+                    if (path === '') {
+                      // Already on home page
+                    } else if (path.startsWith('term/')) {
+                      window.location.href = url;
+                    } else if (path === 'wall') {
+                      window.location.href = url;
+                    } else if (path === 'generators') {
+                      window.location.href = url;
+                    } else if (path === 'challenges') {
+                      window.location.href = url;
+                    } else {
+                      window.location.href = url;
                     }
                   }
                 }}
+                placeholder="Search terms, wall posts..."
+                className="w-full"
               />
             </div>
           </div>

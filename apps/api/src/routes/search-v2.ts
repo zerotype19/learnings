@@ -23,7 +23,7 @@ router.get('/', async (c) => {
         const termStmt = c.env.DB.prepare(`
           SELECT id, slug, title, short_def, definition
           FROM terms_v2 
-          WHERE status = 'published' 
+          WHERE status = "published" 
           AND (title LIKE ? OR definition LIKE ? OR short_def LIKE ?)
           ORDER BY views DESC
           LIMIT ?
@@ -147,7 +147,7 @@ router.get('/suggest', async (c) => {
       const termStmt = c.env.DB.prepare(`
         SELECT id, slug, title, short_def
         FROM terms_v2 
-        WHERE status = 'published' 
+        WHERE status = "published" 
         AND (title LIKE ? OR short_def LIKE ?)
         ORDER BY views DESC
         LIMIT ?
