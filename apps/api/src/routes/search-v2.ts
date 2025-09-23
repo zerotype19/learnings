@@ -24,12 +24,12 @@ router.get('/', async (c) => {
           SELECT id, slug, title, short_def, definition
           FROM terms_v2 
           WHERE status = "published" 
-          AND (LOWER(title) LIKE LOWER(?) OR LOWER(definition) LIKE LOWER(?) OR LOWER(short_def) LIKE LOWER(?))
+          AND (title LIKE ? OR definition LIKE ? OR short_def LIKE ?)
           ORDER BY views DESC
           LIMIT ?
         `);
         
-        const searchTerm = `%${q}%`;
+        const searchTerm = `%${q.toLowerCase()}%`;
         const { results: termResults } = await termStmt.all(searchTerm, searchTerm, searchTerm, Math.ceil(limit / 2));
         
         if (termResults) {
@@ -148,12 +148,12 @@ router.get('/suggest', async (c) => {
         SELECT id, slug, title, short_def
         FROM terms_v2 
         WHERE status = "published" 
-        AND (LOWER(title) LIKE LOWER(?) OR LOWER(short_def) LIKE LOWER(?))
+        AND (title LIKE ? OR short_def LIKE ?)
         ORDER BY views DESC
         LIMIT ?
       `);
       
-      const searchTerm = `%${q}%`;
+      const searchTerm = `%${q.toLowerCase()}%`;
       const { results: termResults } = await termStmt.all(searchTerm, searchTerm, 3);
       
       if (termResults) {
