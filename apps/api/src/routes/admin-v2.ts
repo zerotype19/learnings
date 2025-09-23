@@ -27,7 +27,7 @@ router.get('/terms/submissions', async (c) => {
       LIMIT ?
     `);
     
-    const { results } = await stmt.all(status, limit);
+    const { results } = await stmt.bind(status, limit).all();
     
     // Parse JSON fields
     const processedItems = (results || []).map((item: any) => ({
@@ -152,7 +152,7 @@ router.get('/wall/submissions', async (c) => {
       LIMIT ?
     `);
     
-    const { results } = await stmt.all(status, limit);
+    const { results } = await stmt.bind(status, limit).all();
     
     // Parse JSON fields
     const processedItems = (results || []).map((item: any) => ({
