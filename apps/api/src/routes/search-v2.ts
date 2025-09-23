@@ -20,17 +20,17 @@ router.get('/', async (c) => {
     // Search terms (always include unless explicitly excluded)
     if (!type || type === 'term' || type === 'all') {
       try {
+        const searchTerm = `%${q}%`;
         const termStmt = c.env.DB.prepare(`
           SELECT id, slug, title, short_def, definition
           FROM terms_v2 
-          WHERE status = "published" 
+          WHERE status = 'published' 
           AND (title LIKE ? OR definition LIKE ? OR short_def LIKE ?)
           ORDER BY views DESC
           LIMIT ?
-        `);
+        `).bind(searchTerm, searchTerm, searchTerm, Math.ceil(limit / 2));
         
-        const searchTerm = `%${q.toLowerCase()}%`;
-        const { results: termResults } = await termStmt.all(searchTerm, searchTerm, searchTerm, Math.ceil(limit / 2));
+        const { results: termResults } = await termStmt.all();
         
         if (termResults) {
           for (const term of termResults as any[]) {
@@ -144,17 +144,17 @@ router.get('/suggest', async (c) => {
 
     // Get term suggestions
     try {
+      const searchTerm = `%${q}%`;
       const termStmt = c.env.DB.prepare(`
         SELECT id, slug, title, short_def
         FROM terms_v2 
-        WHERE status = "published" 
+        WHERE status = 'published' 
         AND (title LIKE ? OR short_def LIKE ?)
         ORDER BY views DESC
         LIMIT ?
-      `);
+      `).bind(searchTerm, searchTerm, 3);
       
-      const searchTerm = `%${q.toLowerCase()}%`;
-      const { results: termResults } = await termStmt.all(searchTerm, searchTerm, 3);
+      const { results: termResults } = await termStmt.all();
       
       if (termResults) {
         for (const term of termResults as any[]) {
