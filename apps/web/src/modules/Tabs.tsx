@@ -17,9 +17,13 @@ export function Tabs({ currentPage, onPageChange }: { currentPage: string; onPag
           const pageKey = t.href === "#/" ? "home" : t.href.replace("#/", "");
           const active = currentPage === pageKey;
           return (
-            <button
+            <a
               key={t.href}
-              onClick={() => onPageChange(pageKey)}
+              href={t.href}
+              onClick={(e) => {
+                e.preventDefault();
+                onPageChange(pageKey);
+              }}
               className={`rounded-xl px-3 py-1.5 text-sm transition-colors ${
                 active 
                   ? "bg-brand-50 text-brand-700 border border-brand-100" 
@@ -27,7 +31,7 @@ export function Tabs({ currentPage, onPageChange }: { currentPage: string; onPag
               }`}
             >
               {t.label}
-            </button>
+            </a>
           );
         })}
       </div>

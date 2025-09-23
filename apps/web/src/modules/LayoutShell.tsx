@@ -77,12 +77,16 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       <header className="sticky top-0 z-40 border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
           {/* Logo */}
-          <button 
-            onClick={() => onPageChange('home-v2')}
+          <a 
+            href="#/"
+            onClick={(e) => {
+              e.preventDefault();
+              onPageChange('home-v2');
+            }}
             className="font-bold tracking-tight text-ink hover:text-brand-600 transition-colors"
           >
             Learnings Dot Org
-          </button>
+          </a>
           
           {/* Global Search */}
           <div className="hidden md:block flex-1 max-w-sm mx-8">
@@ -103,20 +107,42 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           
           {/* Desktop Navigation */}
           <nav className="hidden gap-1 sm:flex">
-            {navigation.map((nav) => (
-              <button
-                key={nav.id}
-                onClick={() => onPageChange(nav.id as Page)}
-                className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
-                  currentPage === nav.id 
-                    ? 'bg-brand-100 text-brand-700' 
-                    : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
-                }`}
-              >
-                <span className="sm:hidden">{nav.icon}</span>
-                <span className="hidden sm:inline">{nav.label}</span>
-              </button>
-            ))}
+            {navigation.map((nav) => {
+              // Map page IDs to URL paths
+              const getHref = (id: string) => {
+                switch (id) {
+                  case 'home-v2': return '#/';
+                  case 'terms-hub': return '#/terms';
+                  case 'wall-hub': return '#/wall';
+                  case 'challenges-hub': return '#/challenges';
+                  case 'bingo': return '#/bingo';
+                  case 'generators-hub': return '#/generators';
+                  case 'submit-v2': return '#/submit';
+                  case 'analytics': return '#/analytics';
+                  case 'admin-v2': return '#/admin';
+                  default: return '#/';
+                }
+              };
+
+              return (
+                <a
+                  key={nav.id}
+                  href={getHref(nav.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onPageChange(nav.id as Page);
+                  }}
+                  className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
+                    currentPage === nav.id 
+                      ? 'bg-brand-100 text-brand-700' 
+                      : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                  }`}
+                >
+                  <span className="sm:hidden">{nav.icon}</span>
+                  <span className="hidden sm:inline">{nav.label}</span>
+                </a>
+              );
+            })}
           </nav>
           
           {/* Right Actions */}
@@ -156,22 +182,42 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           <div className="border-t bg-white sm:hidden">
             <nav className="mx-auto max-w-5xl px-4 py-2">
               <div className="grid grid-cols-2 gap-2">
-                {navigation.map((nav) => (
-                  <button
-                    key={nav.id}
-                    onClick={() => {
-                      onPageChange(nav.id as Page);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`rounded-lg px-3 py-2 text-sm transition-colors ${
-                      currentPage === nav.id 
-                        ? 'bg-brand-100 text-brand-700' 
-                        : 'text-neutral-600 hover:bg-neutral-100'
-                    }`}
-                  >
-                    {nav.icon} {nav.label}
-                  </button>
-                ))}
+                {navigation.map((nav) => {
+                  // Map page IDs to URL paths
+                  const getHref = (id: string) => {
+                    switch (id) {
+                      case 'home-v2': return '#/';
+                      case 'terms-hub': return '#/terms';
+                      case 'wall-hub': return '#/wall';
+                      case 'challenges-hub': return '#/challenges';
+                      case 'bingo': return '#/bingo';
+                      case 'generators-hub': return '#/generators';
+                      case 'submit-v2': return '#/submit';
+                      case 'analytics': return '#/analytics';
+                      case 'admin-v2': return '#/admin';
+                      default: return '#/';
+                    }
+                  };
+
+                  return (
+                    <a
+                      key={nav.id}
+                      href={getHref(nav.id)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onPageChange(nav.id as Page);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`rounded-lg px-3 py-2 text-sm transition-colors ${
+                        currentPage === nav.id 
+                          ? 'bg-brand-100 text-brand-700' 
+                          : 'text-neutral-600 hover:bg-neutral-100'
+                      }`}
+                    >
+                      {nav.icon} {nav.label}
+                    </a>
+                  );
+                })}
               </div>
             </nav>
           </div>
