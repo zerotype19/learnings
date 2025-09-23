@@ -171,33 +171,33 @@ router.get('/suggest', async (c) => {
       console.error('Term suggest error:', termError);
     }
 
-    // Get wall suggestions
-    try {
-      const wallStmt = c.env.DB.prepare(`
-        SELECT id, slug, title, og_desc
-        FROM wall_posts 
-        WHERE title LIKE ?
-        ORDER BY vote_count DESC
-        LIMIT ?
-      `);
-      
-      const searchTerm = `%${q}%`;
-      const { results: wallResults } = await wallStmt.all(searchTerm, 2);
-      
-      if (wallResults) {
-        for (const wall of wallResults as any[]) {
-          suggestions.push({
-            type: 'wall',
-            id: wall.id,
-            title: wall.title,
-            description: wall.og_desc,
-            url: `/wall#${wall.slug}`
-          });
-        }
-      }
-    } catch (wallError) {
-      console.error('Wall suggest error:', wallError);
-    }
+    // Get wall suggestions (disabled for now due to table structure issues)
+    // try {
+    //   const wallStmt = c.env.DB.prepare(`
+    //     SELECT id, slug, title, og_desc
+    //     FROM wall_posts 
+    //     WHERE title LIKE ?
+    //     ORDER BY vote_count DESC
+    //     LIMIT ?
+    //   `);
+    //   
+    //   const searchTerm = `%${q}%`;
+    //   const { results: wallResults } = await wallStmt.all(searchTerm, 2);
+    //   
+    //   if (wallResults) {
+    //     for (const wall of wallResults as any[]) {
+    //       suggestions.push({
+    //         type: 'wall',
+    //         id: wall.id,
+    //         title: wall.title,
+    //         description: wall.og_desc,
+    //         url: `/wall#${wall.slug}`
+    //       });
+    //     }
+    //   }
+    // } catch (wallError) {
+    //   console.error('Wall suggest error:', wallError);
+    // }
 
     return c.json({ suggestions });
   } catch (error) {
