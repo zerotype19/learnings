@@ -156,13 +156,13 @@ export function FeedList({ onItemClick, className = '' }: FeedListProps) {
           </div>
           <div className="flex gap-4 justify-center">
             <button
-              onClick={() => window.location.hash = '/submit'}
+              onClick={() => window.location.href = '/submit'}
               className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
             >
               Submit Content
             </button>
             <button
-              onClick={() => window.location.hash = '/terms'}
+              onClick={() => window.location.href = '/terms'}
               className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
             >
               Browse Terms

@@ -228,7 +228,7 @@ type TermCardProps = {
 
 function TermCard({ term, viewMode }: TermCardProps) {
   const handleClick = () => {
-    window.location.hash = `/term/${term.slug}`;
+    window.location.href = `/term/${term.slug}`;
   };
 
   if (viewMode === 'list') {

@@ -226,7 +226,7 @@ export function WallHub() {
               {filters.tag ? 'Try removing the tag filter' : 'Be the first to submit a corporate-speak specimen.'}
             </div>
             <button
-              onClick={() => window.location.hash = '/submit'}
+              onClick={() => window.location.href = '/submit'}
               className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
             >
               Submit Wall Post
@@ -252,7 +252,7 @@ function WallCard({ post, onVote, getDomainFromUrl }: WallCardProps) {
   const shouldTruncate = description.length > 200;
 
   const handleShare = () => {
-    const url = `${window.location.origin}/#/wall`;
+    const url = `${window.location.origin}/wall`;
     if (navigator.share) {
       navigator.share({
         title: post.title,
@@ -327,7 +327,7 @@ function WallCard({ post, onVote, getDomainFromUrl }: WallCardProps) {
             {post.related_terms.slice(0, 2).map(term => (
               <button
                 key={term}
-                onClick={() => window.location.hash = `/term/${term}`}
+                onClick={() => window.location.href = `/term/${term}`}
                 className="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full hover:bg-blue-200"
               >
                 {term}

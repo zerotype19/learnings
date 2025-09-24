@@ -24,7 +24,7 @@ export function Challenges() {
           <li key={ch.slug} className="border rounded-lg p-3">
             <div className="font-semibold">{ch.title}</div>
             <div className="text-sm opacity-80">{ch.prompt}</div>
-            <a className="mt-2 inline-block underline" href={`#/ch/${ch.slug}`}>Open</a>
+            <a className="mt-2 inline-block underline" href={`/challenges/${ch.slug}`}>Open</a>
           </li>
         ))}
       </ul>
@@ -51,7 +51,7 @@ export function DeansList() {
       <ol className="mt-3 list-decimal pl-5 text-sm">
         {items.map((it, i) => (
           <li key={i}>
-            <a className="underline" href={`#/term/${it.slug}`}>
+            <a className="underline" href={`/term/${it.slug}`}>
               {it.title}
             </a>
             {' '}— {it.cringe + it.heard} reactions

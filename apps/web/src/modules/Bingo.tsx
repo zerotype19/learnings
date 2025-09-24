@@ -35,7 +35,7 @@ export function Bingo() {
   };
   
   const shareBoard = () => {
-    const url = `${location.origin}/#/bingo/${boardId}`;
+    const url = `${location.origin}/bingo/${boardId}`;
     if (navigator.share) {
       navigator.share({
         title: 'Corporate Buzzword Bingo',

@@ -27,7 +27,7 @@ export function WallCard({ post, onVoted }: WallCardProps) {
   const displayTitle = post.og_title || post.title;
 
   const handleShare = async () => {
-    const url = `${window.location.origin}/#/wall/${post.slug}`;
+    const url = `${window.location.origin}/wall/${post.slug}`;
     
     if (navigator.share) {
       try {
@@ -99,7 +99,7 @@ export function WallCard({ post, onVoted }: WallCardProps) {
               className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full cursor-pointer hover:bg-neutral-200 transition-colors"
               onClick={() => {
                 // Navigate to wall with tag filter
-                window.location.hash = `/wall?tag=${encodeURIComponent(tag)}`;
+                window.location.href = `/wall?tag=${encodeURIComponent(tag)}`;
               }}
             >
               {tag}
@@ -120,7 +120,7 @@ export function WallCard({ post, onVoted }: WallCardProps) {
           {relatedTerms.slice(0, 3).map(termId => (
             <button
               key={termId}
-              onClick={() => window.location.hash = `/term/${termId}`}
+              onClick={() => window.location.href = `/term/${termId}`}
               className="text-xs text-brand-600 hover:text-brand-700 underline"
             >
               {termId}

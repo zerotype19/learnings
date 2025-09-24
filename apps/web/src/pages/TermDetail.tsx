@@ -72,13 +72,13 @@ export function TermDetail({ slug }: TermDetailProps) {
   };
 
   const copyLink = () => {
-    const url = `${window.location.origin}/#/term/${slug}`;
+    const url = `${window.location.origin}/term/${slug}`;
     navigator.clipboard.writeText(url);
     alert('Link copied to clipboard!');
   };
 
   const shareLink = () => {
-    const url = `${window.location.origin}/#/term/${slug}`;
+    const url = `${window.location.origin}/term/${slug}`;
     if (navigator.share) {
       navigator.share({
         title: term?.title,
@@ -104,7 +104,7 @@ export function TermDetail({ slug }: TermDetailProps) {
         <div className="text-center">
           <div className="text-xl text-neutral-600 mb-2">{error || 'Term not found'}</div>
           <button 
-            onClick={() => window.location.hash = '/terms'}
+            onClick={() => window.location.href = '/terms'}
             className="text-brand-600 hover:text-brand-700"
           >
             ← Back to Terms
@@ -120,7 +120,7 @@ export function TermDetail({ slug }: TermDetailProps) {
         {/* Header */}
         <div className="mb-6">
           <button 
-            onClick={() => window.location.hash = '/terms'}
+            onClick={() => window.location.href = '/terms'}
             className="text-brand-600 hover:text-brand-700 text-sm mb-4"
           >
             ← Back to Terms
@@ -233,7 +233,7 @@ export function TermDetail({ slug }: TermDetailProps) {
                   {term.related_terms.map(relatedTerm => (
                     <button
                       key={relatedTerm.id}
-                      onClick={() => window.location.hash = `/term/${relatedTerm.slug}`}
+                      onClick={() => window.location.href = `/term/${relatedTerm.slug}`}
                       className="block w-full text-left p-2 hover:bg-neutral-50 rounded-lg transition-colors"
                     >
                       <div className="font-medium text-sm">{relatedTerm.title}</div>
@@ -260,13 +260,13 @@ export function TermDetail({ slug }: TermDetailProps) {
                   🎓 Translate with Professor
                 </button>
                 <button
-                  onClick={() => window.location.hash = '/generators'}
+                  onClick={() => window.location.href = '/generators'}
                   className="w-full px-3 py-2 text-sm border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors"
                 >
                   📝 Generate LinkedIn Post
                 </button>
                 <button
-                  onClick={() => window.location.hash = '/bingo'}
+                  onClick={() => window.location.href = '/bingo'}
                   className="w-full px-3 py-2 text-sm border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors"
                 >
                   🎯 Add to Bingo Card

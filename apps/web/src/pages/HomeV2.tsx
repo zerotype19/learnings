@@ -27,7 +27,7 @@ export function HomeV2() {
       description: 'Add new content',
       onClick: () => {
         trackEvent('home_quick_action_click', { action: 'submit' });
-        window.location.hash = '/submit';
+        window.location.href = '/submit';
       }
     },
     {
@@ -48,7 +48,7 @@ export function HomeV2() {
       description: 'Create bingo card',
       onClick: () => {
         trackEvent('home_quick_action_click', { action: 'bingo' });
-        window.location.hash = '/bingo';
+        window.location.href = '/bingo';
       }
     },
     {
@@ -58,7 +58,7 @@ export function HomeV2() {
       description: 'Buzzword roast',
       onClick: () => {
         trackEvent('home_quick_action_click', { action: 'roast' });
-        window.location.hash = '/generators';
+        window.location.href = '/generators';
       }
     }
   ];
@@ -66,16 +66,16 @@ export function HomeV2() {
   const handleFeedItemClick = (item: any) => {
     switch (item.type) {
       case 'term':
-        window.location.hash = `/term/${item.data.slug}`;
+        window.location.href = `/term/${item.data.slug}`;
         break;
       case 'wall':
-        window.location.hash = '/wall';
+        window.location.href = '/wall';
         break;
       case 'challenge':
-        window.location.hash = `/challenges/${item.data.slug}`;
+        window.location.href = `/challenges/${item.data.slug}`;
         break;
       case 'generator':
-        window.location.hash = '/generators';
+        window.location.href = '/generators';
         break;
     }
   };

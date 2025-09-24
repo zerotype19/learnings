@@ -47,7 +47,7 @@ export function HomeSidebar() {
           <h4 className="font-medium text-sm">{currentChallenge.title}</h4>
           <p className="text-xs text-neutral-600 mt-1 line-clamp-2">{currentChallenge.prompt}</p>
           <a 
-            href={`#/challenges`}
+            href={`/challenges`}
             className="mt-3 inline-block text-xs text-brand-600 hover:text-brand-700 font-medium"
           >
             Join Challenge →

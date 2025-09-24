@@ -14,7 +14,12 @@ export function Tabs({ currentPage, onPageChange }: { currentPage: string; onPag
     <div className="mx-auto max-w-5xl px-4">
       <div className="inline-flex rounded-2xl border bg-white p-1 shadow-sm">
         {tabs.map(t => {
-          const pageKey = t.href === "#/" ? "home" : t.href.replace("#/", "");
+          const pageKey = t.href === "/" ? "home-v2" : 
+                         t.href === "/wall" ? "wall-hub" :
+                         t.href === "/challenges" ? "challenges-hub" :
+                         t.href === "/generators" ? "generators-hub" :
+                         t.href === "/suggest" ? "suggest" :
+                         t.href === "/analytics" ? "analytics" : t.href.replace("/", "");
           const active = currentPage === pageKey;
           return (
             <a

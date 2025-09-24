@@ -255,7 +255,7 @@ function TermSubmissionForm() {
           </button>
           <button
             type="button"
-            onClick={() => window.location.hash = '/terms'}
+            onClick={() => window.location.href = '/terms'}
             className="px-6 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
           >
             Cancel
@@ -398,7 +398,7 @@ function WallSubmissionForm() {
           </button>
           <button
             type="button"
-            onClick={() => window.location.hash = '/wall'}
+            onClick={() => window.location.href = '/wall'}
             className="px-6 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
           >
             View Wall
