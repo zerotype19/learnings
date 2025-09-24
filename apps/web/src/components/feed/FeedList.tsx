@@ -210,7 +210,7 @@ function TermFeedCard({ item, onClick }: FeedCardProps) {
           <div className="text-xs text-neutral-500 mb-1">New Term</div>
           <h3 className="font-semibold text-lg mb-2">{term.title}</h3>
           <p className="text-neutral-600 text-sm mb-3">
-            {term.short_def || term.definition?.substring(0, 150) + '...'}
+            {term.summary || term.short_def || (term.definition ? term.definition.substring(0, 150) + '...' : 'No description available')}
           </p>
           <div className="flex items-center gap-4 text-xs text-neutral-500">
             <span>{term.views || 0} views</span>
@@ -300,7 +300,7 @@ function GeneratorFeedCard({ item, onClick }: FeedCardProps) {
           <div className="text-xs text-neutral-500 mb-1">Generator Output</div>
           <h3 className="font-semibold text-lg mb-2">{run.generator_name || 'AI Generated Content'}</h3>
           <p className="text-neutral-600 text-sm mb-3">
-            {run.output_text?.substring(0, 150) + '...' || 'View generated content...'}
+            {run.output_text ? run.output_text.substring(0, 150) + '...' : 'View generated content...'}
           </p>
           <div className="flex items-center gap-4 text-xs text-neutral-500">
             <span>{new Date(item.ts).toLocaleDateString()}</span>
