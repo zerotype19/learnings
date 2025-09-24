@@ -6,7 +6,6 @@ import { ProfessorWidget } from './ProfessorWidget';
 import { Challenges, DeansList } from './Challenges';
 import { Profile } from './Profile';
 import { LinkedInGenerators } from './LinkedInGenerators';
-import { Analytics } from './Analytics';
 import { Admin } from './admin/Admin';
 import { AdminV2 } from '../pages/AdminV2';
 import { HomeV2 } from '../pages/HomeV2';
@@ -23,7 +22,7 @@ import { GeneratorsHub } from '../pages/GeneratorsHub';
 import { ChallengesHub } from '../pages/ChallengesHub';
 import { SearchResults } from '../pages/SearchResults';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub' | 'search';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub' | 'search';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -67,9 +66,6 @@ export function App() {
           break;
         case 'suggest':
           setCurrentPage('suggest');
-          break;
-        case 'analytics':
-          setCurrentPage('analytics');
           break;
         case 'admin':
           setCurrentPage('admin-v2');
@@ -121,7 +117,6 @@ export function App() {
         case 'bingo': return '/bingo';
         case 'generators-hub': return '/generators';
         case 'submit-v2': return '/submit';
-        case 'analytics': return '/analytics';
         case 'admin-v2': return '/admin';
         case 'search': return '/search';
         default: return '/';
@@ -189,7 +184,6 @@ export function App() {
       {currentPage === 'challenges' && <Challenges />}
       {currentPage === 'bingo' && <Bingo />}
       {currentPage === 'linkedin' && <LinkedInGenerators />}
-      {currentPage === 'analytics' && <Analytics />}
       {currentPage === 'suggest' && <Suggest />}
       {currentPage === 'admin' && <Admin />}
       

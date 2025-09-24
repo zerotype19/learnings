@@ -69,12 +69,6 @@ export function HomeSidebar() {
               </div>
             ))}
           </div>
-          <a 
-            href="/analytics"
-            className="mt-3 inline-block text-xs text-brand-600 hover:text-brand-700 font-medium"
-          >
-            View Analytics →
-          </a>
         </div>
       )}
     </div>

@@ -6,7 +6,6 @@ const tabs = [
   { href: "/challenges", label: "Challenges" },
   { href: "/generators", label: "Generators" },
   { href: "/suggest", label: "Suggest" },
-  { href: "/analytics", label: "Analytics" },
 ];
 
 export function Tabs({ currentPage, onPageChange }: { currentPage: string; onPageChange: (page: string) => void }) {
@@ -14,12 +13,11 @@ export function Tabs({ currentPage, onPageChange }: { currentPage: string; onPag
     <div className="mx-auto max-w-5xl px-4">
       <div className="inline-flex rounded-2xl border bg-white p-1 shadow-sm">
         {tabs.map(t => {
-          const pageKey = t.href === "/" ? "home-v2" : 
+          const pageKey = t.href === "/" ? "home-v2" :
                          t.href === "/wall" ? "wall-hub" :
                          t.href === "/challenges" ? "challenges-hub" :
                          t.href === "/generators" ? "generators-hub" :
-                         t.href === "/suggest" ? "suggest" :
-                         t.href === "/analytics" ? "analytics" : t.href.replace("/", "");
+                         t.href === "/suggest" ? "suggest" : t.href.replace("/", "");
           const active = currentPage === pageKey;
           return (
             <a

@@ -3,7 +3,7 @@ import { NotificationBell } from './Notifications';
 import { AuthModal } from './AuthModal';
 import { SearchBox } from '../components/SearchBox';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'analytics' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
 
 interface LayoutShellProps {
   currentPage: Page;
@@ -68,7 +68,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     { id: 'bingo', label: 'Bingo', icon: '🎯' },
     { id: 'generators-hub', label: 'Generators', icon: '📝' },
     { id: 'submit-v2', label: 'Submit', icon: '💡' },
-    { id: 'analytics', label: 'Analytics', icon: '📊' },
     ...(isAdmin ? [{ id: 'admin-v2', label: 'Admin', icon: '🛡️' }] : [])
   ];
 
@@ -132,7 +131,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   case 'bingo': return '/bingo';
                   case 'generators-hub': return '/generators';
                   case 'submit-v2': return '/submit';
-                  case 'analytics': return '/analytics';
                   case 'admin-v2': return '/admin';
                   default: return '/';
                 }
@@ -207,7 +205,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                       case 'bingo': return '/bingo';
                       case 'generators-hub': return '/generators';
                       case 'submit-v2': return '/submit';
-                      case 'analytics': return '/analytics';
                       case 'admin-v2': return '/admin';
                       default: return '/';
                     }
