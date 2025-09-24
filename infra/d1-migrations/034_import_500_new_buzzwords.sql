@@ -1,0 +1,8526 @@
+-- Import 500 new corporate buzzwords from CSV
+-- Generated on 2025-09-24T03:11:51.999Z
+
+PRAGMA foreign_keys=ON;
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-optimization',
+    'virtual-optimization',
+    'Virtual Optimization',
+    'Virtual Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-metric',
+    'cloud-metric',
+    'Cloud Metric',
+    'Cloud Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-playbook',
+    'cross-playbook',
+    'Cross Playbook',
+    'Cross Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-initiative',
+    'neural-initiative',
+    'Neural Initiative',
+    'Neural Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-optimization',
+    'personalized-optimization',
+    'Personalized Optimization',
+    'Personalized Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-paradigm',
+    'meta-paradigm',
+    'Meta Paradigm',
+    'Meta Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-experience',
+    'agile-experience',
+    'Agile Experience',
+    'Agile Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-framework',
+    'lean-framework',
+    'Lean Framework',
+    'Lean Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-touchpoint',
+    'agile-touchpoint',
+    'Agile Touchpoint',
+    'Agile Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-strategy',
+    'hybrid-strategy',
+    'Hybrid Strategy',
+    'Hybrid Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-playbook',
+    'synergy-playbook',
+    'Synergy Playbook',
+    'Synergy Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-integration',
+    'dynamic-integration',
+    'Dynamic Integration',
+    'Dynamic Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-solution',
+    'personalized-solution',
+    'Personalized Solution',
+    'Personalized Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-journey',
+    'omni-journey',
+    'Omni Journey',
+    'Omni Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-metric',
+    'disruptive-metric',
+    'Disruptive Metric',
+    'Disruptive Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-solution',
+    'circular-solution',
+    'Circular Solution',
+    'Circular Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-synergy',
+    'predictive-synergy',
+    'Predictive Synergy',
+    'Predictive Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-roadmap',
+    'hybrid-roadmap',
+    'Hybrid Roadmap',
+    'Hybrid Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-journey',
+    'smart-journey',
+    'Smart Journey',
+    'Smart Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-touchpoint',
+    'neural-touchpoint',
+    'Neural Touchpoint',
+    'Neural Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-playbook',
+    'frictionless-playbook',
+    'Frictionless Playbook',
+    'Frictionless Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-solution',
+    'lean-solution',
+    'Lean Solution',
+    'Lean Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-roadmap',
+    'transformational-roadmap',
+    'Transformational Roadmap',
+    'Transformational Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-initiative',
+    'disruptive-initiative',
+    'Disruptive Initiative',
+    'Disruptive Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-pipeline',
+    'frictionless-pipeline',
+    'Frictionless Pipeline',
+    'Frictionless Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-initiative',
+    'predictive-initiative',
+    'Predictive Initiative',
+    'Predictive Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-initiative',
+    'omni-initiative',
+    'Omni Initiative',
+    'Omni Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-loop',
+    'virtual-loop',
+    'Virtual Loop',
+    'Virtual Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-blueprint',
+    'hybrid-blueprint',
+    'Hybrid Blueprint',
+    'Hybrid Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-architecture',
+    'next-gen-architecture',
+    'Next-Gen Architecture',
+    'Next-Gen Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-ecosystem',
+    'personalized-ecosystem',
+    'Personalized Ecosystem',
+    'Personalized Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-experience',
+    'cloud-experience',
+    'Cloud Experience',
+    'Cloud Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-metric',
+    'lean-metric',
+    'Lean Metric',
+    'Lean Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-playbook',
+    'transformational-playbook',
+    'Transformational Playbook',
+    'Transformational Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-synergy',
+    'frictionless-synergy',
+    'Frictionless Synergy',
+    'Frictionless Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-ecosystem',
+    'synergy-ecosystem',
+    'Synergy Ecosystem',
+    'Synergy Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-strategy',
+    'meta-strategy',
+    'Meta Strategy',
+    'Meta Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-journey',
+    'hyper-journey',
+    'Hyper Journey',
+    'Hyper Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-ecosystem',
+    'future-proof-ecosystem',
+    'Future-Proof Ecosystem',
+    'Future-Proof Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-enablement',
+    'quantum-enablement',
+    'Quantum Enablement',
+    'Quantum Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-engagement',
+    'omni-engagement',
+    'Omni Engagement',
+    'Omni Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-engagement',
+    'crypto-engagement',
+    'Crypto Engagement',
+    'Crypto Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-optimization',
+    'zero-trust-optimization',
+    'Zero-Trust Optimization',
+    'Zero-Trust Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-integration',
+    'lean-integration',
+    'Lean Integration',
+    'Lean Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-engagement',
+    'transformational-engagement',
+    'Transformational Engagement',
+    'Transformational Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-orchestration',
+    'agile-orchestration',
+    'Agile Orchestration',
+    'Agile Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-transformation',
+    'personalized-transformation',
+    'Personalized Transformation',
+    'Personalized Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-optimization',
+    'future-proof-optimization',
+    'Future-Proof Optimization',
+    'Future-Proof Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-architecture',
+    'agile-architecture',
+    'Agile Architecture',
+    'Agile Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-touchpoint',
+    'quantum-touchpoint',
+    'Quantum Touchpoint',
+    'Quantum Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-roadmap',
+    'disruptive-roadmap',
+    'Disruptive Roadmap',
+    'Disruptive Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-framework',
+    'hyper-framework',
+    'Hyper Framework',
+    'Hyper Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-pipeline',
+    'crypto-pipeline',
+    'Crypto Pipeline',
+    'Crypto Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-roadmap',
+    'lean-roadmap',
+    'Lean Roadmap',
+    'Lean Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-pipeline',
+    'synergy-pipeline',
+    'Synergy Pipeline',
+    'Synergy Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-integration',
+    'frictionless-integration',
+    'Frictionless Integration',
+    'Frictionless Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-mindset',
+    'lean-mindset',
+    'Lean Mindset',
+    'Lean Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-pipeline',
+    'strategic-pipeline',
+    'Strategic Pipeline',
+    'Strategic Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-optimization',
+    'quantum-optimization',
+    'Quantum Optimization',
+    'Quantum Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-synergy',
+    'circular-synergy',
+    'Circular Synergy',
+    'Circular Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-roadmap',
+    'future-proof-roadmap',
+    'Future-Proof Roadmap',
+    'Future-Proof Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-synergy',
+    'neural-synergy',
+    'Neural Synergy',
+    'Neural Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-solution',
+    'synergy-solution',
+    'Synergy Solution',
+    'Synergy Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-orchestration',
+    'hyper-orchestration',
+    'Hyper Orchestration',
+    'Hyper Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-framework',
+    'personalized-framework',
+    'Personalized Framework',
+    'Personalized Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-optimization',
+    'agile-optimization',
+    'Agile Optimization',
+    'Agile Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-strategy',
+    'crypto-strategy',
+    'Crypto Strategy',
+    'Crypto Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-paradigm',
+    'transformational-paradigm',
+    'Transformational Paradigm',
+    'Transformational Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-mindset',
+    'seamless-mindset',
+    'Seamless Mindset',
+    'Seamless Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-journey',
+    'neural-journey',
+    'Neural Journey',
+    'Neural Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-initiative',
+    'meta-initiative',
+    'Meta Initiative',
+    'Meta Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-orchestration',
+    'circular-orchestration',
+    'Circular Orchestration',
+    'Circular Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-blueprint',
+    'crypto-blueprint',
+    'Crypto Blueprint',
+    'Crypto Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-metric',
+    'transformational-metric',
+    'Transformational Metric',
+    'Transformational Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-loop',
+    'next-gen-loop',
+    'Next-Gen Loop',
+    'Next-Gen Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-journey',
+    'synergy-journey',
+    'Synergy Journey',
+    'Synergy Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-engagement',
+    'cloud-engagement',
+    'Cloud Engagement',
+    'Cloud Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-roadmap',
+    'circular-roadmap',
+    'Circular Roadmap',
+    'Circular Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-initiative',
+    'scalable-initiative',
+    'Scalable Initiative',
+    'Scalable Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-initiative',
+    'lean-initiative',
+    'Lean Initiative',
+    'Lean Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-optimization',
+    'circular-optimization',
+    'Circular Optimization',
+    'Circular Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-optimization',
+    'meta-optimization',
+    'Meta Optimization',
+    'Meta Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-integration',
+    'next-gen-integration',
+    'Next-Gen Integration',
+    'Next-Gen Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-alignment',
+    'quantum-alignment',
+    'Quantum Alignment',
+    'Quantum Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-roadmap',
+    'zero-trust-roadmap',
+    'Zero-Trust Roadmap',
+    'Zero-Trust Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-metric',
+    'cross-metric',
+    'Cross Metric',
+    'Cross Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-experience',
+    'meta-experience',
+    'Meta Experience',
+    'Meta Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-optimization',
+    'cross-optimization',
+    'Cross Optimization',
+    'Cross Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-enablement',
+    'predictive-enablement',
+    'Predictive Enablement',
+    'Predictive Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-metric',
+    'agile-metric',
+    'Agile Metric',
+    'Agile Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-orchestration',
+    'frictionless-orchestration',
+    'Frictionless Orchestration',
+    'Frictionless Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-enablement',
+    'neural-enablement',
+    'Neural Enablement',
+    'Neural Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-journey',
+    'zero-trust-journey',
+    'Zero-Trust Journey',
+    'Zero-Trust Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-pipeline',
+    'personalized-pipeline',
+    'Personalized Pipeline',
+    'Personalized Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-optimization',
+    'hybrid-optimization',
+    'Hybrid Optimization',
+    'Hybrid Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-framework',
+    'disruptive-framework',
+    'Disruptive Framework',
+    'Disruptive Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-framework',
+    'frictionless-framework',
+    'Frictionless Framework',
+    'Frictionless Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-solution',
+    'future-proof-solution',
+    'Future-Proof Solution',
+    'Future-Proof Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-alignment',
+    'hybrid-alignment',
+    'Hybrid Alignment',
+    'Hybrid Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-roadmap',
+    'strategic-roadmap',
+    'Strategic Roadmap',
+    'Strategic Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-strategy',
+    'cloud-strategy',
+    'Cloud Strategy',
+    'Cloud Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-enablement',
+    'next-gen-enablement',
+    'Next-Gen Enablement',
+    'Next-Gen Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-alignment',
+    'hyper-alignment',
+    'Hyper Alignment',
+    'Hyper Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-experience',
+    'neural-experience',
+    'Neural Experience',
+    'Neural Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-metric',
+    'frictionless-metric',
+    'Frictionless Metric',
+    'Frictionless Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-touchpoint',
+    'personalized-touchpoint',
+    'Personalized Touchpoint',
+    'Personalized Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-initiative',
+    'virtual-initiative',
+    'Virtual Initiative',
+    'Virtual Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-initiative',
+    'seamless-initiative',
+    'Seamless Initiative',
+    'Seamless Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-optimization',
+    'holistic-optimization',
+    'Holistic Optimization',
+    'Holistic Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-pipeline',
+    'holistic-pipeline',
+    'Holistic Pipeline',
+    'Holistic Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-initiative',
+    'hybrid-initiative',
+    'Hybrid Initiative',
+    'Hybrid Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-alignment',
+    'virtual-alignment',
+    'Virtual Alignment',
+    'Virtual Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-solution',
+    'frictionless-solution',
+    'Frictionless Solution',
+    'Frictionless Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-engagement',
+    'cross-engagement',
+    'Cross Engagement',
+    'Cross Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-architecture',
+    'synergy-architecture',
+    'Synergy Architecture',
+    'Synergy Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-loop',
+    'dynamic-loop',
+    'Dynamic Loop',
+    'Dynamic Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-loop',
+    'smart-loop',
+    'Smart Loop',
+    'Smart Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-framework',
+    'virtual-framework',
+    'Virtual Framework',
+    'Virtual Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-pipeline',
+    'omni-pipeline',
+    'Omni Pipeline',
+    'Omni Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-paradigm',
+    'quantum-paradigm',
+    'Quantum Paradigm',
+    'Quantum Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-paradigm',
+    'dynamic-paradigm',
+    'Dynamic Paradigm',
+    'Dynamic Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-experience',
+    'smart-experience',
+    'Smart Experience',
+    'Smart Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-pipeline',
+    'virtual-pipeline',
+    'Virtual Pipeline',
+    'Virtual Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-engagement',
+    'frictionless-engagement',
+    'Frictionless Engagement',
+    'Frictionless Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-engagement',
+    'scalable-engagement',
+    'Scalable Engagement',
+    'Scalable Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-experience',
+    'omni-experience',
+    'Omni Experience',
+    'Omni Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-touchpoint',
+    'virtual-touchpoint',
+    'Virtual Touchpoint',
+    'Virtual Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-journey',
+    'disruptive-journey',
+    'Disruptive Journey',
+    'Disruptive Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-journey',
+    'crypto-journey',
+    'Crypto Journey',
+    'Crypto Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-transformation',
+    'holistic-transformation',
+    'Holistic Transformation',
+    'Holistic Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-synergy',
+    'smart-synergy',
+    'Smart Synergy',
+    'Smart Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-mindset',
+    'scalable-mindset',
+    'Scalable Mindset',
+    'Scalable Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-pipeline',
+    'lean-pipeline',
+    'Lean Pipeline',
+    'Lean Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-mindset',
+    'transformational-mindset',
+    'Transformational Mindset',
+    'Transformational Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-initiative',
+    'frictionless-initiative',
+    'Frictionless Initiative',
+    'Frictionless Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-alignment',
+    'next-gen-alignment',
+    'Next-Gen Alignment',
+    'Next-Gen Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-experience',
+    'lean-experience',
+    'Lean Experience',
+    'Lean Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-mindset',
+    'hybrid-mindset',
+    'Hybrid Mindset',
+    'Hybrid Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-framework',
+    'scalable-framework',
+    'Scalable Framework',
+    'Scalable Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-loop',
+    'circular-loop',
+    'Circular Loop',
+    'Circular Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-optimization',
+    'neural-optimization',
+    'Neural Optimization',
+    'Neural Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-loop',
+    'strategic-loop',
+    'Strategic Loop',
+    'Strategic Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-enablement',
+    'crypto-enablement',
+    'Crypto Enablement',
+    'Crypto Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-touchpoint',
+    'hyper-touchpoint',
+    'Hyper Touchpoint',
+    'Hyper Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-orchestration',
+    'holistic-orchestration',
+    'Holistic Orchestration',
+    'Holistic Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-orchestration',
+    'future-proof-orchestration',
+    'Future-Proof Orchestration',
+    'Future-Proof Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-paradigm',
+    'holistic-paradigm',
+    'Holistic Paradigm',
+    'Holistic Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-framework',
+    'zero-trust-framework',
+    'Zero-Trust Framework',
+    'Zero-Trust Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-metric',
+    'scalable-metric',
+    'Scalable Metric',
+    'Scalable Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-experience',
+    'synergy-experience',
+    'Synergy Experience',
+    'Synergy Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-mindset',
+    'zero-trust-mindset',
+    'Zero-Trust Mindset',
+    'Zero-Trust Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-architecture',
+    'virtual-architecture',
+    'Virtual Architecture',
+    'Virtual Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-blueprint',
+    'cross-blueprint',
+    'Cross Blueprint',
+    'Cross Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-pipeline',
+    'neural-pipeline',
+    'Neural Pipeline',
+    'Neural Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-integration',
+    'strategic-integration',
+    'Strategic Integration',
+    'Strategic Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-initiative',
+    'dynamic-initiative',
+    'Dynamic Initiative',
+    'Dynamic Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-strategy',
+    'virtual-strategy',
+    'Virtual Strategy',
+    'Virtual Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-strategy',
+    'transformational-strategy',
+    'Transformational Strategy',
+    'Transformational Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-ecosystem',
+    'hybrid-ecosystem',
+    'Hybrid Ecosystem',
+    'Hybrid Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-blueprint',
+    'disruptive-blueprint',
+    'Disruptive Blueprint',
+    'Disruptive Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-enablement',
+    'personalized-enablement',
+    'Personalized Enablement',
+    'Personalized Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-loop',
+    'agile-loop',
+    'Agile Loop',
+    'Agile Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-engagement',
+    'strategic-engagement',
+    'Strategic Engagement',
+    'Strategic Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-strategy',
+    'cross-strategy',
+    'Cross Strategy',
+    'Cross Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-experience',
+    'circular-experience',
+    'Circular Experience',
+    'Circular Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-alignment',
+    'frictionless-alignment',
+    'Frictionless Alignment',
+    'Frictionless Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-initiative',
+    'cloud-initiative',
+    'Cloud Initiative',
+    'Cloud Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-transformation',
+    'smart-transformation',
+    'Smart Transformation',
+    'Smart Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-synergy',
+    'seamless-synergy',
+    'Seamless Synergy',
+    'Seamless Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-architecture',
+    'cross-architecture',
+    'Cross Architecture',
+    'Cross Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-experience',
+    'next-gen-experience',
+    'Next-Gen Experience',
+    'Next-Gen Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-solution',
+    'strategic-solution',
+    'Strategic Solution',
+    'Strategic Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-touchpoint',
+    'hybrid-touchpoint',
+    'Hybrid Touchpoint',
+    'Hybrid Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-engagement',
+    'meta-engagement',
+    'Meta Engagement',
+    'Meta Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-mindset',
+    'meta-mindset',
+    'Meta Mindset',
+    'Meta Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-metric',
+    'future-proof-metric',
+    'Future-Proof Metric',
+    'Future-Proof Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-framework',
+    'smart-framework',
+    'Smart Framework',
+    'Smart Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-experience',
+    'dynamic-experience',
+    'Dynamic Experience',
+    'Dynamic Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-solution',
+    'neural-solution',
+    'Neural Solution',
+    'Neural Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-blueprint',
+    'omni-blueprint',
+    'Omni Blueprint',
+    'Omni Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-strategy',
+    'circular-strategy',
+    'Circular Strategy',
+    'Circular Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-solution',
+    'dynamic-solution',
+    'Dynamic Solution',
+    'Dynamic Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-enablement',
+    'future-proof-enablement',
+    'Future-Proof Enablement',
+    'Future-Proof Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-transformation',
+    'scalable-transformation',
+    'Scalable Transformation',
+    'Scalable Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-synergy',
+    'quantum-synergy',
+    'Quantum Synergy',
+    'Quantum Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-touchpoint',
+    'scalable-touchpoint',
+    'Scalable Touchpoint',
+    'Scalable Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-blueprint',
+    'holistic-blueprint',
+    'Holistic Blueprint',
+    'Holistic Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-alignment',
+    'predictive-alignment',
+    'Predictive Alignment',
+    'Predictive Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-solution',
+    'hybrid-solution',
+    'Hybrid Solution',
+    'Hybrid Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-roadmap',
+    'omni-roadmap',
+    'Omni Roadmap',
+    'Omni Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-journey',
+    'lean-journey',
+    'Lean Journey',
+    'Lean Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-playbook',
+    'omni-playbook',
+    'Omni Playbook',
+    'Omni Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-synergy',
+    'dynamic-synergy',
+    'Dynamic Synergy',
+    'Dynamic Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-enablement',
+    'synergy-enablement',
+    'Synergy Enablement',
+    'Synergy Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-solution',
+    'crypto-solution',
+    'Crypto Solution',
+    'Crypto Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-strategy',
+    'zero-trust-strategy',
+    'Zero-Trust Strategy',
+    'Zero-Trust Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-synergy',
+    'cloud-synergy',
+    'Cloud Synergy',
+    'Cloud Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-pipeline',
+    'seamless-pipeline',
+    'Seamless Pipeline',
+    'Seamless Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-pipeline',
+    'smart-pipeline',
+    'Smart Pipeline',
+    'Smart Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-transformation',
+    'quantum-transformation',
+    'Quantum Transformation',
+    'Quantum Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-initiative',
+    'circular-initiative',
+    'Circular Initiative',
+    'Circular Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-blueprint',
+    'frictionless-blueprint',
+    'Frictionless Blueprint',
+    'Frictionless Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-framework',
+    'hybrid-framework',
+    'Hybrid Framework',
+    'Hybrid Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-engagement',
+    'personalized-engagement',
+    'Personalized Engagement',
+    'Personalized Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-strategy',
+    'lean-strategy',
+    'Lean Strategy',
+    'Lean Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-framework',
+    'crypto-framework',
+    'Crypto Framework',
+    'Crypto Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-playbook',
+    'cloud-playbook',
+    'Cloud Playbook',
+    'Cloud Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-solution',
+    'scalable-solution',
+    'Scalable Solution',
+    'Scalable Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-experience',
+    'strategic-experience',
+    'Strategic Experience',
+    'Strategic Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-integration',
+    'scalable-integration',
+    'Scalable Integration',
+    'Scalable Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-roadmap',
+    'predictive-roadmap',
+    'Predictive Roadmap',
+    'Predictive Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-transformation',
+    'crypto-transformation',
+    'Crypto Transformation',
+    'Crypto Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-blueprint',
+    'predictive-blueprint',
+    'Predictive Blueprint',
+    'Predictive Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-metric',
+    'seamless-metric',
+    'Seamless Metric',
+    'Seamless Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-metric',
+    'hybrid-metric',
+    'Hybrid Metric',
+    'Hybrid Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-loop',
+    'zero-trust-loop',
+    'Zero-Trust Loop',
+    'Zero-Trust Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-optimization',
+    'omni-optimization',
+    'Omni Optimization',
+    'Omni Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-roadmap',
+    'dynamic-roadmap',
+    'Dynamic Roadmap',
+    'Dynamic Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-orchestration',
+    'personalized-orchestration',
+    'Personalized Orchestration',
+    'Personalized Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-architecture',
+    'transformational-architecture',
+    'Transformational Architecture',
+    'Transformational Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-optimization',
+    'dynamic-optimization',
+    'Dynamic Optimization',
+    'Dynamic Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-strategy',
+    'next-gen-strategy',
+    'Next-Gen Strategy',
+    'Next-Gen Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-orchestration',
+    'transformational-orchestration',
+    'Transformational Orchestration',
+    'Transformational Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-optimization',
+    'lean-optimization',
+    'Lean Optimization',
+    'Lean Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-paradigm',
+    'strategic-paradigm',
+    'Strategic Paradigm',
+    'Strategic Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-ecosystem',
+    'crypto-ecosystem',
+    'Crypto Ecosystem',
+    'Crypto Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-touchpoint',
+    'lean-touchpoint',
+    'Lean Touchpoint',
+    'Lean Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-optimization',
+    'predictive-optimization',
+    'Predictive Optimization',
+    'Predictive Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-strategy',
+    'agile-strategy',
+    'Agile Strategy',
+    'Agile Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-paradigm',
+    'seamless-paradigm',
+    'Seamless Paradigm',
+    'Seamless Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-architecture',
+    'zero-trust-architecture',
+    'Zero-Trust Architecture',
+    'Zero-Trust Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-mindset',
+    'synergy-mindset',
+    'Synergy Mindset',
+    'Synergy Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-playbook',
+    'smart-playbook',
+    'Smart Playbook',
+    'Smart Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-solution',
+    'virtual-solution',
+    'Virtual Solution',
+    'Virtual Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-orchestration',
+    'smart-orchestration',
+    'Smart Orchestration',
+    'Smart Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-initiative',
+    'holistic-initiative',
+    'Holistic Initiative',
+    'Holistic Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-integration',
+    'zero-trust-integration',
+    'Zero-Trust Integration',
+    'Zero-Trust Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-ecosystem',
+    'circular-ecosystem',
+    'Circular Ecosystem',
+    'Circular Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-transformation',
+    'hybrid-transformation',
+    'Hybrid Transformation',
+    'Hybrid Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-loop',
+    'neural-loop',
+    'Neural Loop',
+    'Neural Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-framework',
+    'cloud-framework',
+    'Cloud Framework',
+    'Cloud Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-ecosystem',
+    'agile-ecosystem',
+    'Agile Ecosystem',
+    'Agile Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-paradigm',
+    'circular-paradigm',
+    'Circular Paradigm',
+    'Circular Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-experience',
+    'cross-experience',
+    'Cross Experience',
+    'Cross Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-blueprint',
+    'lean-blueprint',
+    'Lean Blueprint',
+    'Lean Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-ecosystem',
+    'quantum-ecosystem',
+    'Quantum Ecosystem',
+    'Quantum Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-enablement',
+    'frictionless-enablement',
+    'Frictionless Enablement',
+    'Frictionless Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-integration',
+    'meta-integration',
+    'Meta Integration',
+    'Meta Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-enablement',
+    'virtual-enablement',
+    'Virtual Enablement',
+    'Virtual Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-journey',
+    'next-gen-journey',
+    'Next-Gen Journey',
+    'Next-Gen Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-metric',
+    'meta-metric',
+    'Meta Metric',
+    'Meta Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-playbook',
+    'disruptive-playbook',
+    'Disruptive Playbook',
+    'Disruptive Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-transformation',
+    'circular-transformation',
+    'Circular Transformation',
+    'Circular Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-metric',
+    'neural-metric',
+    'Neural Metric',
+    'Neural Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-orchestration',
+    'crypto-orchestration',
+    'Crypto Orchestration',
+    'Crypto Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-transformation',
+    'neural-transformation',
+    'Neural Transformation',
+    'Neural Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-pipeline',
+    'future-proof-pipeline',
+    'Future-Proof Pipeline',
+    'Future-Proof Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-ecosystem',
+    'meta-ecosystem',
+    'Meta Ecosystem',
+    'Meta Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-blueprint',
+    'transformational-blueprint',
+    'Transformational Blueprint',
+    'Transformational Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-experience',
+    'seamless-experience',
+    'Seamless Experience',
+    'Seamless Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-integration',
+    'neural-integration',
+    'Neural Integration',
+    'Neural Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-transformation',
+    'virtual-transformation',
+    'Virtual Transformation',
+    'Virtual Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-mindset',
+    'future-proof-mindset',
+    'Future-Proof Mindset',
+    'Future-Proof Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-enablement',
+    'seamless-enablement',
+    'Seamless Enablement',
+    'Seamless Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-touchpoint',
+    'circular-touchpoint',
+    'Circular Touchpoint',
+    'Circular Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-strategy',
+    'future-proof-strategy',
+    'Future-Proof Strategy',
+    'Future-Proof Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-loop',
+    'disruptive-loop',
+    'Disruptive Loop',
+    'Disruptive Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-blueprint',
+    'scalable-blueprint',
+    'Scalable Blueprint',
+    'Scalable Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-ecosystem',
+    'cross-ecosystem',
+    'Cross Ecosystem',
+    'Cross Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-transformation',
+    'seamless-transformation',
+    'Seamless Transformation',
+    'Seamless Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-blueprint',
+    'seamless-blueprint',
+    'Seamless Blueprint',
+    'Seamless Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-metric',
+    'predictive-metric',
+    'Predictive Metric',
+    'Predictive Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-transformation',
+    'cloud-transformation',
+    'Cloud Transformation',
+    'Cloud Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-orchestration',
+    'zero-trust-orchestration',
+    'Zero-Trust Orchestration',
+    'Zero-Trust Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-synergy',
+    'scalable-synergy',
+    'Scalable Synergy',
+    'Scalable Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-journey',
+    'strategic-journey',
+    'Strategic Journey',
+    'Strategic Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-experience',
+    'holistic-experience',
+    'Holistic Experience',
+    'Holistic Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-engagement',
+    'disruptive-engagement',
+    'Disruptive Engagement',
+    'Disruptive Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-mindset',
+    'strategic-mindset',
+    'Strategic Mindset',
+    'Strategic Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-enablement',
+    'dynamic-enablement',
+    'Dynamic Enablement',
+    'Dynamic Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-paradigm',
+    'scalable-paradigm',
+    'Scalable Paradigm',
+    'Scalable Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-strategy',
+    'strategic-strategy',
+    'Strategic Strategy',
+    'Strategic Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-playbook',
+    'lean-playbook',
+    'Lean Playbook',
+    'Lean Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-journey',
+    'hybrid-journey',
+    'Hybrid Journey',
+    'Hybrid Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-orchestration',
+    'quantum-orchestration',
+    'Quantum Orchestration',
+    'Quantum Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-loop',
+    'crypto-loop',
+    'Crypto Loop',
+    'Crypto Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-experience',
+    'frictionless-experience',
+    'Frictionless Experience',
+    'Frictionless Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-synergy',
+    'next-gen-synergy',
+    'Next-Gen Synergy',
+    'Next-Gen Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-experience',
+    'zero-trust-experience',
+    'Zero-Trust Experience',
+    'Zero-Trust Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-roadmap',
+    'synergy-roadmap',
+    'Synergy Roadmap',
+    'Synergy Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-mindset',
+    'virtual-mindset',
+    'Virtual Mindset',
+    'Virtual Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-architecture',
+    'dynamic-architecture',
+    'Dynamic Architecture',
+    'Dynamic Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-solution',
+    'cross-solution',
+    'Cross Solution',
+    'Cross Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-integration',
+    'future-proof-integration',
+    'Future-Proof Integration',
+    'Future-Proof Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-playbook',
+    'agile-playbook',
+    'Agile Playbook',
+    'Agile Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-transformation',
+    'transformational-transformation',
+    'Transformational Transformation',
+    'Transformational Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-playbook',
+    'future-proof-playbook',
+    'Future-Proof Playbook',
+    'Future-Proof Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-strategy',
+    'smart-strategy',
+    'Smart Strategy',
+    'Smart Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-blueprint',
+    'smart-blueprint',
+    'Smart Blueprint',
+    'Smart Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-pipeline',
+    'hybrid-pipeline',
+    'Hybrid Pipeline',
+    'Hybrid Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-framework',
+    'strategic-framework',
+    'Strategic Framework',
+    'Strategic Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-touchpoint',
+    'meta-touchpoint',
+    'Meta Touchpoint',
+    'Meta Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-integration',
+    'agile-integration',
+    'Agile Integration',
+    'Agile Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-solution',
+    'hyper-solution',
+    'Hyper Solution',
+    'Hyper Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-enablement',
+    'smart-enablement',
+    'Smart Enablement',
+    'Smart Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-strategy',
+    'frictionless-strategy',
+    'Frictionless Strategy',
+    'Frictionless Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-ecosystem',
+    'seamless-ecosystem',
+    'Seamless Ecosystem',
+    'Seamless Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-playbook',
+    'seamless-playbook',
+    'Seamless Playbook',
+    'Seamless Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-experience',
+    'future-proof-experience',
+    'Future-Proof Experience',
+    'Future-Proof Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-integration',
+    'cross-integration',
+    'Cross Integration',
+    'Cross Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-transformation',
+    'cross-transformation',
+    'Cross Transformation',
+    'Cross Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-orchestration',
+    'hybrid-orchestration',
+    'Hybrid Orchestration',
+    'Hybrid Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-touchpoint',
+    'zero-trust-touchpoint',
+    'Zero-Trust Touchpoint',
+    'Zero-Trust Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-paradigm',
+    'future-proof-paradigm',
+    'Future-Proof Paradigm',
+    'Future-Proof Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-loop',
+    'scalable-loop',
+    'Scalable Loop',
+    'Scalable Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-transformation',
+    'omni-transformation',
+    'Omni Transformation',
+    'Omni Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-engagement',
+    'predictive-engagement',
+    'Predictive Engagement',
+    'Predictive Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-integration',
+    'hybrid-integration',
+    'Hybrid Integration',
+    'Hybrid Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-loop',
+    'transformational-loop',
+    'Transformational Loop',
+    'Transformational Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-roadmap',
+    'smart-roadmap',
+    'Smart Roadmap',
+    'Smart Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-optimization',
+    'synergy-optimization',
+    'Synergy Optimization',
+    'Synergy Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-engagement',
+    'holistic-engagement',
+    'Holistic Engagement',
+    'Holistic Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-solution',
+    'cloud-solution',
+    'Cloud Solution',
+    'Cloud Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-touchpoint',
+    'holistic-touchpoint',
+    'Holistic Touchpoint',
+    'Holistic Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-journey',
+    'predictive-journey',
+    'Predictive Journey',
+    'Predictive Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-optimization',
+    'strategic-optimization',
+    'Strategic Optimization',
+    'Strategic Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-integration',
+    'personalized-integration',
+    'Personalized Integration',
+    'Personalized Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-alignment',
+    'cross-alignment',
+    'Cross Alignment',
+    'Cross Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-optimization',
+    'frictionless-optimization',
+    'Frictionless Optimization',
+    'Frictionless Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-blueprint',
+    'dynamic-blueprint',
+    'Dynamic Blueprint',
+    'Dynamic Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-journey',
+    'cross-journey',
+    'Cross Journey',
+    'Cross Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-solution',
+    'meta-solution',
+    'Meta Solution',
+    'Meta Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-transformation',
+    'agile-transformation',
+    'Agile Transformation',
+    'Agile Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-synergy',
+    'hybrid-synergy',
+    'Hybrid Synergy',
+    'Hybrid Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-architecture',
+    'personalized-architecture',
+    'Personalized Architecture',
+    'Personalized Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-paradigm',
+    'lean-paradigm',
+    'Lean Paradigm',
+    'Lean Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-metric',
+    'next-gen-metric',
+    'Next-Gen Metric',
+    'Next-Gen Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-orchestration',
+    'cloud-orchestration',
+    'Cloud Orchestration',
+    'Cloud Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-framework',
+    'predictive-framework',
+    'Predictive Framework',
+    'Predictive Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-engagement',
+    'circular-engagement',
+    'Circular Engagement',
+    'Circular Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-enablement',
+    'holistic-enablement',
+    'Holistic Enablement',
+    'Holistic Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-roadmap',
+    'crypto-roadmap',
+    'Crypto Roadmap',
+    'Crypto Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-ecosystem',
+    'strategic-ecosystem',
+    'Strategic Ecosystem',
+    'Strategic Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-blueprint',
+    'personalized-blueprint',
+    'Personalized Blueprint',
+    'Personalized Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-enablement',
+    'lean-enablement',
+    'Lean Enablement',
+    'Lean Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-framework',
+    'agile-framework',
+    'Agile Framework',
+    'Agile Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-strategy',
+    'disruptive-strategy',
+    'Disruptive Strategy',
+    'Disruptive Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-integration',
+    'smart-integration',
+    'Smart Integration',
+    'Smart Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-synergy',
+    'cross-synergy',
+    'Cross Synergy',
+    'Cross Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-ecosystem',
+    'frictionless-ecosystem',
+    'Frictionless Ecosystem',
+    'Frictionless Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-architecture',
+    'cloud-architecture',
+    'Cloud Architecture',
+    'Cloud Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-solution',
+    'predictive-solution',
+    'Predictive Solution',
+    'Predictive Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-alignment',
+    'strategic-alignment',
+    'Strategic Alignment',
+    'Strategic Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-touchpoint',
+    'omni-touchpoint',
+    'Omni Touchpoint',
+    'Omni Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-transformation',
+    'predictive-transformation',
+    'Predictive Transformation',
+    'Predictive Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-framework',
+    'omni-framework',
+    'Omni Framework',
+    'Omni Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-alignment',
+    'personalized-alignment',
+    'Personalized Alignment',
+    'Personalized Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-loop',
+    'personalized-loop',
+    'Personalized Loop',
+    'Personalized Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-pipeline',
+    'cloud-pipeline',
+    'Cloud Pipeline',
+    'Cloud Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-mindset',
+    'omni-mindset',
+    'Omni Mindset',
+    'Omni Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-pipeline',
+    'scalable-pipeline',
+    'Scalable Pipeline',
+    'Scalable Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-optimization',
+    'disruptive-optimization',
+    'Disruptive Optimization',
+    'Disruptive Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-strategy',
+    'scalable-strategy',
+    'Scalable Strategy',
+    'Scalable Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-ecosystem',
+    'lean-ecosystem',
+    'Lean Ecosystem',
+    'Lean Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-synergy',
+    'virtual-synergy',
+    'Virtual Synergy',
+    'Virtual Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-architecture',
+    'smart-architecture',
+    'Smart Architecture',
+    'Smart Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-ecosystem',
+    'holistic-ecosystem',
+    'Holistic Ecosystem',
+    'Holistic Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-architecture',
+    'neural-architecture',
+    'Neural Architecture',
+    'Neural Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-framework',
+    'quantum-framework',
+    'Quantum Framework',
+    'Quantum Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-initiative',
+    'hyper-initiative',
+    'Hyper Initiative',
+    'Hyper Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-journey',
+    'quantum-journey',
+    'Quantum Journey',
+    'Quantum Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-synergy',
+    'hyper-synergy',
+    'Hyper Synergy',
+    'Hyper Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-architecture',
+    'omni-architecture',
+    'Omni Architecture',
+    'Omni Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-framework',
+    'synergy-framework',
+    'Synergy Framework',
+    'Synergy Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-pipeline',
+    'predictive-pipeline',
+    'Predictive Pipeline',
+    'Predictive Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-architecture',
+    'scalable-architecture',
+    'Scalable Architecture',
+    'Scalable Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-engagement',
+    'hybrid-engagement',
+    'Hybrid Engagement',
+    'Hybrid Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-blueprint',
+    'zero-trust-blueprint',
+    'Zero-Trust Blueprint',
+    'Zero-Trust Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-solution',
+    'disruptive-solution',
+    'Disruptive Solution',
+    'Disruptive Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-ecosystem',
+    'omni-ecosystem',
+    'Omni Ecosystem',
+    'Omni Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-mindset',
+    'circular-mindset',
+    'Circular Mindset',
+    'Circular Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-strategy',
+    'seamless-strategy',
+    'Seamless Strategy',
+    'Seamless Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-paradigm',
+    'virtual-paradigm',
+    'Virtual Paradigm',
+    'Virtual Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-architecture',
+    'strategic-architecture',
+    'Strategic Architecture',
+    'Strategic Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-integration',
+    'synergy-integration',
+    'Synergy Integration',
+    'Synergy Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-initiative',
+    'quantum-initiative',
+    'Quantum Initiative',
+    'Quantum Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-orchestration',
+    'strategic-orchestration',
+    'Strategic Orchestration',
+    'Strategic Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-synergy',
+    'strategic-synergy',
+    'Strategic Synergy',
+    'Strategic Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-transformation',
+    'next-gen-transformation',
+    'Next-Gen Transformation',
+    'Next-Gen Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-ecosystem',
+    'virtual-ecosystem',
+    'Virtual Ecosystem',
+    'Virtual Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-blueprint',
+    'synergy-blueprint',
+    'Synergy Blueprint',
+    'Synergy Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-transformation',
+    'dynamic-transformation',
+    'Dynamic Transformation',
+    'Dynamic Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-roadmap',
+    'cloud-roadmap',
+    'Cloud Roadmap',
+    'Cloud Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-roadmap',
+    'scalable-roadmap',
+    'Scalable Roadmap',
+    'Scalable Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-touchpoint',
+    'synergy-touchpoint',
+    'Synergy Touchpoint',
+    'Synergy Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-orchestration',
+    'seamless-orchestration',
+    'Seamless Orchestration',
+    'Seamless Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-ecosystem',
+    'cloud-ecosystem',
+    'Cloud Ecosystem',
+    'Cloud Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-pipeline',
+    'transformational-pipeline',
+    'Transformational Pipeline',
+    'Transformational Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-metric',
+    'hyper-metric',
+    'Hyper Metric',
+    'Hyper Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-integration',
+    'omni-integration',
+    'Omni Integration',
+    'Omni Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-experience',
+    'crypto-experience',
+    'Crypto Experience',
+    'Crypto Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-solution',
+    'smart-solution',
+    'Smart Solution',
+    'Smart Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-transformation',
+    'synergy-transformation',
+    'Synergy Transformation',
+    'Synergy Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-framework',
+    'circular-framework',
+    'Circular Framework',
+    'Circular Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-enablement',
+    'transformational-enablement',
+    'Transformational Enablement',
+    'Transformational Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-ecosystem',
+    'smart-ecosystem',
+    'Smart Ecosystem',
+    'Smart Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-alignment',
+    'smart-alignment',
+    'Smart Alignment',
+    'Smart Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-alignment',
+    'agile-alignment',
+    'Agile Alignment',
+    'Agile Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-ecosystem',
+    'zero-trust-ecosystem',
+    'Zero-Trust Ecosystem',
+    'Zero-Trust Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-roadmap',
+    'agile-roadmap',
+    'Agile Roadmap',
+    'Agile Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-journey',
+    'meta-journey',
+    'Meta Journey',
+    'Meta Journey is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta journey to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-architecture',
+    'frictionless-architecture',
+    'Frictionless Architecture',
+    'Frictionless Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-touchpoint',
+    'disruptive-touchpoint',
+    'Disruptive Touchpoint',
+    'Disruptive Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-architecture',
+    'predictive-architecture',
+    'Predictive Architecture',
+    'Predictive Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-strategy',
+    'personalized-strategy',
+    'Personalized Strategy',
+    'Personalized Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-experience',
+    'hybrid-experience',
+    'Hybrid Experience',
+    'Hybrid Experience is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid experience to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-transformation',
+    'disruptive-transformation',
+    'Disruptive Transformation',
+    'Disruptive Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-ecosystem',
+    'scalable-ecosystem',
+    'Scalable Ecosystem',
+    'Scalable Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-enablement',
+    'scalable-enablement',
+    'Scalable Enablement',
+    'Scalable Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-touchpoint',
+    'crypto-touchpoint',
+    'Crypto Touchpoint',
+    'Crypto Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-orchestration',
+    'virtual-orchestration',
+    'Virtual Orchestration',
+    'Virtual Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-architecture',
+    'future-proof-architecture',
+    'Future-Proof Architecture',
+    'Future-Proof Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-synergy',
+    'meta-synergy',
+    'Meta Synergy',
+    'Meta Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-integration',
+    'predictive-integration',
+    'Predictive Integration',
+    'Predictive Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-pipeline',
+    'disruptive-pipeline',
+    'Disruptive Pipeline',
+    'Disruptive Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-touchpoint',
+    'predictive-touchpoint',
+    'Predictive Touchpoint',
+    'Predictive Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-mindset',
+    'neural-mindset',
+    'Neural Mindset',
+    'Neural Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-transformation',
+    'frictionless-transformation',
+    'Frictionless Transformation',
+    'Frictionless Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-orchestration',
+    'next-gen-orchestration',
+    'Next-Gen Orchestration',
+    'Next-Gen Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-optimization',
+    'smart-optimization',
+    'Smart Optimization',
+    'Smart Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-mindset',
+    'disruptive-mindset',
+    'Disruptive Mindset',
+    'Disruptive Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-alignment',
+    'crypto-alignment',
+    'Crypto Alignment',
+    'Crypto Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-loop',
+    'lean-loop',
+    'Lean Loop',
+    'Lean Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-transformation',
+    'strategic-transformation',
+    'Strategic Transformation',
+    'Strategic Transformation is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic transformation to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-pipeline',
+    'zero-trust-pipeline',
+    'Zero-Trust Pipeline',
+    'Zero-Trust Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-initiative',
+    'strategic-initiative',
+    'Strategic Initiative',
+    'Strategic Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-metric',
+    'virtual-metric',
+    'Virtual Metric',
+    'Virtual Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-playbook',
+    'next-gen-playbook',
+    'Next-Gen Playbook',
+    'Next-Gen Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_smart-metric',
+    'smart-metric',
+    'Smart Metric',
+    'Smart Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in smart metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-engagement',
+    'next-gen-engagement',
+    'Next-Gen Engagement',
+    'Next-Gen Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-initiative',
+    'synergy-initiative',
+    'Synergy Initiative',
+    'Synergy Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-framework',
+    'future-proof-framework',
+    'Future-Proof Framework',
+    'Future-Proof Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-architecture',
+    'crypto-architecture',
+    'Crypto Architecture',
+    'Crypto Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-alignment',
+    'disruptive-alignment',
+    'Disruptive Alignment',
+    'Disruptive Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-engagement',
+    'lean-engagement',
+    'Lean Engagement',
+    'Lean Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-blueprint',
+    'circular-blueprint',
+    'Circular Blueprint',
+    'Circular Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-pipeline',
+    'meta-pipeline',
+    'Meta Pipeline',
+    'Meta Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-touchpoint',
+    'dynamic-touchpoint',
+    'Dynamic Touchpoint',
+    'Dynamic Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-mindset',
+    'holistic-mindset',
+    'Holistic Mindset',
+    'Holistic Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-pipeline',
+    'dynamic-pipeline',
+    'Dynamic Pipeline',
+    'Dynamic Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_quantum-solution',
+    'quantum-solution',
+    'Quantum Solution',
+    'Quantum Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in quantum solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-optimization',
+    'cloud-optimization',
+    'Cloud Optimization',
+    'Cloud Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-framework',
+    'transformational-framework',
+    'Transformational Framework',
+    'Transformational Framework is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational framework to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-blueprint',
+    'meta-blueprint',
+    'Meta Blueprint',
+    'Meta Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_strategic-touchpoint',
+    'strategic-touchpoint',
+    'Strategic Touchpoint',
+    'Strategic Touchpoint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in strategic touchpoint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-roadmap',
+    'neural-roadmap',
+    'Neural Roadmap',
+    'Neural Roadmap is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural roadmap to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-paradigm',
+    'hyper-paradigm',
+    'Hyper Paradigm',
+    'Hyper Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_predictive-playbook',
+    'predictive-playbook',
+    'Predictive Playbook',
+    'Predictive Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in predictive playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-strategy',
+    'synergy-strategy',
+    'Synergy Strategy',
+    'Synergy Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-architecture',
+    'hyper-architecture',
+    'Hyper Architecture',
+    'Hyper Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-enablement',
+    'cloud-enablement',
+    'Cloud Enablement',
+    'Cloud Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-solution',
+    'omni-solution',
+    'Omni Solution',
+    'Omni Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-synergy',
+    'disruptive-synergy',
+    'Disruptive Synergy',
+    'Disruptive Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_disruptive-paradigm',
+    'disruptive-paradigm',
+    'Disruptive Paradigm',
+    'Disruptive Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in disruptive paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-orchestration',
+    'neural-orchestration',
+    'Neural Orchestration',
+    'Neural Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-loop',
+    'omni-loop',
+    'Omni Loop',
+    'Omni Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cross-loop',
+    'cross-loop',
+    'Cross Loop',
+    'Cross Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cross loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-ecosystem',
+    'dynamic-ecosystem',
+    'Dynamic Ecosystem',
+    'Dynamic Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-loop',
+    'meta-loop',
+    'Meta Loop',
+    'Meta Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-solution',
+    'transformational-solution',
+    'Transformational Solution',
+    'Transformational Solution is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational solution to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_synergy-metric',
+    'synergy-metric',
+    'Synergy Metric',
+    'Synergy Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in synergy metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_agile-pipeline',
+    'agile-pipeline',
+    'Agile Pipeline',
+    'Agile Pipeline is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in agile pipeline to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-architecture',
+    'circular-architecture',
+    'Circular Architecture',
+    'Circular Architecture is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular architecture to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_zero-trust-synergy',
+    'zero-trust-synergy',
+    'Zero-Trust Synergy',
+    'Zero-Trust Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in zero-trust synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_scalable-alignment',
+    'scalable-alignment',
+    'Scalable Alignment',
+    'Scalable Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in scalable alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-metric',
+    'dynamic-metric',
+    'Dynamic Metric',
+    'Dynamic Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-synergy',
+    'holistic-synergy',
+    'Holistic Synergy',
+    'Holistic Synergy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic synergy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-loop',
+    'holistic-loop',
+    'Holistic Loop',
+    'Holistic Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_frictionless-loop',
+    'frictionless-loop',
+    'Frictionless Loop',
+    'Frictionless Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in frictionless loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-strategy',
+    'hyper-strategy',
+    'Hyper Strategy',
+    'Hyper Strategy is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper strategy to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_personalized-metric',
+    'personalized-metric',
+    'Personalized Metric',
+    'Personalized Metric is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in personalized metric to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_circular-alignment',
+    'circular-alignment',
+    'Circular Alignment',
+    'Circular Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in circular alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-mindset',
+    'hyper-mindset',
+    'Hyper Mindset',
+    'Hyper Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-blueprint',
+    'neural-blueprint',
+    'Neural Blueprint',
+    'Neural Blueprint is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural blueprint to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_meta-enablement',
+    'meta-enablement',
+    'Meta Enablement',
+    'Meta Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in meta enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_neural-ecosystem',
+    'neural-ecosystem',
+    'Neural Ecosystem',
+    'Neural Ecosystem is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in neural ecosystem to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_cloud-integration',
+    'cloud-integration',
+    'Cloud Integration',
+    'Cloud Integration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in cloud integration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_lean-orchestration',
+    'lean-orchestration',
+    'Lean Orchestration',
+    'Lean Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in lean orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_transformational-alignment',
+    'transformational-alignment',
+    'Transformational Alignment',
+    'Transformational Alignment is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in transformational alignment to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_dynamic-mindset',
+    'dynamic-mindset',
+    'Dynamic Mindset',
+    'Dynamic Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in dynamic mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-paradigm',
+    'omni-paradigm',
+    'Omni Paradigm',
+    'Omni Paradigm is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni paradigm to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_virtual-playbook',
+    'virtual-playbook',
+    'Virtual Playbook',
+    'Virtual Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in virtual playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_seamless-engagement',
+    'seamless-engagement',
+    'Seamless Engagement',
+    'Seamless Engagement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in seamless engagement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_crypto-mindset',
+    'crypto-mindset',
+    'Crypto Mindset',
+    'Crypto Mindset is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in crypto mindset to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hyper-loop',
+    'hyper-loop',
+    'Hyper Loop',
+    'Hyper Loop is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hyper loop to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_hybrid-enablement',
+    'hybrid-enablement',
+    'Hybrid Enablement',
+    'Hybrid Enablement is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in hybrid enablement to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_future-proof-initiative',
+    'future-proof-initiative',
+    'Future-Proof Initiative',
+    'Future-Proof Initiative is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in future-proof initiative to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_next-gen-optimization',
+    'next-gen-optimization',
+    'Next-Gen Optimization',
+    'Next-Gen Optimization is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in next-gen optimization to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_holistic-playbook',
+    'holistic-playbook',
+    'Holistic Playbook',
+    'Holistic Playbook is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in holistic playbook to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+INSERT OR IGNORE INTO terms_v2 (
+    id, slug, title, definition, examples, tags, 
+    status, views, seq, created_at, updated_at
+  ) VALUES (
+    'term_omni-orchestration',
+    'omni-orchestration',
+    'Omni Orchestration',
+    'Omni Orchestration is a corporate buzzword crafted to sound revolutionary while meaning very little. It conveys innovation, alignment, or progress, but typically adds more layers of abstraction than clarity.',
+    'We must invest in omni orchestration to future-proof the business.',
+    '["corporate","strategy","management","buzzword"]',
+    'published',
+    0,
+    132,
+    '2025-09-24 03:00:00',
+    '2025-09-24 03:00:00'
+  );
+
+-- Update sequence numbers to be sequential
+UPDATE terms_v2 SET seq = (
+  SELECT COUNT(*) FROM terms_v2 t2 
+  WHERE t2.created_at <= terms_v2.created_at
+) WHERE id LIKE 'term_%';
+
+-- Add some sample votes for engagement
+INSERT OR IGNORE INTO votes (id, term_id, user_fingerprint, reaction, created_at)
+SELECT 
+  'vote_' || substr(hex(randomblob(16)), 1, 8),
+  t.id,
+  'csv_import_500_' || substr(hex(randomblob(8)), 1, 8),
+  CASE (random() % 3)
+    WHEN 0 THEN 'cringe'
+    WHEN 1 THEN 'heard1000x' 
+    ELSE 'chefskiss'
+  END,
+  strftime('%s','now')*1000
+FROM terms_v2 t 
+WHERE t.id LIKE 'term_%' AND t.created_at >= '2025-09-24 03:00:00'
+LIMIT 100;
