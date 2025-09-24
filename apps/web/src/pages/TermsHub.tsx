@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LetterIndex } from '../components/terms/LetterIndex';
 import { getShortDescription } from '../utils/textUtils';
+import { SearchBox } from '../components/SearchBox';
 
 type Term = {
   id: string;
@@ -68,16 +69,18 @@ export function TermsHub() {
   }, [activeLetter, sortBy]);
 
   // Search functionality
-  const handleSearch = async () => {
-    if (!searchQuery.trim()) {
+  const handleSearch = async (query: string) => {
+    if (!query.trim()) {
       // Reset to normal view
       setActiveLetter('');
+      setSearchQuery('');
       return;
     }
 
+    setSearchQuery(query);
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(searchQuery)}&type=terms`, {
+      const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(query)}&type=terms`, {
         credentials: 'include'
       });
 
@@ -108,21 +111,12 @@ export function TermsHub() {
           {/* Search */}
           <div className="flex gap-4 mb-4">
             <div className="flex-1 max-w-md">
-              <input
-                type="text"
+              <SearchBox
                 placeholder="Search terms..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                className="w-full px-4 py-2 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500"
+                onSearch={handleSearch}
+                apiUrl={apiUrl}
               />
             </div>
-            <button
-              onClick={handleSearch}
-              className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
-            >
-              Search
-            </button>
           </div>
 
           {/* Filters */}
