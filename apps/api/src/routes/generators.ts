@@ -76,25 +76,40 @@ generators.post('/:slug', async (c) => {
     let output_text = '';
     
     if (slug === 'professor') {
-      // Use existing AI translate endpoint logic
+      // Use structured JSON response for professor
       const response = await callOpenAI(c.env, [
         { role: 'user', content: prompt }
       ], 300, 0.8);
       
-      // Parse the structured response
-      const lines = response.split('\n').filter(line => line.trim());
-      const academic = lines.find(line => line.includes('academic') || line.includes('1.'))?.replace(/^[^:]*:?\s*/, '') || 
-        `In today's dynamic ecosystem, ${data.inputs.text} represents a cross-functional lever for next-gen enablement.`;
-      const plain = lines.find(line => line.includes('plain') || line.includes('2.'))?.replace(/^[^:]*:?\s*/, '') || 
-        'We have no idea, but it sounds important.';
-      const framework = lines.find(line => line.includes('framework') || line.includes('3.'))?.replace(/^[^:]*:?\s*/, '') || 
-        'The 3 Ps: Posture, PowerPoint, and Postmortem.';
-
-      output_text = JSON.stringify({
-        academic_tone: academic,
-        plain_translation: plain,
-        optional_framework: framework
-      });
+      // Parse the JSON response
+      try {
+        const cleanedResponse = response.trim().replace(/^```json\s*/, '').replace(/\s*```$/, '');
+        const parsed = JSON.parse(cleanedResponse);
+        
+        if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+          output_text = JSON.stringify(parsed);
+        } else {
+          throw new Error('Invalid JSON structure');
+        }
+      } catch (parseError) {
+        console.error('Professor JSON parse error:', parseError);
+        // Fallback: try to extract object from response
+        const objectMatch = response.match(/\{[\s\S]*?\}/);
+        if (objectMatch) {
+          try {
+            const parsed = JSON.parse(objectMatch[0]);
+            if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+              output_text = JSON.stringify(parsed);
+            } else {
+              throw new Error('Invalid JSON structure');
+            }
+          } catch {
+            throw new Error('JSON extraction failed');
+          }
+        } else {
+          throw new Error('No JSON object found');
+        }
+      }
     } else {
       // For other generators, use OpenAI directly
       output_text = await callOpenAI(c.env, [

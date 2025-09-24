@@ -9,13 +9,21 @@ ai.post('/translate', async (c) => {
   
   try {
     const systemPrompt = createSystemPrompt(
-      `You are the "Corporate Professor" - an expert at translating corporate jargon. 
-      Given a piece of corporate buzzword text, provide three responses:
-      1. academic_tone: Translate it into even MORE pretentious corporate speak
-      2. plain_translation: What it actually means in simple, honest terms
-      3. optional_framework: A satirical "framework" or methodology related to the concept
-      
-      Keep responses witty, satirical, and brief (1-2 sentences each).`
+      `You are the "Corporate Professor" - an expert at translating corporate jargon.
+
+REQUIREMENTS:
+- Provide exactly 3 responses in JSON format
+- Keep each response 1-2 sentences
+- Be witty and satirical
+- No explanations or additional text
+
+OUTPUT FORMAT:
+Return ONLY a valid JSON object with these exact keys:
+{
+  "academic_tone": "Even more pretentious corporate speak",
+  "plain_translation": "What it actually means in simple terms", 
+  "optional_framework": "A satirical framework or methodology"
+}`
     );
 
     const response = await callOpenAI(c.env, [
@@ -23,30 +31,35 @@ ai.post('/translate', async (c) => {
       { role: 'user', content: `Translate this corporate jargon: "${text}"` }
     ], 300, 0.8);
 
-    // Parse the response or provide fallbacks
+    // Parse the JSON response
     try {
-      // Try to extract structured response
-      const lines = response.split('\n').filter(line => line.trim());
-      const academic = lines.find(line => line.includes('academic') || line.includes('1.'))?.replace(/^[^:]*:?\s*/, '') || 
-        `In today's dynamic ecosystem, ${text} represents a cross-functional lever for next-gen enablement.`;
-      const plain = lines.find(line => line.includes('plain') || line.includes('2.'))?.replace(/^[^:]*:?\s*/, '') || 
-        'We have no idea, but it sounds important.';
-      const framework = lines.find(line => line.includes('framework') || line.includes('3.'))?.replace(/^[^:]*:?\s*/, '') || 
-        'The 3 Ps: Posture, PowerPoint, and Postmortem.';
-
-      return c.json({
-        academic_tone: academic,
-        plain_translation: plain,
-        optional_framework: framework
-      });
-    } catch {
-      // Fallback if parsing fails
-      return c.json({
-        academic_tone: response.substring(0, 200) + '...',
-        plain_translation: 'Translation temporarily unavailable.',
-        optional_framework: 'The OOPS Framework: Out Of Processing Steam.'
-      });
+      // Clean the response to extract JSON
+      const cleanedResponse = response.trim().replace(/^```json\s*/, '').replace(/\s*```$/, '');
+      const parsed = JSON.parse(cleanedResponse);
+      
+      if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+        return c.json(parsed);
+      }
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError);
+      // Fallback: try to extract object from response
+      const objectMatch = response.match(/\{[\s\S]*?\}/);
+      if (objectMatch) {
+        try {
+          const parsed = JSON.parse(objectMatch[0]);
+          if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+            return c.json(parsed);
+          }
+        } catch {}
+      }
     }
+
+    // Ultimate fallback
+    return c.json({
+      academic_tone: `In today's dynamic ecosystem, ${text} represents a cross-functional lever for next-gen enablement.`,
+      plain_translation: 'We have no idea, but it sounds important.',
+      optional_framework: 'The 3 Ps: Posture, PowerPoint, and Postmortem.'
+    });
   } catch (error) {
     console.error('Translation error:', error);
     // Return humorous fallbacks
@@ -63,10 +76,19 @@ ai.post('/linkedin_post', async (c) => {
   
   try {
     const systemPrompt = createSystemPrompt(
-      `You are a satirical LinkedIn content generator. Create 3 different corporate LinkedIn posts about the given topic.
-      Make them sound authentically corporate but subtly ridiculous. Each should be 1-2 sentences.
-      Include corporate buzzwords, humble brags, and typical LinkedIn clichés.
-      Format as a JSON array of strings.`
+      `You are a satirical LinkedIn content generator. Create exactly 3 corporate LinkedIn posts about the given topic.
+
+REQUIREMENTS:
+- Each post should be 1-2 sentences
+- Sound authentically corporate but subtly ridiculous
+- Include buzzwords, humble brags, and LinkedIn clichés
+- Use emojis sparingly (1-2 per post max)
+
+OUTPUT FORMAT:
+Return ONLY a valid JSON array with exactly 3 strings. No other text, no explanations, no markdown formatting.
+
+Example format:
+["First post here", "Second post here", "Third post here"]`
     );
 
     const response = await callOpenAI(c.env, [
@@ -75,18 +97,24 @@ ai.post('/linkedin_post', async (c) => {
     ], 400, 0.9);
 
     try {
-      // Try to parse as JSON first
-      const parsed = JSON.parse(response);
+      // Clean the response to extract JSON
+      const cleanedResponse = response.trim().replace(/^```json\s*/, '').replace(/\s*```$/, '');
+      const parsed = JSON.parse(cleanedResponse);
+      
       if (Array.isArray(parsed) && parsed.length >= 3) {
         return c.json({ options: parsed.slice(0, 3) });
       }
-    } catch {
-      // Fallback: split by lines or create from response
-      const lines = response.split('\n').filter(line => line.trim() && !line.includes('```'));
-      if (lines.length >= 3) {
-        return c.json({ 
-          options: lines.slice(0, 3).map(line => line.replace(/^\d+\.\s*/, '').replace(/^[\-\*]\s*/, ''))
-        });
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError);
+      // Fallback: try to extract array from response
+      const arrayMatch = response.match(/\[[\s\S]*?\]/);
+      if (arrayMatch) {
+        try {
+          const parsed = JSON.parse(arrayMatch[0]);
+          if (Array.isArray(parsed) && parsed.length >= 3) {
+            return c.json({ options: parsed.slice(0, 3) });
+          }
+        } catch {}
       }
     }
 
