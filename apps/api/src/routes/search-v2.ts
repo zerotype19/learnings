@@ -22,13 +22,13 @@ router.get('/', async (c) => {
       try {
         const searchTerm = `%${q}%`;
         const termStmt = c.env.DB.prepare(`
-          SELECT id, slug, title, short_def, definition
+          SELECT id, slug, title, definition
           FROM terms_v2 
           WHERE status = 'published' 
-          AND (title LIKE ? OR definition LIKE ? OR short_def LIKE ?)
+          AND (title LIKE ? OR definition LIKE ?)
           ORDER BY views DESC
           LIMIT ?
-        `).bind(searchTerm, searchTerm, searchTerm, Math.ceil(limit / 2));
+        `).bind(searchTerm, searchTerm, Math.ceil(limit / 2));
         
         const { results: termResults } = await termStmt.all();
         
@@ -38,7 +38,7 @@ router.get('/', async (c) => {
               type: 'term',
               id: term.id,
               title: term.title,
-              description: term.short_def || term.definition.substring(0, 100) + '...',
+              description: term.definition.substring(0, 100) + '...',
               url: `/term/${term.slug}`,
               relevance_score: 1.0
             });
@@ -146,10 +146,10 @@ router.get('/suggest', async (c) => {
     try {
       const searchTerm = `%${q}%`;
       const termStmt = c.env.DB.prepare(`
-        SELECT id, slug, title, short_def
+        SELECT id, slug, title, definition
         FROM terms_v2 
         WHERE status = 'published' 
-        AND (title LIKE ? OR short_def LIKE ?)
+        AND (title LIKE ? OR definition LIKE ?)
         ORDER BY views DESC
         LIMIT ?
       `).bind(searchTerm, searchTerm, 3);
@@ -162,7 +162,7 @@ router.get('/suggest', async (c) => {
             type: 'term',
             id: term.id,
             title: term.title,
-            description: term.short_def,
+            description: term.definition.substring(0, 80) + '...',
             url: `/term/${term.slug}`
           });
         }

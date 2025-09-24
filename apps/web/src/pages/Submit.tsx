@@ -50,7 +50,6 @@ export function Submit() {
 function TermSubmissionForm() {
   const [formData, setFormData] = useState({
     title: '',
-    short_def: '',
     definition: '',
     examples: '',
     tags: '',
@@ -76,7 +75,6 @@ function TermSubmissionForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title: formData.title.trim(),
-          short_def: formData.short_def.trim() || undefined,
           definition: formData.definition.trim(),
           examples: formData.examples.trim() || undefined,
           tags: tags.length > 0 ? tags : undefined,
@@ -88,7 +86,6 @@ function TermSubmissionForm() {
         alert('Term submitted for review! Check back later to see if it gets approved.');
         setFormData({
           title: '',
-          short_def: '',
           definition: '',
           examples: '',
           tags: '',
@@ -150,20 +147,6 @@ function TermSubmissionForm() {
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium mb-1">Short Definition (160 chars)</label>
-          <input
-            type="text"
-            value={formData.short_def}
-            onChange={(e) => setFormData(prev => ({ ...prev, short_def: e.target.value }))}
-            placeholder="Quick one-liner definition..."
-            maxLength={160}
-            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
-          />
-          <div className="text-xs text-neutral-500 mt-1">
-            {formData.short_def.length}/160 characters
-          </div>
-        </div>
 
         <div>
           <label className="block text-sm font-medium mb-1">Full Definition *</label>

@@ -136,7 +136,6 @@ router.get('/:slug', async (c) => {
 // Submit new term
 const TermSubmissionSchema = z.object({
   title: z.string().min(2).max(100),
-  short_def: z.string().max(160).optional(),
   definition: z.string().min(10).max(2000),
   examples: z.string().max(1000).optional(),
   tags: z.array(z.string()).optional(),
@@ -165,7 +164,7 @@ router.post('/submit', async (c) => {
     
     const stmt = c.env.DB.prepare(`
       INSERT INTO term_submissions (
-        id, title, short_def, definition, examples, tags, links, 
+        id, title, definition, examples, tags, links, 
         submitted_by, status, created_at, updated_at
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'queued', ?, ?)
     `);
@@ -173,7 +172,7 @@ router.post('/submit', async (c) => {
     await stmt.bind(
       id,
       parsed.data.title,
-      parsed.data.short_def || null,
+      null,
       parsed.data.definition,
       parsed.data.examples || null,
       parsed.data.tags ? JSON.stringify(parsed.data.tags) : null,
@@ -228,14 +227,14 @@ router.get('/search', async (c) => {
       
       const stmt = c.env.DB.prepare(`
         SELECT * FROM terms_v2 
-        WHERE (title LIKE ? OR definition LIKE ? OR short_def LIKE ?) 
+        WHERE (title LIKE ? OR definition LIKE ?) 
         AND status = 'published'
         ORDER BY views DESC
         LIMIT ?
       `);
       
       const searchTerm = `%${q}%`;
-      const { results } = await stmt.all(searchTerm, searchTerm, searchTerm, limit);
+      const { results } = await stmt.all(searchTerm, searchTerm, limit);
       
       const processedItems = (results || []).map((item: any) => ({
         ...item,

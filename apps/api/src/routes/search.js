@@ -18,19 +18,18 @@ search.get('/', async (c) => {
         // Search terms
         if (type === 'all' || type === 'terms') {
             const { results: termResults } = await c.env.DB.prepare(`
-        SELECT 'term' as type, id, slug, title, definition as content, short_def, tags, views, created_at
+        SELECT 'term' as type, id, slug, title, definition as content, tags, views, created_at
         FROM terms_v2 
         WHERE status = 'published' 
-          AND (title LIKE ? OR definition LIKE ? OR short_def LIKE ?)
+        AND (title LIKE ? OR definition LIKE ?)
         ORDER BY 
           CASE 
             WHEN title LIKE ? THEN 1
-            WHEN short_def LIKE ? THEN 2
-            ELSE 3
+            ELSE 2
           END,
           views DESC
         LIMIT ?
-      `).bind(searchPattern, searchPattern, searchPattern, `%${query}%`, `%${query}%`, Math.ceil(limit / 2)).all();
+      `).bind(searchPattern, searchPattern, `%${query}%`, Math.ceil(limit / 2)).all();
             results.push(...(termResults || []));
         }
         // Search wall posts
@@ -117,7 +116,7 @@ search.get('/typeahead', async (c) => {
     try {
         // Get top 3 terms
         const { results: terms } = await c.env.DB.prepare(`
-      SELECT 'term' as type, id, slug, title, short_def, views
+      SELECT 'term' as type, id, slug, title, views
       FROM terms_v2 
       WHERE status = 'published' AND title LIKE ?
       ORDER BY views DESC

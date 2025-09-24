@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { getShortDescription } from '../utils/textUtils';
 
 type TermDetail = {
   id: string;
   slug: string;
   title: string;
   definition: string;
-  short_def?: string;
   examples?: string;
   tags: string[];
   views: number;
@@ -15,7 +15,6 @@ type TermDetail = {
     id: string;
     slug: string;
     title: string;
-    short_def?: string;
   }>;
   links: Array<{
     id: string;
@@ -82,7 +81,7 @@ export function TermDetail({ slug }: TermDetailProps) {
     if (navigator.share) {
       navigator.share({
         title: term?.title,
-        text: term?.short_def || term?.definition,
+        text: term?.definition,
         url
       });
     } else {
@@ -237,9 +236,7 @@ export function TermDetail({ slug }: TermDetailProps) {
                       className="block w-full text-left p-2 hover:bg-neutral-50 rounded-lg transition-colors"
                     >
                       <div className="font-medium text-sm">{relatedTerm.title}</div>
-                      {relatedTerm.short_def && (
-                        <div className="text-xs text-neutral-600">{relatedTerm.short_def}</div>
-                      )}
+                      <div className="text-xs text-neutral-600">{getShortDescription(term.definition, 6)}</div>
                     </button>
                   ))}
                 </div>

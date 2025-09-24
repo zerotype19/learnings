@@ -83,7 +83,7 @@ router.post('/terms/:id/approve', async (c) => {
     // Insert into terms_v2
     await c.env.DB.prepare(`
       INSERT INTO terms_v2 (
-        id, slug, title, definition, short_def, examples, tags, 
+        id, slug, title, definition, examples, tags, 
         status, created_at, updated_at, views, seq
       ) VALUES (?, ?, ?, ?, ?, ?, ?, 'published', ?, ?, 0, ?)
     `).bind(
@@ -91,7 +91,7 @@ router.post('/terms/:id/approve', async (c) => {
       finalSlug,
       submission.title,
       submission.definition,
-      submission.short_def || null,
+      null,
       submission.examples || null,
       submission.tags || null,
       now,

@@ -13,7 +13,7 @@ adminV2.get('/terms/submissions', async (c) => {
     const status = c.req.query('status') || 'queued';
     const limit = Math.min(parseInt(c.req.query('limit') || '50'), 100);
     const { results } = await c.env.DB.prepare(`
-    SELECT id, title, short_def, definition, examples, tags, links, submitted_by, 
+    SELECT id, title, definition, examples, tags, links, submitted_by, 
            status, reviewer, reviewer_notes, created_at, updated_at
     FROM term_submissions 
     WHERE status = ?
@@ -48,10 +48,10 @@ adminV2.post('/terms/:submissionId/approve', async (c) => {
         // Start transaction-like operations
         // 1. Create the published term
         await c.env.DB.prepare(`
-      INSERT INTO terms_v2 (id, slug, title, definition, short_def, examples, tags, status, created_at, updated_at, seq)
-      VALUES (?, ?, ?, ?, ?, ?, ?, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 
+      INSERT INTO terms_v2 (id, slug, title, definition, examples, tags, status, created_at, updated_at, seq)
+      VALUES (?, ?, ?, ?, ?, ?, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 
               (SELECT COALESCE(MAX(seq), 0) + 1 FROM terms_v2))
-    `).bind(termId, slug, submission.title, submission.definition, submission.short_def, submission.examples || '', submission.tags || '[]').run();
+    `).bind(termId, slug, submission.title, submission.definition, submission.examples || '', submission.tags || '[]').run();
         // 2. Update submission status
         await c.env.DB.prepare(`
       UPDATE term_submissions 

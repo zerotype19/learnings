@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { getShortDescription } from '../utils/textUtils';
 
 type TermSubmission = {
   id: string;
   title: string;
-  short_def?: string;
   definition: string;
   examples?: string;
   tags: string[];
@@ -333,9 +333,7 @@ function TermSubmissionCard({
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
           <h3 className="text-lg font-semibold mb-2">{submission.title}</h3>
-          {submission.short_def && (
-            <p className="text-sm text-neutral-600 mb-2 italic">"{submission.short_def}"</p>
-          )}
+          <p className="text-sm text-neutral-600 mb-2 italic">"{getShortDescription(submission.definition, 8)}"</p>
           <p className="text-neutral-700 mb-3">{submission.definition}</p>
           
           {submission.examples && (

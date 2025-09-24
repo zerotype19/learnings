@@ -173,7 +173,7 @@ wallV2.get('/:slug', async (c) => {
     if (relatedTermIds.length > 0) {
         const placeholders = relatedTermIds.map(() => '?').join(',');
         const { results } = await c.env.DB.prepare(`
-      SELECT id, slug, title, short_def FROM terms_v2 
+      SELECT id, slug, title, definition FROM terms_v2 
       WHERE id IN (${placeholders}) AND status = 'published'
     `).bind(...relatedTermIds).all();
         relatedTerms = results || [];

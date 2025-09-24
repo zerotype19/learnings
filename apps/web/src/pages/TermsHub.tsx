@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { LetterIndex } from '../components/terms/LetterIndex';
+import { getShortDescription } from '../utils/textUtils';
 
 type Term = {
   id: string;
   slug: string;
   title: string;
   definition: string;
-  short_def?: string;
   tags: string[];
   views: number;
   created_at: string;
@@ -241,7 +241,7 @@ function TermCard({ term, viewMode }: TermCardProps) {
           <div className="flex-1">
             <h3 className="font-semibold text-lg mb-1">{term.title}</h3>
             <p className="text-neutral-600 text-sm mb-2">
-              {term.short_def || term.definition.substring(0, 160)}
+              {getShortDescription(term.definition, 8)}
             </p>
             {term.tags.length > 0 && (
               <div className="flex flex-wrap gap-1">
@@ -268,7 +268,7 @@ function TermCard({ term, viewMode }: TermCardProps) {
     >
       <h3 className="font-semibold text-lg mb-2">{term.title}</h3>
       <p className="text-neutral-600 text-sm mb-3">
-        {term.short_def || term.definition.substring(0, 120)}...
+        {getShortDescription(term.definition, 6)}...
       </p>
       <div className="flex justify-between items-center">
         <div className="flex flex-wrap gap-1">

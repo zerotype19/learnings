@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { homeFeed, trackEvent } from '../../lib/api';
+import { getShortDescription } from '../../utils/textUtils';
 
 type FeedItem = {
   type: 'term' | 'wall' | 'challenge' | 'generator';
@@ -210,7 +211,7 @@ function TermFeedCard({ item, onClick }: FeedCardProps) {
           <div className="text-xs text-neutral-500 mb-1">New Term</div>
           <h3 className="font-semibold text-lg mb-2">{term.title}</h3>
           <p className="text-neutral-600 text-sm mb-3">
-            {term.summary || term.short_def || (term.definition ? term.definition.substring(0, 150) + '...' : 'No description available')}
+            {term.summary || getShortDescription(term.definition, 8) || 'No description available'}
           </p>
           <div className="flex items-center gap-4 text-xs text-neutral-500">
             <span>{term.views || 0} views</span>

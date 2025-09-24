@@ -10,7 +10,7 @@ termsV2.get('/', async (c) => {
     const sort = c.req.query('sort') || 'newest'; // newest, popular, alpha
     const cursor = c.req.query('cursor') || '';
     const limit = Math.min(parseInt(c.req.query('limit') || '20'), 50);
-    let query = 'SELECT id, slug, title, definition, short_def, tags, views, created_at FROM terms_v2 WHERE status = ?';
+    let query = 'SELECT id, slug, title, definition, tags, views, created_at FROM terms_v2 WHERE status = ?';
     let params = ['published'];
     // Filter by letter
     if (letter && letter.length === 1) {
@@ -74,7 +74,7 @@ termsV2.get('/', async (c) => {
     const processedItems = items.map(item => ({
         ...item,
         tags: JSON.parse(item.tags || '[]'),
-        short_def: item.short_def || item.definition.substring(0, 160)
+        short_def: item.definition.substring(0, 160)
     }));
     return c.json({
         items: processedItems,
@@ -85,7 +85,7 @@ termsV2.get('/', async (c) => {
 termsV2.get('/:slug', async (c) => {
     const { slug } = c.req.param();
     const term = await c.env.DB.prepare(`
-    SELECT id, slug, title, definition, short_def, examples, tags, views, created_at, updated_at 
+    SELECT id, slug, title, definition, examples, tags, views, created_at, updated_at 
     FROM terms_v2 
     WHERE slug = ? AND status = 'published'
   `).bind(slug).first();
@@ -97,7 +97,7 @@ termsV2.get('/:slug', async (c) => {
         .bind(term.id).run();
     // Get related terms (simple implementation for now)
     const { results: relatedTerms } = await c.env.DB.prepare(`
-    SELECT id, slug, title, short_def 
+    SELECT id, slug, title, definition 
     FROM terms_v2 
     WHERE status = 'published' AND id != ? 
     ORDER BY RANDOM() 
@@ -121,7 +121,6 @@ termsV2.get('/:slug', async (c) => {
 // POST /api/terms/submit - Submit new term for review
 const TermSubmissionSchema = z.object({
     title: z.string().min(2).max(100),
-    short_def: z.string().max(160).optional(),
     definition: z.string().min(10).max(2000),
     examples: z.string().max(1000).optional(),
     tags: z.array(z.string()).max(10).optional(),
@@ -141,9 +140,9 @@ termsV2.post('/submit', async (c) => {
     const id = nanoid();
     await c.env.DB.prepare(`
     INSERT INTO term_submissions 
-    (id, title, short_def, definition, examples, tags, links, submitted_by, status, created_at, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'queued', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-  `).bind(id, data.title, data.short_def || data.definition.substring(0, 160), data.definition, data.examples || '', JSON.stringify(data.tags || []), JSON.stringify(data.links || []), auth?.userId || 'anonymous').run();
+    (id, title, definition, examples, tags, links, submitted_by, status, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 'queued', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(id, data.title, data.definition, data.examples || '', JSON.stringify(data.tags || []), JSON.stringify(data.links || []), auth?.userId || 'anonymous').run();
     return c.json({
         id,
         status: 'queued',
