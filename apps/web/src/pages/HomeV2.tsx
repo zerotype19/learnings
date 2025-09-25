@@ -87,8 +87,8 @@ export function HomeV2() {
       const response = await fetch(`${apiUrl}/api/terms?limit=1&sort=random`);
       const data = await response.json();
       
-      if (data.terms && data.terms.length > 0) {
-        const randomTerm = data.terms[0];
+      if (data.items && data.items.length > 0) {
+        const randomTerm = data.items[0];
         window.location.href = `/term/${randomTerm.slug}`;
       } else {
         // Fallback to terms page if no random term found
