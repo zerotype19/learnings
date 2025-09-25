@@ -209,7 +209,7 @@ export function AdminV2() {
                 : 'border border-neutral-200 hover:bg-neutral-50'
             }`}
           >
-            📚 Term Submissions ({termSubmissions.length})
+            📚 Term Submissions ({stats?.pending_term_submissions || 0})
           </button>
           <button
             onClick={() => setActiveTab('wall')}
@@ -219,7 +219,7 @@ export function AdminV2() {
                 : 'border border-neutral-200 hover:bg-neutral-50'
             }`}
           >
-            📸 Wall Submissions ({wallSubmissions.length})
+            📸 Wall Submissions ({stats?.pending_wall_submissions || 0})
           </button>
           <button
             onClick={() => setActiveTab('stats')}
