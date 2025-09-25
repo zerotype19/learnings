@@ -31,6 +31,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
         const data: NonsenseData = await response.json();
         console.log('Loaded nonsense data:', data);
         setNonsenseData(data);
+        
+        // Set global window object for Clorg to access
+        (window as any).__NONSENSE__ = data;
       } catch (error) {
         console.error('Failed to load nonsense data:', error);
       }

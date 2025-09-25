@@ -97,7 +97,7 @@
   animation: ticker 60s linear infinite;
 }
 
-/* Corporate Mode Styles - Updated */
+/* Corporate Mode Styles - Updated v2 */
 html.corp-mode main {
   /* Compliance watermark */
   background-image: repeating-linear-gradient(

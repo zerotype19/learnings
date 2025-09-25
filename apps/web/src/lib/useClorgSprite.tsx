@@ -56,6 +56,12 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         (window as any).__NONSENSE__?.clorgPhrases || opts.phrases || [
           "Bullet points or die, respectfully."
         ];
+      
+      if (phrases.length === 0) {
+        console.log('No phrases available for Clorg');
+        return;
+      }
+      
       const phrase = phrases[Math.floor(Math.random() * phrases.length)];
 
       // Build DOM
