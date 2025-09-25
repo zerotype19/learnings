@@ -130,9 +130,6 @@ router.get('/', async (c) => {
     const cursor = c.req.query('cursor');
     const limit = Math.min(Number(c.req.query('limit') || '20'), 50);
     
-    console.log('Received cursor:', cursor);
-    console.log('Decoded cursor:', decodeURIComponent(cursor || ''));
-
     // Letter filtering
     if (letter && letter.length === 1) {
       query += ' AND UPPER(SUBSTR(title, 1, 1)) = ?';
@@ -147,20 +144,15 @@ router.get('/', async (c) => {
 
     // Cursor-based pagination (must come before ORDER BY)
     if (cursor) {
-      console.log('Raw cursor:', cursor);
-      console.log('Decoded cursor:', decodeURIComponent(cursor || ''));
       if (sort === 'alpha') {
         // For alpha sort, cursor is just the title
         query += ' AND title > ?';
         params.push(cursor);
-        console.log('Alpha cursor applied:', cursor);
       } else {
         // For other sorts, parse as before
         const cursorParts = cursor.split(':');
-        console.log('Cursor parts:', cursorParts);
         if (cursorParts.length === 2) {
           const [cursorTitle, cursorCreatedAt] = cursorParts;
-          console.log('Cursor parsed - Title:', cursorTitle, 'CreatedAt:', cursorCreatedAt);
           if (sort === 'popular') {
             query += ' AND (views < ? OR (views = ? AND created_at < ?))';
             params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
@@ -191,9 +183,6 @@ router.get('/', async (c) => {
 
     query += ' LIMIT ?';
     params.push(limit + 1);
-
-    console.log('Terms API Query:', query);
-    console.log('Terms API Params:', params);
 
     const stmt = c.env.DB.prepare(query);
     const { results } = await stmt.bind(...params).all();

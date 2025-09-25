@@ -29,7 +29,6 @@ export function TermsHub() {
 
   const loadTerms = async (reset = false) => {
     if (loading) return;
-    console.log('TermsHub: loadTerms called with reset:', reset, 'nextCursor:', nextCursor);
     setLoading(true);
 
     try {
@@ -40,12 +39,10 @@ export function TermsHub() {
 
       if (activeLetter) params.set('letter', activeLetter);
       if (!reset && nextCursor) {
-        console.log('TermsHub: Using cursor:', nextCursor);
         params.set('cursor', nextCursor);
       }
 
       const url = `${apiUrl}/api/terms?${params}`;
-      console.log('TermsHub: Fetching URL:', url);
       
       const response = await fetch(url, {
         credentials: 'include'
@@ -54,12 +51,6 @@ export function TermsHub() {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const data = await response.json();
-      console.log('TermsHub: Response data:', {
-        itemsCount: data.items?.length || 0,
-        nextCursor: data.nextCursor,
-        firstItem: data.items?.[0]?.title,
-        lastItem: data.items?.[data.items.length - 1]?.title
-      });
       
       if (reset) {
         setTerms(data.items || []);
@@ -67,7 +58,6 @@ export function TermsHub() {
         setTerms(prev => [...prev, ...(data.items || [])]);
       }
       
-      console.log('TermsHub: Setting nextCursor to:', data.nextCursor);
       setNextCursor(data.nextCursor);
     } catch (error) {
       console.error('Failed to load terms:', error);
