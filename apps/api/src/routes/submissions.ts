@@ -148,26 +148,24 @@ router.get('/confirm/:token', async (c) => {
   try {
     const token = c.req.param('token');
     
-    // Get pending submission (allow already confirmed ones)
+    // Get pending submission (only unconfirmed ones)
     const result = await c.env.DB.prepare(`
       SELECT * FROM pending_submissions 
-      WHERE confirmation_token = ? AND expires_at > ?
+      WHERE confirmation_token = ? AND expires_at > ? AND confirmed_at IS NULL
     `).bind(token, Date.now()).first();
     
     if (!result) {
-      return c.json({ success: false, error: 'Invalid or expired confirmation link' }, 400);
+      return c.json({ success: false, error: 'Invalid, expired, or already confirmed link' }, 400);
     }
     
     const submissionData = JSON.parse(result.data);
     
-    // Mark as confirmed if not already confirmed
-    if (!result.confirmed_at) {
-      await c.env.DB.prepare(`
-        UPDATE pending_submissions 
-        SET confirmed_at = ? 
-        WHERE confirmation_token = ?
-      `).bind(Date.now(), token).run();
-    }
+    // Mark as confirmed
+    await c.env.DB.prepare(`
+      UPDATE pending_submissions 
+      SET confirmed_at = ? 
+      WHERE confirmation_token = ?
+    `).bind(Date.now(), token).run();
     
     // Process the confirmed submission
     if (result.type === 'term') {
