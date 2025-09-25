@@ -29,11 +29,13 @@ router.get('/terms/submissions', async (c) => {
     
     const { results } = await stmt.bind(status, limit).all();
     
-    // Parse JSON fields
+    // Parse JSON fields and format dates
     const processedItems = (results || []).map((item: any) => ({
       ...item,
       tags: item.tags ? JSON.parse(item.tags) : [],
       links: item.links ? JSON.parse(item.links) : [],
+      created_at: new Date(parseInt(item.created_at)).toISOString(),
+      updated_at: new Date(parseInt(item.updated_at)).toISOString(),
     }));
 
     return c.json({ items: processedItems });
@@ -154,11 +156,13 @@ router.get('/wall/submissions', async (c) => {
     
     const { results } = await stmt.bind(status, limit).all();
     
-    // Parse JSON fields
+    // Parse JSON fields and format dates
     const processedItems = (results || []).map((item: any) => ({
       ...item,
       tags: item.tags ? JSON.parse(item.tags) : [],
       suggested_terms: item.suggested_terms ? JSON.parse(item.suggested_terms) : [],
+      created_at: new Date(parseInt(item.created_at)).toISOString(),
+      updated_at: new Date(parseInt(item.updated_at)).toISOString(),
     }));
 
     return c.json({ items: processedItems });
