@@ -29,7 +29,7 @@ export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
   if (items.length === 0) return null;
 
   return (
-    <div className="h-10 border-b border-zinc-200 dark:border-zinc-700 bg-transparent">
+    <div className="h-10 bg-transparent">
       <div className="mx-auto max-w-6xl h-full flex items-center text-sm font-bold overflow-hidden">
         {reduceMotion ? (
           <span className="transition-opacity duration-300 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
