@@ -117,6 +117,7 @@ export function useTooltips() {
         }
 
         const elements = document.querySelectorAll(tip.selector);
+        console.log(`Tooltip selector "${tip.selector}" found ${elements.length} elements`);
         elements.forEach(element => {
           const text = isEnterpriseMode && Math.random() < 0.3 
             ? tip.text + '™' 
