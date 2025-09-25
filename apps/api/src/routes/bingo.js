@@ -3,10 +3,12 @@ import { nanoid } from 'nanoid';
 const bingo = new Hono();
 bingo.get('/generate', async (c) => {
     try {
-        // Get random terms for bingo board
+        // Get random single-word terms for bingo board
         const { results } = await c.env.DB.prepare(`
         SELECT title, slug FROM terms_v2 
         WHERE status = 'published' 
+        AND title NOT LIKE '% %'
+        AND title NOT LIKE '%-%'
         ORDER BY RANDOM() 
         LIMIT 24
       `).all();
