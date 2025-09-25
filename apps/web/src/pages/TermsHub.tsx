@@ -91,6 +91,8 @@ export function TermsHub() {
       }
     } catch (error) {
       console.error('Search failed:', error);
+      setTerms([]);
+      // Could add a toast notification here
     } finally {
       setLoading(false);
     }

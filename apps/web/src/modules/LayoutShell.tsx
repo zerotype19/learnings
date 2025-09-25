@@ -3,7 +3,7 @@ import { NotificationBell } from './Notifications';
 import { AuthModal } from './AuthModal';
 import { SearchBox } from '../components/SearchBox';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
 
 interface LayoutShellProps {
   currentPage: Page;
@@ -249,10 +249,34 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex justify-center gap-8 text-sm text-slate-600 mb-6">
-            <a href="/about" className="hover:text-slate-900 transition-colors">About</a>
-            <a href="/embeds" className="hover:text-slate-900 transition-colors">Embeds</a>
-            <a href="/terms" className="hover:text-slate-900 transition-colors">Terms</a>
-            <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
+            <a 
+              href="/about" 
+              onClick={(e) => { e.preventDefault(); onPageChange('about'); }}
+              className="hover:text-slate-900 transition-colors"
+            >
+              About
+            </a>
+            <a 
+              href="/contact" 
+              onClick={(e) => { e.preventDefault(); onPageChange('contact'); }}
+              className="hover:text-slate-900 transition-colors"
+            >
+              Contact
+            </a>
+            <a 
+              href="/terms" 
+              onClick={(e) => { e.preventDefault(); onPageChange('terms'); }}
+              className="hover:text-slate-900 transition-colors"
+            >
+              Terms
+            </a>
+            <a 
+              href="/privacy" 
+              onClick={(e) => { e.preventDefault(); onPageChange('privacy'); }}
+              className="hover:text-slate-900 transition-colors"
+            >
+              Privacy
+            </a>
           </div>
           <div className="text-center text-sm text-slate-500">
             © 2025 Learnings Dot Org — Speak fluent corporate. Ironically.

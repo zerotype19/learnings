@@ -1,0 +1,281 @@
+Additional Terms Import Report
+Generated: 2025-09-25T12:36:07.777Z
+Total Terms: 210
+
+TERMS BY CATEGORY:
+
+Meeting & Communication (14 terms):
+  - Action item
+  - Take this offline
+  - One-on-one
+  - Ping
+  - Sidebar
+  - Stand-up
+  - Offline
+  - Table this
+  - Agenda
+  - Cadence
+  - Chime in
+  - Plenary
+  - Strawman
+  - Table the conversation
+
+Project Management (23 terms):
+  - Back burner
+  - Bandwidth
+  - Bring to the table
+  - Deliverable
+  - Fire drill
+  - In the weeds
+  - Micromanager
+  - Office drone
+  - Punt
+  - Watercooler
+  - Blocking and tackling
+  - Champion
+  - Critical path
+  - Gantt chart
+  - In the pipeline
+  - Scope
+  - Shiny object
+  - Skunkworks
+  - Timebox
+  - Tour of duty
+  - Lots of moving parts
+  - SWAT team
+  - Gain traction
+
+Management & Leadership (2 terms):
+  - Direct reports
+  - Span of control
+
+Business Strategy (13 terms):
+  - Buy-in
+  - Churn
+  - Core competency
+  - Go to market
+  - Touchpoint
+  - Alignment
+  - Scale
+  - Business case
+  - COB
+  - On board
+  - Roadmap
+  - Core values
+  - Food chain
+
+Team & Collaboration (4 terms):
+  - Break down silos
+  - Herding cats
+  - Thought shower
+  - Tiger team
+
+Time & Deadlines (9 terms):
+  - Clock watcher
+  - Hard stop
+  - Circle back
+  - EOD
+  - Out of pocket
+  - ETA
+  - FTE
+  - Pencil in
+  - Runway
+
+Other (145 terms):
+  - Above my paygrade
+  - Brain dump
+  - Deep dive
+  - Drill down
+  - Drink the Kool-Aid
+  - Ducks in a row
+  - Dumpster fire
+  - Flesh out
+  - Game changer
+  - Hot desking
+  - Low-hanging fruit
+  - Make hay
+  - Move the goalposts
+  - Move the needle
+  - Pain point
+  - Per my last email
+  - Pivot
+  - Put a pin in it
+  - Put out a fire
+  - Reinvent the wheel
+  - Run it up the flagpole
+  - Run the numbers
+  - Slide deck
+  - Think outside the box
+  - Throw under the bus
+  - Top-down
+  - Touch base
+  - Trim the fat
+  - Voluntold
+  - 30
+  - Close the loop
+  - Disrupt
+  - Double-click
+  - Download
+  - Full disclosure
+  - Ideate
+  - Leverage
+  - Mind meld
+  - Mission critical
+  - Piggyback
+  - Seamless
+  - Synergy
+  - Utilize
+  - 2.0
+  - 80/20
+  - Actionable
+  - Add value
+  - Align upon
+  - Apologies
+  - ASAP
+  - At the end of the day
+  - Back-channeling
+  - Ball in your court
+  - Bellwether
+  - Benchmark
+  - Best practice
+  - Bite the bullet
+  - Blessing
+  - Blue ocean
+  - Blue sky thinking
+  - Boil the ocean
+  - Broken record
+  - Buckets
+  - Call to action
+  - Can of worms
+  - Canary in the coal mine
+  - Context
+  - CYA
+  - Deck
+  - Delta
+  - Derisk
+  - Dry powder
+  - Drop the ball
+  - Due diligence
+  - Elephant in the room
+  - Engage
+  - Executive summary
+  - Flight risk
+  - Framework
+  - FYI
+  - Get the ball rolling
+  - Golden handcuffs
+  - Granular
+  - Gut feel
+  - Hard copy
+  - Headwinds
+  - HiPPO
+  - Hit the ground running
+  - Hypothesis
+  - In the loop
+  - In your wheelhouse
+  - Incentivize
+  - Iterate
+  - Key takeaway
+  - Level set
+  - Light a fire under
+  - Lipstick on a pig
+  - Loop in
+  - Macro
+  - Material
+  - MECE
+  - Net-net
+  - On my radar
+  - On the same page
+  - OOO
+  - Open the floodgates
+  - Optics
+  - Optionality
+  - Order of magnitude
+  - Ownership mindset
+  - Paradigm shift
+  - Pick your brain
+  - POC
+  - POV
+  - Pressure test
+  - Rocket science
+  - ROI
+  - Scalable
+  - Skeletons in the closet
+  - Slippery slope
+  - Socialize
+  - Swim lane
+  - Synthesize
+  - Table stakes
+  - Technical debt
+  - Too many cooks in the kitchen
+  - Top of mind
+  - Traction
+  - Triangulate
+  - Two cents
+  - Unpack
+  - Value add
+  - Value proposition
+  - Whiteboarding
+  - Wheelhouse
+  - Wrap your head around
+  - YTD
+  - You're crushing it
+  - Bleeding edge
+  - Empower
+  - Jump the shark
+  - Key takeaways
+  - Aha moment
+  - Silver bullet
+  - Knee deep
+
+SAMPLE TERMS:
+
+Above my paygrade:
+  Definition: Outside the scope of your responsibility; needs to be addressed by someone higher up.
+  Example: I can't approve that budget increase - that's above my paygrade.
+  Tags: corporate, buzzword
+
+Action item:
+  Definition: A task that must be completed, usually arising from a meeting.
+  Example: Let's add "review the quarterly report" as an action item for next week.
+  Tags: corporate, buzzword, meeting, project
+
+Back burner:
+  Definition: A task or responsibility to revisit later.
+  Example: We'll put the new website redesign on the back burner for now.
+  Tags: corporate, buzzword, project
+
+Bandwidth:
+  Definition: Time and energy available to take on new work.
+  Example: I don't have the bandwidth to take on another project this month.
+  Tags: corporate, buzzword, project, time
+
+Brain dump:
+  Definition: Putting all the thoughts in your head onto paper or sharing knowledge quickly.
+  Example: Let me do a quick brain dump of all the ideas I have for this campaign.
+  Tags: corporate, buzzword
+
+Break down silos:
+  Definition: Remove barriers between teams or departments to improve efficiency.
+  Example: We need to break down silos between marketing and sales to improve lead quality.
+  Tags: corporate, buzzword, team
+
+Bring to the table:
+  Definition: Skills or expertise a person offers to a company or project.
+  Example: What unique skills does Sarah bring to the table for this project?
+  Tags: corporate, buzzword, project, business
+
+Buy-in:
+  Definition: Getting employees or stakeholders to willingly support a plan or policy.
+  Example: We need to get buy-in from the executive team before moving forward.
+  Tags: corporate, buzzword, strategy
+
+Churn:
+  Definition: The rate at which employees or customers leave a business.
+  Example: Our customer churn rate has increased by 15% this quarter.
+  Tags: corporate, buzzword, business
+
+Clock watcher:
+  Definition: An employee who constantly checks the time, waiting for the day to end.
+  Example: John is such a clock watcher - he leaves exactly at 5 PM every day.
+  Tags: corporate, buzzword, time

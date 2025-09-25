@@ -19,10 +19,13 @@ import { TermDetail } from '../pages/TermDetail';
 import { Submit } from '../pages/Submit';
 import { WallHub } from '../pages/WallHub';
 import { GeneratorsHub } from '../pages/GeneratorsHub';
-import { ChallengesHub } from '../pages/ChallengesHub';
 import { SearchResults } from '../pages/SearchResults';
+import { About } from '../pages/About';
+import { Privacy } from '../pages/Privacy';
+import { Terms } from '../pages/Terms';
+import { Contact } from '../pages/Contact';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub' | 'search';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'search' | 'about' | 'privacy' | 'terms' | 'contact';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -52,8 +55,17 @@ export function App() {
         case 'wall':
           setCurrentPage('wall-hub');
           break;
-        case 'challenges':
-          setCurrentPage('challenges-hub');
+        case 'about':
+          setCurrentPage('about');
+          break;
+        case 'privacy':
+          setCurrentPage('privacy');
+          break;
+        case 'terms':
+          setCurrentPage('terms');
+          break;
+        case 'contact':
+          setCurrentPage('contact');
           break;
         case 'bingo':
           setCurrentPage('bingo');
@@ -113,7 +125,10 @@ export function App() {
         case 'home-v2': return '/';
         case 'terms-hub': return '/terms';
         case 'wall-hub': return '/wall';
-        case 'challenges-hub': return '/challenges';
+        case 'about': return '/about';
+        case 'privacy': return '/privacy';
+        case 'terms': return '/terms';
+        case 'contact': return '/contact';
         case 'bingo': return '/bingo';
         case 'generators-hub': return '/generators';
         case 'submit-v2': return '/submit';
@@ -136,10 +151,13 @@ export function App() {
       {currentPage === 'term-detail' && <TermDetail slug={routeParams.slug || ''} />}
       {currentPage === 'submit-v2' && <Submit />}
       {currentPage === 'wall-hub' && <WallHub />}
-      {currentPage === 'challenges-hub' && <ChallengesHub />}
       {currentPage === 'generators-hub' && <GeneratorsHub />}
       {currentPage === 'admin-v2' && <AdminV2 />}
       {currentPage === 'search' && <SearchResults />}
+      {currentPage === 'about' && <About />}
+      {currentPage === 'privacy' && <Privacy />}
+      {currentPage === 'terms' && <Terms />}
+      {currentPage === 'contact' && <Contact />}
       
       {/* Legacy Pages */}
       {currentPage === 'home' && (
@@ -181,7 +199,6 @@ export function App() {
       )}
       
       {currentPage === 'wall' && <Wall />}
-      {currentPage === 'challenges' && <Challenges />}
       {currentPage === 'bingo' && <Bingo />}
       {currentPage === 'linkedin' && <LinkedInGenerators />}
       {currentPage === 'suggest' && <Suggest />}
