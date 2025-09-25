@@ -29,6 +29,7 @@ export function TermsHub() {
 
   const loadTerms = async (reset = false) => {
     if (loading) return;
+    console.log('TermsHub: loadTerms called with reset:', reset, 'nextCursor:', nextCursor);
     setLoading(true);
 
     try {
@@ -66,6 +67,7 @@ export function TermsHub() {
         setTerms(prev => [...prev, ...(data.items || [])]);
       }
       
+      console.log('TermsHub: Setting nextCursor to:', data.nextCursor);
       setNextCursor(data.nextCursor);
     } catch (error) {
       console.error('Failed to load terms:', error);
