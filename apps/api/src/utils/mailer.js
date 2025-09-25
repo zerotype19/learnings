@@ -21,6 +21,11 @@ export class MailerService {
       text_body: this.generateConfirmationText(data)
     };
 
+    // Add BCC if provided
+    if (data.bccEmail) {
+      emailData.bcc = [data.bccEmail];
+    }
+
     try {
       const response = await fetch('https://api.smtp2go.com/v3/email/send', {
         method: 'POST',

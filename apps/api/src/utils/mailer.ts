@@ -5,6 +5,7 @@ export interface ConfirmationEmailData {
   title: string;
   confirmationUrl: string;
   recipientEmail: string;
+  bccEmail?: string; // Optional BCC for admin notifications
 }
 
 export class MailerService {
@@ -25,7 +26,7 @@ export class MailerService {
   async sendConfirmationEmail(data: ConfirmationEmailData): Promise<void> {
     const typeLabel = data.type === 'term' ? 'corporate term' : 'wall post';
     
-    const emailData = {
+    const emailData: any = {
       api_key: this.apiKey,
       to: [data.recipientEmail],
       sender: this.fromEmail,
@@ -33,6 +34,11 @@ export class MailerService {
       html_body: this.generateConfirmationHtml(data),
       text_body: this.generateConfirmationText(data)
     };
+
+    // Add BCC if provided
+    if (data.bccEmail) {
+      emailData.bcc = [data.bccEmail];
+    }
 
     try {
       const response = await fetch('https://api.smtp2go.com/v3/email/send', {

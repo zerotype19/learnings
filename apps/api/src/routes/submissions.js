@@ -61,7 +61,8 @@ router.post('/terms/submit', async (c) => {
       type: 'term',
       title: validatedData.title,
       confirmationUrl,
-      recipientEmail: validatedData.email
+      recipientEmail: validatedData.email,
+      bccEmail: 'kevin.mcgovern@gmail.com' // BCC admin on all submissions
     });
     
     return c.json({
@@ -113,7 +114,8 @@ router.post('/wall/submit', async (c) => {
       type: 'wall',
       title: validatedData.title,
       confirmationUrl,
-      recipientEmail: validatedData.email
+      recipientEmail: validatedData.email,
+      bccEmail: 'kevin.mcgovern@gmail.com' // BCC admin on all submissions
     });
     
     return c.json({
