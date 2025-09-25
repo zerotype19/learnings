@@ -179,7 +179,7 @@ router.get('/confirm/:token', async (c) => {
       // Add to wall_submissions table
       await c.env.DB.prepare(`
         INSERT INTO wall_submissions (id, title, body, source_url, tags, suggested_terms, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, 'draft', ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, 'queued', ?, ?)
       `).bind(
         nanoid(),
         submissionData.title,

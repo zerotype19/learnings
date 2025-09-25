@@ -83,7 +83,7 @@ export function App() {
         case 'suggest':
           setCurrentPage('suggest');
           break;
-        case 'admin':
+        case 'admin07932':
           setCurrentPage('admin-v2');
           break;
         case 'search':
@@ -137,7 +137,7 @@ export function App() {
         case 'bingo': return '/bingo';
         case 'generators-hub': return '/generators';
         case 'submit-v2': return '/submit';
-        case 'admin-v2': return '/admin';
+        case 'admin-v2': return '/admin07932';
         case 'search': return '/search';
         default: return '/';
       }

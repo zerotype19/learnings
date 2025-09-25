@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { NotificationBell } from './Notifications';
-import { AuthModal } from './AuthModal';
+import React, { useState } from 'react';
 import { SearchBox } from '../components/SearchBox';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
@@ -13,52 +11,9 @@ interface LayoutShellProps {
 
 export function LayoutShell({ currentPage, onPageChange, children }: LayoutShellProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [user, setUser] = useState<{ handle: string; email: string } | null>(null);
   
   // Check for admin access
   const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
-  
-  // Handle auth completion
-  useEffect(() => {
-    const hash = window.location.hash;
-    
-    if (hash === '#/auth/complete') {
-      // User just completed auth, cookie is already set
-      setUser({ handle: 'user', email: '' }); // We'll load full user data later
-      
-      // Claim anonymous activity
-      const fingerprint = localStorage.getItem('learnings_fingerprint');
-      if (fingerprint) {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
-        fetch(apiUrl + '/v1/auth/claim', {
-          method: 'POST',
-          credentials: 'include', // Use cookies instead of Authorization header
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ fingerprint })
-        }).then(() => {
-          console.log('Anonymous activity claimed successfully');
-        }).catch(err => {
-          console.error('Failed to claim activity:', err);
-        });
-      }
-      
-      // Clear the URL
-      window.history.replaceState({}, '', window.location.pathname);
-      alert('Welcome! You\'re now signed in.');
-    }
-    
-    // TODO: Check if user is already signed in via cookie validation
-  }, []);
-  
-  const signOut = () => {
-    // Clear the session cookie
-    document.cookie = 'session=; Path=/; Domain=.learnings.org; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    setUser(null);
-    alert('Signed out successfully.');
-  };
   
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },
@@ -127,7 +82,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   case 'bingo': return '/bingo';
                   case 'generators-hub': return '/generators';
                   case 'submit-v2': return '/submit';
-                  case 'admin-v2': return '/admin';
+                  case 'admin-v2': return '/admin07932';
                   default: return '/';
                 }
               };
@@ -160,26 +115,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            <NotificationBell user={user?.handle || "anon"} />
-            {user ? (
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-slate-600">@{user.handle}</span>
-                <button 
-                  onClick={signOut}
-                  className="rounded-xl2 border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
-                >
-                  Sign out
-                </button>
-              </div>
-            ) : (
-              <button 
-                onClick={() => setShowAuthModal(true)}
-                className="rounded-xl2 border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
-              >
-                Sign in
-              </button>
-            )}
-            
             {/* Mobile hamburger */}
             <button 
               className="sm:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
@@ -205,7 +140,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                       case 'bingo': return '/bingo';
                       case 'generators-hub': return '/generators';
                       case 'submit-v2': return '/submit';
-                      case 'admin-v2': return '/admin';
+                      case 'admin-v2': return '/admin07932';
                       default: return '/';
                     }
                   };
@@ -284,8 +219,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
         </div>
       </footer>
       
-      {/* Auth Modal */}
-      <AuthModal open={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </div>
   );
 }
