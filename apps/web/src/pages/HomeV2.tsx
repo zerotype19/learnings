@@ -81,109 +81,114 @@ export function HomeV2() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="space-y-8">
       {/* Hero Section */}
-      <div className="bg-white border-b">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-4">Learnings Dot Org</h1>
-            <p className="text-lg text-neutral-600 mb-6">
-              The corporate buzzword dictionary and community
-            </p>
+      <div className="bg-white border-b border-slate-200">
+        <div className="text-center py-14 md:py-20">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6">
+            Speak fluent corporate. Ironically.
+          </h1>
+          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+            The corporate buzzword dictionary that translates jargon into human. Fresh jargon, piping hot.
+          </p>
             
-            {/* Global Search */}
-            <div className="max-w-md mx-auto">
-              <SearchBox
-                onNavigate={(url) => {
-                  if (url.startsWith('/search')) {
-                    trackEvent('search_performed', { source: 'home_hero' });
-                    window.history.pushState({}, '', url);
-                    window.location.reload();
+          {/* Global Search */}
+          <div className="max-w-lg mx-auto mb-8">
+            <SearchBox
+              onNavigate={(url) => {
+                if (url.startsWith('/search')) {
+                  trackEvent('search_performed', { source: 'home_hero' });
+                  window.history.pushState({}, '', url);
+                  window.location.reload();
+                } else {
+                  // Handle internal navigation
+                  const path = url.replace(/^\/+/, '');
+                  if (path === '') {
+                    // Already on home page
+                  } else if (path.startsWith('term/')) {
+                    window.location.href = url;
+                  } else if (path === 'wall') {
+                    window.location.href = url;
+                  } else if (path === 'generators') {
+                    window.location.href = url;
+                  } else if (path === 'challenges') {
+                    window.location.href = url;
                   } else {
-                    // Handle internal navigation
-                    const path = url.replace(/^\/+/, '');
-                    if (path === '') {
-                      // Already on home page
-                    } else if (path.startsWith('term/')) {
-                      window.location.href = url;
-                    } else if (path === 'wall') {
-                      window.location.href = url;
-                    } else if (path === 'generators') {
-                      window.location.href = url;
-                    } else if (path === 'challenges') {
-                      window.location.href = url;
-                    } else {
-                      window.location.href = url;
-                    }
+                    window.location.href = url;
                   }
-                }}
-                placeholder="Search terms, wall posts..."
-                className="w-full"
-              />
-            </div>
+                }
+              }}
+              placeholder="Search 2,000+ buzzwords…"
+              className="w-full"
+            />
           </div>
 
-          {/* Quick Actions */}
-          {showQuickActions && (
-            <div className="mb-8">
-              <div className="text-center mb-4">
-                <h2 className="text-lg font-semibold mb-2">Quick Actions</h2>
-                <p className="text-sm text-neutral-600">Popular tools and shortcuts</p>
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                {quickActions.map(action => (
-                  <button
-                    key={action.id}
-                    onClick={action.onClick}
-                    className="bg-white border border-neutral-200 rounded-xl p-4 hover:shadow-md transition-shadow text-center group"
-                  >
-                    <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
-                      {action.icon}
-                    </div>
-                    <div className="font-medium text-sm mb-1">{action.label}</div>
-                    <div className="text-xs text-neutral-500">{action.description}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Random Term Button */}
+          <button className="inline-flex items-center gap-2 rounded-xl2 bg-slate-100 text-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-200 transition-all duration-200">
+            🎲 Roll the jargon
+          </button>
+        </div>
 
-          {/* Navigation Links */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/terms"
-              className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
-            >
-              📚 Browse Terms
-            </a>
-            <a
-              href="/wall"
-              className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
-            >
-              📸 Wall Posts
-            </a>
-            <a
-              href="/generators"
-              className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
-            >
-              🤖 Generators
-            </a>
-            <a
-              href="/challenges"
-              className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
-            >
-              🏆 Challenges
-            </a>
+        {/* Quick Actions */}
+        {showQuickActions && (
+          <div className="py-8">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+                De-jargon me
+              </h2>
+              <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              {quickActions.map(action => (
+                <button
+                  key={action.id}
+                  onClick={action.onClick}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+                >
+                  <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-200">
+                    {action.icon}
+                  </div>
+                  <div className="font-semibold text-base mb-1">{action.label}</div>
+                  <div className="text-sm text-slate-500">{action.description}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CTA Band */}
+        <div className="bg-slate-50 py-8">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold text-slate-900 mb-4">
+              Submit your masterpiece
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/submit"
+                className="inline-flex items-center gap-2 rounded-xl2 bg-brand text-white px-6 py-3 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+              >
+                💡 Submit a Term
+              </a>
+              <a
+                href="/bingo"
+                className="inline-flex items-center gap-2 rounded-xl2 border border-slate-200 bg-white text-slate-700 px-6 py-3 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+              >
+                🎯 Buzzword Bingo
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Feed Section */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">Latest Activity</h2>
-          <p className="text-sm text-neutral-600">
+      <div className="py-8">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+            Fresh jargon, piping hot
+          </h2>
+          <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+          <p className="text-slate-600 mt-4">
             Recent terms, wall posts, and community contributions
           </p>
         </div>

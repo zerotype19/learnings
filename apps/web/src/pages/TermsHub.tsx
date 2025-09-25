@@ -102,31 +102,37 @@ export function TermsHub() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="space-y-8">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold mb-4">📚 Corporate Dictionary</h1>
+      <div className="bg-white border-b border-slate-200">
+        <div className="py-8">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+              Translate your meeting to human
+            </h1>
+            <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+            <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+              Browse 2,000+ corporate buzzwords with witty, satirical definitions
+            </p>
+          </div>
           
           {/* Search */}
-          <div className="flex gap-4 mb-4">
-            <div className="flex-1 max-w-md">
-              <SearchBox
-                placeholder="Search terms..."
-                onSearch={handleSearch}
-                apiUrl={apiUrl}
-              />
-            </div>
+          <div className="max-w-2xl mx-auto mb-8">
+            <SearchBox
+              placeholder="Search 2,000+ buzzwords…"
+              onSearch={handleSearch}
+              apiUrl={apiUrl}
+            />
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-4 items-center">
-            <div className="flex gap-2">
-              <label className="text-sm font-medium">Sort:</label>
+          <div className="flex flex-wrap justify-center gap-6 items-center">
+            <div className="flex items-center gap-3">
+              <label className="text-sm font-medium text-slate-700">Sort:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="text-sm border border-neutral-200 rounded px-2 py-1"
+                className="rounded-xl2 border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none transition-all duration-200"
               >
                 <option value="newest">Newest</option>
                 <option value="popular">Popular</option>
@@ -134,20 +140,30 @@ export function TermsHub() {
               </select>
             </div>
 
-            <div className="flex gap-2">
-              <label className="text-sm font-medium">View:</label>
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`px-2 py-1 text-xs rounded ${viewMode === 'grid' ? 'bg-brand-100 text-brand-700' : 'text-neutral-600'}`}
-              >
-                Grid
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`px-2 py-1 text-xs rounded ${viewMode === 'list' ? 'bg-brand-100 text-brand-700' : 'text-neutral-600'}`}
-              >
-                List
-              </button>
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium text-slate-700">View:</label>
+              <div className="flex rounded-xl2 border border-slate-200 bg-slate-50 p-1">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 ${
+                    viewMode === 'grid' 
+                      ? 'bg-white text-slate-900 shadow-sm' 
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Grid
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 ${
+                    viewMode === 'list' 
+                      ? 'bg-white text-slate-900 shadow-sm' 
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  List
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -157,24 +173,28 @@ export function TermsHub() {
       <LetterIndex activeLetter={activeLetter} onLetterClick={handleLetterClick} />
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 py-6">
+      <div className="py-8">
         {searchQuery && (
-          <div className="mb-4 text-sm text-neutral-600">
-            Search results for "{searchQuery}" • {terms.length} found
+          <div className="text-center mb-8">
+            <div className="text-slate-600">
+              Search results for <span className="font-semibold text-slate-900">"{searchQuery}"</span> • {terms.length} found
+            </div>
           </div>
         )}
 
         {activeLetter && (
-          <div className="mb-4 text-sm text-neutral-600">
-            Terms starting with "{activeLetter}" • {terms.length} found
+          <div className="text-center mb-8">
+            <div className="text-slate-600">
+              Terms starting with <span className="font-semibold text-slate-900">"{activeLetter}"</span> • {terms.length} found
+            </div>
           </div>
         )}
 
         {/* Terms Grid/List */}
         <div className={`
           ${viewMode === 'grid' 
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' 
-            : 'space-y-4'
+            ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' 
+            : 'space-y-4 max-w-4xl mx-auto'
           }
         `}>
           {terms.map(term => (
@@ -184,17 +204,17 @@ export function TermsHub() {
 
         {/* Loading */}
         {loading && (
-          <div className="text-center py-8">
-            <div className="text-neutral-600">Loading terms...</div>
+          <div className="text-center py-12">
+            <div className="text-slate-600">Loading more buzzwords...</div>
           </div>
         )}
 
         {/* Load More */}
         {!loading && nextCursor && !searchQuery && (
-          <div className="text-center mt-8">
+          <div className="text-center mt-12">
             <button
               onClick={() => loadTerms(false)}
-              className="px-6 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl2 border border-slate-200 bg-white text-slate-700 px-6 py-3 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
             >
               Load More Terms
             </button>
@@ -203,11 +223,21 @@ export function TermsHub() {
 
         {/* Empty State */}
         {!loading && terms.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-xl text-neutral-600 mb-2">No terms found</div>
-            <div className="text-sm text-neutral-500">
+          <div className="text-center py-16">
+            <div className="text-2xl text-slate-600 mb-3">
+              {searchQuery ? 'No buzz found. Try "synergy soup".' : 'No terms found'}
+            </div>
+            <div className="text-slate-500 mb-8">
               {searchQuery ? 'Try a different search term' : 'Be the first to contribute!'}
             </div>
+            {!searchQuery && (
+              <button
+                onClick={() => window.location.href = '/submit'}
+                className="inline-flex items-center gap-2 rounded-xl2 bg-brand text-white px-6 py-3 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+              >
+                💡 Submit a Term
+              </button>
+            )}
           </div>
         )}
       </div>
@@ -227,55 +257,59 @@ function TermCard({ term, viewMode }: TermCardProps) {
 
   if (viewMode === 'list') {
     return (
-      <div 
+      <article 
         onClick={handleClick}
-        className="bg-white border border-neutral-200 rounded-2xl p-4 hover:shadow-md transition-shadow cursor-pointer"
+        className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
       >
         <div className="flex justify-between items-start">
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg mb-1">{term.title}</h3>
-            <p className="text-neutral-600 text-sm mb-2">
+          <div className="flex-1 min-w-0">
+            <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-2">
+              {term.title}
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed mb-3">
               {getShortDescription(term.definition, 8)}
             </p>
             {term.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-2">
                 {term.tags.slice(0, 3).map(tag => (
-                  <span key={tag} className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+                  <span key={tag} className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700 hover:bg-white hover:border-brand/30 hover:text-brand transition-colors">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
           </div>
-          <div className="text-xs text-neutral-500 ml-4">
-            {term.views} views
+          <div className="text-xs text-slate-500 ml-4 flex-shrink-0">
+            👀 {term.views} views
           </div>
         </div>
-      </div>
+      </article>
     );
   }
 
   return (
-    <div 
+    <article 
       onClick={handleClick}
-      className="bg-white border border-neutral-200 rounded-2xl p-4 hover:shadow-md transition-shadow cursor-pointer"
+      className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
     >
-      <h3 className="font-semibold text-lg mb-2">{term.title}</h3>
-      <p className="text-neutral-600 text-sm mb-3">
+      <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
+        {term.title}
+      </h3>
+      <p className="text-slate-600 text-sm leading-relaxed mb-4">
         {getShortDescription(term.definition, 6)}...
       </p>
       <div className="flex justify-between items-center">
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-2">
           {term.tags.slice(0, 2).map(tag => (
-            <span key={tag} className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full">
+            <span key={tag} className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700 hover:bg-white hover:border-brand/30 hover:text-brand transition-colors">
               {tag}
             </span>
           ))}
         </div>
-        <div className="text-xs text-neutral-500">
-          {term.views} views
+        <div className="text-xs text-slate-500 flex-shrink-0">
+          👀 {term.views}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

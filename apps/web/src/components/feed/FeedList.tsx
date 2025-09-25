@@ -103,11 +103,11 @@ export function FeedList({ onItemClick, className = '' }: FeedListProps) {
     return (
       <div className={`space-y-6 ${className}`}>
         {[...Array(3)].map((_, i) => (
-          <div key={i} className="bg-white border border-neutral-200 rounded-2xl p-6 animate-pulse">
-            <div className="h-4 bg-neutral-200 rounded w-3/4 mb-2"></div>
-            <div className="h-3 bg-neutral-200 rounded w-1/2 mb-4"></div>
-            <div className="h-3 bg-neutral-200 rounded w-full mb-2"></div>
-            <div className="h-3 bg-neutral-200 rounded w-2/3"></div>
+          <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 animate-pulse">
+            <div className="h-5 w-1/2 bg-slate-200/70 rounded mb-3"></div>
+            <div className="h-4 w-3/4 bg-slate-200/70 rounded mb-4"></div>
+            <div className="h-4 w-full bg-slate-200/70 rounded mb-2"></div>
+            <div className="h-4 w-2/3 bg-slate-200/70 rounded"></div>
           </div>
         ))}
       </div>
@@ -126,8 +126,8 @@ export function FeedList({ onItemClick, className = '' }: FeedListProps) {
       
       {/* Loading indicator */}
       {loading && items.length > 0 && (
-        <div className="text-center py-4">
-          <div className="text-neutral-600">Loading more...</div>
+        <div className="text-center py-8">
+          <div className="text-slate-600">Loading more buzzwords...</div>
         </div>
       )}
       
@@ -138,10 +138,10 @@ export function FeedList({ onItemClick, className = '' }: FeedListProps) {
       
       {/* Load more button fallback */}
       {!loading && nextCursor && (
-        <div className="text-center py-4">
+        <div className="text-center py-8">
           <button
             onClick={() => loadItems(false)}
-            className="px-6 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
+            className="inline-flex items-center gap-2 rounded-xl2 border border-slate-200 bg-white text-slate-700 px-6 py-3 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
           >
             Load More
           </button>
@@ -150,23 +150,23 @@ export function FeedList({ onItemClick, className = '' }: FeedListProps) {
       
       {/* Empty state */}
       {!loading && items.length === 0 && (
-        <div className="text-center py-12">
-          <div className="text-xl text-neutral-600 mb-2">No content yet</div>
-          <div className="text-sm text-neutral-500 mb-4">
+        <div className="text-center py-16">
+          <div className="text-2xl text-slate-600 mb-3">No buzz found. Try 'synergy soup'.</div>
+          <div className="text-slate-500 mb-8">
             Be the first to contribute to the feed!
           </div>
           <div className="flex gap-4 justify-center">
             <button
               onClick={() => window.location.href = '/submit'}
-              className="px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl2 bg-brand text-white px-6 py-3 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
             >
-              Submit Content
+              💡 Submit Content
             </button>
             <button
               onClick={() => window.location.href = '/terms'}
-              className="px-4 py-2 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl2 border border-slate-200 bg-white text-slate-700 px-6 py-3 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
             >
-              Browse Terms
+              📚 Browse Terms
             </button>
           </div>
         </div>
@@ -199,27 +199,32 @@ function TermFeedCard({ item, onClick }: FeedCardProps) {
   const term = item.data;
   
   return (
-    <div 
+    <article 
       onClick={onClick}
-      className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow cursor-pointer"
+      className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
     >
-      <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0">
-          📚
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+          <span className="text-xl">📚</span>
         </div>
-        <div className="flex-1">
-          <div className="text-xs text-neutral-500 mb-1">New Term</div>
-          <h3 className="font-semibold text-lg mb-2">{term.title}</h3>
-          <p className="text-neutral-600 text-sm mb-3">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="inline-flex items-center rounded-full bg-brand-100 text-brand-700 px-2.5 py-1 text-xs font-medium">New Term</span>
+            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+          </div>
+          <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
+            {term.title}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {term.summary || getShortDescription(term.definition, 8) || 'No description available'}
           </p>
-          <div className="flex items-center gap-4 text-xs text-neutral-500">
-            <span>{term.views || 0} views</span>
-            <span>{new Date(item.ts).toLocaleDateString()}</span>
+          <div className="flex items-center gap-4 text-xs text-slate-500">
+            <span>👀 {term.views || 0} views</span>
+            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -228,32 +233,35 @@ function WallFeedCard({ item, onClick }: FeedCardProps) {
   const domain = post.source_url ? new URL(post.source_url).hostname.replace('www.', '') : '';
   
   return (
-    <div 
+    <article 
       onClick={onClick}
-      className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow cursor-pointer"
+      className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
     >
-      <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-          📸
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+          <span className="text-xl">📸</span>
         </div>
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="text-xs text-neutral-500">Wall Post</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="inline-flex items-center rounded-full bg-purple-100 text-purple-700 px-2.5 py-1 text-xs font-medium">Wall Post</span>
             {domain && (
-              <div className="text-xs text-brand-600">🌐 {domain}</div>
+              <span className="text-xs text-brand-600">🌐 {domain}</span>
             )}
+            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
           </div>
-          <h3 className="font-semibold text-lg mb-2">{post.title}</h3>
-          <p className="text-neutral-600 text-sm mb-3">
+          <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
+            {post.title}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {post.og_desc || post.summary || 'View this wall post...'}
           </p>
-          <div className="flex items-center gap-4 text-xs text-neutral-500">
+          <div className="flex items-center gap-4 text-xs text-slate-500">
             <span>👍 {post.vote_count || post.votes || 0}</span>
-            <span>{new Date(item.ts).toLocaleDateString()}</span>
+            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -261,27 +269,32 @@ function ChallengeFeedCard({ item, onClick }: FeedCardProps) {
   const challenge = item.data;
   
   return (
-    <div 
+    <article 
       onClick={onClick}
-      className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow cursor-pointer"
+      className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
     >
-      <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-          🏆
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+          <span className="text-xl">🏆</span>
         </div>
-        <div className="flex-1">
-          <div className="text-xs text-neutral-500 mb-1">Challenge</div>
-          <h3 className="font-semibold text-lg mb-2">{challenge.title}</h3>
-          <p className="text-neutral-600 text-sm mb-3">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="inline-flex items-center rounded-full bg-amber-100 text-amber-800 px-2.5 py-1 text-xs font-medium">Challenge</span>
+            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+          </div>
+          <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
+            {challenge.title}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">
             Join this week's challenge and compete with the community!
           </p>
-          <div className="flex items-center gap-4 text-xs text-neutral-500">
-            <span>Ends {new Date(challenge.ends_at).toLocaleDateString()}</span>
-            <span>{new Date(item.ts).toLocaleDateString()}</span>
+          <div className="flex items-center gap-4 text-xs text-slate-500">
+            <span>⏰ Ends {new Date(challenge.ends_at).toLocaleDateString()}</span>
+            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -289,25 +302,30 @@ function GeneratorFeedCard({ item, onClick }: FeedCardProps) {
   const run = item.data;
   
   return (
-    <div 
+    <article 
       onClick={onClick}
-      className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow cursor-pointer"
+      className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
     >
-      <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-          🤖
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+          <span className="text-xl">🤖</span>
         </div>
-        <div className="flex-1">
-          <div className="text-xs text-neutral-500 mb-1">Generator Output</div>
-          <h3 className="font-semibold text-lg mb-2">{run.generator_name || 'AI Generated Content'}</h3>
-          <p className="text-neutral-600 text-sm mb-3">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="inline-flex items-center rounded-full bg-green-100 text-green-700 px-2.5 py-1 text-xs font-medium">Generator Output</span>
+            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+          </div>
+          <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
+            {run.generator_name || 'AI Generated Content'}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {run.output_text ? run.output_text.substring(0, 150) + '...' : 'View generated content...'}
           </p>
-          <div className="flex items-center gap-4 text-xs text-neutral-500">
-            <span>{new Date(item.ts).toLocaleDateString()}</span>
+          <div className="flex items-center gap-4 text-xs text-slate-500">
+            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

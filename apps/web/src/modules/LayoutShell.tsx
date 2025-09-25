@@ -72,10 +72,10 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-40 border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <a 
             href="/"
@@ -83,7 +83,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               e.preventDefault();
               onPageChange('home-v2');
             }}
-            className="font-bold tracking-tight text-ink hover:text-brand-600 transition-colors"
+            className="text-xl font-semibold tracking-tight text-slate-900 hover:text-brand transition-colors"
           >
             Learnings Dot Org
           </a>
@@ -119,7 +119,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden gap-1 sm:flex">
+          <nav className="hidden gap-2 sm:flex">
             {navigation.map((nav) => {
               // Map page IDs to URL paths
               const getHref = (id: string) => {
@@ -136,6 +136,8 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                 }
               };
 
+              const isTermsHub = nav.id === 'terms-hub';
+
               return (
                 <a
                   key={nav.id}
@@ -144,10 +146,12 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                     e.preventDefault();
                     onPageChange(nav.id as Page);
                   }}
-                  className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
-                    currentPage === nav.id 
-                      ? 'bg-brand-100 text-brand-700' 
-                      : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                  className={`inline-flex items-center gap-2 rounded-xl2 px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                    isTermsHub
+                      ? 'bg-brand text-white shadow-soft hover:shadow-lg hover:-translate-y-0.5'
+                      : currentPage === nav.id 
+                        ? 'bg-brand-100 text-brand-700' 
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
                   <span className="sm:hidden">{nav.icon}</span>
@@ -158,14 +162,14 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           </nav>
           
           {/* Right Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <NotificationBell user={user?.handle || "anon"} />
             {user ? (
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-neutral-600">@{user.handle}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-slate-600">@{user.handle}</span>
                 <button 
                   onClick={signOut}
-                  className="rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
+                  className="rounded-xl2 border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
                 >
                   Sign out
                 </button>
@@ -173,7 +177,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
             ) : (
               <button 
                 onClick={() => setShowAuthModal(true)}
-                className="rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
+                className="rounded-xl2 border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
               >
                 Sign in
               </button>
@@ -181,7 +185,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
             
             {/* Mobile hamburger */}
             <button 
-              className="sm:hidden p-2 text-neutral-600 hover:text-neutral-900"
+              className="sm:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               ☰
@@ -191,9 +195,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
         
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="border-t bg-white sm:hidden">
-            <nav className="mx-auto max-w-5xl px-4 py-2">
-              <div className="grid grid-cols-2 gap-2">
+          <div className="border-t border-slate-200 bg-white sm:hidden">
+            <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+              <div className="grid grid-cols-2 gap-3">
                 {navigation.map((nav) => {
                   // Map page IDs to URL paths
                   const getHref = (id: string) => {
@@ -210,6 +214,8 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                     }
                   };
 
+                  const isTermsHub = nav.id === 'terms-hub';
+
                   return (
                     <a
                       key={nav.id}
@@ -219,10 +225,12 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                         onPageChange(nav.id as Page);
                         setMobileMenuOpen(false);
                       }}
-                      className={`rounded-lg px-3 py-2 text-sm transition-colors ${
-                        currentPage === nav.id 
-                          ? 'bg-brand-100 text-brand-700' 
-                          : 'text-neutral-600 hover:bg-neutral-100'
+                      className={`inline-flex items-center gap-2 rounded-xl2 px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                        isTermsHub
+                          ? 'bg-brand text-white shadow-soft'
+                          : currentPage === nav.id 
+                            ? 'bg-brand-100 text-brand-700' 
+                            : 'text-slate-600 hover:bg-slate-100'
                       }`}
                     >
                       {nav.icon} {nav.label}
@@ -236,21 +244,21 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       </header>
       
       {/* Main Content */}
-      <main className="mx-auto max-w-5xl px-4 py-8">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
         {children}
       </main>
       
       {/* Footer */}
-      <footer className="border-t bg-white">
-        <div className="mx-auto max-w-5xl px-4 py-8">
-          <div className="flex justify-center gap-6 text-sm text-neutral-600 mb-4">
-            <a href="/about" className="hover:text-neutral-900 transition-colors">About</a>
-            <a href="/embeds" className="hover:text-neutral-900 transition-colors">Embeds</a>
-            <a href="/terms" className="hover:text-neutral-900 transition-colors">Terms</a>
-            <a href="/privacy" className="hover:text-neutral-900 transition-colors">Privacy</a>
+      <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex justify-center gap-8 text-sm text-slate-600 mb-6">
+            <a href="/about" className="hover:text-slate-900 transition-colors">About</a>
+            <a href="/embeds" className="hover:text-slate-900 transition-colors">Embeds</a>
+            <a href="/terms" className="hover:text-slate-900 transition-colors">Terms</a>
+            <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
           </div>
-          <div className="text-center text-sm text-neutral-500">
-            © 2025 Learnings Dot Org — Operationalizing synergy since yesterday.
+          <div className="text-center text-sm text-slate-500">
+            © 2025 Learnings Dot Org — Speak fluent corporate. Ironically.
           </div>
         </div>
       </footer>

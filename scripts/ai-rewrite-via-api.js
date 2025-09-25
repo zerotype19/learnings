@@ -2,21 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const BATCH_SIZE = 10; // Process terms in batches to avoid rate limits
-const DELAY_BETWEEN_BATCHES = 2000; // 2 seconds delay between batches
+const BATCH_SIZE = 100; // Process 100 terms per batch
+const DELAY_BETWEEN_BATCHES = 3000; // 3 seconds delay between batches
 const API_URL = 'https://api.learnings.org';
-
-// OpenAI API configuration
-// The key is stored in worker settings, so we'll fetch it from there
-let OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
-// If not set locally, we'll need to get it from the worker environment
-if (!OPENAI_API_KEY) {
-  console.log('OpenAI API key not found in local environment.');
-  console.log('Please set it with: export OPENAI_API_KEY="your-key-here"');
-  console.log('Or the script will attempt to use the worker environment.');
-  console.log('');
-}
 
 // System prompt for generating witty definitions
 const SYSTEM_PROMPT = `You are a satirical corporate culture critic who writes witty, funny definitions for corporate buzzwords. 
@@ -43,8 +31,9 @@ async function fetchAllTerms() {
   const allTerms = [];
   let cursor = null;
   let page = 1;
+  const MAX_TERMS = 500; // Process all 500 terms
   
-  while (true) {
+  while (allTerms.length < MAX_TERMS) {
     try {
       const params = new URLSearchParams({
         limit: '100',
@@ -64,18 +53,36 @@ async function fetchAllTerms() {
       const terms = data.items || [];
       
       if (terms.length === 0) {
+        console.log('No more terms available');
         break;
       }
       
-      allTerms.push(...terms);
-      console.log(`Fetched page ${page}: ${terms.length} terms (total: ${allTerms.length})`);
+      // Only add terms up to our limit
+      const remainingSlots = MAX_TERMS - allTerms.length;
+      const termsToAdd = terms.slice(0, remainingSlots);
+      allTerms.push(...termsToAdd);
+      
+      console.log(`Fetched page ${page}: ${terms.length} terms (added ${termsToAdd.length}, total: ${allTerms.length})`);
+      
+      // Check if we've reached our limit
+      if (allTerms.length >= MAX_TERMS) {
+        console.log(`Reached limit of ${MAX_TERMS} terms`);
+        break;
+      }
       
       cursor = data.nextCursor;
       if (!cursor) {
+        console.log('No more pages available');
         break;
       }
       
       page++;
+      
+      // Safety check to prevent infinite loops
+      if (page > 20) {
+        console.log('Safety limit reached (20 pages), stopping');
+        break;
+      }
     } catch (error) {
       console.error('Error fetching terms:', error);
       break;
@@ -86,38 +93,37 @@ async function fetchAllTerms() {
   return allTerms;
 }
 
-// Call OpenAI API to rewrite a definition
+// Call OpenAI API via your worker to rewrite a definition
 async function rewriteDefinition(term) {
-  const prompt = `Original definition: "${term.definition}"\n\nRewrite this definition to be satirical and witty:`;
-  
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    // Use the translate endpoint which is designed for this
+    const response = await fetch(`${API_URL}/v1/ai/translate`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: prompt }
-        ],
-        max_tokens: 200,
-        temperature: 0.8
+        text: term.definition
       })
     });
     
     if (!response.ok) {
       const error = await response.text();
-      throw new Error(`OpenAI API error: ${response.status} - ${error}`);
+      throw new Error(`API error: ${response.status} - ${error}`);
     }
     
     const data = await response.json();
-    const newDefinition = data.choices[0].message.content.trim();
+    
+    // The translate endpoint returns an object with academic_tone, plain_translation, optional_framework
+    // We'll use the plain_translation as our witty definition
+    const newDefinition = data.plain_translation || data.academic_tone || term.definition;
+    
+    if (!newDefinition) {
+      throw new Error('No content returned from API');
+    }
     
     // Clean up the response (remove quotes if present)
-    return newDefinition.replace(/^["']|["']$/g, '');
+    return newDefinition.trim().replace(/^["']|["']$/g, '');
   } catch (error) {
     console.error(`Error rewriting definition for "${term.title}":`, error);
     return null;
@@ -137,29 +143,33 @@ async function processTermsInBatches(terms) {
     
     console.log(`\nProcessing batch ${batchNumber}/${totalBatches} (${batch.length} terms)...`);
     
-    // Process batch concurrently
-    const batchPromises = batch.map(async (term) => {
-      console.log(`  Rewriting: ${term.title}`);
+    // Process batch sequentially to avoid overwhelming the API
+    for (let j = 0; j < batch.length; j++) {
+      const term = batch[j];
+      console.log(`  [${j + 1}/${batch.length}] Rewriting: ${term.title}`);
+      
       const newDefinition = await rewriteDefinition(term);
       
       if (newDefinition) {
-        return {
+        results.push({
           id: term.id,
           title: term.title,
           slug: term.slug,
           originalDefinition: term.definition,
           newDefinition: newDefinition
-        };
+        });
+        console.log(`    ✅ Success: ${newDefinition.substring(0, 60)}...`);
+      } else {
+        console.log(`    ❌ Failed to rewrite`);
       }
       
-      return null;
-    });
+      // Small delay between individual requests
+      if (j < batch.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
     
-    const batchResults = await Promise.all(batchPromises);
-    const validResults = batchResults.filter(result => result !== null);
-    
-    results.push(...validResults);
-    console.log(`  Batch ${batchNumber} completed: ${validResults.length}/${batch.length} successful`);
+    console.log(`  Batch ${batchNumber} completed: ${results.length - (i)}/${batch.length} successful`);
     
     // Delay between batches to avoid rate limits
     if (i + BATCH_SIZE < terms.length) {
@@ -186,7 +196,7 @@ ${results.map(result => {
 }).join('\n')}
 `;
 
-  const migrationFileName = `040_ai_rewritten_definitions`;
+  const migrationFileName = `040_ai_rewritten_definitions_via_api`;
   const migrationPath = path.join(__dirname, '..', 'infra', 'd1-migrations', `${migrationFileName}.sql`);
   
   fs.writeFileSync(migrationPath, migrationContent);
@@ -218,7 +228,7 @@ ${index + 1}. ${result.title} (${result.slug})
 // Main execution
 async function main() {
   try {
-    console.log('Starting AI definition rewrite process...\n');
+    console.log('Starting AI definition rewrite process via API...\n');
     
     // Fetch all terms
     const terms = await fetchAllTerms();

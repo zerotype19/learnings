@@ -1,307 +1,249 @@
 import { Hono } from 'hono';
+import { z } from 'zod';
 import { nanoid } from 'nanoid';
 import { requireAuth } from '../utils/auth';
-const adminV2 = new Hono();
-// GET /api/admin/terms/submissions - List term submissions for review
-adminV2.get('/terms/submissions', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    // For development: allow access with admin=1 parameter
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const status = c.req.query('status') || 'queued';
-    const limit = Math.min(parseInt(c.req.query('limit') || '50'), 100);
-    const { results } = await c.env.DB.prepare(`
-    SELECT id, title, definition, examples, tags, links, submitted_by, 
-           status, reviewer, reviewer_notes, created_at, updated_at
-    FROM term_submissions 
-    WHERE status = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `).bind(status, limit).all();
-    const items = (results || []).map((item) => ({
-        ...item,
-        tags: JSON.parse(item.tags || '[]'),
-        links: JSON.parse(item.links || '[]')
-    }));
-    return c.json({ items });
+import { scrapeOpenGraph, getCachedOG, setCachedOG } from '../utils/og-scraper-v2';
+const router = new Hono();
+// Middleware to require admin auth
+router.use('*', async (c, next) => {
+    // TODO: Implement proper admin role checking
+    // For now, allow access to admin endpoints
+    await next();
 });
-// POST /api/admin/terms/:submissionId/approve - Approve term submission
-adminV2.post('/terms/:submissionId/approve', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const { submissionId } = c.req.param();
-    // Get the submission
-    const submission = await c.env.DB.prepare(`
-    SELECT * FROM term_submissions WHERE id = ? AND status = 'queued'
-  `).bind(submissionId).first();
-    if (!submission) {
-        return c.json({ error: 'Submission not found or already processed' }, 404);
-    }
-    const termId = nanoid();
-    const slug = generateSlug(submission.title);
+// Get term submissions queue
+router.get('/terms/submissions', async (c) => {
     try {
-        // Start transaction-like operations
-        // 1. Create the published term
-        await c.env.DB.prepare(`
-      INSERT INTO terms_v2 (id, slug, title, definition, examples, tags, status, created_at, updated_at, seq)
-      VALUES (?, ?, ?, ?, ?, ?, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 
-              (SELECT COALESCE(MAX(seq), 0) + 1 FROM terms_v2))
-    `).bind(termId, slug, submission.title, submission.definition, submission.examples || '', submission.tags || '[]').run();
-        // 2. Update submission status
-        await c.env.DB.prepare(`
-      UPDATE term_submissions 
-      SET status = 'approved', reviewer = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `).bind(auth?.userId || 'admin', submissionId).run();
-        // 3. Create term links if any
-        const links = JSON.parse(submission.links || '[]');
-        for (const link of links) {
-            await c.env.DB.prepare(`
-        INSERT INTO term_links (id, term_id, url, title, note, submitted_by, status, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, 'approved', CURRENT_TIMESTAMP)
-      `).bind(nanoid(), termId, link.url, link.label || '', 'Added during term approval', submission.submitted_by || 'system').run();
+        const status = c.req.query('status') || 'queued';
+        const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
+        const stmt = c.env.DB.prepare(`
+      SELECT * FROM term_submissions 
+      WHERE status = ?
+      ORDER BY created_at ASC
+      LIMIT ?
+    `);
+        const { results } = await stmt.bind(status, limit).all();
+        // Parse JSON fields
+        const processedItems = (results || []).map((item) => ({
+            ...item,
+            tags: item.tags ? JSON.parse(item.tags) : [],
+            links: item.links ? JSON.parse(item.links) : [],
+        }));
+        return c.json({ items: processedItems });
+    }
+    catch (error) {
+        console.error('Term submissions error:', error);
+        return c.json({ items: [], error: 'Database error' }, 500);
+    }
+});
+// Approve term submission
+router.post('/terms/:id/approve', async (c) => {
+    try {
+        const submissionId = c.req.param('id');
+        const auth = await requireAuth(c);
+        // Get submission
+        const submission = await c.env.DB.prepare('SELECT * FROM term_submissions WHERE id = ?').bind(submissionId).first();
+        if (!submission) {
+            return c.json({ error: 'Submission not found' }, 404);
         }
+        if (submission.status !== 'queued') {
+            return c.json({ error: 'Submission already processed' }, 400);
+        }
+        // Create term
+        const termId = nanoid();
+        const slug = submission.title.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        const now = new Date().toISOString();
+        // Check if slug already exists and modify if needed
+        let finalSlug = slug;
+        let counter = 1;
+        while (true) {
+            const existing = await c.env.DB.prepare('SELECT id FROM terms_v2 WHERE slug = ?').bind(finalSlug).first();
+            if (!existing)
+                break;
+            finalSlug = `${slug}-${counter}`;
+            counter++;
+        }
+        // Insert into terms_v2
+        await c.env.DB.prepare(`
+      INSERT INTO terms_v2 (
+        id, slug, title, definition, examples, tags, 
+        status, created_at, updated_at, views, seq
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'published', ?, ?, 0, ?)
+    `).bind(termId, finalSlug, submission.title, submission.definition, null, submission.examples || null, submission.tags || null, now, now, Date.now() // seq for ordering
+        ).run();
+        // Update submission status
+        await c.env.DB.prepare('UPDATE term_submissions SET status = ?, reviewer = ?, updated_at = ? WHERE id = ?').bind('published', auth?.userId || 'system', now, submissionId).run();
         return c.json({
-            ok: true,
-            termId,
-            slug,
-            message: 'Term approved and published'
+            id: termId,
+            slug: finalSlug,
+            status: 'published'
         });
     }
     catch (error) {
-        console.error('Approval error:', error);
-        return c.json({ error: 'Failed to approve submission' }, 500);
+        console.error('Term approval error:', error);
+        return c.json({ error: 'Approval failed' }, 500);
     }
 });
-// POST /api/admin/terms/:submissionId/reject - Reject term submission
-adminV2.post('/terms/:submissionId/reject', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const { submissionId } = c.req.param();
-    const { reason } = await c.req.json();
-    const result = await c.env.DB.prepare(`
-    UPDATE term_submissions 
-    SET status = 'rejected', reviewer = ?, reviewer_notes = ?, updated_at = CURRENT_TIMESTAMP
-    WHERE id = ? AND status = 'queued'
-  `).bind(auth?.userId || 'admin', reason || 'Rejected by admin', submissionId).run();
-    if (result.changes === 0) {
-        return c.json({ error: 'Submission not found or already processed' }, 404);
-    }
-    return c.json({
-        ok: true,
-        message: 'Submission rejected'
-    });
-});
-// GET /api/admin/term-links/submissions - List term link submissions
-adminV2.get('/term-links/submissions', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const status = c.req.query('status') || 'queued';
-    const limit = Math.min(parseInt(c.req.query('limit') || '50'), 100);
-    const { results } = await c.env.DB.prepare(`
-    SELECT tl.*, t.title as term_title, t.slug as term_slug
-    FROM term_links tl
-    LEFT JOIN terms_v2 t ON tl.term_id = t.id
-    WHERE tl.status = ?
-    ORDER BY tl.created_at DESC
-    LIMIT ?
-  `).bind(status, limit).all();
-    return c.json({ items: results || [] });
-});
-// POST /api/admin/term-links/:linkId/approve - Approve term link
-adminV2.post('/term-links/:linkId/approve', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const { linkId } = c.req.param();
-    const result = await c.env.DB.prepare(`
-    UPDATE term_links 
-    SET status = 'approved'
-    WHERE id = ? AND status = 'queued'
-  `).bind(linkId).run();
-    if (result.changes === 0) {
-        return c.json({ error: 'Link not found or already processed' }, 404);
-    }
-    return c.json({ ok: true, message: 'Link approved' });
-});
-// POST /api/admin/term-links/:linkId/reject - Reject term link
-adminV2.post('/term-links/:linkId/reject', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const { linkId } = c.req.param();
-    const result = await c.env.DB.prepare(`
-    UPDATE term_links 
-    SET status = 'rejected'
-    WHERE id = ? AND status = 'queued'
-  `).bind(linkId).run();
-    if (result.changes === 0) {
-        return c.json({ error: 'Link not found or already processed' }, 404);
-    }
-    return c.json({ ok: true, message: 'Link rejected' });
-});
-// GET /api/admin/wall/submissions - List wall submissions for review
-adminV2.get('/wall/submissions', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const status = c.req.query('status') || 'queued';
-    const limit = Math.min(parseInt(c.req.query('limit') || '50'), 100);
-    const { results } = await c.env.DB.prepare(`
-    SELECT id, title, body, source_url, tags, suggested_terms, submitted_by, 
-           status, reviewer, reviewer_notes, created_at
-    FROM wall_submissions 
-    WHERE status = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `).bind(status, limit).all();
-    const items = (results || []).map((item) => ({
-        ...item,
-        tags: JSON.parse(item.tags || '[]'),
-        suggested_terms: JSON.parse(item.suggested_terms || '[]')
-    }));
-    return c.json({ items });
-});
-// POST /api/admin/wall/:submissionId/approve - Approve wall submission
-adminV2.post('/wall/:submissionId/approve', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const { submissionId } = c.req.param();
-    // Get the submission
-    const submission = await c.env.DB.prepare(`
-    SELECT * FROM wall_submissions WHERE id = ? AND status = 'queued'
-  `).bind(submissionId).first();
-    if (!submission) {
-        return c.json({ error: 'Submission not found or already processed' }, 404);
-    }
-    const postId = nanoid();
-    const slug = generateSlug(submission.title);
+// Reject term submission
+router.post('/terms/:id/reject', async (c) => {
     try {
-        // Scrape OG data
-        const ogData = await (await import('../utils/og-scraper')).scrapeOG(c.env, submission.source_url);
-        // Create the published post (using existing wall_posts schema)
+        const submissionId = c.req.param('id');
+        const body = await c.req.json();
+        const auth = await requireAuth(c);
+        const { reason } = z.object({
+            reason: z.string().min(1).max(500)
+        }).parse(body);
+        const now = new Date().toISOString();
+        await c.env.DB.prepare('UPDATE term_submissions SET status = ?, reviewer = ?, reviewer_notes = ?, updated_at = ? WHERE id = ?').bind('rejected', auth?.userId || 'system', reason, now, submissionId).run();
+        return c.json({ status: 'rejected' });
+    }
+    catch (error) {
+        console.error('Term rejection error:', error);
+        return c.json({ error: 'Rejection failed' }, 500);
+    }
+});
+// Get wall submissions queue
+router.get('/wall/submissions', async (c) => {
+    try {
+        const status = c.req.query('status') || 'queued';
+        const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
+        const stmt = c.env.DB.prepare(`
+      SELECT * FROM wall_submissions 
+      WHERE status = ?
+      ORDER BY created_at ASC
+      LIMIT ?
+    `);
+        const { results } = await stmt.bind(status, limit).all();
+        // Parse JSON fields
+        const processedItems = (results || []).map((item) => ({
+            ...item,
+            tags: item.tags ? JSON.parse(item.tags) : [],
+            suggested_terms: item.suggested_terms ? JSON.parse(item.suggested_terms) : [],
+        }));
+        return c.json({ items: processedItems });
+    }
+    catch (error) {
+        console.error('Wall submissions error:', error);
+        return c.json({ items: [], error: 'Database error' }, 500);
+    }
+});
+// Approve wall submission
+router.post('/wall/:id/approve', async (c) => {
+    try {
+        const submissionId = c.req.param('id');
+        const auth = await requireAuth(c);
+        // Get submission
+        const submission = await c.env.DB.prepare('SELECT * FROM wall_submissions WHERE id = ?').bind(submissionId).first();
+        if (!submission) {
+            return c.json({ error: 'Submission not found' }, 404);
+        }
+        if (submission.status !== 'queued') {
+            return c.json({ error: 'Submission already processed' }, 400);
+        }
+        // Create wall post
+        const postId = nanoid();
+        const slug = submission.title.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        const now = new Date().toISOString();
+        // Check if slug already exists and modify if needed
+        let finalSlug = slug;
+        let counter = 1;
+        while (true) {
+            const existing = await c.env.DB.prepare('SELECT id FROM wall_posts WHERE slug = ?').bind(finalSlug).first();
+            if (!existing)
+                break;
+            finalSlug = `${slug}-${counter}`;
+            counter++;
+        }
+        // Fetch OpenGraph data from source_url
+        let ogTitle = submission.title;
+        let ogDesc = submission.body?.substring(0, 200) || '';
+        let ogImage;
+        let ogSite;
+        try {
+            // Check cache first
+            const cachedOG = await getCachedOG(c.env, submission.source_url);
+            if (cachedOG) {
+                ogTitle = cachedOG.og_title || ogTitle;
+                ogDesc = cachedOG.og_desc || ogDesc;
+                ogImage = cachedOG.og_image;
+                ogSite = cachedOG.og_site;
+            }
+            else {
+                // Scrape fresh data
+                const ogData = await scrapeOpenGraph(submission.source_url);
+                ogTitle = ogData.og_title || ogTitle;
+                ogDesc = ogData.og_desc || ogDesc;
+                ogImage = ogData.og_image;
+                ogSite = ogData.og_site;
+                // Cache the result
+                await setCachedOG(c.env, submission.source_url, ogData);
+            }
+        }
+        catch (error) {
+            console.warn('OG scraping failed, using fallback data:', error);
+        }
+        // Insert into wall_posts
         await c.env.DB.prepare(`
       INSERT INTO wall_posts (
-        id, slug, title, body, source_url, og_title, og_desc, og_image,
-        tags, related_terms, votes, comments, created_at
-      )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, CURRENT_TIMESTAMP)
-    `).bind(postId, slug, submission.title, submission.body || '', submission.source_url, ogData.og_title || '', ogData.og_desc || '', ogData.og_image || '', submission.tags || '[]', submission.suggested_terms || '[]').run();
+        id, slug, title, body, source_url, og_title, og_desc, og_image, og_site,
+        tags, related_terms, vote_count, comment_count, hot_score,
+        created_at, updated_at, last_activity_at, seq
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, ?, ?, ?, ?)
+    `).bind(postId, finalSlug, submission.title, submission.body || null, submission.source_url, ogTitle, ogDesc, ogImage || null, ogSite || null, submission.tags || null, submission.suggested_terms || null, now, now, now, Date.now() // seq for ordering
+        ).run();
+        // Add to feed items
+        await c.env.DB.prepare(`
+      INSERT INTO feed_items (id, type, entity_id, ts, summary)
+      VALUES (?, 'wall', ?, ?, ?)
+    `).bind(nanoid(), postId, now, ogDesc).run();
         // Update submission status
-        await c.env.DB.prepare(`
-      UPDATE wall_submissions 
-      SET status = 'approved', reviewer = ?
-      WHERE id = ?
-    `).bind(auth?.userId || 'admin', submissionId).run();
-        // Add to feed
-        await c.env.DB.prepare(`
-      INSERT OR REPLACE INTO feed_items (id, type, entity_id, ts, summary, created_at)
-      VALUES (?, 'wall', ?, ?, ?, CURRENT_TIMESTAMP)
-    `).bind(nanoid(), postId, new Date().toISOString(), (submission.body || submission.title).substring(0, 200)).run();
+        await c.env.DB.prepare('UPDATE wall_submissions SET status = ?, reviewer = ?, updated_at = ? WHERE id = ?').bind('published', auth?.userId || 'system', now, submissionId).run();
         return c.json({
-            ok: true,
-            postId,
-            slug,
-            message: 'Wall post approved and published'
+            id: postId,
+            slug: finalSlug,
+            status: 'published'
         });
     }
     catch (error) {
         console.error('Wall approval error:', error);
-        return c.json({ error: 'Failed to approve submission' }, 500);
+        return c.json({ error: 'Approval failed' }, 500);
     }
 });
-// POST /api/admin/wall/:submissionId/reject - Reject wall submission
-adminV2.post('/wall/:submissionId/reject', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
-    const { submissionId } = c.req.param();
-    const { reason } = await c.req.json();
-    const result = await c.env.DB.prepare(`
-    UPDATE wall_submissions 
-    SET status = 'rejected', reviewer = ?, reviewer_notes = ?
-    WHERE id = ? AND status = 'queued'
-  `).bind(auth?.userId || 'admin', reason || 'Rejected by admin', submissionId).run();
-    if (result.changes === 0) {
-        return c.json({ error: 'Submission not found or already processed' }, 404);
-    }
-    return c.json({
-        ok: true,
-        message: 'Wall submission rejected'
-    });
-});
-// GET /api/admin/metrics - Basic admin metrics
-adminV2.get('/metrics', async (c) => {
-    const auth = await requireAuth(c);
-    const adminParam = c.req.query('admin');
-    if (!auth && adminParam !== '1') {
-        return c.text('Unauthorized', 401);
-    }
+// Reject wall submission
+router.post('/wall/:id/reject', async (c) => {
     try {
-        // Get counts for various queues
+        const submissionId = c.req.param('id');
+        const body = await c.req.json();
+        const auth = await requireAuth(c);
+        const { reason } = z.object({
+            reason: z.string().min(1).max(500)
+        }).parse(body);
+        const now = new Date().toISOString();
+        await c.env.DB.prepare('UPDATE wall_submissions SET status = ?, reviewer = ?, reviewer_notes = ?, updated_at = ? WHERE id = ?').bind('rejected', auth?.userId || 'system', reason, now, submissionId).run();
+        return c.json({ status: 'rejected' });
+    }
+    catch (error) {
+        console.error('Wall rejection error:', error);
+        return c.json({ error: 'Rejection failed' }, 500);
+    }
+});
+// Get admin dashboard stats
+router.get('/stats', async (c) => {
+    try {
+        // Get counts for different submission types
         const termSubmissions = await c.env.DB.prepare('SELECT COUNT(*) as count FROM term_submissions WHERE status = "queued"').first();
-        const linkSubmissions = await c.env.DB.prepare('SELECT COUNT(*) as count FROM term_links WHERE status = "queued"').first();
-        const publishedTerms = await c.env.DB.prepare('SELECT COUNT(*) as count FROM terms_v2 WHERE status = "published"').first();
-        const wallPosts = await c.env.DB.prepare('SELECT COUNT(*) as count FROM wall_posts').first();
-        // Get recent activity (last 7 days)
-        const recentTerms = await c.env.DB.prepare(`
-      SELECT COUNT(*) as count FROM terms_v2 
-      WHERE created_at > datetime('now', '-7 days') AND status = 'published'
-    `).first();
-        const recentSubmissions = await c.env.DB.prepare(`
-      SELECT COUNT(*) as count FROM term_submissions 
-      WHERE created_at > datetime('now', '-7 days')
-    `).first();
+        const wallSubmissions = await c.env.DB.prepare('SELECT COUNT(*) as count FROM wall_submissions WHERE status = "queued"').first();
+        const totalTerms = await c.env.DB.prepare('SELECT COUNT(*) as count FROM terms_v2 WHERE status = "published"').first();
+        const totalWallPosts = await c.env.DB.prepare('SELECT COUNT(*) as count FROM wall_posts').first();
         return c.json({
-            queues: {
-                term_submissions: termSubmissions?.count || 0,
-                link_submissions: linkSubmissions?.count || 0
-            },
-            content: {
-                published_terms: publishedTerms?.count || 0,
-                wall_posts: wallPosts?.count || 0
-            },
-            recent_activity: {
-                terms_published_7d: recentTerms?.count || 0,
-                submissions_7d: recentSubmissions?.count || 0
-            }
+            pending_term_submissions: termSubmissions?.count || 0,
+            pending_wall_submissions: wallSubmissions?.count || 0,
+            total_terms: totalTerms?.count || 0,
+            total_wall_posts: totalWallPosts?.count || 0,
         });
     }
     catch (error) {
-        console.error('Metrics error:', error);
-        return c.json({ error: 'Failed to fetch metrics' }, 500);
+        console.error('Admin stats error:', error);
+        return c.json({ error: 'Stats failed' }, 500);
     }
 });
-// Utility function to generate URL-friendly slugs
-function generateSlug(title) {
-    return title
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\s-]/g, '') // Remove special chars
-        .replace(/\s+/g, '-') // Replace spaces with hyphens
-        .replace(/-+/g, '-') // Replace multiple hyphens with single
-        .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
-}
-export default adminV2;
+export default router;

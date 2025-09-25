@@ -179,25 +179,33 @@ export function SearchBox({
 
   return (
     <div className={`relative ${className}`}>
-      <input
-        ref={inputRef}
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        onFocus={() => {
-          if (suggestions.length > 0) {
-            setIsOpen(true);
-          }
-        }}
-        placeholder={placeholder}
-        className="w-full px-3 py-1 text-sm border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
-      />
+      <div className="relative">
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          onFocus={() => {
+            if (suggestions.length > 0) {
+              setIsOpen(true);
+            }
+          }}
+          placeholder={placeholder}
+          className="w-full rounded-xl2 border border-slate-300 bg-white/90 px-4 py-2 text-sm text-slate-900 placeholder:text-slate-500 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none transition-all duration-200"
+        />
+        
+        {/* Command-K hint */}
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1 text-xs text-slate-400">
+          <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono">⌘</kbd>
+          <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono">K</kbd>
+        </div>
+      </div>
       
       {/* Loading indicator */}
       {loading && (
-        <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-          <div className="animate-spin h-4 w-4 border-2 border-brand-500 border-t-transparent rounded-full"></div>
+        <div className="absolute right-12 top-1/2 transform -translate-y-1/2">
+          <div className="animate-spin h-4 w-4 border-2 border-brand border-t-transparent rounded-full"></div>
         </div>
       )}
 
@@ -205,10 +213,10 @@ export function SearchBox({
       {isOpen && (suggestions.length > 0 || error) && (
         <div
           ref={dropdownRef}
-          className="absolute top-full left-0 right-0 mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto"
+          className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-2xl shadow-soft z-50 max-h-80 overflow-y-auto"
         >
           {error ? (
-            <div className="px-3 py-2 text-sm text-red-600">
+            <div className="px-4 py-3 text-sm text-red-600">
               {error}
             </div>
           ) : (
@@ -217,11 +225,11 @@ export function SearchBox({
                 <button
                   key={`${suggestion.type}-${suggestion.id}`}
                   onClick={() => handleSuggestionClick(suggestion)}
-                  className={`w-full px-3 py-2 text-left text-sm hover:bg-neutral-50 transition-colors ${
-                    index === selectedIndex ? 'bg-brand-50 text-brand-700' : 'text-neutral-700'
+                  className={`w-full px-4 py-3 text-left text-sm hover:bg-slate-50 transition-all duration-200 ${
+                    index === selectedIndex ? 'bg-brand-50 text-brand-700' : 'text-slate-700'
                   }`}
                 >
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-3">
                     <span className="text-base flex-shrink-0 mt-0.5">
                       {getTypeIcon(suggestion.type)}
                     </span>
@@ -230,12 +238,12 @@ export function SearchBox({
                         {suggestion.title}
                       </div>
                       {suggestion.description && (
-                        <div className="text-xs text-neutral-500 truncate mt-0.5">
+                        <div className="text-xs text-slate-500 truncate mt-0.5">
                           {suggestion.description}
                         </div>
                       )}
                     </div>
-                    <span className="text-xs text-neutral-400 flex-shrink-0 mt-0.5">
+                    <span className="text-xs text-slate-400 flex-shrink-0 mt-0.5">
                       {suggestion.type}
                     </span>
                   </div>
@@ -244,12 +252,12 @@ export function SearchBox({
               
               {/* Search all results option */}
               {query.trim() && (
-                <div className="border-t border-neutral-100">
+                <div className="border-t border-slate-100">
                   <button
                     onClick={handleSearch}
-                    className="w-full px-3 py-2 text-left text-sm text-brand-600 hover:bg-brand-50 transition-colors"
+                    className="w-full px-4 py-3 text-left text-sm text-brand-600 hover:bg-brand-50 transition-all duration-200"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
                       <span className="text-base">🔍</span>
                       <span>Search for "{query}"</span>
                     </div>
