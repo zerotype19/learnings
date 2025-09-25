@@ -4,6 +4,7 @@ import { EnterpriseToggle } from '../components/EnterpriseToggle';
 import { BuzzwordTicker } from '../components/BuzzwordTicker';
 import { useSectionStamps } from '../hooks/useSectionStamps';
 import { useClorgSprite } from '../lib/useClorgSprite';
+import { initializeCorporateMode } from '../lib/corporateMode';
 import type { NonsenseData } from '../types/nonsense';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
@@ -36,6 +37,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     };
 
     loadNonsenseData();
+    
+    // Initialize corporate mode on app load
+    initializeCorporateMode();
   }, []);
 
   // Initialize section stamps

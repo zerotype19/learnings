@@ -4,9 +4,34 @@ interface BuzzwordTickerProps {
   items: string[];
 }
 
+function formatTickerText(text: string, index: number, isCorporateMode: boolean): string {
+  let formatted = text;
+  
+  // Corporate Mode effects
+  if (isCorporateMode) {
+    // Uppercase every third item
+    if (index % 3 === 2) {
+      formatted = formatted.toUpperCase();
+    }
+    
+    // Random ™ to 30% of items
+    if (Math.random() < 0.3) {
+      formatted += '™';
+    }
+  }
+  
+  // BREAKING prefix (every 5th item)
+  if ((index + 1) % 5 === 0) {
+    formatted = 'BREAKING: ' + formatted;
+  }
+  
+  return formatted;
+}
+
 export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
   const [i, setI] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [isCorporateMode, setIsCorporateMode] = useState(false);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -16,7 +41,21 @@ export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
     const handleChange = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
     mediaQuery?.addEventListener('change', handleChange);
 
-    return () => mediaQuery?.removeEventListener('change', handleChange);
+    // Check for corporate mode
+    const checkCorporateMode = () => {
+      setIsCorporateMode(document.documentElement.classList.contains('corp-mode'));
+    };
+    
+    checkCorporateMode();
+    
+    // Listen for corporate mode changes
+    const observer = new MutationObserver(checkCorporateMode);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    return () => {
+      mediaQuery?.removeEventListener('change', handleChange);
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -33,13 +72,13 @@ export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
       <div className="mx-auto max-w-6xl h-full flex items-center text-sm font-bold overflow-hidden">
         {reduceMotion ? (
           <span className="transition-opacity duration-300 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
-            {(i + 1) % 5 === 0 ? 'BREAKING: ' : ''}{items[i]}
+            {formatTickerText(items[i], i, isCorporateMode)}
           </span>
         ) : (
           <div className="whitespace-nowrap animate-ticker hover:[animation-play-state:paused]">
             {items.concat(items[0]).map((t, idx) => (
               <span key={idx} className="mr-12 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
-                {(idx + 1) % 5 === 0 ? 'BREAKING: ' : ''}{t}
+                {formatTickerText(t, idx, isCorporateMode)}
               </span>
             ))}
           </div>

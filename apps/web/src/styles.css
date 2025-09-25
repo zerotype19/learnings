@@ -96,3 +96,49 @@
 .animate-ticker {
   animation: ticker 60s linear infinite;
 }
+
+/* Corporate Mode Styles */
+html.corp-mode main {
+  /* Compliance watermark */
+  background-image: repeating-linear-gradient(
+    45deg, rgba(0,0,0,0.03) 0 2px, transparent 2px 16px
+  );
+  position: relative;
+}
+
+html.corp-mode main::after {
+  content: "LEARNINGS DOT ORG – CONFIDENTIAL";
+  position: absolute; 
+  inset: 0;
+  display: grid; 
+  place-items: center;
+  font-size: clamp(24px, 8vw, 80px);
+  letter-spacing: .2em; 
+  font-weight: 700;
+  color: rgba(0,0,0,0.05);
+  transform: rotate(-18deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  html.corp-mode main::after { 
+    color: rgba(255,255,255,0.04); 
+  }
+}
+
+html.corp-mode h1, 
+html.corp-mode h2, 
+html.corp-mode h3 {
+  letter-spacing: .01em;
+}
+
+html.corp-mode a, 
+html.corp-mode .btn-primary {
+  color: #2563EB; /* corporate bluewash */
+}
+
+/* Ticker Turbo for Corporate Mode */
+html.corp-mode .animate-ticker {
+  animation: ticker 48s linear infinite; /* 60s / 1.25 = 48s */
+}

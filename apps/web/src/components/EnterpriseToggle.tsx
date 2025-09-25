@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { setCorporateMode, initializeCorporateMode } from '../lib/corporateMode';
 
 export function EnterpriseToggle() {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
-    // Load state from localStorage
-    const saved = localStorage.getItem('enterpriseMode');
-    setIsEnabled(saved === 'true');
+    // Initialize corporate mode on mount
+    initializeCorporateMode();
+    
+    // Check current state
+    const isOn = localStorage.getItem('corpMode') === '1';
+    setIsEnabled(isOn);
   }, []);
 
   const handleToggle = () => {
     const newState = !isEnabled;
     setIsEnabled(newState);
-    localStorage.setItem('enterpriseMode', newState.toString());
     
-    // Add/remove class to html for global styling
-    if (newState) {
-      document.documentElement.classList.add('enterprise-mode');
-    } else {
-      document.documentElement.classList.remove('enterprise-mode');
-    }
+    // Use the new corporate mode system
+    setCorporateMode(newState);
 
     // Track analytics
     trackToggle(newState);
@@ -69,7 +68,7 @@ export function EnterpriseToggle() {
         </span>
       </label>
       <div className="text-xs text-zinc-500 dark:text-zinc-400">
-        Doubles down on tooltips™ and increases Clorg enthusiasm.
+        Enables Sprinkle™, Executive Summary, and corporate bluewash.
       </div>
     </div>
   );

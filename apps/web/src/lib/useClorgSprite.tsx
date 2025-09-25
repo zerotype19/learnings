@@ -14,7 +14,11 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       const url = new URL(window.location.href);
       if (url.searchParams.get("noclorg") === "1") return;
 
-      const probability = opts.probability ?? 0.4;
+      // Check for corporate mode and adjust probability
+      const isCorporateMode = document.documentElement.classList.contains('corp-mode');
+      const baseProbability = opts.probability ?? 0.4;
+      const probability = isCorporateMode ? 0.7 : baseProbability;
+      
       const maxPerSession = opts.maxPerSession ?? 5;
       const includePaths = opts.includePaths ?? []; // empty = all routes
       const criticalSelectors = opts.criticalSelectors ?? [
@@ -39,7 +43,13 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       const seen = Number(localStorage.getItem("clorgSeenCount") || "0");
       if (seen >= maxPerSession) return;
 
-      if (Math.random() > probability) return;
+      // Check for corporate mode reroll trigger
+      if (isCorporateMode && (window as any).__triggerClorg) {
+        (window as any).__triggerClorg = false;
+        // Force spawn regardless of probability
+      } else if (Math.random() > probability) {
+        return;
+      }
 
       // Load phrases from window.__NONSENSE__ or fall back.
       const phrases: string[] =
