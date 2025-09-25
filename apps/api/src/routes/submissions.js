@@ -54,7 +54,7 @@ router.post('/terms/submit', async (c) => {
     ).run();
     
     // Send confirmation email
-    const mailer = new MailerService();
+    const mailer = new MailerService(c.env);
     const confirmationUrl = `${c.req.header('origin') || 'https://learnings.org'}/confirm/${confirmationToken}`;
     
     await mailer.sendConfirmationEmail({
@@ -106,7 +106,7 @@ router.post('/wall/submit', async (c) => {
     ).run();
     
     // Send confirmation email
-    const mailer = new MailerService();
+    const mailer = new MailerService(c.env);
     const confirmationUrl = `${c.req.header('origin') || 'https://learnings.org'}/confirm/${confirmationToken}`;
     
     await mailer.sendConfirmationEmail({

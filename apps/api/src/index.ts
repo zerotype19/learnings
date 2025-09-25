@@ -37,6 +37,9 @@ export type Env = {
   LINKEDIN_CLIENT_ID?: string;
   LINKEDIN_CLIENT_SECRET?: string;
   OPENAI_API_KEY: string;
+  SMTP2GO_API_KEY: string;
+  SMTP2GO_FROM_EMAIL?: string;
+  SMTP2GO_FROM_NAME?: string;
 };
 
 const app = new Hono<{ Bindings: Env }>();

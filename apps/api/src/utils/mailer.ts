@@ -1,3 +1,5 @@
+import type { Env } from '../index';
+
 export interface ConfirmationEmailData {
   type: 'term' | 'wall';
   title: string;
@@ -10,14 +12,14 @@ export class MailerService {
   private fromEmail: string;
   private fromName: string;
 
-  constructor() {
-    this.apiKey = process.env.SMTP2GO_API_KEY || '';
+  constructor(env: Env) {
+    this.apiKey = env.SMTP2GO_API_KEY || '';
     if (!this.apiKey) {
       throw new Error('SMTP2GO_API_KEY environment variable is required');
     }
     
-    this.fromEmail = process.env.SMTP2GO_FROM_EMAIL || 'noreply@learnings.org';
-    this.fromName = process.env.SMTP2GO_FROM_NAME || 'Learnings.org';
+    this.fromEmail = env.SMTP2GO_FROM_EMAIL || 'noreply@learnings.org';
+    this.fromName = env.SMTP2GO_FROM_NAME || 'Learnings.org';
   }
 
   async sendConfirmationEmail(data: ConfirmationEmailData): Promise<void> {

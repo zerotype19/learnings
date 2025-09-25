@@ -1,12 +1,12 @@
 export class MailerService {
-  constructor() {
-    this.apiKey = process.env.SMTP2GO_API_KEY || '';
+  constructor(env) {
+    this.apiKey = env.SMTP2GO_API_KEY || '';
     if (!this.apiKey) {
       throw new Error('SMTP2GO_API_KEY environment variable is required');
     }
     
-    this.fromEmail = process.env.SMTP2GO_FROM_EMAIL || 'noreply@learnings.org';
-    this.fromName = process.env.SMTP2GO_FROM_NAME || 'Learnings.org';
+    this.fromEmail = env.SMTP2GO_FROM_EMAIL || 'noreply@learnings.org';
+    this.fromName = env.SMTP2GO_FROM_NAME || 'Learnings.org';
   }
 
   async sendConfirmationEmail(data) {
