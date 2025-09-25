@@ -180,6 +180,9 @@ router.get('/', async (c) => {
     query += ' LIMIT ?';
     params.push(limit + 1);
 
+    console.log('Terms API Query:', query);
+    console.log('Terms API Params:', params);
+
     const stmt = c.env.DB.prepare(query);
     const { results } = await stmt.bind(...params).all();
     
