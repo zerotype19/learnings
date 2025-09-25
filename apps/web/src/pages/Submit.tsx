@@ -280,28 +280,33 @@ function WallSubmissionForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title.trim() || !formData.source_url.trim() || !formData.email.trim()) return;
+    if (!formData.title.trim() || !formData.source_url.trim() || !formData.email.trim()) {
+      alert('Please fill in all required fields (Title, Email, and Source URL)');
+      return;
+    }
 
     setSubmitting(true);
     try {
-      // Use the imported API helper
-      
       // Parse tags and suggested terms
       const tags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
       const suggestedTerms = formData.suggested_terms.split(',').map(t => t.trim()).filter(t => t);
+
+      const submissionData = {
+        title: formData.title.trim(),
+        body: formData.body.trim() || undefined,
+        source_url: formData.source_url.trim(),
+        email: formData.email.trim(),
+        tags: tags.length > 0 ? tags : undefined,
+        suggested_terms: suggestedTerms.length > 0 ? suggestedTerms : undefined
+      };
+
+      console.log('Submitting wall post:', submissionData);
 
       const response = await fetch(`${apiUrl}/api/submissions/wall/submit`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: formData.title.trim(),
-          body: formData.body.trim() || undefined,
-          source_url: formData.source_url.trim(),
-          email: formData.email.trim(),
-          tags: tags.length > 0 ? tags : undefined,
-          suggested_terms: suggestedTerms.length > 0 ? suggestedTerms : undefined
-        })
+        body: JSON.stringify(submissionData)
       });
 
       if (response.ok) {
@@ -309,7 +314,8 @@ function WallSubmissionForm() {
         alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
       } else {
         const error = await response.json();
-        throw new Error(error.error || 'Submission failed');
+        console.error('Wall submission error:', error);
+        throw new Error(error.error || `Submission failed with status ${response.status}`);
       }
       setFormData({
         title: '',
