@@ -163,16 +163,16 @@ router.get('/', async (c) => {
     if (cursor) {
       const cursorParts = cursor.split(':');
       if (cursorParts.length === 2) {
-        const [cursorSort, cursorValue] = cursorParts;
+        const [cursorTitle, cursorCreatedAt] = cursorParts;
         if (sort === 'popular') {
           query += ' AND (views < ? OR (views = ? AND created_at < ?))';
-          params.push(cursorValue, cursorValue, cursorSort);
+          params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
         } else if (sort === 'alpha') {
           query += ' AND (title > ? OR (title = ? AND created_at > ?))';
-          params.push(cursorValue, cursorValue, cursorSort);
+          params.push(cursorTitle, cursorTitle, cursorCreatedAt);
         } else {
           query += ' AND created_at < ?';
-          params.push(cursorValue);
+          params.push(cursorCreatedAt);
         }
       }
     }
