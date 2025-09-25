@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FeedList } from '../components/feed/FeedList';
 import { trackEvent } from '../lib/api';
 import { SearchBox } from '../components/SearchBox';
-import { LetterIndex } from '../components/terms/LetterIndex';
 
 type QuickAction = {
   id: string;
@@ -104,18 +103,6 @@ export function HomeV2() {
 
   return (
     <div className="space-y-4">
-      {/* Alphabet Navigation */}
-      <div className="bg-white border-b border-slate-200 py-4">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <LetterIndex 
-            activeLetter="" 
-            onLetterClick={(letter) => {
-              window.location.href = `/terms?letter=${letter}`;
-            }} 
-          />
-        </div>
-      </div>
-
       {/* Hero Section */}
       <div className="bg-white">
         <div className="text-center py-8 md:py-12">
