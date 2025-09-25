@@ -62,19 +62,49 @@ export function TermsHub() {
     }
   };
 
-  // Initialize from URL parameters
+  // Initialize from URL parameters and load terms
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const letter = urlParams.get('letter');
+    setActiveLetter(letter || '');
+    
+    // Load terms immediately with the parsed letter
+    setTerms([]);
+    setNextCursor(null);
+    
+    const loadInitialTerms = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams({
+          sort: letter ? 'alpha' : 'random',
+          limit: '20'
+        });
+        if (letter) params.set('letter', letter);
+
+        const response = await fetch(`${apiUrl}/api/terms?${params}`, {
+          credentials: 'include'
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        setTerms(data.items || []);
+        setNextCursor(data.nextCursor);
+      } catch (error) {
+        console.error('Failed to load terms:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadInitialTerms();
+    
+    // Listen for URL changes (back/forward navigation)
     const updateFromURL = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const letter = urlParams.get('letter');
       setActiveLetter(letter || '');
     };
     
-    // Initial load
-    updateFromURL();
-    initialized.current = true;
-    
-    // Listen for URL changes (back/forward navigation)
     window.addEventListener('popstate', updateFromURL);
     
     return () => {
@@ -82,9 +112,10 @@ export function TermsHub() {
     };
   }, []);
 
-  // Load terms when filters change (but only after initialization)
+  // Load terms when filters change (but not on initial load)
   useEffect(() => {
-    if (!initialized.current) return;
+    // Skip if this is the initial load (handled above)
+    if (terms.length === 0 && !loading) return;
     
     setTerms([]);
     setNextCursor(null);
