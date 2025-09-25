@@ -80,6 +80,27 @@ export function HomeV2() {
     }
   };
 
+  const handleRollJargon = async () => {
+    try {
+      trackEvent('roll_jargon_click');
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const response = await fetch(`${apiUrl}/api/terms?limit=1&sort=random`);
+      const data = await response.json();
+      
+      if (data.terms && data.terms.length > 0) {
+        const randomTerm = data.terms[0];
+        window.location.href = `/term/${randomTerm.slug}`;
+      } else {
+        // Fallback to terms page if no random term found
+        window.location.href = '/terms';
+      }
+    } catch (error) {
+      console.error('Failed to fetch random term:', error);
+      // Fallback to terms page on error
+      window.location.href = '/terms';
+    }
+  };
+
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -124,7 +145,10 @@ export function HomeV2() {
           </div>
 
           {/* Random Term Button */}
-          <button className="inline-flex items-center gap-2 rounded-xl2 bg-slate-100 text-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-200 transition-all duration-200">
+          <button 
+            onClick={handleRollJargon}
+            className="inline-flex items-center gap-2 rounded-xl2 bg-slate-100 text-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-200 transition-all duration-200"
+          >
             🎲 Roll the jargon
           </button>
         </div>

@@ -29,6 +29,9 @@ router.get('/', async (c) => {
             case 'popular':
                 query += ' ORDER BY views DESC, created_at DESC';
                 break;
+            case 'random':
+                query += ' ORDER BY RANDOM()';
+                break;
             case 'newest':
             default:
                 query += ' ORDER BY created_at DESC';
