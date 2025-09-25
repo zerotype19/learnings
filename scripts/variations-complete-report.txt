@@ -1,0 +1,489 @@
+Variations Import Report
+Generated: 2025-09-25T13:08:50.367Z
+Total Terms: 94
+
+This import adds alternative definitions for existing terms using unique slugs.
+Each term will have:
+- Original definition (original slug)
+- Alternative definition (slug with '-alt' suffix)
+
+TERMS TO BE ADDED AS VARIATIONS:
+
+1. Actionable Items (Alternative)
+   Slug: actionable-items-alt
+   Definition: A task or action that needs to be performed by an individual or team; essentially a to-do list.
+   Example: Let's create a list of actionable items from today's meeting.
+
+2. ASAP (Alternative)
+   Slug: asap-alt
+   Definition: Acronym for 'as soon as possible'; used to indicate urgency.
+   Example: I need this report ASAP for the board meeting tomorrow.
+
+3. Backburner (Alternative)
+   Slug: backburner-alt
+   Definition: To de-prioritize a task and revisit later.
+   Example: We'll put the website redesign on the backburner until Q2.
+
+4. Baked In (Alternative)
+   Slug: baked-in-alt
+   Definition: Already included as part of a plan, model, or roadmap.
+   Example: The cost savings are already baked into our budget projections.
+
+5. Balls in the Air (Alternative)
+   Slug: balls-in-the-air-alt
+   Definition: Managing several activities or tasks simultaneously; similar to 'too much on the plate.'
+   Example: I have too many balls in the air right now to take on another project.
+
+6. Bandwidth (Alternative)
+   Slug: bandwidth-alt
+   Definition: The capacity to take on additional work in terms of time, resources, or energy.
+   Example: I don't have the bandwidth to handle this additional request.
+
+7. Bleeding Edge (Alternative)
+   Slug: bleeding-edge-alt
+   Definition: Describes the newest, most innovative product, idea, or technology.
+   Example: This new AI technology is bleeding edge - very experimental.
+
+8. Blue Sky Thinking (Alternative)
+   Slug: blue-sky-thinking-alt
+   Definition: Creative brainstorming without constraints; thinking out of the box.
+   Example: Let's do some blue sky thinking about future possibilities.
+
+9. Boil the Ocean (Alternative)
+   Slug: boil-the-ocean-alt
+   Definition: Taking on an overly ambitious or impossible task.
+   Example: Don't try to boil the ocean - focus on one thing at a time.
+
+10. Brain Dump (Alternative)
+   Slug: brain-dump-alt
+   Definition: Writing down all ideas quickly, often during or after a brainstorming session.
+   Example: Let me do a quick brain dump of all my ideas for this campaign.
+
+11. Break Down the Silos (Alternative)
+   Slug: break-down-the-silos-alt
+   Definition: Collaborating across teams to remove barriers and improve efficiency.
+   Example: We need to break down the silos between departments.
+
+12. Bring to the Table (Alternative)
+   Slug: bring-to-the-table-alt
+   Definition: Skills, expertise, or ideas someone contributes to a project or team.
+   Example: What unique skills does Sarah bring to the table?
+
+13. Circle Back (Alternative)
+   Slug: circle-back-alt
+   Definition: Revisit or follow up on a topic later.
+   Example: Let's circle back on this topic after we have more data.
+
+14. Core Competencies (Alternative)
+   Slug: core-competencies-alt
+   Definition: The most prominent skills or strengths of an employee or organization.
+   Example: Our core competencies are in data analytics and customer service.
+
+15. Deck (Alternative)
+   Slug: deck-alt
+   Definition: A presentation, usually in PowerPoint or Google Slides format.
+   Example: Can you send me the deck from yesterday's presentation?
+
+16. Deep Dive (Alternative)
+   Slug: deep-dive-alt
+   Definition: A thorough exploration or detailed analysis of a subject.
+   Example: We need to do a deep dive into the customer feedback data.
+
+17. Deliverables (Alternative)
+   Slug: deliverables-alt
+   Definition: The outputs, tasks, or responsibilities assigned to an individual or team.
+   Example: What are the key deliverables for this project phase?
+
+18. Drink the Kool-Aid (Alternative)
+   Slug: drink-the-kool-aid-alt
+   Definition: Blindly agreeing with or following an idea or philosophy.
+   Example: She's really drinking the Kool-Aid on this new management philosophy.
+
+19. Ducks in a Row (Alternative)
+   Slug: ducks-in-a-row-alt
+   Definition: Getting organized and making necessary preparations.
+   Example: Let's get our ducks in a row before the client meeting.
+
+20. Evangelist (Alternative)
+   Slug: evangelist-alt
+   Definition: A strong brand advocate who promotes a company or product.
+   Example: John is our biggest product evangelist - he loves talking about it.
+
+21. Game Changer (Alternative)
+   Slug: game-changer-alt
+   Definition: A plan, idea, or product that creates a significant competitive advantage.
+   Example: This new technology could be a real game changer for our industry.
+
+22. Get on Board (Alternative)
+   Slug: get-on-board-alt
+   Definition: Agree with or support a plan, strategy, or idea.
+   Example: We need everyone to get on board with this new process.
+
+23. Good to Go (Alternative)
+   Slug: good-to-go-alt
+   Definition: Confirmation that a task or project is complete and ready to proceed.
+   Example: The proposal is good to go - ready for client presentation.
+
+24. Hard Stop (Alternative)
+   Slug: hard-stop-alt
+   Definition: A firm end time due to another commitment or conflict.
+   Example: I have a hard stop at 3 PM for another meeting.
+
+25. Headwinds (Alternative)
+   Slug: headwinds-alt
+   Definition: Challenges or obstacles that slow progress or growth.
+   Example: We're facing strong headwinds in the current market conditions.
+
+26. Herding Cats (Alternative)
+   Slug: herding-cats-alt
+   Definition: Managing a group that is difficult or impossible to control.
+   Example: Managing this cross-functional team is like herding cats.
+
+27. Jump the Shark (Alternative)
+   Slug: jump-the-shark-alt
+   Definition: The point where something declines in quality or appeal after peak popularity.
+   Example: This product line has jumped the shark - time to pivot.
+
+28. Laser Focus (Alternative)
+   Slug: laser-focus-alt
+   Definition: Extreme, unwavering concentration on a task.
+   Example: We need laser focus on our top priorities this quarter.
+
+29. Leverage (Alternative)
+   Slug: leverage-alt
+   Definition: Use resources, skills, or situations to gain an advantage.
+   Example: How can we leverage our existing relationships to grow the business?
+
+30. Low-Hanging Fruit (Alternative)
+   Slug: low-hanging-fruit-alt
+   Definition: Easy tasks or opportunities that produce quick results.
+   Example: Let's focus on the low-hanging fruit first to show quick wins.
+
+31. Make Hay While the Sun Shines (Alternative)
+   Slug: make-hay-while-the-sun-shines-alt
+   Definition: Take advantage of an opportunity while it lasts.
+   Example: We need to make hay while the sun shines in this market.
+
+32. Move the Goalposts (Alternative)
+   Slug: move-the-goalposts-alt
+   Definition: Change requirements or objectives during a project.
+   Example: Every time we get close to the target, they move the goalposts.
+
+33. Move the Needle (Alternative)
+   Slug: move-the-needle-alt
+   Definition: Make a noticeable, measurable impact.
+   Example: This campaign should really move the needle on our sales numbers.
+
+34. Ninja (Alternative)
+   Slug: ninja-alt
+   Definition: A highly skilled professional or expert; sometimes replaced with 'guru' or 'thought leader.'
+   Example: Sarah is a ninja when it comes to data analysis.
+
+35. One-Pager (Alternative)
+   Slug: one-pager-alt
+   Definition: A concise one-page summary of a proposal, plan, or report.
+   Example: Can you create a one-pager summarizing the proposal?
+
+36. Over the Wall (Alternative)
+   Slug: over-the-wall-alt
+   Definition: Passing responsibility or information to another group, often without proper follow-up.
+   Example: We can't just throw this over the wall to the development team.
+
+37. Pain Point (Alternative)
+   Slug: pain-point-alt
+   Definition: A key problem or challenge faced by a business or customer.
+   Example: What's the biggest pain point our customers are experiencing?
+
+38. Paradigm Shift (Alternative)
+   Slug: paradigm-shift-alt
+   Definition: A fundamental change in approach or perspective.
+   Example: This represents a paradigm shift in how we approach customer service.
+
+39. Park It (Alternative)
+   Slug: park-it-alt
+   Definition: Put an idea or project on hold until conditions change.
+   Example: Let's park this idea until we have more budget.
+
+40. Push the Envelope (Alternative)
+   Slug: push-the-envelope-alt
+   Definition: Go beyond expectations; deliver exceptional work.
+   Example: We need to push the envelope on innovation to stay competitive.
+
+41. Resonate (Alternative)
+   Slug: resonate-alt
+   Definition: Relate strongly to someone's ideas, suggestions, or situation.
+   Example: This message really resonates with our target audience.
+
+42. Reinvent the Wheel (Alternative)
+   Slug: reinvent-the-wheel-alt
+   Definition: Redo something that has already been done; start again unnecessarily.
+   Example: We don't need to reinvent the wheel - there are existing solutions.
+
+43. Run Up the Flagpole (Alternative)
+   Slug: run-up-the-flagpole-alt
+   Definition: Present an idea to get feedback or approval.
+   Example: Let me run this idea up the flagpole and see what leadership thinks.
+
+44. Skin in the Game (Alternative)
+   Slug: skin-in-the-game-alt
+   Definition: Having a personal stake in the outcome of a project or event.
+   Example: Everyone needs to have skin in the game for this project to succeed.
+
+45. Synergy (Alternative)
+   Slug: synergy-alt
+   Definition: Positive results from collaboration between teams or organizations.
+   Example: The synergy between our teams will drive better results.
+
+46. Touch Base (Alternative)
+   Slug: touch-base-alt
+   Definition: Briefly connect or discuss something with someone.
+   Example: Let's touch base next week to see how the project is going.
+
+47. Throw Under the Bus (Alternative)
+   Slug: throw-under-the-bus-alt
+   Definition: Blame a teammate or colleague unexpectedly.
+   Example: Don't throw me under the bus when the client asks about the delay.
+
+48. Traction (Alternative)
+   Slug: traction-alt
+   Definition: Evidence of momentum, popularity, or progress.
+   Example: We're finally gaining traction with our new product launch.
+
+49. Trim the Fat (Alternative)
+   Slug: trim-the-fat-alt
+   Definition: Cut unnecessary costs, steps, or processes.
+   Example: We need to trim the fat from this budget to make it work.
+
+50. White Paper (Alternative)
+   Slug: white-paper-alt
+   Definition: A detailed report on a specific subject or issue.
+   Example: The white paper on market trends was very insightful.
+
+51. Silver Bullet (Alternative)
+   Slug: silver-bullet-alt
+   Definition: A simple, seemingly perfect solution to a complex problem.
+   Example: There's no silver bullet for this complex problem.
+
+52. Take it Offline (Alternative)
+   Slug: take-it-offline-alt
+   Definition: Discuss a topic later or in a smaller, private setting.
+   Example: Let's take this discussion offline after the meeting.
+
+53. Social Proof (Alternative)
+   Slug: social-proof-alt
+   Definition: When people follow others' actions to conform with norms or expectations.
+   Example: We need more social proof to build credibility with customers.
+
+54. Thought Leadership (Alternative)
+   Slug: thought-leadership-alt
+   Definition: Recognition as an authority in a field by providing valuable insights.
+   Example: Our CEO is recognized as a thought leader in the industry.
+
+55. Sync (Alternative)
+   Slug: sync-alt
+   Definition: Ensure information is consistent and up-to-date across teams or systems.
+   Example: Let's sync up on this project to make sure we're aligned.
+
+56. Pushback (Alternative)
+   Slug: pushback-alt
+   Definition: Resistance or opposition to an idea or proposal.
+   Example: We're getting pushback from the sales team on this new process.
+
+57. Pipeline (Alternative)
+   Slug: pipeline-alt
+   Definition: A system for tracking potential clients, leads, or projects.
+   Example: What's in our sales pipeline for next quarter?
+
+58. Have in One's Back Pocket (Alternative)
+   Slug: have-in-ones-back-pocket-alt
+   Definition: Something prepared in advance but not yet revealed.
+   Example: I have a few ideas in my back pocket for this situation.
+
+59. Loop In (Alternative)
+   Slug: loop-in-alt
+   Definition: Include someone in a conversation or project.
+   Example: Let's loop in the legal team on this contract.
+
+60. FYI (Alternative)
+   Slug: fyi-alt
+   Definition: For Your Information; used when sharing an update or detail.
+   Example: FYI, the meeting has been moved to 2 PM.
+
+61. Win-Win (Alternative)
+   Slug: win-win-alt
+   Definition: An outcome beneficial to all parties involved.
+   Example: This proposal is a win-win for both parties.
+
+62. Unpack (Alternative)
+   Slug: unpack-alt
+   Definition: Analyze or explain something in detail.
+   Example: Let's unpack this issue and understand the root cause.
+
+63. Above and Beyond (Alternative)
+   Slug: above-and-beyond-alt
+   Definition: Going further than what is required or expected.
+   Example: Sarah went above and beyond to help with this project.
+
+64. Hop on a Call (Alternative)
+   Slug: hop-on-a-call-alt
+   Definition: Start or join a phone or video meeting.
+   Example: Can we hop on a call to discuss this further?
+
+65. Level Up (Alternative)
+   Slug: level-up-alt
+   Definition: Improve or advance to the next stage of performance.
+   Example: It's time to level up our marketing strategy.
+
+66. Out of Pocket (Alternative)
+   Slug: out-of-pocket-alt
+   Definition: Unavailable or unreachable; can also mean covering costs personally.
+   Example: I'll be out of pocket next week for vacation.
+
+67. Ping You (Alternative)
+   Slug: ping-you-alt
+   Definition: Send a quick message or notification.
+   Example: I'll ping you when I have the updated numbers.
+
+68. On My Radar (Alternative)
+   Slug: on-my-radar-alt
+   Definition: Be aware of or monitoring something.
+   Example: This issue is on my radar - I'm monitoring it closely.
+
+69. Think Outside the Box (Alternative)
+   Slug: think-outside-the-box-alt
+   Definition: Encourage creative, unconventional problem-solving.
+   Example: We need to think outside the box to solve this problem.
+
+70. Synergize (Alternative)
+   Slug: synergize-alt
+   Definition: Collaborate effectively to achieve better results together.
+   Example: Let's synergize our efforts to achieve better results.
+
+71. Let's Table This (Alternative)
+   Slug: lets-table-this-alt
+   Definition: Postpone or put aside a discussion.
+   Example: Let's table this discussion until we have more information.
+
+72. Put a Pin in It (Alternative)
+   Slug: put-a-pin-in-it-alt
+   Definition: Pause a topic with the intent to revisit later.
+   Example: Let's put a pin in this topic and revisit it later.
+
+73. Get Ducks in a Row (Alternative)
+   Slug: get-ducks-in-a-row-alt
+   Definition: Organize details or tasks thoroughly before starting.
+   Example: We need to get our ducks in a row before the presentation.
+
+74. Open the Kimono (Alternative)
+   Slug: open-the-kimono-alt
+   Definition: Share sensitive or private information openly.
+   Example: It's time to open the kimono and share our financial data.
+
+75. Throw It Up and See What Sticks (Alternative)
+   Slug: throw-it-up-and-see-what-sticks-alt
+   Definition: Test ideas to see which ones succeed.
+   Example: Let's throw some ideas up and see what sticks.
+
+76. Boots on the Ground (Alternative)
+   Slug: boots-on-the-ground-alt
+   Definition: People physically present and working on a task.
+   Example: We need boots on the ground in the new market.
+
+77. Anti-Perks (Alternative)
+   Slug: anti-perks-alt
+   Definition: Employee benefits that sound good but are unappealing or demotivating.
+   Example: Free pizza on Fridays feels like an anti-perk when you work 60 hours.
+
+78. Bare Minimum Monday (Alternative)
+   Slug: bare-minimum-monday-alt
+   Definition: An idea encouraging lighter workloads on Mondays to reduce burnout.
+   Example: I'm embracing bare minimum Monday to avoid burnout.
+
+79. Boomerang Employees (Alternative)
+   Slug: boomerang-employees-alt
+   Definition: Workers who leave a company and later return.
+   Example: We're seeing more boomerang employees returning after trying other companies.
+
+80. Career Cushioning (Alternative)
+   Slug: career-cushioning-alt
+   Definition: Preparing for potential job loss while staying in the current role.
+   Example: Many employees are career cushioning by updating their resumes.
+
+81. Coffee Badging (Alternative)
+   Slug: coffee-badging-alt
+   Definition: Casual self-promotion during informal moments like coffee breaks.
+   Example: He's always coffee badging during our team meetings.
+
+82. Digital Employee Experience (DEX) (Alternative)
+   Slug: digital-employee-experience-dex-alt
+   Definition: Improving how employees interact with workplace technology.
+   Example: Our DEX initiative is improving workplace technology.
+
+83. Elevator Pitch (Alternative)
+   Slug: elevator-pitch-alt
+   Definition: A short, persuasive speech designed to spark interest quickly.
+   Example: Can you give me your elevator pitch for this product?
+
+84. MVP (Alternative)
+   Slug: mvp-alt
+   Definition: Minimum Viable Product; the simplest product version that can be released.
+   Example: Let's focus on building an MVP first, then iterate.
+
+85. Reverse Mentoring (Alternative)
+   Slug: reverse-mentoring-alt
+   Definition: Younger or less experienced employees mentoring senior colleagues.
+   Example: Our reverse mentoring program pairs senior execs with junior employees.
+
+86. USP (Alternative)
+   Slug: usp-alt
+   Definition: Unique Selling Proposition; what makes a product better than competitors.
+   Example: What's our USP compared to the competition?
+
+87. Office Peacocking (Alternative)
+   Slug: office-peacocking-alt
+   Definition: Showcasing skills or achievements prominently for attention.
+   Example: His office peacocking is getting a bit excessive.
+
+88. Quiet Quitting (Alternative)
+   Slug: quiet-quitting-alt
+   Definition: Doing only the required work without extra effort or engagement.
+   Example: Quiet quitting is becoming more common in the workplace.
+
+89. Side Gig (Alternative)
+   Slug: side-gig-alt
+   Definition: A job or project pursued in addition to one's primary employment.
+   Example: My side gig as a consultant brings in extra income.
+
+90. Touchpoint (Alternative)
+   Slug: touchpoint-alt
+   Definition: Any interaction between a company and its customers.
+   Example: Every customer touchpoint should reflect our brand values.
+
+91. Disruptive Innovation (Alternative)
+   Slug: disruptive-innovation-alt
+   Definition: Innovation that creates a new market or disrupts an existing one.
+   Example: This represents disruptive innovation in our industry.
+
+92. Pivot (Alternative)
+   Slug: pivot-alt
+   Definition: Change strategy or direction, often in startups.
+   Example: We need to pivot our strategy based on market feedback.
+
+93. Voluntold (Alternative)
+   Slug: voluntold-alt
+   Definition: Being assigned to 'volunteer' for something.
+   Example: I was voluntold to lead the company picnic committee.
+
+94. Throw it Up and See What Sticks (Alternative)
+   Slug: throw-it-up-and-see-what-sticks-alt
+   Definition: Trying multiple ideas to see which ones succeed.
+   Example: Let's throw some ideas up and see what sticks.
+
+
+BENEFITS OF THIS APPROACH:
+- Users can see multiple perspectives on the same term
+- Different levels of snark or seriousness
+- More comprehensive coverage of corporate jargon
+- Better search results with multiple definitions
+- Maintains existing functionality while adding depth
+- No schema changes required - uses existing table structure

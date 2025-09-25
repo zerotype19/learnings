@@ -1,0 +1,488 @@
+Smart Variations Import Report
+Generated: 2025-09-25T13:05:04.802Z
+Total Terms: 94
+
+This import adds new definitions for existing terms as variations.
+Each term will have:
+- Original definition (variation 1)
+- New definition (variation 2)
+
+TERMS TO BE ADDED AS VARIATIONS:
+
+1. Actionable Items (Variation 2)
+   Slug: actionable-items-v2
+   Definition: A task or action that needs to be performed by an individual or team; essentially a to-do list.
+   Example: Let's create a list of actionable items from today's meeting.
+
+2. ASAP (Variation 2)
+   Slug: asap-v2
+   Definition: Acronym for 'as soon as possible'; used to indicate urgency.
+   Example: I need this report ASAP for the board meeting tomorrow.
+
+3. Backburner (Variation 2)
+   Slug: backburner-v2
+   Definition: To de-prioritize a task and revisit later.
+   Example: We'll put the website redesign on the backburner until Q2.
+
+4. Baked In (Variation 2)
+   Slug: baked-in-v2
+   Definition: Already included as part of a plan, model, or roadmap.
+   Example: The cost savings are already baked into our budget projections.
+
+5. Balls in the Air (Variation 2)
+   Slug: balls-in-the-air-v2
+   Definition: Managing several activities or tasks simultaneously; similar to 'too much on the plate.'
+   Example: I have too many balls in the air right now to take on another project.
+
+6. Bandwidth (Variation 2)
+   Slug: bandwidth-v2
+   Definition: The capacity to take on additional work in terms of time, resources, or energy.
+   Example: I don't have the bandwidth to handle this additional request.
+
+7. Bleeding Edge (Variation 2)
+   Slug: bleeding-edge-v2
+   Definition: Describes the newest, most innovative product, idea, or technology.
+   Example: This new AI technology is bleeding edge - very experimental.
+
+8. Blue Sky Thinking (Variation 2)
+   Slug: blue-sky-thinking-v2
+   Definition: Creative brainstorming without constraints; thinking out of the box.
+   Example: Let's do some blue sky thinking about future possibilities.
+
+9. Boil the Ocean (Variation 2)
+   Slug: boil-the-ocean-v2
+   Definition: Taking on an overly ambitious or impossible task.
+   Example: Don't try to boil the ocean - focus on one thing at a time.
+
+10. Brain Dump (Variation 2)
+   Slug: brain-dump-v2
+   Definition: Writing down all ideas quickly, often during or after a brainstorming session.
+   Example: Let me do a quick brain dump of all my ideas for this campaign.
+
+11. Break Down the Silos (Variation 2)
+   Slug: break-down-the-silos-v2
+   Definition: Collaborating across teams to remove barriers and improve efficiency.
+   Example: We need to break down the silos between departments.
+
+12. Bring to the Table (Variation 2)
+   Slug: bring-to-the-table-v2
+   Definition: Skills, expertise, or ideas someone contributes to a project or team.
+   Example: What unique skills does Sarah bring to the table?
+
+13. Circle Back (Variation 2)
+   Slug: circle-back-v2
+   Definition: Revisit or follow up on a topic later.
+   Example: Let's circle back on this topic after we have more data.
+
+14. Core Competencies (Variation 2)
+   Slug: core-competencies-v2
+   Definition: The most prominent skills or strengths of an employee or organization.
+   Example: Our core competencies are in data analytics and customer service.
+
+15. Deck (Variation 2)
+   Slug: deck-v2
+   Definition: A presentation, usually in PowerPoint or Google Slides format.
+   Example: Can you send me the deck from yesterday's presentation?
+
+16. Deep Dive (Variation 2)
+   Slug: deep-dive-v2
+   Definition: A thorough exploration or detailed analysis of a subject.
+   Example: We need to do a deep dive into the customer feedback data.
+
+17. Deliverables (Variation 2)
+   Slug: deliverables-v2
+   Definition: The outputs, tasks, or responsibilities assigned to an individual or team.
+   Example: What are the key deliverables for this project phase?
+
+18. Drink the Kool-Aid (Variation 2)
+   Slug: drink-the-kool-aid-v2
+   Definition: Blindly agreeing with or following an idea or philosophy.
+   Example: She's really drinking the Kool-Aid on this new management philosophy.
+
+19. Ducks in a Row (Variation 2)
+   Slug: ducks-in-a-row-v2
+   Definition: Getting organized and making necessary preparations.
+   Example: Let's get our ducks in a row before the client meeting.
+
+20. Evangelist (Variation 2)
+   Slug: evangelist-v2
+   Definition: A strong brand advocate who promotes a company or product.
+   Example: John is our biggest product evangelist - he loves talking about it.
+
+21. Game Changer (Variation 2)
+   Slug: game-changer-v2
+   Definition: A plan, idea, or product that creates a significant competitive advantage.
+   Example: This new technology could be a real game changer for our industry.
+
+22. Get on Board (Variation 2)
+   Slug: get-on-board-v2
+   Definition: Agree with or support a plan, strategy, or idea.
+   Example: We need everyone to get on board with this new process.
+
+23. Good to Go (Variation 2)
+   Slug: good-to-go-v2
+   Definition: Confirmation that a task or project is complete and ready to proceed.
+   Example: The proposal is good to go - ready for client presentation.
+
+24. Hard Stop (Variation 2)
+   Slug: hard-stop-v2
+   Definition: A firm end time due to another commitment or conflict.
+   Example: I have a hard stop at 3 PM for another meeting.
+
+25. Headwinds (Variation 2)
+   Slug: headwinds-v2
+   Definition: Challenges or obstacles that slow progress or growth.
+   Example: We're facing strong headwinds in the current market conditions.
+
+26. Herding Cats (Variation 2)
+   Slug: herding-cats-v2
+   Definition: Managing a group that is difficult or impossible to control.
+   Example: Managing this cross-functional team is like herding cats.
+
+27. Jump the Shark (Variation 2)
+   Slug: jump-the-shark-v2
+   Definition: The point where something declines in quality or appeal after peak popularity.
+   Example: This product line has jumped the shark - time to pivot.
+
+28. Laser Focus (Variation 2)
+   Slug: laser-focus-v2
+   Definition: Extreme, unwavering concentration on a task.
+   Example: We need laser focus on our top priorities this quarter.
+
+29. Leverage (Variation 2)
+   Slug: leverage-v2
+   Definition: Use resources, skills, or situations to gain an advantage.
+   Example: How can we leverage our existing relationships to grow the business?
+
+30. Low-Hanging Fruit (Variation 2)
+   Slug: low-hanging-fruit-v2
+   Definition: Easy tasks or opportunities that produce quick results.
+   Example: Let's focus on the low-hanging fruit first to show quick wins.
+
+31. Make Hay While the Sun Shines (Variation 2)
+   Slug: make-hay-while-the-sun-shines-v2
+   Definition: Take advantage of an opportunity while it lasts.
+   Example: We need to make hay while the sun shines in this market.
+
+32. Move the Goalposts (Variation 2)
+   Slug: move-the-goalposts-v2
+   Definition: Change requirements or objectives during a project.
+   Example: Every time we get close to the target, they move the goalposts.
+
+33. Move the Needle (Variation 2)
+   Slug: move-the-needle-v2
+   Definition: Make a noticeable, measurable impact.
+   Example: This campaign should really move the needle on our sales numbers.
+
+34. Ninja (Variation 2)
+   Slug: ninja-v2
+   Definition: A highly skilled professional or expert; sometimes replaced with 'guru' or 'thought leader.'
+   Example: Sarah is a ninja when it comes to data analysis.
+
+35. One-Pager (Variation 2)
+   Slug: one-pager-v2
+   Definition: A concise one-page summary of a proposal, plan, or report.
+   Example: Can you create a one-pager summarizing the proposal?
+
+36. Over the Wall (Variation 2)
+   Slug: over-the-wall-v2
+   Definition: Passing responsibility or information to another group, often without proper follow-up.
+   Example: We can't just throw this over the wall to the development team.
+
+37. Pain Point (Variation 2)
+   Slug: pain-point-v2
+   Definition: A key problem or challenge faced by a business or customer.
+   Example: What's the biggest pain point our customers are experiencing?
+
+38. Paradigm Shift (Variation 2)
+   Slug: paradigm-shift-v2
+   Definition: A fundamental change in approach or perspective.
+   Example: This represents a paradigm shift in how we approach customer service.
+
+39. Park It (Variation 2)
+   Slug: park-it-v2
+   Definition: Put an idea or project on hold until conditions change.
+   Example: Let's park this idea until we have more budget.
+
+40. Push the Envelope (Variation 2)
+   Slug: push-the-envelope-v2
+   Definition: Go beyond expectations; deliver exceptional work.
+   Example: We need to push the envelope on innovation to stay competitive.
+
+41. Resonate (Variation 2)
+   Slug: resonate-v2
+   Definition: Relate strongly to someone's ideas, suggestions, or situation.
+   Example: This message really resonates with our target audience.
+
+42. Reinvent the Wheel (Variation 2)
+   Slug: reinvent-the-wheel-v2
+   Definition: Redo something that has already been done; start again unnecessarily.
+   Example: We don't need to reinvent the wheel - there are existing solutions.
+
+43. Run Up the Flagpole (Variation 2)
+   Slug: run-up-the-flagpole-v2
+   Definition: Present an idea to get feedback or approval.
+   Example: Let me run this idea up the flagpole and see what leadership thinks.
+
+44. Skin in the Game (Variation 2)
+   Slug: skin-in-the-game-v2
+   Definition: Having a personal stake in the outcome of a project or event.
+   Example: Everyone needs to have skin in the game for this project to succeed.
+
+45. Synergy (Variation 2)
+   Slug: synergy-v2
+   Definition: Positive results from collaboration between teams or organizations.
+   Example: The synergy between our teams will drive better results.
+
+46. Touch Base (Variation 2)
+   Slug: touch-base-v2
+   Definition: Briefly connect or discuss something with someone.
+   Example: Let's touch base next week to see how the project is going.
+
+47. Throw Under the Bus (Variation 2)
+   Slug: throw-under-the-bus-v2
+   Definition: Blame a teammate or colleague unexpectedly.
+   Example: Don't throw me under the bus when the client asks about the delay.
+
+48. Traction (Variation 2)
+   Slug: traction-v2
+   Definition: Evidence of momentum, popularity, or progress.
+   Example: We're finally gaining traction with our new product launch.
+
+49. Trim the Fat (Variation 2)
+   Slug: trim-the-fat-v2
+   Definition: Cut unnecessary costs, steps, or processes.
+   Example: We need to trim the fat from this budget to make it work.
+
+50. White Paper (Variation 2)
+   Slug: white-paper-v2
+   Definition: A detailed report on a specific subject or issue.
+   Example: The white paper on market trends was very insightful.
+
+51. Silver Bullet (Variation 2)
+   Slug: silver-bullet-v2
+   Definition: A simple, seemingly perfect solution to a complex problem.
+   Example: There's no silver bullet for this complex problem.
+
+52. Take it Offline (Variation 2)
+   Slug: take-it-offline-v2
+   Definition: Discuss a topic later or in a smaller, private setting.
+   Example: Let's take this discussion offline after the meeting.
+
+53. Social Proof (Variation 2)
+   Slug: social-proof-v2
+   Definition: When people follow others' actions to conform with norms or expectations.
+   Example: We need more social proof to build credibility with customers.
+
+54. Thought Leadership (Variation 2)
+   Slug: thought-leadership-v2
+   Definition: Recognition as an authority in a field by providing valuable insights.
+   Example: Our CEO is recognized as a thought leader in the industry.
+
+55. Sync (Variation 2)
+   Slug: sync-v2
+   Definition: Ensure information is consistent and up-to-date across teams or systems.
+   Example: Let's sync up on this project to make sure we're aligned.
+
+56. Pushback (Variation 2)
+   Slug: pushback-v2
+   Definition: Resistance or opposition to an idea or proposal.
+   Example: We're getting pushback from the sales team on this new process.
+
+57. Pipeline (Variation 2)
+   Slug: pipeline-v2
+   Definition: A system for tracking potential clients, leads, or projects.
+   Example: What's in our sales pipeline for next quarter?
+
+58. Have in One's Back Pocket (Variation 2)
+   Slug: have-in-ones-back-pocket-v2
+   Definition: Something prepared in advance but not yet revealed.
+   Example: I have a few ideas in my back pocket for this situation.
+
+59. Loop In (Variation 2)
+   Slug: loop-in-v2
+   Definition: Include someone in a conversation or project.
+   Example: Let's loop in the legal team on this contract.
+
+60. FYI (Variation 2)
+   Slug: fyi-v2
+   Definition: For Your Information; used when sharing an update or detail.
+   Example: FYI, the meeting has been moved to 2 PM.
+
+61. Win-Win (Variation 2)
+   Slug: win-win-v2
+   Definition: An outcome beneficial to all parties involved.
+   Example: This proposal is a win-win for both parties.
+
+62. Unpack (Variation 2)
+   Slug: unpack-v2
+   Definition: Analyze or explain something in detail.
+   Example: Let's unpack this issue and understand the root cause.
+
+63. Above and Beyond (Variation 2)
+   Slug: above-and-beyond-v2
+   Definition: Going further than what is required or expected.
+   Example: Sarah went above and beyond to help with this project.
+
+64. Hop on a Call (Variation 2)
+   Slug: hop-on-a-call-v2
+   Definition: Start or join a phone or video meeting.
+   Example: Can we hop on a call to discuss this further?
+
+65. Level Up (Variation 2)
+   Slug: level-up-v2
+   Definition: Improve or advance to the next stage of performance.
+   Example: It's time to level up our marketing strategy.
+
+66. Out of Pocket (Variation 2)
+   Slug: out-of-pocket-v2
+   Definition: Unavailable or unreachable; can also mean covering costs personally.
+   Example: I'll be out of pocket next week for vacation.
+
+67. Ping You (Variation 2)
+   Slug: ping-you-v2
+   Definition: Send a quick message or notification.
+   Example: I'll ping you when I have the updated numbers.
+
+68. On My Radar (Variation 2)
+   Slug: on-my-radar-v2
+   Definition: Be aware of or monitoring something.
+   Example: This issue is on my radar - I'm monitoring it closely.
+
+69. Think Outside the Box (Variation 2)
+   Slug: think-outside-the-box-v2
+   Definition: Encourage creative, unconventional problem-solving.
+   Example: We need to think outside the box to solve this problem.
+
+70. Synergize (Variation 2)
+   Slug: synergize-v2
+   Definition: Collaborate effectively to achieve better results together.
+   Example: Let's synergize our efforts to achieve better results.
+
+71. Let's Table This (Variation 2)
+   Slug: lets-table-this-v2
+   Definition: Postpone or put aside a discussion.
+   Example: Let's table this discussion until we have more information.
+
+72. Put a Pin in It (Variation 2)
+   Slug: put-a-pin-in-it-v2
+   Definition: Pause a topic with the intent to revisit later.
+   Example: Let's put a pin in this topic and revisit it later.
+
+73. Get Ducks in a Row (Variation 2)
+   Slug: get-ducks-in-a-row-v2
+   Definition: Organize details or tasks thoroughly before starting.
+   Example: We need to get our ducks in a row before the presentation.
+
+74. Open the Kimono (Variation 2)
+   Slug: open-the-kimono-v2
+   Definition: Share sensitive or private information openly.
+   Example: It's time to open the kimono and share our financial data.
+
+75. Throw It Up and See What Sticks (Variation 2)
+   Slug: throw-it-up-and-see-what-sticks-v2
+   Definition: Test ideas to see which ones succeed.
+   Example: Let's throw some ideas up and see what sticks.
+
+76. Boots on the Ground (Variation 2)
+   Slug: boots-on-the-ground-v2
+   Definition: People physically present and working on a task.
+   Example: We need boots on the ground in the new market.
+
+77. Anti-Perks (Variation 2)
+   Slug: anti-perks-v2
+   Definition: Employee benefits that sound good but are unappealing or demotivating.
+   Example: Free pizza on Fridays feels like an anti-perk when you work 60 hours.
+
+78. Bare Minimum Monday (Variation 2)
+   Slug: bare-minimum-monday-v2
+   Definition: An idea encouraging lighter workloads on Mondays to reduce burnout.
+   Example: I'm embracing bare minimum Monday to avoid burnout.
+
+79. Boomerang Employees (Variation 2)
+   Slug: boomerang-employees-v2
+   Definition: Workers who leave a company and later return.
+   Example: We're seeing more boomerang employees returning after trying other companies.
+
+80. Career Cushioning (Variation 2)
+   Slug: career-cushioning-v2
+   Definition: Preparing for potential job loss while staying in the current role.
+   Example: Many employees are career cushioning by updating their resumes.
+
+81. Coffee Badging (Variation 2)
+   Slug: coffee-badging-v2
+   Definition: Casual self-promotion during informal moments like coffee breaks.
+   Example: He's always coffee badging during our team meetings.
+
+82. Digital Employee Experience (DEX) (Variation 2)
+   Slug: digital-employee-experience-dex-v2
+   Definition: Improving how employees interact with workplace technology.
+   Example: Our DEX initiative is improving workplace technology.
+
+83. Elevator Pitch (Variation 2)
+   Slug: elevator-pitch-v2
+   Definition: A short, persuasive speech designed to spark interest quickly.
+   Example: Can you give me your elevator pitch for this product?
+
+84. MVP (Variation 2)
+   Slug: mvp-v2
+   Definition: Minimum Viable Product; the simplest product version that can be released.
+   Example: Let's focus on building an MVP first, then iterate.
+
+85. Reverse Mentoring (Variation 2)
+   Slug: reverse-mentoring-v2
+   Definition: Younger or less experienced employees mentoring senior colleagues.
+   Example: Our reverse mentoring program pairs senior execs with junior employees.
+
+86. USP (Variation 2)
+   Slug: usp-v2
+   Definition: Unique Selling Proposition; what makes a product better than competitors.
+   Example: What's our USP compared to the competition?
+
+87. Office Peacocking (Variation 2)
+   Slug: office-peacocking-v2
+   Definition: Showcasing skills or achievements prominently for attention.
+   Example: His office peacocking is getting a bit excessive.
+
+88. Quiet Quitting (Variation 2)
+   Slug: quiet-quitting-v2
+   Definition: Doing only the required work without extra effort or engagement.
+   Example: Quiet quitting is becoming more common in the workplace.
+
+89. Side Gig (Variation 2)
+   Slug: side-gig-v2
+   Definition: A job or project pursued in addition to one's primary employment.
+   Example: My side gig as a consultant brings in extra income.
+
+90. Touchpoint (Variation 2)
+   Slug: touchpoint-v2
+   Definition: Any interaction between a company and its customers.
+   Example: Every customer touchpoint should reflect our brand values.
+
+91. Disruptive Innovation (Variation 2)
+   Slug: disruptive-innovation-v2
+   Definition: Innovation that creates a new market or disrupts an existing one.
+   Example: This represents disruptive innovation in our industry.
+
+92. Pivot (Variation 2)
+   Slug: pivot-v2
+   Definition: Change strategy or direction, often in startups.
+   Example: We need to pivot our strategy based on market feedback.
+
+93. Voluntold (Variation 2)
+   Slug: voluntold-v2
+   Definition: Being assigned to 'volunteer' for something.
+   Example: I was voluntold to lead the company picnic committee.
+
+94. Throw it Up and See What Sticks (Variation 2)
+   Slug: throw-it-up-and-see-what-sticks-v2
+   Definition: Trying multiple ideas to see which ones succeed.
+   Example: Let's throw some ideas up and see what sticks.
+
+
+BENEFITS OF THIS APPROACH:
+- Users can see multiple perspectives on the same term
+- Different levels of snark or seriousness
+- More comprehensive coverage of corporate jargon
+- Better search results with multiple definitions
+- Maintains existing functionality while adding depth
