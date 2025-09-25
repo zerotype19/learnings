@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TermCard } from '@learnings/ui';
 import type { Term } from '@learnings/lib';
+import { getApiUrl } from '../utils/getApiUrl';
 import { Wall } from './Wall';
 import { ProfessorWidget } from './ProfessorWidget';
 import { Challenges, DeansList } from './Challenges';
@@ -115,7 +116,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+    const apiUrl = getApiUrl();
     console.log('API URL:', apiUrl); // Debug log
     fetch(apiUrl + '/api/terms')
       .then((r) => {
