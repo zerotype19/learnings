@@ -128,11 +128,15 @@ export function SearchBox({
 
   // Handle suggestion click
   const handleSuggestionClick = (suggestion: SearchResult) => {
+    // Use the URL from the suggestion if available, otherwise construct it
     const url = suggestion.url || `/${suggestion.type}/${suggestion.id}`;
+    
     if (onNavigate) {
       onNavigate(url);
     } else {
-      window.location.href = url;
+      // Use pushState to avoid URL stacking and reload
+      window.history.pushState({}, '', url);
+      window.location.reload();
     }
     setIsOpen(false);
     setQuery('');

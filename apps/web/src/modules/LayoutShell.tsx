@@ -56,7 +56,14 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   if (path === '') {
                     onPageChange('home-v2');
                   } else if (path.startsWith('term/')) {
+                    // Extract slug from /term/slug URL
+                    const slug = path.replace('term/', '');
+                    window.history.pushState({}, '', url);
                     onPageChange('term-detail');
+                    // Set the slug parameter for the term detail page
+                    window.dispatchEvent(new CustomEvent('route-params', { 
+                      detail: { slug } 
+                    }));
                   } else if (path === 'wall') {
                     onPageChange('wall-hub');
                   } else if (path === 'generators') {

@@ -94,12 +94,23 @@ export function App() {
       }
     };
 
+    // Handle route parameters from search navigation
+    const handleRouteParams = (event: CustomEvent) => {
+      setRouteParams(event.detail);
+    };
+
     // Handle initial route
     handleRouteChange();
     
     // Listen for popstate events (back/forward buttons)
     window.addEventListener('popstate', handleRouteChange);
-    return () => window.removeEventListener('popstate', handleRouteChange);
+    // Listen for route-params events from search navigation
+    window.addEventListener('route-params', handleRouteParams as EventListener);
+    
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('route-params', handleRouteParams as EventListener);
+    };
   }, []);
 
   useEffect(() => {
