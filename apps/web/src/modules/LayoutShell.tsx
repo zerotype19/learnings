@@ -3,7 +3,7 @@ import { NotificationBell } from './Notifications';
 import { AuthModal } from './AuthModal';
 import { SearchBox } from '../components/SearchBox';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'challenges' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'challenges-hub';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub';
 
 interface LayoutShellProps {
   currentPage: Page;
@@ -64,7 +64,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     { id: 'home-v2', label: 'Home', icon: '🏠' },
     { id: 'terms-hub', label: 'Terms', icon: '📚' },
     { id: 'wall-hub', label: 'Wall', icon: '📸' },
-    { id: 'challenges-hub', label: 'Challenges', icon: '🏆' },
     { id: 'bingo', label: 'Bingo', icon: '🎯' },
     { id: 'generators-hub', label: 'Generators', icon: '📝' },
     { id: 'submit-v2', label: 'Submit', icon: '💡' },
@@ -107,8 +106,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                     onPageChange('wall-hub');
                   } else if (path === 'generators') {
                     onPageChange('generators-hub');
-                  } else if (path === 'challenges') {
-                    onPageChange('challenges-hub');
                   } else {
                     window.location.href = url;
                   }
@@ -127,7 +124,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   case 'home-v2': return '/';
                   case 'terms-hub': return '/terms';
                   case 'wall-hub': return '/wall';
-                  case 'challenges-hub': return '/challenges';
                   case 'bingo': return '/bingo';
                   case 'generators-hub': return '/generators';
                   case 'submit-v2': return '/submit';
@@ -206,7 +202,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                       case 'home-v2': return '/';
                       case 'terms-hub': return '/terms';
                       case 'wall-hub': return '/wall';
-                      case 'challenges-hub': return '/challenges';
                       case 'bingo': return '/bingo';
                       case 'generators-hub': return '/generators';
                       case 'submit-v2': return '/submit';
