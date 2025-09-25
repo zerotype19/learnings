@@ -168,8 +168,8 @@ router.get('/', async (c) => {
           query += ' AND (views < ? OR (views = ? AND created_at < ?))';
           params.push(cursorValue, cursorValue, cursorSort);
         } else if (sort === 'alpha') {
-          query += ' AND title > ?';
-          params.push(cursorValue);
+          query += ' AND (title > ? OR (title = ? AND created_at > ?))';
+          params.push(cursorValue, cursorValue, cursorSort);
         } else {
           query += ' AND created_at < ?';
           params.push(cursorValue);
