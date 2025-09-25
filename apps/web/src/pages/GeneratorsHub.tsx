@@ -91,6 +91,19 @@ export function GeneratorsHub() {
     alert('Copied to clipboard!');
   };
 
+  const getGenerateButtonText = (generatorName: string) => {
+    switch (generatorName) {
+      case 'LinkedIn Post Generator':
+        return 'Generate LinkedIn Post';
+      case 'Buzzword Roast':
+        return 'Roast Buzzword';
+      case 'Professor Translator':
+        return 'Translate';
+      default:
+        return `Generate ${generatorName}`;
+    }
+  };
+
   const getInputComponent = (key: string, schema: any) => {
     const value = inputs[key] || '';
     
@@ -190,7 +203,7 @@ export function GeneratorsHub() {
                   disabled={loading || !inputs || Object.keys(inputs).length === 0}
                   className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
                 >
-                  {loading ? 'Generating...' : `Generate ${currentGenerator.name}`}
+                  {loading ? 'Generating...' : getGenerateButtonText(currentGenerator.name)}
                 </button>
               </div>
             </div>
@@ -235,9 +248,7 @@ export function GeneratorsHub() {
                   {result.generator_name === 'Professor Translator' ? (
                     <ProfessorOutput output={result.output_text} />
                   ) : (
-                    <pre className="whitespace-pre-wrap text-sm font-mono">
-                      {result.output_text}
-                    </pre>
+                    <GeneratorOutput output={result.output_text} generatorName={result.generator_name} />
                   )}
                 </div>
               </div>
@@ -273,6 +284,78 @@ export function GeneratorsHub() {
     </div>
     </>
   );
+}
+
+// Component for parsing and formatting generator output
+function GeneratorOutput({ output, generatorName }: { output: string; generatorName: string }) {
+  try {
+    // Try to parse as JSON first
+    const parsed = JSON.parse(output);
+    
+    // Handle different generator types
+    if (generatorName === 'LinkedIn Post Generator') {
+      // LinkedIn posts are typically returned as an array of strings
+      if (Array.isArray(parsed)) {
+        return (
+          <div className="space-y-4">
+            {parsed.map((post, index) => (
+              <div key={index} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-gray-600">Post {index + 1}</span>
+                  <button
+                    onClick={() => navigator.clipboard.writeText(post)}
+                    className="text-xs px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded transition-colors"
+                  >
+                    Copy
+                  </button>
+                </div>
+                <p className="text-sm">{post}</p>
+              </div>
+            ))}
+          </div>
+        );
+      }
+    } else if (generatorName === 'Buzzword Roast') {
+      // Buzzword roasts might be returned as an object or string
+      if (typeof parsed === 'object' && parsed.roast) {
+        return (
+          <div className="space-y-4">
+            <div className="border border-red-200 rounded-lg p-4 bg-red-50">
+              <h4 className="font-medium text-red-600 mb-2">🔥 Roast</h4>
+              <p className="text-sm">{parsed.roast}</p>
+            </div>
+            {parsed.explanation && (
+              <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                <h4 className="font-medium text-gray-600 mb-2">Why it's funny</h4>
+                <p className="text-sm">{parsed.explanation}</p>
+              </div>
+            )}
+          </div>
+        );
+      } else if (typeof parsed === 'string') {
+        return (
+          <div className="border border-red-200 rounded-lg p-4 bg-red-50">
+            <h4 className="font-medium text-red-600 mb-2">🔥 Roast</h4>
+            <p className="text-sm">{parsed}</p>
+          </div>
+        );
+      }
+    }
+    
+    // Fallback: display as formatted JSON
+    return (
+      <pre className="whitespace-pre-wrap text-sm font-mono bg-gray-50 p-3 rounded">
+        {JSON.stringify(parsed, null, 2)}
+      </pre>
+    );
+  } catch {
+    // If not JSON, display as plain text
+    return (
+      <div className="whitespace-pre-wrap text-sm">
+        {output}
+      </div>
+    );
+  }
 }
 
 // Special component for Professor Translator output
