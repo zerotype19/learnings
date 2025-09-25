@@ -5,8 +5,8 @@ export function EnterpriseToggle() {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
-    // Initialize corporate mode on mount
-    initializeCorporateMode();
+    // Corporate Mode temporarily disabled
+    // initializeCorporateMode();
     
     // Check current state
     const isOn = localStorage.getItem('corpMode') === '1';
@@ -17,8 +17,8 @@ export function EnterpriseToggle() {
     const newState = !isEnabled;
     setIsEnabled(newState);
     
-    // Use the new corporate mode system
-    setCorporateMode(newState);
+    // Corporate Mode temporarily disabled
+    // setCorporateMode(newState);
 
     // Track analytics
     trackToggle(newState);

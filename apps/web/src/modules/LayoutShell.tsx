@@ -38,8 +38,8 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
 
     loadNonsenseData();
     
-    // Initialize corporate mode on app load
-    initializeCorporateMode();
+    // Corporate Mode temporarily disabled
+    // initializeCorporateMode();
   }, []);
 
   // Initialize section stamps
@@ -47,35 +47,36 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
 
   // Initialize Clorg sprite
   useClorgSprite({
-    probability: 0.4,
+    probability: 0.8, // Doubled from 0.4 to 0.8
     maxPerSession: 5,
     phrases: nonsenseData?.clorgPhrases
   });
 
+  // Corporate Mode temporarily disabled
   // Re-apply header navigation on route changes when Corporate Mode is enabled
-  useEffect(() => {
-    const handleRouteChange = () => {
-      if (isCorporateModeEnabled()) {
-        // Small delay to ensure DOM is updated
-        setTimeout(() => {
-          corporatizeHeaderNav();
-        }, 100);
-      }
-    };
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     if (isCorporateModeEnabled()) {
+  //       // Small delay to ensure DOM is updated
+  //       setTimeout(() => {
+  //         corporatizeHeaderNav();
+  //       }, 100);
+  //     }
+  //   };
 
-    // Listen for route changes (custom event from App.tsx)
-    window.addEventListener('route-params', handleRouteChange);
+  //   // Listen for route changes (custom event from App.tsx)
+  //   window.addEventListener('route-params', handleRouteChange);
     
-    // Also listen for hash changes and popstate
-    window.addEventListener('hashchange', handleRouteChange);
-    window.addEventListener('popstate', handleRouteChange);
+  //   // Also listen for hash changes and popstate
+  //   window.addEventListener('hashchange', handleRouteChange);
+  //   window.addEventListener('popstate', handleRouteChange);
 
-    return () => {
-      window.removeEventListener('route-params', handleRouteChange);
-      window.removeEventListener('hashchange', handleRouteChange);
-      window.removeEventListener('popstate', handleRouteChange);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('route-params', handleRouteChange);
+  //     window.removeEventListener('hashchange', handleRouteChange);
+  //     window.removeEventListener('popstate', handleRouteChange);
+  //   };
+  // }, []);
   
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },
