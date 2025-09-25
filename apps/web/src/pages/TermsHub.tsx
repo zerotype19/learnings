@@ -26,6 +26,25 @@ export function TermsHub() {
 
   const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
+  // Initialize from URL parameters
+  useEffect(() => {
+    const updateFromURL = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const letter = urlParams.get('letter');
+      setActiveLetter(letter || '');
+    };
+    
+    // Initial load
+    updateFromURL();
+    
+    // Listen for URL changes (back/forward navigation)
+    window.addEventListener('popstate', updateFromURL);
+    
+    return () => {
+      window.removeEventListener('popstate', updateFromURL);
+    };
+  }, []);
+
   const loadTerms = async (reset = false) => {
     if (loading) return;
     setLoading(true);
@@ -101,6 +120,15 @@ export function TermsHub() {
   const handleLetterClick = (letter: string) => {
     setActiveLetter(letter);
     setSearchQuery(''); // Clear search when using letter filter
+    
+    // Update URL
+    const url = new URL(window.location.href);
+    if (letter) {
+      url.searchParams.set('letter', letter);
+    } else {
+      url.searchParams.delete('letter');
+    }
+    window.history.pushState({}, '', url.toString());
   };
 
   return (
