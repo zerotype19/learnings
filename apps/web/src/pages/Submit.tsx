@@ -11,8 +11,22 @@ export function Submit() {
     <>
       <SEO {...SEOConfigs.submit} />
       <div className="min-h-screen bg-neutral-50">
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">📝 Submit Content</h1>
+        {/* Header */}
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 py-8">
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                📝 Submit Content
+              </h1>
+              <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+              <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+                Share your corporate jargon discoveries with the world
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 py-8">
 
         {/* Tabs */}
         <div className="flex gap-4 mb-6">
@@ -45,8 +59,8 @@ export function Submit() {
         {/* Content */}
         {activeTab === 'term' && <TermSubmissionForm />}
         {activeTab === 'wall' && <WallSubmissionForm />}
+        </div>
       </div>
-    </div>
     </>
   );
 }

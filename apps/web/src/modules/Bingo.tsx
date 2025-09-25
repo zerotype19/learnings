@@ -91,11 +91,24 @@ export function Bingo() {
   return (
     <>
       <SEO {...SEOConfigs.bingo} />
-      <div className="mx-auto max-w-4xl p-6">
-      <h2 className="text-2xl font-bold mb-4">🎯 Corporate Buzzword Bingo</h2>
-      <p className="opacity-70 text-sm mb-6">Mark off buzzwords as you hear them in meetings. First to get 5 in a row wins!</p>
-      
-      {!board.length ? (
+      <div className="min-h-screen bg-slate-50">
+        {/* Header */}
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 py-8">
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                🎯 Corporate Buzzword Bingo
+              </h1>
+              <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+              <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+                Mark off buzzwords as you hear them in meetings. First to get 5 in a row wins!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          {!board.length ? (
         <div className="text-center">
           <button 
             onClick={generateBoard}
@@ -149,7 +162,8 @@ export function Bingo() {
           </div>
         </>
       )}
-    </div>
+        </div>
+      </div>
     </>
   );
 }

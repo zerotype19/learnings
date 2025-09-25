@@ -125,12 +125,17 @@ export function WallHub() {
       <SEO {...SEOConfigs.wall} />
       <div className="min-h-screen bg-neutral-50">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold mb-4">📸 Buzzword Wall</h1>
-          <p className="text-neutral-600 mb-6">
-            Corporate-speak specimens from the wild. Vote for the most cringe-worthy examples.
-          </p>
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+              📸 Buzzword Wall
+            </h1>
+            <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+            <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+              Corporate-speak specimens from the wild. Vote for the most cringe-worthy examples.
+            </p>
+          </div>
 
           {/* Filters */}
           <div className="flex flex-wrap gap-4 items-center mb-4">

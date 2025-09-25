@@ -153,11 +153,23 @@ export function GeneratorsHub() {
   return (
     <>
       <SEO {...SEOConfigs.generators} />
-      <div className="mx-auto max-w-4xl p-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Generators Hub</h1>
-        <p className="text-gray-600">AI-powered tools to create, analyze, and roast corporate content</p>
-      </div>
+      <div className="min-h-screen bg-slate-50">
+        {/* Header */}
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 py-8">
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                Generators Hub
+              </h1>
+              <div className="mt-2 h-1 w-24 bg-gradient-to-r from-accent-pink via-brand to-accent-sky rounded-full mx-auto"></div>
+              <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+                AI-powered tools to create, analyze, and roast corporate content
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 py-8">
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Generator Selection & Input */}
@@ -266,7 +278,8 @@ export function GeneratorsHub() {
           )}
         </div>
       </div>
-    </div>
+        </div>
+      </div>
     </>
   );
 }
