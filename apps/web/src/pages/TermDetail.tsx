@@ -4,6 +4,7 @@ import { TermVariations } from '../components/terms/TermVariations';
 import { AlphabetNav } from '../components/terms/AlphabetNav';
 import { RelatedTerms } from '../components/terms/RelatedTerms';
 import { SEO } from '../components/SEO';
+import { getApiUrl } from '../utils/getApiUrl';
 
 type TermDetail = {
   id: string;
@@ -40,7 +41,7 @@ export function TermDetail({ slug }: TermDetailProps) {
   const [error, setError] = useState<string | null>(null);
   const [showLinkForm, setShowLinkForm] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
 
   useEffect(() => {
     loadTerm();
@@ -335,7 +336,7 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
   const [note, setNote] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

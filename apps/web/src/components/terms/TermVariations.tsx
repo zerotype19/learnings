@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getApiUrl } from '../../utils/getApiUrl';
 
 type TermVariation = {
   id: string;
@@ -21,7 +22,7 @@ export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
 
   useEffect(() => {
     loadVariations();

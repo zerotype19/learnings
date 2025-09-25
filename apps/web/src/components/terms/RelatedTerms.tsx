@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getApiUrl } from '../../utils/getApiUrl';
 import { getShortDescription } from '../../utils/textUtils';
 
 type RelatedTerm = {
@@ -19,7 +20,7 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
 
   useEffect(() => {
     loadRelatedTerms();

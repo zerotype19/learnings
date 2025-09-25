@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SEO, SEOConfigs } from '../components/SEO';
+import { getApiUrl } from '../utils/getApiUrl';
 
 type BingoSquare = { title: string; slug: string; isFree: boolean };
 
@@ -8,7 +9,7 @@ export function Bingo() {
   const [boardId, setBoardId] = useState<string>('');
   const [marked, setMarked] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
   
   // Auto-generate board on component mount
   useEffect(() => {
