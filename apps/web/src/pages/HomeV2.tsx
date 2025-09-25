@@ -105,7 +105,7 @@ export function HomeV2() {
     <div className="space-y-4">
       {/* Hero Section */}
       <div className="bg-white">
-        <div className="text-center py-8 md:py-12">
+        <div className="text-center py-4 md:py-6">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
             Speak fluent corporate. Ironically.
           </h1>
