@@ -103,19 +103,31 @@ export function HomeV2() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
+      {/* Alphabet Navigation */}
+      <div className="bg-white border-b border-slate-200 py-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <LetterIndex 
+            activeLetter="" 
+            onLetterClick={(letter) => {
+              window.location.href = `/terms?letter=${letter}`;
+            }} 
+          />
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="text-center py-14 md:py-20">
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6">
+      <div className="bg-white">
+        <div className="text-center py-8 md:py-12">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
             Speak fluent corporate. Ironically.
           </h1>
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
             The corporate buzzword dictionary that translates jargon into human. Fresh jargon, piping hot.
           </p>
             
           {/* Global Search */}
-          <div className="max-w-lg mx-auto mb-8">
+          <div className="max-w-lg mx-auto mb-6">
             <SearchBox
               onNavigate={(url) => {
                 if (url.startsWith('/search')) {
@@ -154,22 +166,10 @@ export function HomeV2() {
           </button>
         </div>
 
-        {/* Alphabet Navigation */}
-        <div className="py-6">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <LetterIndex 
-              activeLetter="" 
-              onLetterClick={(letter) => {
-                window.location.href = `/terms?letter=${letter}`;
-              }} 
-            />
-          </div>
-        </div>
-
         {/* Quick Actions */}
         {showQuickActions && (
-          <div className="py-8">
-            <div className="text-center mb-8">
+          <div className="py-6">
+            <div className="text-center mb-6">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
                 De-jargon me
               </h2>
@@ -219,8 +219,8 @@ export function HomeV2() {
       </div>
 
       {/* Feed Section */}
-      <div className="py-8">
-        <div className="text-center mb-8">
+      <div className="py-6">
+        <div className="text-center mb-6">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
             Fresh jargon, piping hot
           </h2>
