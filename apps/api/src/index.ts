@@ -26,6 +26,7 @@ import featureFlags from './routes/feature-flags';
 import track from './routes/track';
 import submissions from './routes/submissions';
 import contact from './routes/contact';
+import nonsense from './routes/nonsense';
 
 export type Env = {
   DB: D1Database;
@@ -95,6 +96,7 @@ app.route('/api/track', track);
 app.route('/api/submissions', submissions);
 app.route('/api/contact', contact);
 app.route('/api/challenges', challengesV2);
+app.route('/api/nonsense', nonsense);
 
 export default {
   fetch: app.fetch,

@@ -25,6 +25,8 @@ import { Privacy } from '../pages/Privacy';
 import { Terms } from '../pages/Terms';
 import { Contact } from '../pages/Contact';
 import { ConfirmSubmission } from '../pages/ConfirmSubmission';
+import { Clorg } from '../components/Clorg';
+import { useTooltips } from '../hooks/useTooltips';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm';
 
@@ -34,6 +36,9 @@ export function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [routeParams, setRouteParams] = useState<Record<string, string>>({});
+
+  // Initialize tooltips
+  useTooltips();
 
   // Handle browser history routing
   useEffect(() => {
@@ -222,6 +227,9 @@ export function App() {
       {currentPage === 'admin' && <Admin />}
       
       <ProfessorWidget />
+      
+      {/* Clorg - Enterprise Gremlin */}
+      <Clorg />
     </LayoutShell>
   );
 }

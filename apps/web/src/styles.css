@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Enterprise Mode Styles */
+.enterprise-mode {
+  --tooltip-delay: 100ms;
+  --clorg-frequency: 2;
+}
+
+/* Tooltip theme overrides */
+.tippy-box[data-theme~='learnings'] {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgb(39, 39, 42);
+  border: 1px solid rgb(228, 228, 231);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.tippy-box[data-theme~='learnings'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: rgba(255, 255, 255, 0.95);
+}
+
+.tippy-box[data-theme~='learnings'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: rgba(255, 255, 255, 0.95);
+}
+
+.tippy-box[data-theme~='learnings'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: rgba(255, 255, 255, 0.95);
+}
+
+.tippy-box[data-theme~='learnings'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: rgba(255, 255, 255, 0.95);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tippy-box[data-theme~='learnings'] {
+    background: rgba(24, 24, 27, 0.95);
+    color: rgb(244, 244, 245);
+    border-color: rgb(63, 63, 70);
+  }
+  
+  .tippy-box[data-theme~='learnings'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgba(24, 24, 27, 0.95);
+  }
+  
+  .tippy-box[data-theme~='learnings'][data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: rgba(24, 24, 27, 0.95);
+  }
+  
+  .tippy-box[data-theme~='learnings'][data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: rgba(24, 24, 27, 0.95);
+  }
+  
+  .tippy-box[data-theme~='learnings'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: rgba(24, 24, 27, 0.95);
+  }
+}
+
+/* Clorg animations */
+@keyframes clorg-slide-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes clorg-wiggle {
+  0% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(0); }
+}
+
+.animate-clorg-slide-in {
+  animation: clorg-slide-in 0.3s ease-out;
+}
+
+.animate-clorg-wiggle {
+  animation: clorg-wiggle 0.6s ease-in-out 1-2;
+}

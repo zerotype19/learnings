@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SearchBox } from '../components/SearchBox';
+import { EnterpriseToggle } from '../components/EnterpriseToggle';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
 
@@ -220,6 +221,12 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               Privacy
             </a>
           </div>
+          
+          {/* Enterprise Mode Toggle */}
+          <div className="flex justify-center mb-6">
+            <EnterpriseToggle />
+          </div>
+          
           <div className="text-center text-sm text-slate-500">
             © 2025 Learnings Dot Org — Speak fluent corporate. Ironically.
           </div>

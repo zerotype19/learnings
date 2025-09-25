@@ -1,0 +1,46 @@
+{
+  "tooltips": [
+    { "selector": ".hero .btn-primary", "text": "Clicking this drives 47% more stakeholder alignment. Probably.", "placement": "top", "pages": ["/"], "oncePerSession": true },
+    { "selector": ".site-header .logo", "text": "More logos on slides = more truth. Consider adding 3–5 more.", "placement": "bottom" },
+    { "selector": ".site-header nav", "text": "Navigate horizontally to think vertically.", "placement": "bottom" },
+    { "selector": "input[type='search']", "text": "Type buzzwords. We'll pretend to understand.", "placement": "right" },
+    { "selector": ".prose ul", "text": "Bullet points or die. Paragraphs are pre-seed.", "placement": "left" },
+    { "selector": "button[type='submit']", "text": "Ship it. Perfection is a roadmap item.", "placement": "right" },
+    { "selector": ".card:hover", "text": "Congrats, you've unlocked hover-based thought leadership.", "placement": "top" },
+    { "selector": "a[href*='learn']", "text": "Learnings about learning are, by definition, learnings.", "placement": "top" },
+    { "selector": "footer", "text": "Strategic basement. All serious sites end here.", "placement": "top" },
+    { "selector": "a[href*='terms'], a[href*='privacy']", "text": "Reading this increases compliance by up to 0.0003%.", "placement": "right" },
+    { "selector": ".filters", "text": "Filter hard. Insights get fresher the more you click.", "placement": "left" },
+    { "selector": ".tag-chip", "text": "Labels create realities. Choose wisely.", "placement": "top" },
+    { "selector": ".pagination .next", "text": "The future lies here. So does technical debt.", "placement": "top" },
+    { "selector": ".cta-bar", "text": "This bar is 37% more actionable than the last bar.", "placement": "bottom" },
+    { "selector": ".user-avatar, .icon-user", "text": "Single Sign-On. Double Sign-Off.", "placement": "bottom" },
+    { "selector": ".error-404", "text": "You've discovered an unmonetized whitespace.", "placement": "top" },
+    { "selector": ".spinner, .loading", "text": "Innovation compiling… please ideate responsibly.", "placement": "right" },
+    { "selector": "table thead", "text": "These columns are OKRs with better kerning.", "placement": "top" },
+    { "selector": "pre code", "text": "Looks technical. Absolutely critical.", "placement": "left" },
+    { "selector": ".og-preview, .image-grid", "text": "Visual synergy amplifies narrative throughput.", "placement": "bottom" },
+    { "selector": ".share, .social-icons", "text": "Amplify to your personal board of directors (group chat).", "placement": "top" },
+    { "selector": "a[href*='contact']", "text": "We'll circle back with an aligned POV and a calendar link.", "placement": "right" },
+    { "selector": ".pricing", "text": "All numbers are estimates, especially the exact ones.", "placement": "left" },
+    { "selector": ".breadcrumbs", "text": "Enterprise GPS. Recalculating…", "placement": "top" },
+    { "selector": ".toggle, .switch", "text": "Flip to activate latent synergies.", "placement": "bottom" },
+    { "selector": ".theme-toggle", "text": "For stealth ideation under stakeholder radar.", "placement": "left" },
+    { "selector": ".back-to-top", "text": "Climb the value stack. Again.", "placement": "left" }
+  ],
+  "clorg": {
+    "lines": [
+      { "text": "Looks like you're making a deck. Want help adding 14 more logos?", "ctas": [{"label": "Brandwash me", "action": "dismiss"}, {"label": "Circle back", "action": "dismiss"}] },
+      { "text": "Have you considered converting that sentence into 9 bullet points?" },
+      { "text": "Great idea! Let's schedule a pre-meeting for the meeting." },
+      { "text": "Your synergy throughput is below benchmark. Try more arrows in your diagram." },
+      { "text": "Reminder: Alignment is just agreement with extra steps." },
+      { "text": "Action item created: \"Create action items.\"" },
+      { "text": "You hovered. That's leadership." },
+      { "text": "Roadmap updated: Q1—Ideate, Q2—Narrativize, Q3—Realize, Q4—Retro the retro." },
+      { "text": "This KPI is vibes-forward. Very brave." },
+      { "text": "Hot take detected. Labeling as 'strategic provocation' for safety." }
+    ],
+    "weights": { "base": 1.0, "enterpriseMultiplier": 2.0 }
+  }
+}

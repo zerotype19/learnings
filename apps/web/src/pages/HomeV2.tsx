@@ -110,10 +110,10 @@ export function HomeV2() {
       <div className="bg-white">
         <div className="text-center py-4 md:py-6">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
-            Speak fluent corporate. Ironically.
+            Operationalizing the Learnings Layer
           </h1>
           <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
-            The corporate buzzword dictionary that translates jargon into human. Fresh jargon, piping hot.
+            We harmonize disruption with practical nonsense, so your decks ship themselves.
           </p>
             
           {/* Global Search */}
@@ -148,12 +148,20 @@ export function HomeV2() {
           </div>
 
           {/* Random Term Button */}
-          <button 
-            onClick={handleRollJargon}
-            className="inline-flex items-center gap-2 rounded-xl2 bg-slate-100 text-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-200 transition-all duration-200"
-          >
-            🎲 Roll the jargon
-          </button>
+          <div className="flex gap-4 justify-center">
+            <button 
+              onClick={handleRollJargon}
+              className="inline-flex items-center gap-2 rounded-xl2 bg-brand text-white px-6 py-3 text-sm font-medium hover:bg-brand-700 transition-all duration-200 shadow-soft hover:shadow-lg hover:-translate-y-0.5"
+            >
+              🎯 Initiate Synergy
+            </button>
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="inline-flex items-center gap-2 rounded-xl2 border border-slate-300 bg-white text-slate-700 px-6 py-3 text-sm font-medium hover:bg-slate-50 transition-all duration-200"
+            >
+              📅 Book a 15-Minute Alignment
+            </button>
+          </div>
         </div>
 
         {/* Quick Actions */}

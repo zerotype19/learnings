@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@learnings/lib": "workspace:*",
+    "@learnings/ui": "workspace:*",
+    "@popperjs/core": "^2.11.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "zod": "^3.23.8",
-    "@learnings/lib": "workspace:*",
-    "@learnings/ui": "workspace:*"
+    "tippy.js": "^6.3.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
