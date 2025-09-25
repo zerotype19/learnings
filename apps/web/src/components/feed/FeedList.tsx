@@ -2,6 +2,19 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { homeFeed, trackEvent } from '../../lib/api';
 import { getShortDescription } from '../../utils/textUtils';
 
+// Helper function to safely format dates
+function formatDate(dateString: string): string {
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return 'Recently';
+    }
+    return date.toLocaleDateString();
+  } catch (error) {
+    return 'Recently';
+  }
+}
+
 type FeedItem = {
   type: 'term' | 'wall' | 'challenge' | 'generator';
   ts: string;
@@ -210,7 +223,7 @@ function TermFeedCard({ item, onClick }: FeedCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <span className="inline-flex items-center rounded-full bg-brand-100 text-brand-700 px-2.5 py-1 text-xs font-medium">New Term</span>
-            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+            <span className="text-xs text-slate-500">{formatDate(item.ts)}</span>
           </div>
           <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
             {term.title}
@@ -220,7 +233,7 @@ function TermFeedCard({ item, onClick }: FeedCardProps) {
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500">
             <span>👀 {term.views || 0} views</span>
-            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
+            <span>📅 {formatDate(item.ts)}</span>
           </div>
         </div>
       </div>
@@ -247,7 +260,7 @@ function WallFeedCard({ item, onClick }: FeedCardProps) {
             {domain && (
               <span className="text-xs text-brand-600">🌐 {domain}</span>
             )}
-            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+            <span className="text-xs text-slate-500">{formatDate(item.ts)}</span>
           </div>
           <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
             {post.title}
@@ -257,7 +270,7 @@ function WallFeedCard({ item, onClick }: FeedCardProps) {
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500">
             <span>👍 {post.vote_count || post.votes || 0}</span>
-            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
+            <span>📅 {formatDate(item.ts)}</span>
           </div>
         </div>
       </div>
@@ -280,7 +293,7 @@ function ChallengeFeedCard({ item, onClick }: FeedCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <span className="inline-flex items-center rounded-full bg-amber-100 text-amber-800 px-2.5 py-1 text-xs font-medium">Challenge</span>
-            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+            <span className="text-xs text-slate-500">{formatDate(item.ts)}</span>
           </div>
           <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
             {challenge.title}
@@ -289,8 +302,8 @@ function ChallengeFeedCard({ item, onClick }: FeedCardProps) {
             Join this week's challenge and compete with the community!
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500">
-            <span>⏰ Ends {new Date(challenge.ends_at).toLocaleDateString()}</span>
-            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
+            <span>⏰ Ends {formatDate(challenge.ends_at)}</span>
+            <span>📅 {formatDate(item.ts)}</span>
           </div>
         </div>
       </div>
@@ -313,7 +326,7 @@ function GeneratorFeedCard({ item, onClick }: FeedCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <span className="inline-flex items-center rounded-full bg-green-100 text-green-700 px-2.5 py-1 text-xs font-medium">Generator Output</span>
-            <span className="text-xs text-slate-500">{new Date(item.ts).toLocaleDateString()}</span>
+            <span className="text-xs text-slate-500">{formatDate(item.ts)}</span>
           </div>
           <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
             {run.generator_name || 'AI Generated Content'}
@@ -322,7 +335,7 @@ function GeneratorFeedCard({ item, onClick }: FeedCardProps) {
             {run.output_text ? run.output_text.substring(0, 150) + '...' : 'View generated content...'}
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500">
-            <span>📅 {new Date(item.ts).toLocaleDateString()}</span>
+            <span>📅 {formatDate(item.ts)}</span>
           </div>
         </div>
       </div>
