@@ -239,9 +239,8 @@ router.post('/wall/:id/approve', async (c) => {
     await c.env.DB.prepare(`
       INSERT INTO wall_posts (
         id, slug, title, body, source_url, og_title, og_desc, og_image, og_site,
-        tags, related_terms, vote_count, comment_count, hot_score,
-        created_at, updated_at, last_activity_at, seq
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, ?, ?, ?, ?)
+        tags, related_terms, votes, comments, created_at, seq
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, ?, ?)
     `).bind(
       postId,
       finalSlug,
@@ -254,8 +253,6 @@ router.post('/wall/:id/approve', async (c) => {
       ogSite || null,
       submission.tags || null,
       submission.suggested_terms || null,
-      now,
-      now,
       now,
       Date.now() // seq for ordering
     ).run();
