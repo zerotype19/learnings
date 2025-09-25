@@ -277,6 +277,8 @@ function WallSubmissionForm() {
     email: ''
   });
   const [submitting, setSubmitting] = useState(false);
+  
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
