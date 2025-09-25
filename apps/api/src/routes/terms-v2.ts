@@ -161,7 +161,9 @@ router.get('/', async (c) => {
 
     // Cursor-based pagination
     if (cursor) {
+      console.log('Raw cursor:', cursor);
       const cursorParts = cursor.split(':');
+      console.log('Cursor parts:', cursorParts);
       if (cursorParts.length === 2) {
         const [cursorTitle, cursorCreatedAt] = cursorParts;
         console.log('Cursor parsed - Title:', cursorTitle, 'CreatedAt:', cursorCreatedAt);
