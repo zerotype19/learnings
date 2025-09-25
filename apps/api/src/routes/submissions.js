@@ -54,21 +54,15 @@ router.post('/terms/submit', async (c) => {
     ).run();
     
     // Send confirmation email
-    try {
-      const mailer = new MailerService();
-      const confirmationUrl = `${c.req.header('origin') || 'https://learnings.org'}/confirm/${confirmationToken}`;
-      
-      await mailer.sendConfirmationEmail({
-        type: 'term',
-        title: validatedData.title,
-        confirmationUrl,
-        recipientEmail: validatedData.email
-      });
-    } catch (emailError) {
-      console.error('Email sending failed, proceeding without email:', emailError);
-      // For now, we'll proceed without email confirmation
-      // In production, you should verify the domain in MailerSend
-    }
+    const mailer = new MailerService();
+    const confirmationUrl = `${c.req.header('origin') || 'https://learnings.org'}/confirm/${confirmationToken}`;
+    
+    await mailer.sendConfirmationEmail({
+      type: 'term',
+      title: validatedData.title,
+      confirmationUrl,
+      recipientEmail: validatedData.email
+    });
     
     return c.json({
       success: true,
@@ -112,21 +106,15 @@ router.post('/wall/submit', async (c) => {
     ).run();
     
     // Send confirmation email
-    try {
-      const mailer = new MailerService();
-      const confirmationUrl = `${c.req.header('origin') || 'https://learnings.org'}/confirm/${confirmationToken}`;
-      
-      await mailer.sendConfirmationEmail({
-        type: 'wall',
-        title: validatedData.title,
-        confirmationUrl,
-        recipientEmail: validatedData.email
-      });
-    } catch (emailError) {
-      console.error('Email sending failed, proceeding without email:', emailError);
-      // For now, we'll proceed without email confirmation
-      // In production, you should verify the domain in MailerSend
-    }
+    const mailer = new MailerService();
+    const confirmationUrl = `${c.req.header('origin') || 'https://learnings.org'}/confirm/${confirmationToken}`;
+    
+    await mailer.sendConfirmationEmail({
+      type: 'wall',
+      title: validatedData.title,
+      confirmationUrl,
+      recipientEmail: validatedData.email
+    });
     
     return c.json({
       success: true,

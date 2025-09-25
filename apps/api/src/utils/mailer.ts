@@ -1,5 +1,3 @@
-import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
-
 export interface ConfirmationEmailData {
   type: 'term' | 'wall';
   title: string;
@@ -8,38 +6,48 @@ export interface ConfirmationEmailData {
 }
 
 export class MailerService {
-  private mailerSend: MailerSend;
+  private apiKey: string;
   private fromEmail: string;
   private fromName: string;
 
   constructor() {
-    const apiKey = process.env.MAILERSEND_API_KEY;
-    if (!apiKey) {
-      throw new Error('MAILERSEND_API_KEY environment variable is required');
+    this.apiKey = process.env.SMTP2GO_API_KEY || '';
+    if (!this.apiKey) {
+      throw new Error('SMTP2GO_API_KEY environment variable is required');
     }
     
-    this.mailerSend = new MailerSend({
-      apiKey: apiKey,
-    });
-    
-    this.fromEmail = process.env.MAILERSEND_FROM_EMAIL || 'noreply@learnings.org';
-    this.fromName = process.env.MAILERSEND_FROM_NAME || 'Learnings.org';
+    this.fromEmail = process.env.SMTP2GO_FROM_EMAIL || 'noreply@learnings.org';
+    this.fromName = process.env.SMTP2GO_FROM_NAME || 'Learnings.org';
   }
 
   async sendConfirmationEmail(data: ConfirmationEmailData): Promise<void> {
-    const sender = new Sender(this.fromEmail, this.fromName);
-    const recipient = new Recipient(data.recipientEmail);
-
-    const emailParams = new EmailParams()
-      .setFrom(sender)
-      .setTo([recipient])
-      .setSubject(`Confirm your ${data.type} submission to Learnings.org`)
-      .setHtml(this.generateConfirmationHtml(data))
-      .setText(this.generateConfirmationText(data));
+    const typeLabel = data.type === 'term' ? 'corporate term' : 'wall post';
+    
+    const emailData = {
+      api_key: this.apiKey,
+      to: [data.recipientEmail],
+      sender: this.fromEmail,
+      subject: `Confirm your ${data.type} submission to Learnings.org`,
+      html_body: this.generateConfirmationHtml(data),
+      text_body: this.generateConfirmationText(data)
+    };
 
     try {
-      await this.mailerSend.email.send(emailParams);
-      console.log(`Confirmation email sent to ${data.recipientEmail}`);
+      const response = await fetch('https://api.smtp2go.com/v3/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`SMTP2GO API error: ${errorData.message || response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log(`Confirmation email sent to ${data.recipientEmail}`, result);
     } catch (error) {
       console.error('Failed to send confirmation email:', error);
       throw new Error('Failed to send confirmation email');
