@@ -1,0 +1,165 @@
+Final Terms Import Report (Fixed Version)
+Generated: 2025-09-25T13:00:28.596Z
+Total Terms: 94
+
+TERMS BY CATEGORY:
+
+Meeting & Communication (3 terms):
+  - Hop on a Call
+  - Ping You
+  - Let's Table This
+
+Project Management (23 terms):
+  - Actionable Items
+  - Backburner
+  - Balls in the Air
+  - Bandwidth
+  - Boil the Ocean
+  - Bring to the Table
+  - Deliverables
+  - Good to Go
+  - Laser Focus
+  - Low-Hanging Fruit
+  - Move the Goalposts
+  - Park It
+  - Push the Envelope
+  - Skin in the Game
+  - Pipeline
+  - Loop In
+  - Get Ducks in a Row
+  - Boots on the Ground
+  - Bare Minimum Monday
+  - Boomerang Employees
+  - Digital Employee Experience (DEX)
+  - Quiet Quitting
+  - Side Gig
+
+Business Strategy (12 terms):
+  - Baked In
+  - Core Competencies
+  - Evangelist
+  - Game Changer
+  - Get on Board
+  - One-Pager
+  - Pain Point
+  - Paradigm Shift
+  - Synergy
+  - Touchpoint
+  - Disruptive Innovation
+  - Pivot
+
+Team & Collaboration (5 terms):
+  - Break Down the Silos
+  - Herding Cats
+  - Over the Wall
+  - Throw Under the Bus
+  - Sync
+
+Time & Deadlines (2 terms):
+  - Hard Stop
+  - Ninja
+
+Workplace & Culture (3 terms):
+  - Anti-Perks
+  - Career Cushioning
+  - Reverse Mentoring
+
+Other (46 terms):
+  - ASAP
+  - Bleeding Edge
+  - Blue Sky Thinking
+  - Brain Dump
+  - Circle Back
+  - Deck
+  - Deep Dive
+  - Drink the Kool-Aid
+  - Ducks in a Row
+  - Headwinds
+  - Jump the Shark
+  - Leverage
+  - Make Hay While the Sun Shines
+  - Move the Needle
+  - Resonate
+  - Reinvent the Wheel
+  - Run Up the Flagpole
+  - Touch Base
+  - Traction
+  - Trim the Fat
+  - White Paper
+  - Silver Bullet
+  - Take it Offline
+  - Social Proof
+  - Thought Leadership
+  - Pushback
+  - Have in One's Back Pocket
+  - FYI
+  - Win-Win
+  - Unpack
+  - Above and Beyond
+  - Level Up
+  - Out of Pocket
+  - On My Radar
+  - Think Outside the Box
+  - Synergize
+  - Put a Pin in It
+  - Open the Kimono
+  - Throw It Up and See What Sticks
+  - Coffee Badging
+  - Elevator Pitch
+  - MVP
+  - USP
+  - Office Peacocking
+  - Voluntold
+  - Throw it Up and See What Sticks
+
+SAMPLE TERMS:
+
+Actionable Items:
+  Definition: A task or action that needs to be performed by an individual or team; essentially a to-do list.
+  Example: Let's create a list of actionable items from today's meeting.
+  Tags: corporate, buzzword, project, team
+
+ASAP:
+  Definition: Acronym for 'as soon as possible'; used to indicate urgency.
+  Example: I need this report ASAP for the board meeting tomorrow.
+  Tags: corporate, buzzword
+
+Backburner:
+  Definition: To de-prioritize a task and revisit later.
+  Example: We'll put the website redesign on the backburner until Q2.
+  Tags: corporate, buzzword, project
+
+Baked In:
+  Definition: Already included as part of a plan, model, or roadmap.
+  Example: The cost savings are already baked into our budget projections.
+  Tags: corporate, buzzword, strategy
+
+Balls in the Air:
+  Definition: Managing several activities or tasks simultaneously; similar to 'too much on the plate.'
+  Example: I have too many balls in the air right now to take on another project.
+  Tags: corporate, buzzword, project
+
+Bandwidth:
+  Definition: The capacity to take on additional work in terms of time, resources, or energy.
+  Example: I don't have the bandwidth to handle this additional request.
+  Tags: corporate, buzzword, project, time
+
+Bleeding Edge:
+  Definition: Describes the newest, most innovative product, idea, or technology.
+  Example: This new AI technology is bleeding edge - very experimental.
+  Tags: corporate, buzzword
+
+Blue Sky Thinking:
+  Definition: Creative brainstorming without constraints; thinking out of the box.
+  Example: Let's do some blue sky thinking about future possibilities.
+  Tags: corporate, buzzword
+
+Boil the Ocean:
+  Definition: Taking on an overly ambitious or impossible task.
+  Example: Don't try to boil the ocean - focus on one thing at a time.
+  Tags: corporate, buzzword, project
+
+Brain Dump:
+  Definition: Writing down all ideas quickly, often during or after a brainstorming session.
+  Example: Let me do a quick brain dump of all my ideas for this campaign.
+  Tags: corporate, buzzword
