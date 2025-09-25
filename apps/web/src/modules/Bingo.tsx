@@ -10,6 +10,11 @@ export function Bingo() {
   const [loading, setLoading] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
   
+  // Auto-generate board on component mount
+  useEffect(() => {
+    generateBoard();
+  }, []);
+  
   const generateBoard = async () => {
     setLoading(true);
     try {
@@ -108,17 +113,24 @@ export function Bingo() {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 py-8">
-          {!board.length ? (
-        <div className="text-center">
-          <button 
-            onClick={generateBoard}
-            disabled={loading}
-            className="rounded-xl bg-brand-600 px-6 py-3 text-white hover:bg-brand-700 transition-colors disabled:opacity-50"
-          >
-            {loading ? 'Generating...' : 'Generate New Board'}
-          </button>
-        </div>
-      ) : (
+          {!board.length && loading ? (
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 text-white">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                Generating your bingo board...
+              </div>
+            </div>
+          ) : !board.length ? (
+            <div className="text-center">
+              <button 
+                onClick={generateBoard}
+                disabled={loading}
+                className="rounded-xl bg-brand-600 px-6 py-3 text-white hover:bg-brand-700 transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Generating...' : 'Generate New Board'}
+              </button>
+            </div>
+          ) : (
         <>
           {hasWon && (
             <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl text-center">
