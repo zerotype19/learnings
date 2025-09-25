@@ -129,6 +129,8 @@ router.get('/', async (c) => {
     const sort = c.req.query('sort') || 'newest';
     const cursor = c.req.query('cursor');
     const limit = Math.min(Number(c.req.query('limit') || '20'), 50);
+    
+    console.log('Received cursor:', cursor);
 
     // Letter filtering
     if (letter && letter.length === 1) {
