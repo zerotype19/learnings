@@ -164,6 +164,7 @@ router.get('/', async (c) => {
       const cursorParts = cursor.split(':');
       if (cursorParts.length === 2) {
         const [cursorTitle, cursorCreatedAt] = cursorParts;
+        console.log('Cursor parsed - Title:', cursorTitle, 'CreatedAt:', cursorCreatedAt);
         if (sort === 'popular') {
           query += ' AND (views < ? OR (views = ? AND created_at < ?))';
           params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
