@@ -131,6 +131,7 @@ router.get('/', async (c) => {
     const limit = Math.min(Number(c.req.query('limit') || '20'), 50);
     
     console.log('Received cursor:', cursor);
+    console.log('Decoded cursor:', decodeURIComponent(cursor || ''));
 
     // Letter filtering
     if (letter && letter.length === 1) {
