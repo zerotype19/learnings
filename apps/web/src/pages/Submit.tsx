@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { submitWallPost } from '../lib/api';
 import { SEO, SEOConfigs } from '../components/SEO';
+import { burstAt } from '../utils/confetti';
 
 type SubmitTab = 'term' | 'wall';
 
@@ -105,6 +106,13 @@ function TermSubmissionForm() {
       if (response.ok) {
         const result = await response.json();
         alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
+        
+        // Add confetti celebration
+        const button = document.querySelector('button[type="submit"]') as HTMLElement;
+        if (button) {
+          burstAt(button, { count: 30, duration: 800 });
+        }
+        
         setFormData({
           title: '',
           definition: '',
@@ -332,6 +340,12 @@ function WallSubmissionForm() {
       if (response.ok) {
         const result = await response.json();
         alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
+        
+        // Add confetti celebration
+        const button = document.querySelector('button[type="submit"]') as HTMLElement;
+        if (button) {
+          burstAt(button, { count: 30, duration: 800 });
+        }
       } else {
         const error = await response.json();
         console.error('Wall submission error:', error);

@@ -86,3 +86,13 @@
 .animate-clorg-wiggle {
   animation: clorg-wiggle 0.6s ease-in-out 1-2;
 }
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker 16s linear infinite;
+}

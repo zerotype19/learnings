@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchBox } from '../components/SearchBox';
 import { EnterpriseToggle } from '../components/EnterpriseToggle';
+import { BuzzwordTicker } from '../components/BuzzwordTicker';
+import { ClorgDock } from '../components/ClorgDock';
+import { useSectionStamps } from '../hooks/useSectionStamps';
+import type { NonsenseData } from '../types/nonsense';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
 
@@ -12,9 +16,28 @@ interface LayoutShellProps {
 
 export function LayoutShell({ currentPage, onPageChange, children }: LayoutShellProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [nonsenseData, setNonsenseData] = useState<NonsenseData | null>(null);
   
   // Check for admin access
   const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
+
+  // Load nonsense data
+  useEffect(() => {
+    const loadNonsenseData = async () => {
+      try {
+        const response = await fetch('/nonsense.json');
+        const data: NonsenseData = await response.json();
+        setNonsenseData(data);
+      } catch (error) {
+        console.error('Failed to load nonsense data:', error);
+      }
+    };
+
+    loadNonsenseData();
+  }, []);
+
+  // Initialize section stamps
+  useSectionStamps();
   
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },
@@ -183,6 +206,11 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
         )}
       </header>
       
+      {/* Buzzword Ticker */}
+      {nonsenseData?.ticker && (
+        <BuzzwordTicker items={nonsenseData.ticker} />
+      )}
+      
       {/* Main Content */}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
         {children}
@@ -227,8 +255,11 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
             <EnterpriseToggle />
           </div>
           
-          <div className="text-center text-sm text-slate-500">
-            © 2025 Learnings Dot Org — Speak fluent corporate. Ironically.
+          <div className="flex items-center justify-between text-sm text-slate-500">
+            <span>© 2025 Learnings Dot Org — Speak fluent corporate. Ironically.</span>
+            {nonsenseData?.clorg?.lines && (
+              <ClorgDock lines={nonsenseData.clorg.lines} />
+            )}
           </div>
         </div>
       </footer>

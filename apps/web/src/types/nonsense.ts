@@ -16,6 +16,7 @@ export type ClorgLine = {
 };
 
 export type NonsenseData = {
+  ticker: string[];
   tooltips: NonsenseTip[];
   clorg: {
     lines: ClorgLine[];

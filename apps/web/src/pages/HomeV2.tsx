@@ -148,19 +148,24 @@ export function HomeV2() {
           </div>
 
           {/* Random Term Button */}
-          <div className="flex gap-4 justify-center">
-            <button 
-              onClick={handleRollJargon}
-              className="inline-flex items-center gap-2 rounded-xl2 bg-brand text-white px-6 py-3 text-sm font-medium hover:bg-brand-700 transition-all duration-200 shadow-soft hover:shadow-lg hover:-translate-y-0.5"
-            >
-              🎯 Initiate Synergy
-            </button>
-            <button 
-              onClick={() => window.location.href = '/contact'}
-              className="inline-flex items-center gap-2 rounded-xl2 border border-slate-300 bg-white text-slate-700 px-6 py-3 text-sm font-medium hover:bg-slate-50 transition-all duration-200"
-            >
-              📅 Book a 15-Minute Alignment
-            </button>
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex gap-4 justify-center">
+              <button 
+                onClick={handleRollJargon}
+                className="inline-flex items-center gap-2 rounded-xl2 bg-brand text-white px-6 py-3 text-sm font-medium hover:bg-brand-700 transition-all duration-200 shadow-soft hover:shadow-lg hover:-translate-y-0.5"
+              >
+                🎯 Initiate Synergy
+              </button>
+              <button 
+                onClick={() => window.location.href = '/contact'}
+                className="inline-flex items-center gap-2 rounded-xl2 border border-slate-300 bg-white text-slate-700 px-6 py-3 text-sm font-medium hover:bg-slate-50 transition-all duration-200"
+              >
+                📅 Book a 15-Minute Alignment
+              </button>
+            </div>
+            <span className="mt-1 block text-xs text-zinc-500 dark:text-zinc-400">
+              Clicking this increases synergy by up to 47%.*
+            </span>
           </div>
         </div>
 

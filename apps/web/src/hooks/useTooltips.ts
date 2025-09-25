@@ -68,13 +68,15 @@ export function useTooltips() {
   useEffect(() => {
     console.log('useTooltips hook initialized');
     
-    // Check if nonsense is disabled
+    // Check if nonsense is disabled or in subtle mode
     const urlParams = new URLSearchParams(window.location.search);
     const noClorg = urlParams.get('noclorg') === '1';
     const localStorageDisabled = localStorage.getItem('nonsenseDisabled') === 'true';
+    const subtleMode = localStorage.getItem('nonsenseMode') !== 'loud';
+    const forceLoud = urlParams.get('nonsense') === 'hard';
     
-    if (noClorg || localStorageDisabled) {
-      console.log('Corporate Mode disabled');
+    if (noClorg || localStorageDisabled || (subtleMode && !forceLoud)) {
+      console.log('Corporate Mode disabled or in subtle mode');
       return;
     }
 

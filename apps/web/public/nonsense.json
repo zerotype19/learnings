@@ -1,4 +1,16 @@
 {
+  "ticker": [
+    "Now optimizing cross-functional throughput across the narrative surface area.",
+    "Reminder: more logos on slides = more truth.",
+    "Stakeholder alignment window opens every 15 minutes.",
+    "KPIs are vibes until someone argues; then they're OKRs.",
+    "Escalating your idea to a more rectangular box.",
+    "Synergy levels at 47%. Consider adding more arrows.",
+    "Bullet points or die. Italics if you're feeling agile.",
+    "Roadmaps are calendars with swagger.",
+    "Innovation compiling… please ideate responsibly.",
+    "Your deck needs more rectangles. Rectangles = trust."
+  ],
   "tooltips": [
     { "selector": "h1", "text": "Operationalizing the Learnings Layer™ for maximum stakeholder alignment.", "placement": "top", "pages": ["/"] },
     { "selector": "a[href='/']", "text": "More logos on slides = more truth. Consider adding 3–5 more.", "placement": "bottom" },
