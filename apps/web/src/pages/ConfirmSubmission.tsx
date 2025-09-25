@@ -65,8 +65,8 @@ export function ConfirmSubmission() {
 
   if (status === 'error') {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
-        <div className="max-w-md mx-auto text-center">
+      <div className="min-h-screen bg-neutral-50">
+        <div className="max-w-md mx-auto text-center pt-16">
           <div className="bg-white rounded-2xl border p-8">
             <div className="text-6xl mb-4">❌</div>
             <h1 className="text-2xl font-bold text-red-600 mb-4">Confirmation Failed</h1>
@@ -84,8 +84,8 @@ export function ConfirmSubmission() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
-      <div className="max-w-md mx-auto text-center">
+    <div className="min-h-screen bg-neutral-50">
+      <div className="max-w-md mx-auto text-center pt-16">
         <div className="bg-white rounded-2xl border p-8">
           <div className="text-6xl mb-4">✅</div>
           <h1 className="text-2xl font-bold text-green-600 mb-4">Submission Confirmed!</h1>
