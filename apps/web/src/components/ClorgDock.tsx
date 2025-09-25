@@ -9,6 +9,8 @@ export function ClorgDock({ lines }: ClorgDockProps) {
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(() => Math.floor(Math.random() * lines.length));
   
+  console.log('ClorgDock rendered with', lines.length, 'lines');
+  
   const next = () => setIdx((i) => (i + 1) % lines.length);
   
   useEffect(() => {
@@ -23,11 +25,11 @@ export function ClorgDock({ lines }: ClorgDockProps) {
         aria-expanded={open}
         aria-controls="clorg-bubble"
         onClick={() => setOpen(v => !v)}
-        className="w-8 h-8 rounded-full border border-zinc-300 dark:border-zinc-600 bg-white/90 dark:bg-zinc-900/90 shadow hover:shadow-md grid place-items-center transition-all duration-200 hover:scale-105"
+        className="w-10 h-10 rounded-full border-2 border-brand-500 bg-brand-50 dark:bg-brand-900/20 shadow-lg hover:shadow-xl grid place-items-center transition-all duration-200 hover:scale-110"
         title="Clorg - Your Enterprise Gremlin"
       >
         {/* Tiny paperclip SVG */}
-        <svg viewBox="0 0 24 24" className="w-5 h-5 opacity-80 text-zinc-600 dark:text-zinc-400">
+        <svg viewBox="0 0 24 24" className="w-6 h-6 text-brand-600 dark:text-brand-400">
           <path 
             d="M7 12l6-6a4 4 0 016 6l-7 7a5 5 0 11-7-7l6-6" 
             fill="none" 

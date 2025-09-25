@@ -29,8 +29,8 @@ export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
   if (items.length === 0) return null;
 
   return (
-    <div className="h-8 border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 backdrop-blur-sm">
-      <div className="mx-auto max-w-6xl h-full flex items-center text-xs text-zinc-600 dark:text-zinc-400 overflow-hidden">
+    <div className="h-10 border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 backdrop-blur-sm">
+      <div className="mx-auto max-w-6xl h-full flex items-center text-sm font-medium text-zinc-700 dark:text-zinc-300 overflow-hidden">
         {reduceMotion ? (
           <span className="transition-opacity duration-300">{items[i]}</span>
         ) : (

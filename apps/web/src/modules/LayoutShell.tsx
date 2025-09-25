@@ -25,8 +25,10 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   useEffect(() => {
     const loadNonsenseData = async () => {
       try {
+        console.log('Loading nonsense data...');
         const response = await fetch('/nonsense.json');
         const data: NonsenseData = await response.json();
+        console.log('Loaded nonsense data:', data);
         setNonsenseData(data);
       } catch (error) {
         console.error('Failed to load nonsense data:', error);
