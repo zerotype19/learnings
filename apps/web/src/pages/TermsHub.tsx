@@ -3,7 +3,6 @@ import { LetterIndex } from '../components/terms/LetterIndex';
 import { getShortDescription } from '../utils/textUtils';
 import { SearchBox } from '../components/SearchBox';
 import { SEO, SEOConfigs } from '../components/SEO';
-import { DeckificationMeter } from '../components/DeckificationMeter';
 
 type Term = {
   id: string;
@@ -244,9 +243,6 @@ export function TermsHub() {
 
       {/* Letter Index */}
       <LetterIndex activeLetter={activeLetter} onLetterClick={handleLetterClick} />
-
-      {/* Deckification Meter */}
-      <DeckificationMeter />
 
       {/* Content */}
       <div className="py-8">
