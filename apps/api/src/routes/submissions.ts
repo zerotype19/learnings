@@ -167,23 +167,18 @@ router.get('/confirm/:token', async (c) => {
     
     // Process the confirmed submission
     if (result.type === 'term') {
-      // Add to terms_v2 table
-      const slug = submissionData.title.toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
-      
+      // Add to term_submissions table for admin review
       await c.env.DB.prepare(`
-        INSERT INTO terms_v2 (id, slug, title, definition, examples, tags, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, 'draft', ?, ?)
+        INSERT INTO term_submissions (id, title, definition, examples, tags, links, submitted_by, status, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'queued', ?, ?)
       `).bind(
         nanoid(),
-        slug,
         submissionData.title,
         submissionData.definition,
         submissionData.examples || null,
         JSON.stringify(submissionData.tags || []),
+        JSON.stringify(submissionData.links || []),
+        submissionData.email, // Use email as submitted_by
         Date.now(),
         Date.now()
       ).run();
