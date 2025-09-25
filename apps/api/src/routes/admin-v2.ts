@@ -87,15 +87,15 @@ router.post('/terms/:id/approve', async (c) => {
       INSERT INTO terms_v2 (
         id, slug, title, definition, examples, tags, 
         status, created_at, updated_at, views, seq
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'published', ?, ?, 0, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)
     `).bind(
       termId,
       finalSlug,
       submission.title,
       submission.definition,
-      null,
       submission.examples || null,
       submission.tags || null,
+      'published',
       now,
       now,
       Date.now() // seq for ordering
