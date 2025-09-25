@@ -270,8 +270,8 @@ router.post('/wall/:id/approve', async (c) => {
 
     // Update submission status
     await c.env.DB.prepare(
-      'UPDATE wall_submissions SET status = ?, reviewer = ?, updated_at = ? WHERE id = ?'
-    ).bind('published', auth?.userId || 'system', now, submissionId).run();
+      'UPDATE wall_submissions SET status = ?, reviewer = ? WHERE id = ?'
+    ).bind('published', auth?.userId || 'system', submissionId).run();
 
     return c.json({ 
       id: postId, 
@@ -298,8 +298,8 @@ router.post('/wall/:id/reject', async (c) => {
     const now = new Date().toISOString();
     
     await c.env.DB.prepare(
-      'UPDATE wall_submissions SET status = ?, reviewer = ?, reviewer_notes = ?, updated_at = ? WHERE id = ?'
-    ).bind('rejected', auth?.userId || 'system', reason, now, submissionId).run();
+      'UPDATE wall_submissions SET status = ?, reviewer = ?, reviewer_notes = ? WHERE id = ?'
+    ).bind('rejected', auth?.userId || 'system', reason, submissionId).run();
 
     return c.json({ status: 'rejected' });
   } catch (error) {
