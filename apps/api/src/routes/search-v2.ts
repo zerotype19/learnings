@@ -22,26 +22,60 @@ router.get('/', async (c) => {
       try {
         const searchTerm = `%${q}%`;
         const termStmt = c.env.DB.prepare(`
-          SELECT id, slug, title, definition
+          SELECT id, slug, title, definition, views,
+                 CASE 
+                   WHEN slug LIKE '%-v%' OR slug LIKE '%-alt' THEN 
+                     REPLACE(REPLACE(slug, '-v2', ''), '-alt', '')
+                   ELSE slug
+                 END as base_slug
           FROM terms_v2 
           WHERE status = 'published' 
           AND (title LIKE ? OR definition LIKE ?)
-          ORDER BY views DESC
+          ORDER BY 
+            CASE 
+              WHEN slug NOT LIKE '%-v%' AND slug NOT LIKE '%-alt' THEN 1
+              ELSE 2
+            END,
+            views DESC
           LIMIT ?
         `).bind(searchTerm, searchTerm, Math.ceil(limit / 2));
         
         const { results: termResults } = await termStmt.all();
         
         if (termResults) {
+          // Group variations by base term
+          const groupedTerms = new Map();
+          
           for (const term of termResults as any[]) {
-            results.push({
-              type: 'term',
-              id: term.id,
-              title: term.title,
-              description: term.definition.substring(0, 100) + '...',
-              url: `/term/${term.slug}`,
-              relevance_score: 1.0
-            });
+            const baseSlug = term.base_slug;
+            
+            if (!groupedTerms.has(baseSlug)) {
+              groupedTerms.set(baseSlug, {
+                type: 'term',
+                id: term.id,
+                title: term.title,
+                description: term.definition.substring(0, 100) + '...',
+                url: `/term/${term.slug}`,
+                relevance_score: 1.0,
+                variations: []
+              });
+            }
+            
+            // Add variation if it's not the primary term
+            if (term.slug !== baseSlug) {
+              groupedTerms.get(baseSlug).variations.push({
+                id: term.id,
+                slug: term.slug,
+                title: term.title,
+                description: term.definition.substring(0, 100) + '...',
+                url: `/term/${term.slug}`
+              });
+            }
+          }
+          
+          // Convert map to array
+          for (const [_, term] of groupedTerms) {
+            results.push(term);
           }
         }
       } catch (termError) {

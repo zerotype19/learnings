@@ -1,6 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { SearchResult } from '@learnings/lib';
 
+interface SearchResultWithVariations extends SearchResult {
+  variations?: Array<{
+    id: string;
+    slug: string;
+    title: string;
+    description: string;
+    url: string;
+  }>;
+}
+
 interface SearchBoxProps {
   onNavigate?: (url: string) => void;
   placeholder?: string;
@@ -13,7 +23,7 @@ export function SearchBox({
   className = ""
 }: SearchBoxProps) {
   const [query, setQuery] = useState('');
-  const [suggestions, setSuggestions] = useState<SearchResult[]>([]);
+  const [suggestions, setSuggestions] = useState<SearchResultWithVariations[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [loading, setLoading] = useState(false);
@@ -222,32 +232,59 @@ export function SearchBox({
           ) : (
             <>
               {suggestions.map((suggestion, index) => (
-                <button
-                  key={`${suggestion.type}-${suggestion.id}`}
-                  onClick={() => handleSuggestionClick(suggestion)}
-                  className={`w-full px-4 py-3 text-left text-sm hover:bg-slate-50 transition-all duration-200 ${
-                    index === selectedIndex ? 'bg-brand-50 text-brand-700' : 'text-slate-700'
-                  }`}
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="text-base flex-shrink-0 mt-0.5">
-                      {getTypeIcon(suggestion.type)}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">
-                        {suggestion.title}
+                <div key={`${suggestion.type}-${suggestion.id}`}>
+                  <button
+                    onClick={() => handleSuggestionClick(suggestion)}
+                    className={`w-full px-4 py-3 text-left text-sm hover:bg-slate-50 transition-all duration-200 ${
+                      index === selectedIndex ? 'bg-brand-50 text-brand-700' : 'text-slate-700'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="text-base flex-shrink-0 mt-0.5">
+                        {getTypeIcon(suggestion.type)}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium truncate">
+                          {suggestion.title}
+                        </div>
+                        {suggestion.description && (
+                          <div className="text-xs text-slate-500 truncate mt-0.5">
+                            {suggestion.description}
+                          </div>
+                        )}
                       </div>
-                      {suggestion.description && (
-                        <div className="text-xs text-slate-500 truncate mt-0.5">
-                          {suggestion.description}
+                      <span className="text-xs text-slate-400 flex-shrink-0 mt-0.5">
+                        {suggestion.type}
+                      </span>
+                    </div>
+                  </button>
+                  
+                  {/* Show variations if they exist */}
+                  {suggestion.variations && suggestion.variations.length > 0 && (
+                    <div className="pl-8 pr-4 pb-2">
+                      <div className="text-xs text-slate-400 mb-1">
+                        {suggestion.variations.length} other definition{suggestion.variations.length > 1 ? 's' : ''}
+                      </div>
+                      {suggestion.variations.slice(0, 2).map((variation) => (
+                        <button
+                          key={variation.id}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSuggestionClick(variation);
+                          }}
+                          className="w-full text-left text-xs text-slate-500 hover:text-slate-700 py-1 px-2 rounded hover:bg-slate-100 transition-colors"
+                        >
+                          <div className="truncate">{variation.description}</div>
+                        </button>
+                      ))}
+                      {suggestion.variations.length > 2 && (
+                        <div className="text-xs text-slate-400 mt-1">
+                          +{suggestion.variations.length - 2} more...
                         </div>
                       )}
                     </div>
-                    <span className="text-xs text-slate-400 flex-shrink-0 mt-0.5">
-                      {suggestion.type}
-                    </span>
-                  </div>
-                </button>
+                  )}
+                </div>
               ))}
               
               {/* Search all results option */}

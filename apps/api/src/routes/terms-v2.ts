@@ -7,6 +7,46 @@ import { requireAuth, getFingerprint } from '../utils/auth';
 
 const router = new Hono<{ Bindings: Env }>();
 
+// Get term variations by base term
+router.get('/variations/:slug', async (c) => {
+  try {
+    const slug = c.req.param('slug');
+    
+    // Get the base term (without -v2, -alt, etc.)
+    const baseSlug = slug.replace(/-v\d+$/, '').replace(/-alt$/, '');
+    
+    // Find all variations of this term
+    const stmt = c.env.DB.prepare(`
+      SELECT * FROM terms_v2 
+      WHERE status = "published" 
+      AND (slug = ? OR slug LIKE ? OR slug LIKE ?)
+      ORDER BY 
+        CASE 
+          WHEN slug = ? THEN 1
+          WHEN slug LIKE ? THEN 2
+          ELSE 3
+        END,
+        created_at ASC
+    `);
+    
+    const result = await stmt.bind(
+      baseSlug,           // exact match
+      `${baseSlug}-v%`,   // versioned variations
+      `${baseSlug}-alt`,  // alternative variations
+      baseSlug,           // for ordering
+      `${baseSlug}-v%`    // for ordering
+    ).all();
+    
+    return c.json({
+      success: true,
+      variations: result.results || []
+    });
+  } catch (error) {
+    console.error('Error fetching term variations:', error);
+    return c.json({ success: false, error: 'Failed to fetch variations' }, 500);
+  }
+});
+
 // Get terms with A-Z filtering, search, and pagination
 router.get('/', async (c) => {
   let query = 'SELECT * FROM terms_v2 WHERE status = "published"';

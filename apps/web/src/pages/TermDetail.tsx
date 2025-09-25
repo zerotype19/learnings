@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getShortDescription } from '../utils/textUtils';
+import { TermVariations } from '../components/terms/TermVariations';
 
 type TermDetail = {
   id: string;
@@ -175,6 +176,9 @@ export function TermDetail({ slug }: TermDetailProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="lg:col-span-2">
+            {/* Term Variations */}
+            <TermVariations currentSlug={term.slug} baseTerm={term.title} />
+            
             {/* In the Wild Links */}
             <div className="bg-white rounded-2xl border p-6 mb-6">
               <div className="flex justify-between items-center mb-4">
