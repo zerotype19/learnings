@@ -253,21 +253,6 @@ export function GeneratorsHub() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex gap-3">
-                <button
-                  onClick={() => copyToClipboard(result.output_text)}
-                  className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                >
-                  Copy to Clipboard
-                </button>
-                <button
-                  onClick={() => setResult(null)}
-                  className="px-4 py-2 border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Clear
-                </button>
-              </div>
             </div>
           ) : (
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
