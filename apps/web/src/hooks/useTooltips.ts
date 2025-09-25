@@ -66,6 +66,8 @@ export function useTooltips() {
   const dataRef = useRef<NonsenseData | null>(null);
 
   useEffect(() => {
+    console.log('useTooltips hook initialized');
+    
     // Check if nonsense is disabled
     const urlParams = new URLSearchParams(window.location.search);
     const noClorg = urlParams.get('noclorg') === '1';
@@ -82,8 +84,10 @@ export function useTooltips() {
     // Load nonsense data
     const loadNonsenseData = async () => {
       try {
+        console.log('Loading nonsense data...');
         const response = await fetch('/nonsense.json');
         const data: NonsenseData = await response.json();
+        console.log('Loaded nonsense data:', data);
         dataRef.current = data;
         setupTooltips(data);
       } catch (error) {
@@ -92,13 +96,16 @@ export function useTooltips() {
     };
 
     const setupTooltips = (data: NonsenseData) => {
+      console.log('Setting up tooltips...');
       const currentPath = window.location.pathname;
       const isEnterpriseMode = localStorage.getItem('enterpriseMode') === 'true';
+      console.log('Current path:', currentPath, 'Enterprise mode:', isEnterpriseMode);
       
       // Clean up existing instances
       instancesRef.current.forEach(instance => instance.destroy());
       instancesRef.current = [];
 
+      console.log('Processing', data.tooltips.length, 'tooltips');
       data.tooltips.forEach(tip => {
         // Check if tooltip should show on current page
         if (tip.pages && !tip.pages.some(page => {
