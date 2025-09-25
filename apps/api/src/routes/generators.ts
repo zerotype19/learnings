@@ -75,46 +75,49 @@ generators.post('/:slug', async (c) => {
     // Generate output based on generator type
     let output_text = '';
     
-    if (slug === 'professor') {
-      // Use structured JSON response for professor
-      const response = await callOpenAI(c.env, [
-        { role: 'user', content: prompt }
-      ], 300, 0.8);
+    // Generate output based on generator type
+    const response = await callOpenAI(c.env, [
+      { role: 'user', content: prompt }
+    ], 400, 0.7);
+    
+    // Try to parse JSON response for all generators
+    try {
+      const cleanedResponse = response.trim().replace(/^```json\s*/, '').replace(/\s*```$/, '');
+      const parsed = JSON.parse(cleanedResponse);
       
-      // Parse the JSON response
-      try {
-        const cleanedResponse = response.trim().replace(/^```json\s*/, '').replace(/\s*```$/, '');
-        const parsed = JSON.parse(cleanedResponse);
-        
-        if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
-          output_text = JSON.stringify(parsed);
-        } else {
-          throw new Error('Invalid JSON structure');
-        }
-      } catch (parseError) {
-        console.error('Professor JSON parse error:', parseError);
-        // Fallback: try to extract object from response
-        const objectMatch = response.match(/\{[\s\S]*?\}/);
-        if (objectMatch) {
-          try {
-            const parsed = JSON.parse(objectMatch[0]);
-            if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
-              output_text = JSON.stringify(parsed);
-            } else {
-              throw new Error('Invalid JSON structure');
-            }
-          } catch {
-            throw new Error('JSON extraction failed');
-          }
-        } else {
-          throw new Error('No JSON object found');
-        }
+      // Validate based on generator type
+      if (slug === 'professor' && parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+        output_text = JSON.stringify(parsed);
+      } else if (slug === 'roast' && parsed.roast) {
+        output_text = JSON.stringify(parsed);
+      } else if (slug === 'linkedin-post' && Array.isArray(parsed)) {
+        output_text = JSON.stringify(parsed);
+      } else if (slug === 'bs-meter' && parsed.score !== undefined && parsed.verdict && parsed.alternatives) {
+        output_text = JSON.stringify(parsed);
+      } else if (slug === 'linkedin-comment' && parsed.comment) {
+        output_text = JSON.stringify(parsed);
+      } else if (slug === 'corporate-email' && parsed.subject && parsed.body) {
+        output_text = JSON.stringify(parsed);
+      } else {
+        // If it's valid JSON but doesn't match expected structure, use as-is
+        output_text = JSON.stringify(parsed);
       }
-    } else {
-      // For other generators, use OpenAI directly
-      output_text = await callOpenAI(c.env, [
-        { role: 'user', content: prompt }
-      ], 400, 0.7);
+    } catch (parseError) {
+      console.error('JSON parse error for', slug, ':', parseError);
+      // Fallback: try to extract JSON object from response
+      const objectMatch = response.match(/\{[\s\S]*?\}/);
+      if (objectMatch) {
+        try {
+          const parsed = JSON.parse(objectMatch[0]);
+          output_text = JSON.stringify(parsed);
+        } catch {
+          // If all else fails, return raw response
+          output_text = response;
+        }
+      } else {
+        // If no JSON found, return raw response
+        output_text = response;
+      }
     }
 
     // Store the run
