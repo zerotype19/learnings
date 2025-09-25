@@ -162,7 +162,7 @@ router.get('/wall/submissions', async (c) => {
       tags: item.tags ? JSON.parse(item.tags) : [],
       suggested_terms: item.suggested_terms ? JSON.parse(item.suggested_terms) : [],
       created_at: new Date(parseInt(item.created_at)).toISOString(),
-      updated_at: new Date(parseInt(item.updated_at)).toISOString(),
+      updated_at: item.updated_at ? new Date(parseInt(item.updated_at)).toISOString() : new Date(parseInt(item.created_at)).toISOString(),
     }));
 
     return c.json({ items: processedItems });
