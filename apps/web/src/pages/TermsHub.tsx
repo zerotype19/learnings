@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { LetterIndex } from '../components/terms/LetterIndex';
 import { getShortDescription } from '../utils/textUtils';
 import { SearchBox } from '../components/SearchBox';
@@ -23,27 +23,9 @@ export function TermsHub() {
   const [sortBy, setSortBy] = useState<SortOption>('random');
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const initialized = useRef(false);
 
   const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
-
-  // Initialize from URL parameters
-  useEffect(() => {
-    const updateFromURL = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const letter = urlParams.get('letter');
-      setActiveLetter(letter || '');
-    };
-    
-    // Initial load
-    updateFromURL();
-    
-    // Listen for URL changes (back/forward navigation)
-    window.addEventListener('popstate', updateFromURL);
-    
-    return () => {
-      window.removeEventListener('popstate', updateFromURL);
-    };
-  }, []);
 
   const loadTerms = async (reset = false) => {
     if (loading) return;
@@ -80,8 +62,30 @@ export function TermsHub() {
     }
   };
 
-  // Load terms when filters change
+  // Initialize from URL parameters
   useEffect(() => {
+    const updateFromURL = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const letter = urlParams.get('letter');
+      setActiveLetter(letter || '');
+    };
+    
+    // Initial load
+    updateFromURL();
+    initialized.current = true;
+    
+    // Listen for URL changes (back/forward navigation)
+    window.addEventListener('popstate', updateFromURL);
+    
+    return () => {
+      window.removeEventListener('popstate', updateFromURL);
+    };
+  }, []);
+
+  // Load terms when filters change (but only after initialization)
+  useEffect(() => {
+    if (!initialized.current) return;
+    
     setTerms([]);
     setNextCursor(null);
     loadTerms(true);
