@@ -71,7 +71,7 @@ export class MailerService {
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
             .header { background: #8b5cf6; color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }
             .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
-            .button { display: inline-block; background: #8b5cf6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 20px 0; }
+            .button { display: inline-block; background: transparent; color: #2563eb; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 20px 0; border: 2px solid #8b5cf6; }
             .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
           </style>
         </head>

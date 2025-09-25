@@ -176,7 +176,7 @@ router.get('/confirm/:token', async (c) => {
       
       await c.env.DB.prepare(`
         INSERT INTO terms_v2 (id, slug, title, definition, examples, tags, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, 'draft', ?, ?)
       `).bind(
         nanoid(),
         slug,
@@ -192,7 +192,7 @@ router.get('/confirm/:token', async (c) => {
       // Add to wall_submissions table
       await c.env.DB.prepare(`
         INSERT INTO wall_submissions (id, title, body, source_url, tags, suggested_terms, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, 'draft', ?, ?)
       `).bind(
         nanoid(),
         submissionData.title,
