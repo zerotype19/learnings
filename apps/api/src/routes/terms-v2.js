@@ -160,6 +160,10 @@ router.get('/', async (c) => {
                     query += ' AND (views < ? OR (views = ? AND created_at < ?))';
                     params.push(cursorValue, cursorValue, cursorSort);
                 }
+                else if (sort === 'alpha') {
+                    query += ' AND title > ?';
+                    params.push(cursorValue);
+                }
                 else {
                     query += ' AND created_at < ?';
                     params.push(cursorValue);
@@ -177,6 +181,9 @@ router.get('/', async (c) => {
             const lastItem = items[items.length - 1];
             if (sort === 'popular') {
                 nextCursor = `${lastItem.created_at}:${lastItem.views}`;
+            }
+            else if (sort === 'alpha') {
+                nextCursor = `${lastItem.title}:${lastItem.created_at}`;
             }
             else {
                 nextCursor = lastItem.created_at;
