@@ -66,9 +66,6 @@ export function App() {
         case 'privacy':
           setCurrentPage('privacy');
           break;
-        case 'terms':
-          setCurrentPage('terms');
-          break;
         case 'contact':
           setCurrentPage('contact');
           break;
