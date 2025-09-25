@@ -33,13 +33,13 @@ export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
       <div className="mx-auto max-w-6xl h-full flex items-center text-sm font-bold overflow-hidden">
         {reduceMotion ? (
           <span className="transition-opacity duration-300 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
-            BREAKING: {items[i]}
+            {(i + 1) % 5 === 0 ? 'BREAKING: ' : ''}{items[i]}
           </span>
         ) : (
           <div className="whitespace-nowrap animate-ticker hover:[animation-play-state:paused]">
             {items.concat(items[0]).map((t, idx) => (
               <span key={idx} className="mr-12 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
-                BREAKING: {t}
+                {(idx + 1) % 5 === 0 ? 'BREAKING: ' : ''}{t}
               </span>
             ))}
           </div>
