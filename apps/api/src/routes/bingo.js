@@ -4,7 +4,7 @@ const bingo = new Hono();
 bingo.get('/generate', async (c) => {
     // Get random terms for bingo board
     const { results } = await c.env.DB.prepare(`
-    SELECT title, slug FROM terms 
+    SELECT title, slug FROM terms_v2 
     WHERE status = 'published' 
     ORDER BY RANDOM() 
     LIMIT 24
