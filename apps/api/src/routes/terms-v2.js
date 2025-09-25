@@ -130,49 +130,51 @@ router.get('/', async (c) => {
             query += ' AND UPPER(SUBSTR(title, 1, 1)) = ?';
             params.push(letter.toUpperCase());
         }
-        // Tag filtering
-        if (tag) {
-            query += ' AND tags LIKE ?';
-            params.push(`%"${tag}"%`);
-        }
-    // Sorting
-    switch (sort) {
-      case 'popular':
-        query += ' ORDER BY views DESC, created_at DESC';
-        break;
-      case 'random':
-        query += ' ORDER BY RANDOM()';
-        break;
-      case 'alpha':
-        query += ' ORDER BY title ASC';
-        break;
-      case 'newest':
-      default:
-        query += ' ORDER BY created_at DESC';
-        break;
+    // Tag filtering
+    if (tag) {
+        query += ' AND tags LIKE ?';
+        params.push(`%"${tag}"%`);
     }
-        // Cursor-based pagination
-        if (cursor) {
-            if (sort === 'alpha') {
-                // For alpha sort, cursor is just the title
-                query += ' AND title > ?';
-                params.push(cursor);
-            } else {
-                // For other sorts, parse as before
-                const cursorParts = cursor.split(':');
-                if (cursorParts.length === 2) {
-                    const [cursorTitle, cursorCreatedAt] = cursorParts;
-                    if (sort === 'popular') {
-                        query += ' AND (views < ? OR (views = ? AND created_at < ?))';
-                        params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
-                    }
-                    else {
-                        query += ' AND created_at < ?';
-                        params.push(cursorCreatedAt);
-                    }
+    
+    // Cursor-based pagination (must come before ORDER BY)
+    if (cursor) {
+        if (sort === 'alpha') {
+            // For alpha sort, cursor is just the title
+            query += ' AND title > ?';
+            params.push(cursor);
+        } else {
+            // For other sorts, parse as before
+            const cursorParts = cursor.split(':');
+            if (cursorParts.length === 2) {
+                const [cursorTitle, cursorCreatedAt] = cursorParts;
+                if (sort === 'popular') {
+                    query += ' AND (views < ? OR (views = ? AND created_at < ?))';
+                    params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
+                }
+                else {
+                    query += ' AND created_at < ?';
+                    params.push(cursorCreatedAt);
                 }
             }
         }
+    }
+    
+    // Sorting
+    switch (sort) {
+        case 'popular':
+            query += ' ORDER BY views DESC, created_at DESC';
+            break;
+        case 'random':
+            query += ' ORDER BY RANDOM()';
+            break;
+        case 'alpha':
+            query += ' ORDER BY title ASC';
+            break;
+        case 'newest':
+        default:
+            query += ' ORDER BY created_at DESC';
+            break;
+    }
         query += ' LIMIT ?';
         params.push(limit + 1);
         const stmt = c.env.DB.prepare(query);

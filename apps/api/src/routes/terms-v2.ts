@@ -145,24 +145,7 @@ router.get('/', async (c) => {
       params.push(`%"${tag}"%`);
     }
 
-    // Sorting
-    switch (sort) {
-      case 'popular':
-        query += ' ORDER BY views DESC, created_at DESC';
-        break;
-      case 'random':
-        query += ' ORDER BY RANDOM()';
-        break;
-      case 'alpha':
-        query += ' ORDER BY title ASC';
-        break;
-      case 'newest':
-      default:
-        query += ' ORDER BY created_at DESC';
-        break;
-    }
-
-    // Cursor-based pagination
+    // Cursor-based pagination (must come before ORDER BY)
     if (cursor) {
       console.log('Raw cursor:', cursor);
       console.log('Decoded cursor:', decodeURIComponent(cursor || ''));
@@ -187,6 +170,23 @@ router.get('/', async (c) => {
           }
         }
       }
+    }
+
+    // Sorting
+    switch (sort) {
+      case 'popular':
+        query += ' ORDER BY views DESC, created_at DESC';
+        break;
+      case 'random':
+        query += ' ORDER BY RANDOM()';
+        break;
+      case 'alpha':
+        query += ' ORDER BY title ASC';
+        break;
+      case 'newest':
+      default:
+        query += ' ORDER BY created_at DESC';
+        break;
     }
 
     query += ' LIMIT ?';
