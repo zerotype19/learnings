@@ -16,15 +16,42 @@ const legalesePhrases = [
   "Executive alignment subject to calendar availability."
 ];
 
+// Header navigation corporate mapping
+const NAV_SELECTOR = 'header nav a, .site-header nav a, .mobile-nav a, nav a';
+const BADGES = ['LIVE', 'BETA', 'FY25', 'OKR', 'RFP', 'TBD'];
+
+const NAV_MAP: Record<string, string> = {
+  'home': 'DASHBOARD™',
+  'about': 'CHARTER™',
+  'terms': 'GOVERNANCE™',
+  'privacy': 'COMPLIANCE™',
+  'blog': 'THOUGHT LEADERSHIP™',
+  'news': 'THOUGHT LEADERSHIP™',
+  'wall': 'INSIGHT WALL™',
+  'feed': 'INSIGHT WALL™',
+  'learnings': 'KNOWLEDGE BASE™',
+  'contact': 'SCHEDULE ALIGNMENT™',
+  'sign in': 'AUTHENTICATE IDENTITY SURFACE™',
+  'log in': 'AUTHENTICATE IDENTITY SURFACE™',
+  'sign up': 'ACTIVATE LICENSE™',
+  'join': 'ACTIVATE LICENSE™',
+  'search': 'DISCOVER LATENT TRUTHS™',
+  'faq': 'ENABLEMENT DESK™',
+  'help': 'ENABLEMENT DESK™',
+  'pricing': 'COMMERCIALS™'
+};
+
 export function setCorporateMode(on: boolean) {
   const root = document.documentElement;
   root.classList.toggle('corp-mode', on);
   localStorage.setItem('corpMode', on ? '1' : '0');
   
   if (on) {
+    corporatizeHeaderNav();
     enableCorporateFlair();
     maybeRerollClorg();
   } else {
+    decorporatizeHeaderNav();
     disableCorporateFlair();
   }
 }
@@ -260,6 +287,53 @@ function maybeRerollClorg() {
     // Trigger Clorg spawn (this would need to be coordinated with the useClorgSprite hook)
     (window as any).__triggerClorg = true;
   }
+}
+
+export function corporatizeHeaderNav() {
+  document.querySelectorAll<HTMLElement>(NAV_SELECTOR).forEach((a) => {
+    const raw = (a.textContent || '').trim();
+    if (!raw) return;
+    if (!a.dataset.orig) a.dataset.orig = raw;
+
+    // Find normalized key with fuzzy matching
+    const key = raw.toLowerCase().replace(/[^\w\s]/g, ''); // Remove special chars
+    const match = Object.keys(NAV_MAP).find(k => 
+      key === k || 
+      key.includes(k) || 
+      k.includes(key) ||
+      key.replace(/\s+/g, '') === k.replace(/\s+/g, '')
+    );
+    
+    let label = match ? NAV_MAP[match] : (raw.toUpperCase().replace(/\s+/g, ' ') + '™');
+
+    // Inject label + chevron + badge
+    a.innerHTML = ''; // Clear existing content
+    
+    const span = document.createElement('span');
+    span.className = 'corp-label';
+    span.textContent = label;
+
+    const chev = document.createElement('span');
+    chev.className = 'corp-chevron';
+    chev.textContent = '›';
+
+    const badge = document.createElement('span');
+    badge.className = 'corp-badge';
+    badge.textContent = BADGES[Math.floor(Math.random() * BADGES.length)];
+
+    a.appendChild(span);
+    a.appendChild(chev);
+    a.appendChild(badge);
+  });
+}
+
+export function decorporatizeHeaderNav() {
+  document.querySelectorAll<HTMLElement>(NAV_SELECTOR).forEach((a) => {
+    if (a.dataset.orig) {
+      a.textContent = a.dataset.orig;
+      delete a.dataset.orig;
+    }
+  });
 }
 
 export function isCorporateModeEnabled(): boolean {

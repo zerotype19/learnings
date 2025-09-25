@@ -4,7 +4,7 @@ import { EnterpriseToggle } from '../components/EnterpriseToggle';
 import { BuzzwordTicker } from '../components/BuzzwordTicker';
 import { useSectionStamps } from '../hooks/useSectionStamps';
 import { useClorgSprite } from '../lib/useClorgSprite';
-import { initializeCorporateMode } from '../lib/corporateMode';
+import { initializeCorporateMode, corporatizeHeaderNav, isCorporateModeEnabled } from '../lib/corporateMode';
 import type { NonsenseData } from '../types/nonsense';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
@@ -51,6 +51,31 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
     maxPerSession: 5,
     phrases: nonsenseData?.clorgPhrases
   });
+
+  // Re-apply header navigation on route changes when Corporate Mode is enabled
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (isCorporateModeEnabled()) {
+        // Small delay to ensure DOM is updated
+        setTimeout(() => {
+          corporatizeHeaderNav();
+        }, 100);
+      }
+    };
+
+    // Listen for route changes (custom event from App.tsx)
+    window.addEventListener('route-params', handleRouteChange);
+    
+    // Also listen for hash changes and popstate
+    window.addEventListener('hashchange', handleRouteChange);
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('route-params', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
   
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },

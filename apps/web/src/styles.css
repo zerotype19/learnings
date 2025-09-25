@@ -142,3 +142,37 @@ html.corp-mode .btn-primary {
 html.corp-mode .animate-ticker {
   animation: ticker 48s linear infinite; /* 60s / 1.25 = 48s */
 }
+
+/* Corporate Header Navigation */
+html.corp-mode .site-header nav a,
+html.corp-mode .mobile-nav a,
+html.corp-mode header nav a {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+html.corp-mode .site-header nav a:hover,
+html.corp-mode .mobile-nav a:hover,
+html.corp-mode header nav a:hover {
+  color: #2563EB;
+}
+
+/* Micro-badge pill */
+.corp-badge {
+  margin-left: .4rem;
+  padding: 0 .35rem;
+  font-size: .62rem;
+  line-height: 1.15;
+  border-radius: .35rem;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  color: color-mix(in srgb, currentColor 65%, #475569);
+  opacity: .85;
+  vertical-align: middle;
+}
+
+/* Chevron */
+.corp-chevron {
+  margin-left: .35rem;
+  opacity: .55;
+}
