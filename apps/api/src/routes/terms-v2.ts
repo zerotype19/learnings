@@ -165,20 +165,26 @@ router.get('/', async (c) => {
     // Cursor-based pagination
     if (cursor) {
       console.log('Raw cursor:', cursor);
-      const cursorParts = cursor.split(':');
-      console.log('Cursor parts:', cursorParts);
-      if (cursorParts.length === 2) {
-        const [cursorTitle, cursorCreatedAt] = cursorParts;
-        console.log('Cursor parsed - Title:', cursorTitle, 'CreatedAt:', cursorCreatedAt);
-        if (sort === 'popular') {
-          query += ' AND (views < ? OR (views = ? AND created_at < ?))';
-          params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
-        } else if (sort === 'alpha') {
-          query += ' AND title > ?';
-          params.push(cursorTitle);
-        } else {
-          query += ' AND created_at < ?';
-          params.push(cursorCreatedAt);
+      console.log('Decoded cursor:', decodeURIComponent(cursor || ''));
+      if (sort === 'alpha') {
+        // For alpha sort, cursor is just the title
+        query += ' AND title > ?';
+        params.push(cursor);
+        console.log('Alpha cursor applied:', cursor);
+      } else {
+        // For other sorts, parse as before
+        const cursorParts = cursor.split(':');
+        console.log('Cursor parts:', cursorParts);
+        if (cursorParts.length === 2) {
+          const [cursorTitle, cursorCreatedAt] = cursorParts;
+          console.log('Cursor parsed - Title:', cursorTitle, 'CreatedAt:', cursorCreatedAt);
+          if (sort === 'popular') {
+            query += ' AND (views < ? OR (views = ? AND created_at < ?))';
+            params.push(cursorCreatedAt, cursorCreatedAt, cursorTitle);
+          } else {
+            query += ' AND created_at < ?';
+            params.push(cursorCreatedAt);
+          }
         }
       }
     }
@@ -201,7 +207,7 @@ router.get('/', async (c) => {
       if (sort === 'popular') {
         nextCursor = `${lastItem.created_at}:${lastItem.views}`;
       } else if (sort === 'alpha') {
-        nextCursor = `${lastItem.title}:${lastItem.created_at}`;
+        nextCursor = lastItem.title; // Use just title for simplicity
       } else {
         nextCursor = lastItem.created_at;
       }
