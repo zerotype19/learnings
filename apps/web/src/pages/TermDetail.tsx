@@ -3,6 +3,7 @@ import { getShortDescription } from '../utils/textUtils';
 import { TermVariations } from '../components/terms/TermVariations';
 import { AlphabetNav } from '../components/terms/AlphabetNav';
 import { RelatedTerms } from '../components/terms/RelatedTerms';
+import { SEO } from '../components/SEO';
 
 type TermDetail = {
   id: string;
@@ -117,7 +118,37 @@ export function TermDetail({ slug }: TermDetailProps) {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <>
+      <SEO 
+        title={term.title}
+        description={getShortDescription(term.definition, 20)}
+        keywords={`${term.title}, corporate buzzword, business jargon, ${term.tags.join(', ')}`}
+        canonical={`/term/${term.slug}`}
+        ogType="article"
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: term.title,
+          description: getShortDescription(term.definition, 20),
+          url: `https://learnings.org/term/${term.slug}`,
+          author: {
+            '@type': 'Organization',
+            name: 'Learnings Dot Org'
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Learnings Dot Org',
+            url: 'https://learnings.org'
+          },
+          datePublished: term.created_at,
+          dateModified: term.updated_at,
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://learnings.org/term/${term.slug}`
+          }
+        }}
+      />
+      <div className="min-h-screen bg-neutral-50">
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="mb-6">
@@ -293,6 +324,7 @@ export function TermDetail({ slug }: TermDetailProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

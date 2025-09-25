@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SEO, SEOConfigs } from '../components/SEO';
 
 type BingoSquare = { title: string; slug: string; isFree: boolean };
 
@@ -88,7 +89,9 @@ export function Bingo() {
   const hasWon = checkWin();
   
   return (
-    <div className="mx-auto max-w-4xl p-6">
+    <>
+      <SEO {...SEOConfigs.bingo} />
+      <div className="mx-auto max-w-4xl p-6">
       <h2 className="text-2xl font-bold mb-4">🎯 Corporate Buzzword Bingo</h2>
       <p className="opacity-70 text-sm mb-6">Mark off buzzwords as you hear them in meetings. First to get 5 in a row wins!</p>
       
@@ -147,5 +150,6 @@ export function Bingo() {
         </>
       )}
     </div>
+    </>
   );
 }

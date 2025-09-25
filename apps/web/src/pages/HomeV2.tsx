@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FeedList } from '../components/feed/FeedList';
 import { trackEvent } from '../lib/api';
 import { SearchBox } from '../components/SearchBox';
+import { SEO, SEOConfigs } from '../components/SEO';
 
 type QuickAction = {
   id: string;
@@ -102,7 +103,9 @@ export function HomeV2() {
   };
 
   return (
-    <div className="space-y-4">
+    <>
+      <SEO {...SEOConfigs.home} />
+      <div className="space-y-4">
       {/* Hero Section */}
       <div className="bg-white">
         <div className="text-center py-4 md:py-6">
@@ -220,5 +223,6 @@ export function HomeV2() {
         <FeedList onItemClick={handleFeedItemClick} />
       </div>
     </div>
+    </>
   );
 }

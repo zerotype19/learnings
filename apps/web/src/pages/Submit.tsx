@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { submitWallPost } from '../lib/api';
+import { SEO, SEOConfigs } from '../components/SEO';
 
 type SubmitTab = 'term' | 'wall';
 
@@ -7,7 +8,9 @@ export function Submit() {
   const [activeTab, setActiveTab] = useState<SubmitTab>('term');
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <>
+      <SEO {...SEOConfigs.submit} />
+      <div className="min-h-screen bg-neutral-50">
       <div className="max-w-4xl mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-6">📝 Submit Content</h1>
 
@@ -44,6 +47,7 @@ export function Submit() {
         {activeTab === 'wall' && <WallSubmissionForm />}
       </div>
     </div>
+    </>
   );
 }
 

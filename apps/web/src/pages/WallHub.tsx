@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { listWall, vote, getPopularTags, getVoteCount } from '../lib/api';
+import { SEO, SEOConfigs } from '../components/SEO';
 
 type WallPost = {
   id: string;
@@ -120,7 +121,9 @@ export function WallHub() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <>
+      <SEO {...SEOConfigs.wall} />
+      <div className="min-h-screen bg-neutral-50">
       {/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-6">
@@ -235,6 +238,7 @@ export function WallHub() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getGenerators, runGenerator, trackEvent } from '../lib/api';
+import { SEO, SEOConfigs } from '../components/SEO';
 
 type Generator = {
   id: string;
@@ -137,7 +138,9 @@ export function GeneratorsHub() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl p-6">
+    <>
+      <SEO {...SEOConfigs.generators} />
+      <div className="mx-auto max-w-4xl p-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Generators Hub</h1>
         <p className="text-gray-600">AI-powered tools to create, analyze, and roast corporate content</p>
@@ -268,6 +271,7 @@ export function GeneratorsHub() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

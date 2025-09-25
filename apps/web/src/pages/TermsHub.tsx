@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { LetterIndex } from '../components/terms/LetterIndex';
 import { getShortDescription } from '../utils/textUtils';
 import { SearchBox } from '../components/SearchBox';
+import { SEO, SEOConfigs } from '../components/SEO';
 
 type Term = {
   id: string;
@@ -171,7 +172,9 @@ export function TermsHub() {
   };
 
   return (
-    <div className="space-y-8">
+    <>
+      <SEO {...SEOConfigs.terms} />
+      <div className="space-y-8">
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="py-8">
@@ -311,6 +314,7 @@ export function TermsHub() {
         )}
       </div>
     </div>
+    </>
   );
 }
 
