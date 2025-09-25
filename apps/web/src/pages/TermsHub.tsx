@@ -38,15 +38,27 @@ export function TermsHub() {
       });
 
       if (activeLetter) params.set('letter', activeLetter);
-      if (!reset && nextCursor) params.set('cursor', nextCursor);
+      if (!reset && nextCursor) {
+        console.log('TermsHub: Using cursor:', nextCursor);
+        params.set('cursor', nextCursor);
+      }
 
-      const response = await fetch(`${apiUrl}/api/terms?${params}`, {
+      const url = `${apiUrl}/api/terms?${params}`;
+      console.log('TermsHub: Fetching URL:', url);
+      
+      const response = await fetch(url, {
         credentials: 'include'
       });
 
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const data = await response.json();
+      console.log('TermsHub: Response data:', {
+        itemsCount: data.items?.length || 0,
+        nextCursor: data.nextCursor,
+        firstItem: data.items?.[0]?.title,
+        lastItem: data.items?.[data.items.length - 1]?.title
+      });
       
       if (reset) {
         setTerms(data.items || []);
