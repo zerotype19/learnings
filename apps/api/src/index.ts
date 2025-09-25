@@ -88,6 +88,7 @@ app.route('/api/home-feed', homeFeed);
 app.route('/api/vote', vote);
 app.route('/api/feature-flags', featureFlags);
 app.route('/api/track', track);
+app.route('/api/submissions', submissions);
 app.route('/api/challenges', challengesV2);
 
 export default {
