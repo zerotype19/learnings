@@ -14,6 +14,8 @@ export function SearchResults() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('q') || '';
+    console.log('SearchResults: URL params:', window.location.search);
+    console.log('SearchResults: Search query:', searchQuery);
     setQuery(searchQuery);
     
     if (searchQuery) {
@@ -33,11 +35,13 @@ export function SearchResults() {
 
     try {
       const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(searchQuery)}&limit=20`);
+      console.log('SearchResults: API response status:', response.status);
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
       
       const data = await response.json();
+      console.log('SearchResults: API data:', data);
       setResults(data.items || []);
       setTotal(data.total || 0);
     } catch (err) {
