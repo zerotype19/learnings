@@ -195,7 +195,7 @@ export function TermDetail({ slug }: TermDetailProps) {
             <RelatedTerms currentSlug={term.slug} />
             
             {/* In the Wild Links */}
-            <div className="bg-white rounded-2xl border p-6 mb-6">
+            <div className="bg-white rounded-2xl border p-6 mb-6 mt-6">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold">🌍 In the Wild</h2>
                 <button
