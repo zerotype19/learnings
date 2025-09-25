@@ -190,8 +190,8 @@ router.get('/confirm/:token', async (c) => {
     } else if (result.type === 'wall') {
       // Add to wall_submissions table
       await c.env.DB.prepare(`
-        INSERT INTO wall_submissions (id, title, body, source_url, tags, suggested_terms, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, 'queued', ?, ?)
+        INSERT INTO wall_submissions (id, title, body, source_url, tags, suggested_terms, status, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, 'queued', ?)
       `).bind(
         nanoid(),
         submissionData.title,
@@ -199,7 +199,6 @@ router.get('/confirm/:token', async (c) => {
         submissionData.source_url,
         JSON.stringify(submissionData.tags || []),
         JSON.stringify(submissionData.suggested_terms || []),
-        Date.now(),
         Date.now()
       ).run();
     }
