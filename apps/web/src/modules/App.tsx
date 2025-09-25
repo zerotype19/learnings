@@ -25,7 +25,6 @@ import { Privacy } from '../pages/Privacy';
 import { Terms } from '../pages/Terms';
 import { Contact } from '../pages/Contact';
 import { ConfirmSubmission } from '../pages/ConfirmSubmission';
-import { Clorg } from '../components/Clorg';
 import { useTooltips } from '../hooks/useTooltips';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm';
@@ -227,9 +226,6 @@ export function App() {
       {currentPage === 'admin' && <Admin />}
       
       <ProfessorWidget />
-      
-      {/* Clorg - Enterprise Gremlin */}
-      <Clorg />
     </LayoutShell>
   );
 }

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { SearchBox } from '../components/SearchBox';
 import { EnterpriseToggle } from '../components/EnterpriseToggle';
 import { BuzzwordTicker } from '../components/BuzzwordTicker';
-import { ClorgDock } from '../components/ClorgDock';
 import { useSectionStamps } from '../hooks/useSectionStamps';
+import { useClorgSprite } from '../lib/useClorgSprite';
 import type { NonsenseData } from '../types/nonsense';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
@@ -40,6 +40,13 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
 
   // Initialize section stamps
   useSectionStamps();
+
+  // Initialize Clorg sprite
+  useClorgSprite({
+    probability: 0.4,
+    maxPerSession: 5,
+    phrases: nonsenseData?.clorgPhrases
+  });
   
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },
@@ -257,11 +264,8 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
             <EnterpriseToggle />
           </div>
           
-          <div className="flex items-center justify-between text-sm text-slate-500">
-            <span>© 2025 Learnings Dot Org — Speak fluent corporate. Ironically.</span>
-            {nonsenseData?.clorg?.lines && (
-              <ClorgDock lines={nonsenseData.clorg.lines} />
-            )}
+          <div className="text-center text-sm text-slate-500">
+            © 2025 Learnings Dot Org — Speak fluent corporate. Ironically.
           </div>
         </div>
       </footer>
