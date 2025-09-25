@@ -183,7 +183,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       </header>
       
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
         {children}
       </main>
       
