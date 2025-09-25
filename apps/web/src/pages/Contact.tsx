@@ -13,13 +13,33 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        console.error('Contact form error:', result.message);
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -133,6 +153,31 @@ export function Contact() {
                   'Send Message'
                 )}
               </button>
+
+              {/* Success/Error Messages */}
+              {submitStatus === 'success' && (
+                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-600">✅</span>
+                    <p className="text-green-800 font-medium">Message sent successfully!</p>
+                  </div>
+                  <p className="text-green-700 text-sm mt-1">
+                    Thank you for your message. We'll get back to you soon!
+                  </p>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <span className="text-red-600">❌</span>
+                    <p className="text-red-800 font-medium">Failed to send message</p>
+                  </div>
+                  <p className="text-red-700 text-sm mt-1">
+                    Sorry, there was an error sending your message. Please try again.
+                  </p>
+                </div>
+              )}
             </form>
           </div>
 

@@ -25,6 +25,7 @@ import vote from './routes/vote';
 import featureFlags from './routes/feature-flags';
 import track from './routes/track';
 import submissions from './routes/submissions';
+import contact from './routes/contact';
 
 export type Env = {
   DB: D1Database;
@@ -92,6 +93,7 @@ app.route('/api/vote', vote);
 app.route('/api/feature-flags', featureFlags);
 app.route('/api/track', track);
 app.route('/api/submissions', submissions);
+app.route('/api/contact', contact);
 app.route('/api/challenges', challengesV2);
 
 export default {

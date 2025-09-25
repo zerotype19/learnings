@@ -8,6 +8,13 @@ export interface ConfirmationEmailData {
   bccEmail?: string; // Optional BCC for admin notifications
 }
 
+export interface ContactEmailData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export class MailerService {
   private apiKey: string;
   private fromEmail: string;
@@ -124,6 +131,86 @@ If you didn't submit anything to Learnings.org, you can safely ignore this email
 
 Best regards,
 The Learnings.org Team
+    `.trim();
+  }
+
+  async sendContactEmail(data: ContactEmailData): Promise<void> {
+    const emailData: any = {
+      api_key: this.apiKey,
+      to: ['professor@learnings.org'],
+      sender: this.fromEmail,
+      subject: `Contact Form: ${data.subject}`,
+      html_body: this.generateContactHtml(data),
+      text_body: this.generateContactText(data)
+    };
+
+    try {
+      const response = await fetch('https://api.smtp2go.com/v3/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('SMTP2GO error:', errorData);
+        throw new Error(`SMTP2GO API error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Contact email sent successfully:', result);
+    } catch (error) {
+      console.error('Failed to send contact email:', error);
+      throw error;
+    }
+  }
+
+  private generateContactHtml(data: ContactEmailData): string {
+    return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>New Contact Form Submission</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <h2 style="color: #8b5cf6;">New Contact Form Submission</h2>
+      
+      <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Subject:</strong> ${data.subject}</p>
+      </div>
+      
+      <div style="background: #fff; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px;">
+        <h3 style="margin-top: 0;">Message:</h3>
+        <p style="white-space: pre-wrap;">${data.message}</p>
+      </div>
+      
+      <hr style="margin: 30px 0; border: none; border-top: 1px solid #e9ecef;">
+      <p style="color: #666; font-size: 14px;">
+        This message was sent from the Learnings.org contact form.
+      </p>
+    </body>
+    </html>
+    `.trim();
+  }
+
+  private generateContactText(data: ContactEmailData): string {
+    return `
+New Contact Form Submission
+
+Name: ${data.name}
+Email: ${data.email}
+Subject: ${data.subject}
+
+Message:
+${data.message}
+
+---
+This message was sent from the Learnings.org contact form.
     `.trim();
   }
 }
