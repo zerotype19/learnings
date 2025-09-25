@@ -3,6 +3,7 @@ import { LetterIndex } from '../components/terms/LetterIndex';
 import { getShortDescription } from '../utils/textUtils';
 import { SearchBox } from '../components/SearchBox';
 import { SEO, SEOConfigs } from '../components/SEO';
+import { getApiUrl } from '../utils/getApiUrl';
 
 type Term = {
   id: string;
@@ -26,7 +27,7 @@ export function TermsHub() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const initialized = useRef(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
 
   const loadTerms = async (reset = false) => {
     if (loading) return;

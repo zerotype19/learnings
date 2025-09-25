@@ -40,7 +40,7 @@ export type FeedResponse = {
   nextCursor?: string; 
 };
 
-const getApiUrl = () => import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+import { getApiUrl } from '../utils/getApiUrl';
 
 export async function listWall(params: { 
   tag?: string; 

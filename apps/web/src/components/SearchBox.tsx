@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { SearchResult } from '@learnings/lib';
+import { getApiUrl } from '../utils/getApiUrl';
 
 interface SearchResultWithVariations extends SearchResult {
   variations?: Array<{
@@ -33,7 +34,7 @@ export function SearchBox({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<NodeJS.Timeout>();
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+  const apiUrl = getApiUrl();
 
   // Debounced search function
   const searchSuggestions = async (searchQuery: string) => {

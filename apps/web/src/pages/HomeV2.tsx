@@ -3,6 +3,7 @@ import { FeedList } from '../components/feed/FeedList';
 import { trackEvent } from '../lib/api';
 import { SearchBox } from '../components/SearchBox';
 import { SEO, SEOConfigs } from '../components/SEO';
+import { getApiUrl } from '../utils/getApiUrl';
 
 type QuickAction = {
   id: string;
@@ -84,7 +85,7 @@ export function HomeV2() {
   const handleRollJargon = async () => {
     try {
       trackEvent('roll_jargon_click');
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
+      const apiUrl = getApiUrl();
       const response = await fetch(`${apiUrl}/api/terms?limit=1&sort=random`);
       const data = await response.json();
       
