@@ -24,6 +24,7 @@ import homeFeed from './routes/home-feed';
 import vote from './routes/vote';
 import featureFlags from './routes/feature-flags';
 import track from './routes/track';
+import submissions from './routes/submissions';
 
 export type Env = {
   DB: D1Database;
@@ -71,6 +72,7 @@ app.route('/v1/suggest', suggest);
 app.route('/v1/auth', auth);
 app.route('/v1/bingo', bingo);
 app.route('/v1/admin', admin);
+app.route('/v1/submissions', submissions);
 app.route('/auth', auth);
 app.route('/r', referrals);
 app.route('/', embeds); // exposes /v1/embed/* and /oembed

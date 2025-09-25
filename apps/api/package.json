@@ -9,16 +9,17 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@resvg/resvg-wasm": "^2.6.2",
     "hono": "^4.5.6",
-    "zod": "^3.23.8",
+    "mailersend": "^2.6.0",
     "nanoid": "^5.0.7",
     "satori": "^0.10.13",
-    "@resvg/resvg-wasm": "^2.6.2"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240925.0",
+    "eslint": "^9.9.0",
     "typescript": "^5.5.4",
-    "wrangler": "^3.74.0",
-    "eslint": "^9.9.0"
+    "wrangler": "^3.74.0"
   }
 }

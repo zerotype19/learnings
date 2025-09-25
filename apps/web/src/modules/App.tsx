@@ -24,8 +24,9 @@ import { About } from '../pages/About';
 import { Privacy } from '../pages/Privacy';
 import { Terms } from '../pages/Terms';
 import { Contact } from '../pages/Contact';
+import { ConfirmSubmission } from '../pages/ConfirmSubmission';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'search' | 'about' | 'privacy' | 'terms' | 'contact';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -66,6 +67,9 @@ export function App() {
           break;
         case 'contact':
           setCurrentPage('contact');
+          break;
+        case 'confirm':
+          setCurrentPage('confirm');
           break;
         case 'bingo':
           setCurrentPage('bingo');
@@ -129,6 +133,7 @@ export function App() {
         case 'privacy': return '/privacy';
         case 'terms': return '/terms';
         case 'contact': return '/contact';
+        case 'confirm': return '/confirm';
         case 'bingo': return '/bingo';
         case 'generators-hub': return '/generators';
         case 'submit-v2': return '/submit';
@@ -158,6 +163,7 @@ export function App() {
       {currentPage === 'privacy' && <Privacy />}
       {currentPage === 'terms' && <Terms />}
       {currentPage === 'contact' && <Contact />}
+      {currentPage === 'confirm' && <ConfirmSubmission />}
       
       {/* Legacy Pages */}
       {currentPage === 'home' && (

@@ -53,6 +53,7 @@ function TermSubmissionForm() {
     definition: '',
     examples: '',
     tags: '',
+    email: '',
     links: [{ url: '', label: '' }]
   });
   const [submitting, setSubmitting] = useState(false);
@@ -61,7 +62,7 @@ function TermSubmissionForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title.trim() || !formData.definition.trim()) return;
+    if (!formData.title.trim() || !formData.definition.trim() || !formData.email.trim()) return;
 
     setSubmitting(true);
     try {
@@ -69,7 +70,7 @@ function TermSubmissionForm() {
       const tags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
       const links = formData.links.filter(l => l.url.trim() && l.label.trim());
 
-      const response = await fetch(`${apiUrl}/api/terms/submit`, {
+      const response = await fetch(`${apiUrl}/api/submissions/terms/submit`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -77,18 +78,21 @@ function TermSubmissionForm() {
           title: formData.title.trim(),
           definition: formData.definition.trim(),
           examples: formData.examples.trim() || undefined,
+          email: formData.email.trim(),
           tags: tags.length > 0 ? tags : undefined,
           links: links.length > 0 ? links : undefined
         })
       });
 
       if (response.ok) {
-        alert('Term submitted for review! Check back later to see if it gets approved.');
+        const result = await response.json();
+        alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
         setFormData({
           title: '',
           definition: '',
           examples: '',
           tags: '',
+          email: '',
           links: [{ url: '', label: '' }]
         });
       } else {
@@ -147,6 +151,20 @@ function TermSubmissionForm() {
           />
         </div>
 
+        <div>
+          <label className="block text-sm font-medium mb-1">Email *</label>
+          <input
+            type="email"
+            value={formData.email}
+            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+            placeholder="your@email.com"
+            required
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+          <p className="text-xs text-neutral-500 mt-1">
+            We'll send you a confirmation link to verify your submission
+          </p>
+        </div>
 
         <div>
           <label className="block text-sm font-medium mb-1">Full Definition *</label>
@@ -255,13 +273,14 @@ function WallSubmissionForm() {
     body: '',
     source_url: '',
     tags: '',
-    suggested_terms: ''
+    suggested_terms: '',
+    email: ''
   });
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title.trim() || !formData.source_url.trim()) return;
+    if (!formData.title.trim() || !formData.source_url.trim() || !formData.email.trim()) return;
 
     setSubmitting(true);
     try {
@@ -271,21 +290,34 @@ function WallSubmissionForm() {
       const tags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
       const suggestedTerms = formData.suggested_terms.split(',').map(t => t.trim()).filter(t => t);
 
-      await submitWallPost({
-        title: formData.title.trim(),
-        body: formData.body.trim() || undefined,
-        source_url: formData.source_url.trim(),
-        tags: tags.length > 0 ? tags : undefined,
-        suggested_terms: suggestedTerms.length > 0 ? suggestedTerms : undefined
+      const response = await fetch(`${apiUrl}/api/submissions/wall/submit`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: formData.title.trim(),
+          body: formData.body.trim() || undefined,
+          source_url: formData.source_url.trim(),
+          email: formData.email.trim(),
+          tags: tags.length > 0 ? tags : undefined,
+          suggested_terms: suggestedTerms.length > 0 ? suggestedTerms : undefined
+        })
       });
 
-      alert('Wall post submitted for review! Check back later to see if it gets approved.');
+      if (response.ok) {
+        const result = await response.json();
+        alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
+      } else {
+        const error = await response.json();
+        throw new Error(error.error || 'Submission failed');
+      }
       setFormData({
         title: '',
         body: '',
         source_url: '',
         tags: '',
-        suggested_terms: ''
+        suggested_terms: '',
+        email: ''
       });
     } catch (error) {
       console.error('Wall submission failed:', error);
@@ -314,6 +346,21 @@ function WallSubmissionForm() {
             required
             className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
           />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Email *</label>
+          <input
+            type="email"
+            value={formData.email}
+            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+            placeholder="your@email.com"
+            required
+            className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
+          />
+          <p className="text-xs text-neutral-500 mt-1">
+            We'll send you a confirmation link to verify your submission
+          </p>
         </div>
 
         <div>
