@@ -36,7 +36,14 @@ router.get('/:slug/related', async (c) => {
         LIMIT ?
       `);
       const result = await randomStmt.bind(slug, limit).all();
-      return c.json({ success: true, related: result.results || [] });
+      
+      // Parse tags from JSON strings to arrays
+      const relatedTerms = (result.results || []).map((term: any) => ({
+        ...term,
+        tags: typeof term.tags === 'string' ? JSON.parse(term.tags) : term.tags
+      }));
+      
+      return c.json({ success: true, related: relatedTerms });
     }
     
     // Find terms with similar tags
@@ -55,9 +62,15 @@ router.get('/:slug/related', async (c) => {
     
     const result = await relatedStmt.bind(slug, ...tagParams, limit).all();
     
+    // Parse tags from JSON strings to arrays
+    const relatedTerms = (result.results || []).map((term: any) => ({
+      ...term,
+      tags: typeof term.tags === 'string' ? JSON.parse(term.tags) : term.tags
+    }));
+    
     return c.json({
       success: true,
-      related: result.results || []
+      related: relatedTerms
     });
   } catch (error) {
     console.error('Error fetching related terms:', error);
