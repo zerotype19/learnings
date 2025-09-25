@@ -62,7 +62,27 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         return;
       }
       
-      const phrase = phrases[Math.floor(Math.random() * phrases.length)];
+      // Debug: Log available phrases
+      console.log('Clorg phrases loaded:', phrases.length, 'phrases available');
+      console.log('Sample phrases:', phrases.slice(0, 5));
+      
+      // Use session storage to track recently used phrases to avoid repetition
+      const recentPhrases = JSON.parse(sessionStorage.getItem('clorgRecentPhrases') || '[]');
+      const availablePhrases = phrases.filter(p => !recentPhrases.includes(p));
+      
+      // If we've used all phrases, reset the recent list
+      if (availablePhrases.length === 0) {
+        sessionStorage.setItem('clorgRecentPhrases', '[]');
+        availablePhrases.push(...phrases);
+      }
+      
+      const phrase = availablePhrases[Math.floor(Math.random() * availablePhrases.length)];
+      
+      // Add this phrase to recent list (keep last 10)
+      const newRecent = [...recentPhrases, phrase].slice(-10);
+      sessionStorage.setItem('clorgRecentPhrases', JSON.stringify(newRecent));
+      
+      console.log('Clorg selected phrase:', phrase);
 
       // Build DOM
       const container = document.createElement("div");
@@ -72,7 +92,11 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         position: "fixed",
         zIndex: "40",
         pointerEvents: "auto",
-        cursor: "pointer"
+        cursor: "pointer",
+        background: "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
+        borderRadius: "50%",
+        padding: "20px",
+        backdropFilter: "blur(2px)"
       } as CSSStyleDeclaration);
 
       const img = document.createElement("img");
