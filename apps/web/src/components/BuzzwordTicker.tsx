@@ -29,14 +29,18 @@ export function BuzzwordTicker({ items }: BuzzwordTickerProps) {
   if (items.length === 0) return null;
 
   return (
-    <div className="h-10 border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 backdrop-blur-sm">
-      <div className="mx-auto max-w-6xl h-full flex items-center text-sm font-medium text-zinc-700 dark:text-zinc-300 overflow-hidden">
+    <div className="h-10 border-b border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
+      <div className="mx-auto max-w-6xl h-full flex items-center text-sm font-bold overflow-hidden">
         {reduceMotion ? (
-          <span className="transition-opacity duration-300">{items[i]}</span>
+          <span className="transition-opacity duration-300 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
+            BREAKING: {items[i]}
+          </span>
         ) : (
           <div className="whitespace-nowrap animate-ticker hover:[animation-play-state:paused]">
             {items.concat(items[0]).map((t, idx) => (
-              <span key={idx} className="mr-12">{t}</span>
+              <span key={idx} className="mr-12 bg-gradient-to-r from-pink-500 via-violet-500 to-sky-500 bg-clip-text text-transparent">
+                BREAKING: {t}
+              </span>
             ))}
           </div>
         )}
