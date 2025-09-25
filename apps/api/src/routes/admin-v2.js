@@ -16,7 +16,8 @@ router.get('/terms/submissions', async (c) => {
         const status = c.req.query('status') || 'queued';
         const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
         const stmt = c.env.DB.prepare(`
-      SELECT * FROM term_submissions 
+      SELECT id, title, definition, examples, tags, links, status, reviewer, created_at, updated_at
+      FROM term_submissions 
       WHERE status = ?
       ORDER BY created_at ASC
       LIMIT ?
@@ -41,7 +42,7 @@ router.post('/terms/:id/approve', async (c) => {
         const submissionId = c.req.param('id');
         const auth = await requireAuth(c);
         // Get submission
-        const submission = await c.env.DB.prepare('SELECT * FROM term_submissions WHERE id = ?').bind(submissionId).first();
+        const submission = await c.env.DB.prepare('SELECT id, title, definition, examples, tags, links, status, reviewer, created_at, updated_at FROM term_submissions WHERE id = ?').bind(submissionId).first();
         if (!submission) {
             return c.json({ error: 'Submission not found' }, 404);
         }
@@ -107,7 +108,8 @@ router.get('/wall/submissions', async (c) => {
         const status = c.req.query('status') || 'queued';
         const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
         const stmt = c.env.DB.prepare(`
-      SELECT * FROM wall_submissions 
+      SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at, updated_at
+      FROM wall_submissions 
       WHERE status = ?
       ORDER BY created_at ASC
       LIMIT ?
@@ -134,7 +136,7 @@ router.post('/wall/:id/approve', async (c) => {
         const submissionId = c.req.param('id');
         const auth = await requireAuth(c);
         // Get submission
-        const submission = await c.env.DB.prepare('SELECT * FROM wall_submissions WHERE id = ?').bind(submissionId).first();
+        const submission = await c.env.DB.prepare('SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at, updated_at FROM wall_submissions WHERE id = ?').bind(submissionId).first();
         if (!submission) {
             return c.json({ error: 'Submission not found' }, 404);
         }

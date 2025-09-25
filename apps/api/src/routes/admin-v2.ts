@@ -21,7 +21,8 @@ router.get('/terms/submissions', async (c) => {
     const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
     
     const stmt = c.env.DB.prepare(`
-      SELECT * FROM term_submissions 
+      SELECT id, title, definition, examples, tags, links, status, reviewer, created_at, updated_at
+      FROM term_submissions 
       WHERE status = ?
       ORDER BY created_at ASC
       LIMIT ?
@@ -53,7 +54,7 @@ router.post('/terms/:id/approve', async (c) => {
     
     // Get submission
     const submission = await c.env.DB.prepare(
-      'SELECT * FROM term_submissions WHERE id = ?'
+      'SELECT id, title, definition, examples, tags, links, status, reviewer, created_at, updated_at FROM term_submissions WHERE id = ?'
     ).bind(submissionId).first() as any;
     
     if (!submission) {
@@ -148,7 +149,8 @@ router.get('/wall/submissions', async (c) => {
     const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
     
     const stmt = c.env.DB.prepare(`
-      SELECT * FROM wall_submissions 
+      SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at, updated_at
+      FROM wall_submissions 
       WHERE status = ?
       ORDER BY created_at ASC
       LIMIT ?
@@ -180,7 +182,7 @@ router.post('/wall/:id/approve', async (c) => {
     
     // Get submission
     const submission = await c.env.DB.prepare(
-      'SELECT * FROM wall_submissions WHERE id = ?'
+      'SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at, updated_at FROM wall_submissions WHERE id = ?'
     ).bind(submissionId).first() as any;
     
     if (!submission) {

@@ -8,7 +8,6 @@ type TermSubmission = {
   examples?: string;
   tags: string[];
   links: Array<{url: string; label: string}>;
-  submitted_by?: string;
   status: string;
   reviewer?: string;
   reviewer_notes?: string;
@@ -22,7 +21,6 @@ type WallSubmission = {
   source_url: string;
   tags: string[];
   suggested_terms: string[];
-  submitted_by?: string;
   status: string;
   reviewer?: string;
   reviewer_notes?: string;
@@ -371,7 +369,7 @@ function TermSubmissionCard({
           )}
 
           <div className="text-xs text-neutral-500">
-            Submitted by {submission.submitted_by || 'anonymous'} • {new Date(submission.created_at).toLocaleString()}
+            Submitted {new Date(submission.created_at).toLocaleString()}
           </div>
         </div>
       </div>
@@ -450,7 +448,7 @@ function WallSubmissionCard({
           )}
 
           <div className="text-xs text-neutral-500">
-            Submitted by {submission.submitted_by || 'anonymous'} • {new Date(submission.created_at).toLocaleString()}
+            Submitted {new Date(submission.created_at).toLocaleString()}
           </div>
         </div>
       </div>
