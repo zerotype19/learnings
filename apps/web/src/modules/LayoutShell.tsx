@@ -137,6 +137,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               };
 
               const isTermsHub = nav.id === 'terms-hub';
+              const isActive = currentPage === nav.id;
 
               return (
                 <a
@@ -147,9 +148,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                     onPageChange(nav.id as Page);
                   }}
                   className={`inline-flex items-center gap-2 rounded-xl2 px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                    isTermsHub
+                    isTermsHub && isActive
                       ? 'bg-brand text-white shadow-soft hover:shadow-lg hover:-translate-y-0.5'
-                      : currentPage === nav.id 
+                      : isActive
                         ? 'bg-brand-100 text-brand-700' 
                         : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                   }`}
@@ -215,6 +216,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   };
 
                   const isTermsHub = nav.id === 'terms-hub';
+                  const isActive = currentPage === nav.id;
 
                   return (
                     <a
@@ -226,9 +228,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                         setMobileMenuOpen(false);
                       }}
                       className={`inline-flex items-center gap-2 rounded-xl2 px-4 py-3 text-sm font-medium transition-all duration-200 ${
-                        isTermsHub
+                        isTermsHub && isActive
                           ? 'bg-brand text-white shadow-soft'
-                          : currentPage === nav.id 
+                          : isActive
                             ? 'bg-brand-100 text-brand-700' 
                             : 'text-slate-600 hover:bg-slate-100'
                       }`}
