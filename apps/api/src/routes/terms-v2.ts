@@ -7,6 +7,64 @@ import { requireAuth, getFingerprint } from '../utils/auth';
 
 const router = new Hono<{ Bindings: Env }>();
 
+// Get related terms for a specific term
+router.get('/:slug/related', async (c) => {
+  try {
+    const slug = c.req.param('slug');
+    const limit = Math.min(Number(c.req.query('limit') || '5'), 10);
+    
+    // Get the current term's tags
+    const termStmt = c.env.DB.prepare(`
+      SELECT tags FROM terms_v2 
+      WHERE slug = ? AND status = 'published'
+    `);
+    const termResult = await termStmt.bind(slug).first();
+    
+    if (!termResult) {
+      return c.json({ success: false, error: 'Term not found' }, 404);
+    }
+    
+    const tags = JSON.parse(termResult.tags || '[]');
+    
+    if (tags.length === 0) {
+      // If no tags, get random terms
+      const randomStmt = c.env.DB.prepare(`
+        SELECT id, slug, title, definition, tags, views
+        FROM terms_v2 
+        WHERE status = 'published' AND slug != ?
+        ORDER BY RANDOM()
+        LIMIT ?
+      `);
+      const result = await randomStmt.bind(slug, limit).all();
+      return c.json({ success: true, related: result.results || [] });
+    }
+    
+    // Find terms with similar tags
+    const tagConditions = tags.map(() => 'tags LIKE ?').join(' OR ');
+    const tagParams = tags.map(tag => `%"${tag}"%`);
+    
+    const relatedStmt = c.env.DB.prepare(`
+      SELECT id, slug, title, definition, tags, views
+      FROM terms_v2 
+      WHERE status = 'published' 
+      AND slug != ?
+      AND (${tagConditions})
+      ORDER BY views DESC
+      LIMIT ?
+    `);
+    
+    const result = await relatedStmt.bind(slug, ...tagParams, limit).all();
+    
+    return c.json({
+      success: true,
+      related: result.results || []
+    });
+  } catch (error) {
+    console.error('Error fetching related terms:', error);
+    return c.json({ success: false, error: 'Failed to fetch related terms' }, 500);
+  }
+});
+
 // Get term variations by base term
 router.get('/variations/:slug', async (c) => {
   try {
@@ -78,6 +136,9 @@ router.get('/', async (c) => {
         break;
       case 'random':
         query += ' ORDER BY RANDOM()';
+        break;
+      case 'alpha':
+        query += ' ORDER BY title ASC';
         break;
       case 'newest':
       default:

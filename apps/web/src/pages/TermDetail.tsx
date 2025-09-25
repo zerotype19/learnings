@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getShortDescription } from '../utils/textUtils';
 import { TermVariations } from '../components/terms/TermVariations';
+import { AlphabetNav } from '../components/terms/AlphabetNav';
+import { RelatedTerms } from '../components/terms/RelatedTerms';
 
 type TermDetail = {
   id: string;
@@ -126,6 +128,16 @@ export function TermDetail({ slug }: TermDetailProps) {
             ← Back to Terms
           </button>
           
+          {/* Alphabet Navigation */}
+          <div className="mb-6">
+            <AlphabetNav 
+              activeLetter={term.title.charAt(0).toUpperCase()}
+              onLetterClick={(letter) => {
+                window.location.href = `/terms?letter=${letter}`;
+              }}
+            />
+          </div>
+          
           <div className="bg-white rounded-2xl border p-6">
             <div className="flex justify-between items-start mb-4">
               <h1 className="text-3xl font-bold">{term.title}</h1>
@@ -178,6 +190,9 @@ export function TermDetail({ slug }: TermDetailProps) {
           <div className="lg:col-span-2">
             {/* Term Variations */}
             <TermVariations currentSlug={term.slug} baseTerm={term.title} />
+            
+            {/* Related Terms */}
+            <RelatedTerms currentSlug={term.slug} />
             
             {/* In the Wild Links */}
             <div className="bg-white rounded-2xl border p-6 mb-6">

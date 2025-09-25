@@ -20,7 +20,7 @@ export function TermsHub() {
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeLetter, setActiveLetter] = useState('');
-  const [sortBy, setSortBy] = useState<SortOption>('newest');
+  const [sortBy, setSortBy] = useState<SortOption>('random');
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
@@ -32,7 +32,7 @@ export function TermsHub() {
 
     try {
       const params = new URLSearchParams({
-        sort: sortBy,
+        sort: activeLetter ? 'alpha' : sortBy, // Use alphabetical when letter is selected
         limit: '20'
       });
 
