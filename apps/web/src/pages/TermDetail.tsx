@@ -181,7 +181,7 @@ export function TermDetail({ slug }: TermDetailProps) {
             {term.examples && (
               <div className="mb-4">
                 <h3 className="font-semibold mb-2">Examples</h3>
-                <div className="text-neutral-600 whitespace-pre-wrap">{term.examples}</div>
+                <div className="text-neutral-600 whitespace-pre-wrap">{term.examples.replace(/\\n/g, '\n')}</div>
               </div>
             )}
 
