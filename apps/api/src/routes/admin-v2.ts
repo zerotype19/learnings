@@ -35,8 +35,8 @@ router.get('/terms/submissions', async (c) => {
       ...item,
       tags: item.tags ? JSON.parse(item.tags) : [],
       links: item.links ? JSON.parse(item.links) : [],
-      created_at: new Date(parseInt(item.created_at)).toISOString(),
-      updated_at: new Date(parseInt(item.updated_at)).toISOString(),
+      created_at: new Date(parseFloat(item.created_at)).toISOString(),
+      updated_at: new Date(parseFloat(item.updated_at)).toISOString(),
     }));
 
     return c.json({ items: processedItems });
@@ -149,7 +149,7 @@ router.get('/wall/submissions', async (c) => {
     const limit = Math.min(Number(c.req.query('limit') || '50'), 100);
     
     const stmt = c.env.DB.prepare(`
-      SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at, updated_at
+      SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at
       FROM wall_submissions 
       WHERE status = ?
       ORDER BY created_at ASC
@@ -163,8 +163,8 @@ router.get('/wall/submissions', async (c) => {
       ...item,
       tags: item.tags ? JSON.parse(item.tags) : [],
       suggested_terms: item.suggested_terms ? JSON.parse(item.suggested_terms) : [],
-      created_at: new Date(parseInt(item.created_at)).toISOString(),
-      updated_at: item.updated_at ? new Date(parseInt(item.updated_at)).toISOString() : new Date(parseInt(item.created_at)).toISOString(),
+      created_at: new Date(parseFloat(item.created_at)).toISOString(),
+      updated_at: new Date(parseFloat(item.created_at)).toISOString(), // wall_submissions doesn't have updated_at
     }));
 
     return c.json({ items: processedItems });
