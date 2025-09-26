@@ -53,10 +53,12 @@ Discover more at ${termUrl}`;
   };
 
   const shareToLinkedIn = () => {
-    // LinkedIn sharing URL - just pass the URL, LinkedIn will fetch the page metadata
+    // LinkedIn sharing with URL only - LinkedIn will fetch metadata
+    // Unfortunately, LinkedIn doesn't support pre-populating text via URL parameters
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(termUrl)}`;
     console.log('LinkedIn URL:', linkedInUrl);
     console.log('Term URL:', termUrl);
+    console.log('Note: LinkedIn will fetch page metadata automatically');
     window.open(linkedInUrl, '_blank', 'width=600,height=400');
   };
 
