@@ -154,13 +154,6 @@ export function TermDetail({ slug }: TermDetailProps) {
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="mb-6">
-          <button 
-            onClick={() => window.location.href = '/terms'}
-            className="text-brand-600 hover:text-brand-700 text-sm mb-4"
-          >
-            ← Back to Terms
-          </button>
-          
           {/* Alphabet Navigation */}
           <div className="mb-6">
             <AlphabetNav 
