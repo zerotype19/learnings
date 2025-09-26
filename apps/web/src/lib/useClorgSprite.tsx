@@ -255,6 +255,17 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         dismiss();
       });
       
+      // Test if the event listener was actually added
+      console.log('🎯 Event listeners added to container:', container.onclick);
+      
+      // Add a simple onclick handler as backup
+      container.onclick = function(e) {
+        console.log('🎯 CONTAINER ONCLICK FIRED!', e);
+        e.preventDefault();
+        e.stopPropagation();
+        dismiss();
+      };
+      
       // Also add click to the image specifically
       img.addEventListener("click", (e) => {
         console.log('🎯 IMAGE CLICKED!', e);
