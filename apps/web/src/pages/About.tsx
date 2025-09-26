@@ -15,13 +15,7 @@ export function About() {
           <div className="prose prose-slate max-w-none">
             <div className="text-lg text-slate-600 mb-8">
               <p className="text-xl font-medium text-slate-900 mb-4">
-                We're on a mission to translate corporate jargon into human.
-              </p>
-              <p>
-                Learnings is the corporate buzzword dictionary that turns your next all-hands meeting 
-                from a word salad into something that actually makes sense. We take the most 
-                pretentious, overused, and downright confusing corporate speak and give it the 
-                satirical treatment it deserves.
+                This prestigious and totally necessary institution, Learnings Dot Org, was founded in the early 2000s when society finally admitted what we all knew deep down: people simply cannot stop saying "learnings." Despite heroic efforts to resist, the term wormed its way into daily vocabulary—sometimes twice before lunch. The founding team, veterans of the LOL/AIM era who once swore never to let internet slang infect their keyboards, surrendered to the inevitable. Thus, Learnings Dot Org was born—part shrine, part cry for help, and fully committed to documenting the glorious nonsense of corporate buzzwords ever since.
               </p>
             </div>
 
