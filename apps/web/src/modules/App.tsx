@@ -13,7 +13,6 @@ import { HomeV2 } from '../pages/HomeV2';
 import { Suggest } from './Suggest';
 import { LayoutShell } from './LayoutShell';
 import { Hero } from './Hero';
-import { HomeSidebar } from './HomeSidebar';
 import { Bingo } from './Bingo';
 import { TermsHub } from '../pages/TermsHub';
 import { TermDetail } from '../pages/TermDetail';
@@ -208,10 +207,7 @@ export function App() {
                 )}
               </div>
               
-              {/* Sidebar */}
-              <div className="mt-8 lg:mt-0">
-                <HomeSidebar />
-              </div>
+              {/* Sidebar removed - challenges system disabled */}
             </div>
           </div>
         </div>
