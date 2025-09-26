@@ -158,10 +158,10 @@ export function HomeV2() {
                 🎯 Initiate Synergy
               </button>
               <button 
-                onClick={() => window.location.href = '/contact'}
+                onClick={() => window.location.href = '/submit'}
                 className="inline-flex items-center gap-2 rounded-xl2 border border-slate-300 bg-white text-slate-700 px-6 py-3 text-sm font-medium hover:bg-slate-50 transition-all duration-200"
               >
-                📅 Book a 15-Minute Alignment
+                💡 Contribute Learnings
               </button>
             </div>
             <span className="mt-1 block text-xs text-zinc-500 dark:text-zinc-400">
