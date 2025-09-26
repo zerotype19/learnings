@@ -193,26 +193,35 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       console.log('🎯 Container position:', container.style.left, container.style.top);
       console.log('🎯 Container size:', container.offsetWidth, 'x', container.offsetHeight);
       
-      // Add a very obvious visual indicator
-      container.style.border = '5px solid red';
-      container.style.backgroundColor = 'rgba(255,0,0,0.3)';
+      // Add subtle visual indicator for debugging (can be removed later)
+      container.style.border = '2px solid #e5e7eb';
+      container.style.backgroundColor = 'rgba(255,255,255,0.1)';
       
-      // Add a test button to see if clicks work at all
-      const testButton = document.createElement('button');
-      testButton.textContent = 'TEST CLICK';
-      testButton.style.position = 'absolute';
-      testButton.style.top = '-30px';
-      testButton.style.left = '0';
-      testButton.style.zIndex = '1000';
-      testButton.style.backgroundColor = 'yellow';
-      testButton.style.border = '2px solid black';
-      testButton.style.padding = '5px';
-      testButton.addEventListener('click', (e) => {
-        console.log('🎯 TEST BUTTON CLICKED!');
-        alert('TEST BUTTON WORKS!');
+      // Add a close X button
+      const closeButton = document.createElement('button');
+      closeButton.textContent = '×';
+      closeButton.style.position = 'absolute';
+      closeButton.style.top = '-10px';
+      closeButton.style.right = '-10px';
+      closeButton.style.zIndex = '1000';
+      closeButton.style.backgroundColor = 'red';
+      closeButton.style.color = 'white';
+      closeButton.style.border = '2px solid white';
+      closeButton.style.borderRadius = '50%';
+      closeButton.style.width = '30px';
+      closeButton.style.height = '30px';
+      closeButton.style.fontSize = '18px';
+      closeButton.style.fontWeight = 'bold';
+      closeButton.style.cursor = 'pointer';
+      closeButton.style.display = 'flex';
+      closeButton.style.alignItems = 'center';
+      closeButton.style.justifyContent = 'center';
+      closeButton.addEventListener('click', (e) => {
+        console.log('🎯 CLOSE BUTTON CLICKED!');
         e.stopPropagation();
+        dismiss();
       });
-      container.appendChild(testButton);
+      container.appendChild(closeButton);
 
       // Entrance animation (respect reduced motion)
       const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
