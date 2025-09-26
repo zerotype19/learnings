@@ -228,6 +228,25 @@ router.get('/', async (c) => {
   }
 });
 
+// Get A-Z letter counts for navigation
+router.get('/letters', async (c) => {
+  try {
+    const stmt = c.env.DB.prepare(`
+      SELECT UPPER(SUBSTR(title, 1, 1)) as letter, COUNT(*) as count
+      FROM terms_v2 
+      WHERE status = 'published'
+      GROUP BY UPPER(SUBSTR(title, 1, 1))
+      ORDER BY letter
+    `);
+    
+    const { results } = await stmt.all();
+    return c.json({ letters: results || [] });
+  } catch (error) {
+    console.error('Letters error:', error);
+    return c.json({ letters: [] }, 500);
+  }
+});
+
 // Get single term by slug
 router.get('/:slug', async (c) => {
   try {
@@ -372,25 +391,6 @@ router.get('/search', async (c) => {
       console.error('Fallback search error:', fallbackError);
       return c.json({ items: [], error: 'Search failed' }, 500);
     }
-  }
-});
-
-// Get A-Z letter counts for navigation
-router.get('/letters', async (c) => {
-  try {
-    const stmt = c.env.DB.prepare(`
-      SELECT UPPER(SUBSTR(title, 1, 1)) as letter, COUNT(*) as count
-      FROM terms_v2 
-      WHERE status = 'published'
-      GROUP BY UPPER(SUBSTR(title, 1, 1))
-      ORDER BY letter
-    `);
-    
-    const { results } = await stmt.all();
-    return c.json({ letters: results || [] });
-  } catch (error) {
-    console.error('Letters error:', error);
-    return c.json({ letters: [] }, 500);
   }
 });
 

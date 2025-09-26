@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { LetterIndex } from '../components/terms/LetterIndex';
 import { getShortDescription } from '../utils/textUtils';
 import { SearchBox } from '../components/SearchBox';
@@ -15,7 +15,7 @@ type Term = {
   created_at: string;
 };
 
-type SortOption = 'newest' | 'popular' | 'alpha';
+type SortOption = 'newest' | 'popular' | 'alpha' | 'random';
 
 export function TermsHub() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -25,7 +25,7 @@ export function TermsHub() {
   const [sortBy, setSortBy] = useState<SortOption>('random');
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const initialized = useRef(false);
+  const [letterCount, setLetterCount] = useState<number>(0);
 
   const apiUrl = getApiUrl();
 
@@ -68,6 +68,22 @@ export function TermsHub() {
     }
   };
 
+  const fetchLetterCount = async (letter: string) => {
+    try {
+      const response = await fetch(`${apiUrl}/api/terms/letters`, {
+        credentials: 'include'
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const letterData = data.letters.find((l: any) => l.letter === letter.toUpperCase());
+        setLetterCount(letterData ? letterData.count : 0);
+      }
+    } catch (error) {
+      console.error('Failed to fetch letter count:', error);
+      setLetterCount(0);
+    }
+  };
+
   // Initialize from URL parameters and load terms
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -104,6 +120,11 @@ export function TermsHub() {
     
     loadInitialTerms();
     
+    // Fetch count for the letter if one is selected
+    if (letter) {
+      fetchLetterCount(letter);
+    }
+    
     // Listen for URL changes (back/forward navigation)
     const updateFromURL = () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -126,41 +147,25 @@ export function TermsHub() {
     setTerms([]);
     setNextCursor(null);
     loadTerms(true);
+    
+    // Fetch count for the active letter
+    if (activeLetter) {
+      fetchLetterCount(activeLetter);
+    } else {
+      setLetterCount(0);
+    }
   }, [activeLetter, sortBy]);
-
-  // Search functionality
-  const handleSearch = async (query: string) => {
-    if (!query.trim()) {
-      // Reset to normal view
-      setActiveLetter('');
-      setSearchQuery('');
-      return;
-    }
-
-    setSearchQuery(query);
-    setLoading(true);
-    try {
-      const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(query)}&type=terms`, {
-        credentials: 'include'
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setTerms(data.items || []);
-        setNextCursor(null); // No pagination for search results
-      }
-    } catch (error) {
-      console.error('Search failed:', error);
-      setTerms([]);
-      // Could add a toast notification here
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleLetterClick = (letter: string) => {
     setActiveLetter(letter);
     setSearchQuery(''); // Clear search when using letter filter
+    
+    // Fetch count for the selected letter
+    if (letter) {
+      fetchLetterCount(letter);
+    } else {
+      setLetterCount(0);
+    }
     
     // Update URL
     const url = new URL(window.location.href);
@@ -193,8 +198,7 @@ export function TermsHub() {
           <div className="max-w-2xl mx-auto mb-8">
             <SearchBox
               placeholder="Search 2,000+ buzzwords…"
-              onSearch={handleSearch}
-              apiUrl={apiUrl}
+              onNavigate={(url) => window.location.href = url}
             />
           </div>
 
@@ -258,7 +262,7 @@ export function TermsHub() {
         {activeLetter && (
           <div className="text-center mb-8">
             <div className="text-slate-600">
-              Terms starting with <span className="font-semibold text-slate-900">"{activeLetter}"</span> • {terms.length} found
+              Terms starting with <span className="font-semibold text-slate-900">"{activeLetter}"</span> • {letterCount} found
             </div>
           </div>
         )}
