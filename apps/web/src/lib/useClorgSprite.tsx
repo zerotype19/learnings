@@ -224,6 +224,12 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         localStorage.setItem("clorgSeenCount", String(seen + 1));
       };
       container.addEventListener("click", dismiss);
+      
+      // Also add click to the image specifically
+      img.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dismiss();
+      });
 
       // Cleanup on route change
       return () => container.remove();
