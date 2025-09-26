@@ -171,22 +171,8 @@ export function TermDetail({ slug }: TermDetailProps) {
           </div>
           
           <div className="bg-white rounded-2xl border p-6">
-            <div className="flex justify-between items-start mb-4">
+            <div className="mb-4">
               <h1 className="text-3xl font-bold">{term.title}</h1>
-              <div className="flex gap-2">
-                <button
-                  onClick={copyLink}
-                  className="px-3 py-1 text-xs border border-neutral-200 rounded-full hover:bg-neutral-50"
-                >
-                  📋 Copy Link
-                </button>
-                <button
-                  onClick={shareLink}
-                  className="px-3 py-1 text-xs border border-neutral-200 rounded-full hover:bg-neutral-50"
-                >
-                  📤 Share
-                </button>
-              </div>
             </div>
 
             <div className="text-lg text-neutral-700 mb-4">{term.definition}</div>
@@ -211,8 +197,31 @@ export function TermDetail({ slug }: TermDetailProps) {
               </div>
             )}
 
-            <div className="text-xs text-neutral-500">
-              {term.views} views • Created {new Date(term.created_at).toLocaleDateString()}
+            <div className="flex justify-between items-center">
+              <div className="text-xs text-neutral-500">
+                {term.views} views • Created {(() => {
+                  try {
+                    const date = new Date(term.created_at);
+                    return isNaN(date.getTime()) ? 'Unknown date' : date.toLocaleDateString();
+                  } catch {
+                    return 'Unknown date';
+                  }
+                })()}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={copyLink}
+                  className="px-3 py-1 text-xs border border-neutral-200 rounded-full hover:bg-neutral-50"
+                >
+                  📋 Copy Link
+                </button>
+                <button
+                  onClick={shareLink}
+                  className="px-3 py-1 text-xs border border-neutral-200 rounded-full hover:bg-neutral-50"
+                >
+                  📤 Share
+                </button>
+              </div>
             </div>
           </div>
         </div>
