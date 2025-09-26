@@ -17,58 +17,66 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         console.log('Clorg disabled via URL param');
         return;
       }
-
-      // Check for corporate mode and adjust probability
-      const isCorporateMode = document.documentElement.classList.contains('corp-mode');
-      const baseProbability = opts.probability ?? 0.4;
-      const probability = isCorporateMode ? 0.7 : baseProbability;
       
-      console.log('Clorg probability check:', { isCorporateMode, baseProbability, probability });
-      
-      const maxPerSession = opts.maxPerSession ?? 5;
-      const includePaths = opts.includePaths ?? []; // empty = all routes
-      const criticalSelectors = opts.criticalSelectors ?? [
-        ".hero .btn-primary",
-        "input[type='search']",
-        "nav",
-        "footer",
-        ".modal",
-        "[role='dialog']"
-      ];
-
-      if (includePaths.length && !includePaths.some(r => r.test(location.pathname))) {
-        console.log('Clorg blocked by includePaths');
-        return;
-      }
-
-      // Daily reset logic
-      const today = new Date().toISOString().slice(0, 10);
-      const storedDay = localStorage.getItem("clorgSeenDay");
-      if (storedDay !== today) {
-        localStorage.setItem("clorgSeenDay", today);
-        localStorage.setItem("clorgSeenCount", "0");
-      }
-
-      const seen = Number(localStorage.getItem("clorgSeenCount") || "0");
-      console.log('Clorg seen count:', seen, 'max per session:', maxPerSession);
-      if (seen >= maxPerSession) {
-        console.log('Clorg blocked by max per session');
-        return;
-      }
-
-      // Check for corporate mode reroll trigger
-      if (isCorporateMode && (window as any).__triggerClorg) {
-        (window as any).__triggerClorg = false;
-        console.log('Clorg forced spawn due to corporate mode trigger');
-        // Force spawn regardless of probability
+      // Test mode - force Clorg to appear
+      if (url.searchParams.get("testclorg") === "1") {
+        console.log('Clorg test mode enabled - forcing spawn');
+        // Skip all other checks and force spawn
       } else {
-        const random = Math.random();
-        console.log('Clorg random check:', random, 'vs probability:', probability);
-        if (random > probability) {
-          console.log('Clorg blocked by probability');
+        // Check for corporate mode and adjust probability
+        const isCorporateMode = document.documentElement.classList.contains('corp-mode');
+        const baseProbability = opts.probability ?? 0.4;
+        const probability = isCorporateMode ? 0.7 : baseProbability;
+        
+        console.log('Clorg probability check:', { isCorporateMode, baseProbability, probability });
+        
+        const maxPerSession = opts.maxPerSession ?? 5;
+        const includePaths = opts.includePaths ?? []; // empty = all routes
+        const criticalSelectors = opts.criticalSelectors ?? [
+          ".hero .btn-primary",
+          "input[type='search']",
+          "nav",
+          "footer",
+          ".modal",
+          "[role='dialog']"
+        ];
+
+        if (includePaths.length && !includePaths.some(r => r.test(location.pathname))) {
+          console.log('Clorg blocked by includePaths');
           return;
         }
+
+        // Daily reset logic
+        const today = new Date().toISOString().slice(0, 10);
+        const storedDay = localStorage.getItem("clorgSeenDay");
+        if (storedDay !== today) {
+          localStorage.setItem("clorgSeenDay", today);
+          localStorage.setItem("clorgSeenCount", "0");
+        }
+
+        const seen = Number(localStorage.getItem("clorgSeenCount") || "0");
+        console.log('Clorg seen count:', seen, 'max per session:', maxPerSession);
+        if (seen >= maxPerSession) {
+          console.log('Clorg blocked by max per session');
+          return;
+        }
+
+        // Check for corporate mode reroll trigger
+        if (isCorporateMode && (window as any).__triggerClorg) {
+          (window as any).__triggerClorg = false;
+          console.log('Clorg forced spawn due to corporate mode trigger');
+          // Force spawn regardless of probability
+        } else {
+          const random = Math.random();
+          console.log('Clorg random check:', random, 'vs probability:', probability);
+          if (random > probability) {
+            console.log('Clorg blocked by probability');
+            return;
+          }
+        }
       }
+      
+      console.log('Clorg passed all checks, proceeding to spawn!');
 
       // Load phrases from window.__NONSENSE__ or fall back.
       const phrases: string[] =
