@@ -22,6 +22,11 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       if (url.searchParams.get("testclorg") === "1") {
         console.log('Clorg test mode enabled - forcing spawn');
         // Skip all other checks and force spawn
+      } else if (url.searchParams.get("resetclorg") === "1") {
+        console.log('Clorg reset mode - clearing session count');
+        localStorage.setItem("clorgSeenCount", "0");
+        localStorage.setItem("clorgSeenDay", new Date().toISOString().slice(0, 10));
+        // Continue with normal probability check
       } else {
         // Check for corporate mode and adjust probability
         const isCorporateMode = document.documentElement.classList.contains('corp-mode');
@@ -57,8 +62,9 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         const seen = Number(localStorage.getItem("clorgSeenCount") || "0");
         console.log('Clorg seen count:', seen, 'max per session:', maxPerSession);
         if (seen >= maxPerSession) {
-          console.log('Clorg blocked by max per session');
-          return;
+          console.log('Clorg blocked by max per session - clearing for testing');
+          // Temporarily clear for testing
+          localStorage.setItem("clorgSeenCount", "0");
         }
 
         // Check for corporate mode reroll trigger
