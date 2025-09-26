@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getApiUrl } from '../../lib/api';
+import { getApiUrl } from '../../utils/getApiUrl';
 
 interface BuzzwordGeneratorProps {
   className?: string;
