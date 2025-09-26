@@ -54,16 +54,22 @@ Discover more at ${termUrl}`;
 
   const shareToLinkedIn = () => {
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(termUrl)}&summary=${encodeURIComponent(linkedInText)}`;
+    console.log('LinkedIn URL:', linkedInUrl);
+    console.log('Term URL:', termUrl);
     window.open(linkedInUrl, '_blank', 'width=600,height=400');
   };
 
   const shareToTwitter = () => {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}`;
+    console.log('Twitter URL:', twitterUrl);
+    console.log('Term URL in text:', termUrl);
     window.open(twitterUrl, '_blank', 'width=600,height=400');
   };
 
   const shareToFacebook = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(termUrl)}&quote=${encodeURIComponent(shareText)}`;
+    console.log('Facebook URL:', facebookUrl);
+    console.log('Term URL:', termUrl);
     window.open(facebookUrl, '_blank', 'width=600,height=400');
   };
 
