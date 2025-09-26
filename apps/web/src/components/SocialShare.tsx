@@ -53,7 +53,8 @@ Discover more at ${termUrl}`;
   };
 
   const shareToLinkedIn = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(termUrl)}&summary=${encodeURIComponent(linkedInText)}`;
+    // LinkedIn sharing URL - just pass the URL, LinkedIn will fetch the page metadata
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(termUrl)}`;
     console.log('LinkedIn URL:', linkedInUrl);
     console.log('Term URL:', termUrl);
     window.open(linkedInUrl, '_blank', 'width=600,height=400');
@@ -186,7 +187,8 @@ Try it now: ${generatorUrl}
   };
 
   const shareToLinkedIn = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(generatorUrl)}&summary=${encodeURIComponent(shareText)}`;
+    // LinkedIn sharing URL - just pass the URL, LinkedIn will fetch the page metadata
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(generatorUrl)}`;
     window.open(linkedInUrl, '_blank', 'width=600,height=400');
   };
 
