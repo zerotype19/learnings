@@ -196,6 +196,23 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       // Add a very obvious visual indicator
       container.style.border = '5px solid red';
       container.style.backgroundColor = 'rgba(255,0,0,0.3)';
+      
+      // Add a test button to see if clicks work at all
+      const testButton = document.createElement('button');
+      testButton.textContent = 'TEST CLICK';
+      testButton.style.position = 'absolute';
+      testButton.style.top = '-30px';
+      testButton.style.left = '0';
+      testButton.style.zIndex = '1000';
+      testButton.style.backgroundColor = 'yellow';
+      testButton.style.border = '2px solid black';
+      testButton.style.padding = '5px';
+      testButton.addEventListener('click', (e) => {
+        console.log('🎯 TEST BUTTON CLICKED!');
+        alert('TEST BUTTON WORKS!');
+        e.stopPropagation();
+      });
+      container.appendChild(testButton);
 
       // Entrance animation (respect reduced motion)
       const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -232,15 +249,15 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       
       // Add click handler to the entire container
       container.addEventListener("click", (e) => {
-        console.log('Container clicked');
+        console.log('🎯 CONTAINER CLICKED!', e);
         e.preventDefault();
         e.stopPropagation();
         dismiss();
       });
       
-      // Also add click to the image specifically (no stopPropagation needed)
+      // Also add click to the image specifically
       img.addEventListener("click", (e) => {
-        console.log('Image clicked');
+        console.log('🎯 IMAGE CLICKED!', e);
         e.preventDefault();
         e.stopPropagation();
         dismiss();
@@ -248,11 +265,25 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       
       // Add click handler to the bubble as well
       bubble.addEventListener("click", (e) => {
-        console.log('Bubble clicked');
+        console.log('🎯 BUBBLE CLICKED!', e);
         e.preventDefault();
         e.stopPropagation();
         dismiss();
       });
+      
+      // Add mouse events for debugging
+      container.addEventListener("mousedown", (e) => {
+        console.log('🎯 CONTAINER MOUSEDOWN!', e);
+      });
+      
+      container.addEventListener("mouseup", (e) => {
+        console.log('🎯 CONTAINER MOUSEUP!', e);
+      });
+      
+      // Test if the element is actually clickable
+      console.log('🎯 Container clickable?', container.style.pointerEvents);
+      console.log('🎯 Container z-index:', container.style.zIndex);
+      console.log('🎯 Container position:', container.style.position);
 
       // Cleanup on route change
       return () => container.remove();
