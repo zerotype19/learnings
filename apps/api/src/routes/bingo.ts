@@ -6,12 +6,13 @@ const bingo = new Hono<{ Bindings: Env }>();
 
 bingo.get('/generate', async (c) => {
   try {
-    // Get random single-word terms for bingo board
+    // Get random single-word terms for bingo board (8 characters or less)
     const { results } = await c.env.DB.prepare(`
       SELECT title, slug FROM terms_v2 
       WHERE status = 'published' 
       AND title NOT LIKE '% %'
       AND title NOT LIKE '%-%'
+      AND LENGTH(title) <= 8
       ORDER BY RANDOM() 
       LIMIT 24
     `).all();
