@@ -10,14 +10,20 @@ type ClorgOptions = {
 
 export function useClorgSprite(opts: ClorgOptions = {}) {
   useEffect(() => {
+    console.log('useClorgSprite hook called with opts:', opts);
     try {
       const url = new URL(window.location.href);
-      if (url.searchParams.get("noclorg") === "1") return;
+      if (url.searchParams.get("noclorg") === "1") {
+        console.log('Clorg disabled via URL param');
+        return;
+      }
 
       // Check for corporate mode and adjust probability
       const isCorporateMode = document.documentElement.classList.contains('corp-mode');
       const baseProbability = opts.probability ?? 0.4;
       const probability = isCorporateMode ? 0.7 : baseProbability;
+      
+      console.log('Clorg probability check:', { isCorporateMode, baseProbability, probability });
       
       const maxPerSession = opts.maxPerSession ?? 5;
       const includePaths = opts.includePaths ?? []; // empty = all routes
@@ -30,7 +36,10 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         "[role='dialog']"
       ];
 
-      if (includePaths.length && !includePaths.some(r => r.test(location.pathname))) return;
+      if (includePaths.length && !includePaths.some(r => r.test(location.pathname))) {
+        console.log('Clorg blocked by includePaths');
+        return;
+      }
 
       // Daily reset logic
       const today = new Date().toISOString().slice(0, 10);
@@ -41,14 +50,24 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       }
 
       const seen = Number(localStorage.getItem("clorgSeenCount") || "0");
-      if (seen >= maxPerSession) return;
+      console.log('Clorg seen count:', seen, 'max per session:', maxPerSession);
+      if (seen >= maxPerSession) {
+        console.log('Clorg blocked by max per session');
+        return;
+      }
 
       // Check for corporate mode reroll trigger
       if (isCorporateMode && (window as any).__triggerClorg) {
         (window as any).__triggerClorg = false;
+        console.log('Clorg forced spawn due to corporate mode trigger');
         // Force spawn regardless of probability
-      } else if (Math.random() > probability) {
-        return;
+      } else {
+        const random = Math.random();
+        console.log('Clorg random check:', random, 'vs probability:', probability);
+        if (random > probability) {
+          console.log('Clorg blocked by probability');
+          return;
+        }
       }
 
       // Load phrases from window.__NONSENSE__ or fall back.
@@ -57,8 +76,12 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
           "Bullet points or die, respectfully."
         ];
       
+      console.log('Clorg hook running, phrases available:', phrases.length);
+      console.log('Window __NONSENSE__:', (window as any).__NONSENSE__);
+      console.log('Opts phrases:', opts.phrases);
+      
       if (phrases.length === 0) {
-        console.log('No phrases available for Clorg');
+        console.log('No phrases available for Clorg, exiting');
         return;
       }
       
