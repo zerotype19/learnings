@@ -10,21 +10,16 @@ type ClorgOptions = {
 
 export function useClorgSprite(opts: ClorgOptions = {}) {
   useEffect(() => {
-    console.log('🎯 USECLORGSPRITE HOOK CALLED WITH OPTS:', opts);
-    console.log('🎯 Current URL:', window.location.href);
     try {
       const url = new URL(window.location.href);
       if (url.searchParams.get("noclorg") === "1") {
-        console.log('Clorg disabled via URL param');
         return;
       }
       
       // Test mode - force Clorg to appear
       if (url.searchParams.get("testclorg") === "1") {
-        console.log('Clorg test mode enabled - forcing spawn');
         // Skip all other checks and force spawn
       } else if (url.searchParams.get("resetclorg") === "1") {
-        console.log('Clorg reset mode - clearing session count');
         localStorage.setItem("clorgSeenCount", "0");
         localStorage.setItem("clorgSeenDay", new Date().toISOString().slice(0, 10));
         // Continue with normal probability check
@@ -33,8 +28,6 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         const isCorporateMode = document.documentElement.classList.contains('corp-mode');
         const baseProbability = opts.probability ?? 0.4;
         const probability = isCorporateMode ? 0.7 : baseProbability;
-        
-        console.log('Clorg probability check:', { isCorporateMode, baseProbability, probability });
         
         const maxPerSession = opts.maxPerSession ?? 5;
         const includePaths = opts.includePaths ?? []; // empty = all routes
@@ -48,7 +41,6 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         ];
 
         if (includePaths.length && !includePaths.some(r => r.test(location.pathname))) {
-          console.log('Clorg blocked by includePaths');
           return;
         }
 
@@ -61,28 +53,21 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         }
 
         const seen = Number(localStorage.getItem("clorgSeenCount") || "0");
-        console.log('Clorg seen count:', seen, 'max per session:', maxPerSession);
         if (seen >= maxPerSession) {
-          console.log('Clorg blocked by max per session');
           return;
         }
 
         // Check for corporate mode reroll trigger
         if (isCorporateMode && (window as any).__triggerClorg) {
           (window as any).__triggerClorg = false;
-          console.log('Clorg forced spawn due to corporate mode trigger');
           // Force spawn regardless of probability
         } else {
           const random = Math.random();
-          console.log('Clorg random check:', random, 'vs probability:', probability);
           if (random > probability) {
-            console.log('Clorg blocked by probability');
             return;
           }
         }
       }
-      
-      console.log('Clorg passed all checks, proceeding to spawn!');
 
       // Load phrases from window.__NONSENSE__ or fall back.
       const phrases: string[] =
@@ -90,19 +75,9 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
           "Bullet points or die, respectfully."
         ];
       
-      console.log('Clorg hook running, phrases available:', phrases.length);
-      console.log('Window __NONSENSE__:', (window as any).__NONSENSE__);
-      console.log('Opts phrases:', opts.phrases);
-      
       if (phrases.length === 0) {
-        console.log('No phrases available for Clorg, exiting');
         return;
       }
-      
-      // Debug: Log available phrases
-      console.log('Clorg phrases loaded:', phrases.length, 'phrases available');
-      console.log('Sample phrases:', phrases.slice(0, 5));
-      console.log('All phrases:', phrases);
       
       // Use session storage to track recently used phrases to avoid repetition
       const recentPhrases = JSON.parse(sessionStorage.getItem('clorgRecentPhrases') || '[]');
@@ -119,8 +94,6 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       // Add this phrase to recent list (keep last 10)
       const newRecent = [...recentPhrases, phrase].slice(-10);
       sessionStorage.setItem('clorgRecentPhrases', JSON.stringify(newRecent));
-      
-      console.log('Clorg selected phrase:', phrase);
 
       // Build DOM
       const container = document.createElement("div");
@@ -189,14 +162,6 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       container.appendChild(bubble);
       document.body.appendChild(container);
       
-      console.log('🎯 CLORG SPRITE CREATED AND ADDED TO DOM:', container);
-      console.log('🎯 Container position:', container.style.left, container.style.top);
-      console.log('🎯 Container size:', container.offsetWidth, 'x', container.offsetHeight);
-      
-      // Add subtle visual indicator for debugging (can be removed later)
-      container.style.border = '2px solid #e5e7eb';
-      container.style.backgroundColor = 'rgba(255,255,255,0.1)';
-      
       // Add a close X button
       const closeButton = document.createElement('button');
       closeButton.textContent = '×';
@@ -217,7 +182,6 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       closeButton.style.alignItems = 'center';
       closeButton.style.justifyContent = 'center';
       closeButton.addEventListener('click', (e) => {
-        console.log('🎯 CLOSE BUTTON CLICKED!');
         e.stopPropagation();
         dismiss();
       });
@@ -250,60 +214,16 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
 
       // Dismiss on click
       const dismiss = () => {
-        console.log('🎯 CLORG SPRITE DISMISSING...');
-        alert('CLORG CLICKED! DISMISSING...');
         container.remove();
         localStorage.setItem("clorgSeenCount", String(seen + 1));
       };
       
       // Add click handler to the entire container
       container.addEventListener("click", (e) => {
-        console.log('🎯 CONTAINER CLICKED!', e);
         e.preventDefault();
         e.stopPropagation();
         dismiss();
       });
-      
-      // Test if the event listener was actually added
-      console.log('🎯 Event listeners added to container:', container.onclick);
-      
-      // Add a simple onclick handler as backup
-      container.onclick = function(e) {
-        console.log('🎯 CONTAINER ONCLICK FIRED!', e);
-        e.preventDefault();
-        e.stopPropagation();
-        dismiss();
-      };
-      
-      // Also add click to the image specifically
-      img.addEventListener("click", (e) => {
-        console.log('🎯 IMAGE CLICKED!', e);
-        e.preventDefault();
-        e.stopPropagation();
-        dismiss();
-      });
-      
-      // Add click handler to the bubble as well
-      bubble.addEventListener("click", (e) => {
-        console.log('🎯 BUBBLE CLICKED!', e);
-        e.preventDefault();
-        e.stopPropagation();
-        dismiss();
-      });
-      
-      // Add mouse events for debugging
-      container.addEventListener("mousedown", (e) => {
-        console.log('🎯 CONTAINER MOUSEDOWN!', e);
-      });
-      
-      container.addEventListener("mouseup", (e) => {
-        console.log('🎯 CONTAINER MOUSEUP!', e);
-      });
-      
-      // Test if the element is actually clickable
-      console.log('🎯 Container clickable?', container.style.pointerEvents);
-      console.log('🎯 Container z-index:', container.style.zIndex);
-      console.log('🎯 Container position:', container.style.position);
 
       // Cleanup on route change
       return () => container.remove();
