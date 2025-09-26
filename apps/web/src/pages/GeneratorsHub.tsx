@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getGenerators, runGenerator, trackEvent } from '../lib/api';
 import { SEO, SEOConfigs } from '../components/SEO';
 import { BuzzwordGenerator } from '../components/generators/BuzzwordGenerator';
+import { BuzzwordGeneratorShare } from '../components/SocialShare';
 
 type Generator = {
   id: string;
@@ -175,12 +176,15 @@ export function GeneratorsHub() {
           <div className="mb-12">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-semibold text-slate-900">Featured Generator</h2>
-              <a 
-                href="/generators/buzzword" 
-                className="text-brand-600 hover:text-brand-700 text-sm font-medium"
-              >
-                View Full Page →
-              </a>
+              <div className="flex items-center gap-4">
+                <BuzzwordGeneratorShare />
+                <a 
+                  href="/generators/buzzword" 
+                  className="text-brand-600 hover:text-brand-700 text-sm font-medium"
+                >
+                  View Full Page →
+                </a>
+              </div>
             </div>
             <BuzzwordGenerator />
           </div>

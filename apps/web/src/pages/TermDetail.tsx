@@ -3,6 +3,7 @@ import { getShortDescription } from '../utils/textUtils';
 import { TermVariations } from '../components/terms/TermVariations';
 import { AlphabetNav } from '../components/terms/AlphabetNav';
 import { RelatedTerms } from '../components/terms/RelatedTerms';
+import { SocialShare } from '../components/SocialShare';
 import { SEO } from '../components/SEO';
 import { getApiUrl } from '../utils/getApiUrl';
 
@@ -208,20 +209,14 @@ export function TermDetail({ slug }: TermDetailProps) {
                   }
                 })()}
               </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={copyLink}
-                  className="px-3 py-1 text-xs border border-neutral-200 rounded-full hover:bg-neutral-50"
-                >
-                  📋 Copy Link
-                </button>
-                <button
-                  onClick={shareLink}
-                  className="px-3 py-1 text-xs border border-neutral-200 rounded-full hover:bg-neutral-50"
-                >
-                  📤 Share
-                </button>
-              </div>
+              <SocialShare 
+                term={{
+                  title: term.title,
+                  definition: term.definition,
+                  examples: term.examples,
+                  slug: term.slug
+                }}
+              />
             </div>
           </div>
         </div>

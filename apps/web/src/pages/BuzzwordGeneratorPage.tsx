@@ -1,5 +1,6 @@
 import React from 'react';
 import { BuzzwordGenerator } from '../components/generators/BuzzwordGenerator';
+import { BuzzwordGeneratorShare } from '../components/SocialShare';
 import { SEO, SEOConfigs } from '../components/SEO';
 
 export function BuzzwordGeneratorPage() {
@@ -28,6 +29,10 @@ export function BuzzwordGeneratorPage() {
 
         {/* Generator */}
         <div className="max-w-4xl mx-auto px-4 py-12">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-semibold text-slate-900">Generate Your Buzzword</h2>
+            <BuzzwordGeneratorShare />
+          </div>
           <BuzzwordGenerator />
         </div>
 
