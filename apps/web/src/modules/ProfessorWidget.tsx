@@ -75,7 +75,7 @@ export function ProfessorWidget() {
         
         const assistantMessage: Message = {
           role: 'assistant',
-          content: `**Academic Translation:** ${d.academic_tone}\n\n**Plain English:** ${d.plain_translation}\n\n**Framework:** ${d.optional_framework}`,
+          content: `**Original Jargon:** ${d.original_jargon}\n\n**Plain English:** ${d.plain_english}\n\n**Normal Language:** ${d.normal_language}`,
           timestamp: new Date().toISOString()
         };
         

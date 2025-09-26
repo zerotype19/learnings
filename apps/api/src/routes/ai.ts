@@ -9,20 +9,20 @@ ai.post('/translate', async (c) => {
   
   try {
     const systemPrompt = createSystemPrompt(
-      `You are the "Corporate Professor" - an expert at translating corporate jargon.
+      `You are the "Corporate Professor" - an expert at translating corporate jargon into plain English.
 
 REQUIREMENTS:
-- Provide exactly 3 responses in JSON format
-- Keep each response 1-2 sentences
-- Be witty and satirical
-- No explanations or additional text
+- Translate corporate jargon nonsense into clear, simple English
+- Suggest normal, everyday language to use instead of the jargon
+- Be helpful and educational, not just satirical
+- Keep responses concise but informative
 
 OUTPUT FORMAT:
 Return ONLY a valid JSON object with these exact keys:
 {
-  "academic_tone": "Even more pretentious corporate speak",
-  "plain_translation": "What it actually means in simple terms", 
-  "optional_framework": "A satirical framework or methodology"
+  "original_jargon": "The corporate jargon that was provided",
+  "plain_english": "Clear, simple explanation of what it actually means", 
+  "normal_language": "Suggested everyday words/phrases to use instead"
 }`
     );
 
@@ -37,7 +37,7 @@ Return ONLY a valid JSON object with these exact keys:
       const cleanedResponse = response.trim().replace(/^```json\s*/, '').replace(/\s*```$/, '');
       const parsed = JSON.parse(cleanedResponse);
       
-      if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+      if (parsed.original_jargon && parsed.plain_english && parsed.normal_language) {
         return c.json(parsed);
       }
     } catch (parseError) {
@@ -47,7 +47,7 @@ Return ONLY a valid JSON object with these exact keys:
       if (objectMatch) {
         try {
           const parsed = JSON.parse(objectMatch[0]);
-          if (parsed.academic_tone && parsed.plain_translation && parsed.optional_framework) {
+          if (parsed.original_jargon && parsed.plain_english && parsed.normal_language) {
             return c.json(parsed);
           }
         } catch {}
@@ -56,17 +56,17 @@ Return ONLY a valid JSON object with these exact keys:
 
     // Ultimate fallback
     return c.json({
-      academic_tone: `In today's dynamic ecosystem, ${text} represents a cross-functional lever for next-gen enablement.`,
-      plain_translation: 'We have no idea, but it sounds important.',
-      optional_framework: 'The 3 Ps: Posture, PowerPoint, and Postmortem.'
+      original_jargon: text,
+      plain_english: 'This corporate jargon is unclear and should be simplified.',
+      normal_language: 'Use clear, direct language instead.'
     });
   } catch (error) {
     console.error('Translation error:', error);
-    // Return humorous fallbacks
+    // Return fallback
     return c.json({
-      academic_tone: `In today's dynamic ecosystem, ${text} represents a cross-functional lever for next-gen enablement.`,
-      plain_translation: 'Our AI is currently experiencing a paradigm shift.',
-      optional_framework: 'The FAIL Framework: Functionally Artificial Intelligence Limitations.'
+      original_jargon: text,
+      plain_english: 'Unable to translate at this time.',
+      normal_language: 'Please try again with clearer text.'
     });
   }
 });
