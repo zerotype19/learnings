@@ -157,7 +157,7 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
         color: "#0f172a",
         boxShadow: "0 4px 15px rgba(0,0,0,.15)",
         border: "1px solid rgba(0,0,0,.06)",
-        pointerEvents: "auto"
+        pointerEvents: "none"
       } as CSSStyleDeclaration);
 
       // Dark mode support
@@ -187,6 +187,8 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       container.appendChild(img);
       container.appendChild(bubble);
       document.body.appendChild(container);
+      
+      console.log('Clorg sprite created and added to DOM:', container);
 
       // Entrance animation (respect reduced motion)
       const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -215,13 +217,31 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
 
       // Dismiss on click
       const dismiss = () => {
+        console.log('Clorg sprite dismissing...');
         container.remove();
         localStorage.setItem("clorgSeenCount", String(seen + 1));
       };
-      container.addEventListener("click", dismiss);
       
-      // Also add click to the image specifically
+      // Add click handler to the entire container
+      container.addEventListener("click", (e) => {
+        console.log('Container clicked');
+        e.preventDefault();
+        e.stopPropagation();
+        dismiss();
+      });
+      
+      // Also add click to the image specifically (no stopPropagation needed)
       img.addEventListener("click", (e) => {
+        console.log('Image clicked');
+        e.preventDefault();
+        e.stopPropagation();
+        dismiss();
+      });
+      
+      // Add click handler to the bubble as well
+      bubble.addEventListener("click", (e) => {
+        console.log('Bubble clicked');
+        e.preventDefault();
         e.stopPropagation();
         dismiss();
       });
