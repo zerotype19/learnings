@@ -116,14 +116,14 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       bubble.textContent = phrase;
       Object.assign(bubble.style, {
         position: "absolute",
-        maxWidth: "220px",
-        fontSize: "12px",
-        lineHeight: "1.2",
-        padding: "8px 10px",
-        borderRadius: "10px",
+        maxWidth: "200px",
+        fontSize: "10px",
+        lineHeight: "1.1",
+        padding: "6px 8px",
+        borderRadius: "8px",
         background: "rgba(255,255,255,.95)",
         color: "#0f172a",
-        boxShadow: "0 6px 20px rgba(0,0,0,.15)",
+        boxShadow: "0 4px 15px rgba(0,0,0,.15)",
         border: "1px solid rgba(0,0,0,.06)",
         pointerEvents: "auto"
       } as CSSStyleDeclaration);
