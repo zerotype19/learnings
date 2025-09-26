@@ -26,7 +26,7 @@ export function Privacy() {
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Information You Provide</h3>
             <ul className="list-disc list-inside text-slate-600 mb-6 space-y-2">
               <li>Content you submit (buzzword definitions, wall posts, comments)</li>
-              <li>Account information if you create an account (email, username)</li>
+              <li>Email addresses for magic link authentication only (not stored or associated with submissions)</li>
               <li>Communications with us (support requests, feedback)</li>
             </ul>
 
@@ -46,6 +46,13 @@ export function Privacy() {
               <li>To analyze usage patterns and improve user experience</li>
               <li>To comply with legal obligations</li>
             </ul>
+
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">Email Address Usage</h3>
+            <p className="text-slate-600 mb-4">
+              We only collect email addresses to send magic links for authentication and submission confirmation. 
+              Your email is not stored in our database, not associated with your submissions, and not used for marketing. 
+              It's purely to prevent spam and verify legitimate submissions.
+            </p>
 
             <h2 className="text-2xl font-semibold text-slate-900 mb-4">Information Sharing</h2>
             <p className="text-slate-600 mb-4">

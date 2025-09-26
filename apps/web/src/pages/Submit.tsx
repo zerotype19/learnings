@@ -188,7 +188,7 @@ function TermSubmissionForm() {
             className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
           />
           <p className="text-xs text-neutral-500 mt-1">
-            We'll send you a confirmation link to verify your submission
+            We'll send you a magic link to confirm your submission. Your email is only used for confirmation and is not saved or associated with your submission.
           </p>
         </div>
 
@@ -399,7 +399,7 @@ function WallSubmissionForm() {
             className="w-full px-3 py-2 border border-neutral-200 rounded-lg"
           />
           <p className="text-xs text-neutral-500 mt-1">
-            We'll send you a confirmation link to verify your submission
+            We'll send you a magic link to confirm your submission. Your email is only used for confirmation and is not saved or associated with your submission.
           </p>
         </div>
 

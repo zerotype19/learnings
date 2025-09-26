@@ -105,6 +105,9 @@ export function Contact() {
                   className="w-full rounded-xl2 border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none transition-all duration-200"
                   placeholder="your@email.com"
                 />
+                <p className="text-xs text-slate-500 mt-1">
+                  Your email is only used to respond to your message and is not saved or shared.
+                </p>
               </div>
 
               <div>

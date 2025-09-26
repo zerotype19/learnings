@@ -32,7 +32,7 @@ export function AuthModal({ open, onClose }: { open: boolean; onClose: () => voi
           <>
             <div className="text-xl font-semibold text-ink">Sign in</div>
             <p className="mt-1 text-sm text-neutral-600">
-              We'll email you a magic link. No passwords required.
+              We'll email you a magic link. No passwords required. Your email is only used for confirmation and is not saved.
             </p>
             <input 
               className="mt-4 w-full rounded-xl border border-neutral-200 p-3 focus:ring-2 focus:ring-brand-100 focus:border-brand-300" 
