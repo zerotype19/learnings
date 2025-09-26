@@ -167,24 +167,15 @@ export function Clorg() {
     }
   };
 
-  const trackEvent = (type: 'clorg', id: string, text?: string) => {
-    const variant = localStorage.getItem('nonsenseVariant') as 'A' | 'B' || 'A';
-    const enterprise = localStorage.getItem('enterpriseMode') === 'true';
-    
-    const event = {
-      type,
-      id: btoa(id + (text || '')),
-      variant,
-      enterprise,
-      path: window.location.pathname,
-      timestamp: Date.now()
-    };
-
-    trackEvent('clorg_interaction', {
-      action: 'click',
-      phrase: line.text,
-      path: window.location.pathname
-    });
+  const handleClorgClick = () => {
+    if (currentLine) {
+      trackEvent('clorg_interaction', {
+        action: 'click',
+        phrase: currentLine.text,
+        path: window.location.pathname
+      });
+    }
+    hideClorg();
   };
 
   // Handle escape key
@@ -203,12 +194,13 @@ export function Clorg() {
 
   return (
     <div
-      className={`fixed bottom-4 right-4 max-w-sm rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 p-4 z-50 ${
+      className={`fixed bottom-4 right-4 max-w-sm rounded-2xl shadow-2xl border border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 p-4 z-50 cursor-pointer ${
         isAnimating ? 'animate-clorg-slide-in' : ''
       }`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="clorg-text"
+      onClick={handleClorgClick}
     >
       <div className="flex items-start gap-3">
         <div className={`flex-shrink-0 ${isAnimating ? 'animate-clorg-wiggle' : ''}`}>
@@ -223,7 +215,10 @@ export function Clorg() {
               {currentLine.ctas.map((cta, index) => (
                 <button
                   key={index}
-                  onClick={() => handleCtaClick(cta)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCtaClick(cta);
+                  }}
                   className="px-2.5 py-1.5 rounded-lg border border-zinc-300 dark:border-zinc-600 text-xs bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
                 >
                   {cta.label}
@@ -233,7 +228,10 @@ export function Clorg() {
           )}
         </div>
         <button
-          onClick={hideClorg}
+          onClick={(e) => {
+            e.stopPropagation();
+            hideClorg();
+          }}
           className="flex-shrink-0 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
           aria-label="Close Clorg"
         >
