@@ -182,7 +182,7 @@ router.post('/wall/:id/approve', async (c) => {
     
     // Get submission
     const submission = await c.env.DB.prepare(
-      'SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at, updated_at FROM wall_submissions WHERE id = ?'
+      'SELECT id, title, body, source_url, tags, suggested_terms, status, reviewer, created_at FROM wall_submissions WHERE id = ?'
     ).bind(submissionId).first() as any;
     
     if (!submission) {
