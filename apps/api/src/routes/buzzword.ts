@@ -27,22 +27,6 @@ const app = new Hono<{ Bindings: Env }>();
 // Helper function to build the prompt
 function buildPrompt(request: BuzzwordRequest): string {
   const { scenario, tone, format, edge } = request;
-  
-  let formatDescription = '';
-  switch (format) {
-    case 'verb_noun':
-      formatDescription = 'Verb Noun: "Sandbox Sync", "Optimize Ops"';
-      break;
-    case 'noun_noun':
-      formatDescription = 'Noun Noun: "Synergy Theater", "Outcome Optics"';
-      break;
-    case 'adj_noun':
-      formatDescription = 'Adjective Noun: "Frictionless Cadence", "Ambient Alignment"';
-      break;
-    case 'surprise':
-      formatDescription = 'Any of the above styles or clever portmanteaus like "Decksplaining", "Roadmapfication"';
-      break;
-  }
 
   return `Scenario:
 ${scenario}
@@ -53,11 +37,8 @@ Format: ${format}
 Edge: ${edge}
 
 Constraints:
-- Return a SINGLE 1–4 word phrase matching the preferences.
-- Title Case. No punctuation.
-- Examples of acceptable styles:
-  - ${formatDescription}
-
+- Return exactly ONE phrase, 1–4 words, Title Case.
+- No punctuation, quotes, emojis, or hashtags.
 Now generate.`;
 }
 

@@ -18,11 +18,36 @@ interface BuzzwordResponse {
 }
 
 const helperPrompts = [
-  "Employees calling busywork 'strategic ops'",
-  "Chatbots giving HR advice",
-  "Rebranding layoffs as career mobility",
-  "Managers renaming meetings to 'workshops'",
-  "Teams doing 5 standups a day, no delivery"
+  "Managers renaming layoffs as talent mobility",
+  "Meetings to plan the next meeting",
+  "Old product rebranded as AI",
+  "Dashboards refreshed weekly with no insights",
+  "Executives reframing problems as opportunities",
+  "Standups all day, zero shipping",
+  "Renaming bugs as enhancements",
+  "Reorg chaos sold as simplification",
+  "Twenty people in 'alignment' meetings",
+  "Every plan turned into a framework",
+  "Interns titled Chief of Staff",
+  "Pilots that never launch",
+  "New logo instead of strategy",
+  "Process added until nothing ships",
+  "Rightsizing used to mask layoffs",
+  "OKRs rewritten weekly",
+  "New Slack channels instead of decisions",
+  "Support rebranded as success with no change",
+  "Roadmap changes every sprint",
+  "Buying tools to avoid training",
+  "Simple task becomes cross-functional saga",
+  "Only positive metrics reported",
+  "Press release posing as strategy",
+  "Minor update sold as breakthrough",
+  "Mandatory office sold as flexibility",
+  "Renaming layoffs as redeployment",
+  "Endless discovery, no delivery",
+  "Brainstorm replaces commitment",
+  "Vendor demo promises everything",
+  "Spreadsheets treated as truth"
 ];
 
 export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {

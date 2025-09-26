@@ -37,18 +37,16 @@ export class OpenAIClient {
     const messages: ChatMessage[] = [
       {
         role: 'system',
-        content: `You generate satirical corporate buzzwords as 1–4 word phrases that sound real.
-Hard rules:
-- Output ONLY the phrase. No punctuation. No emojis. No quotes. No hashtags.
-- 1–4 words max. Title Case.
-- No slurs or sensitive terms. Avoid politics, protected classes, or anything hateful.
-- Keep it PG-13. No profanity.
-- If user asks for something disallowed or unclear, still return a harmless, generic buzzword.
+        content: `You generate satirical corporate buzzwords as a SINGLE 1–4 word phrase.
 
-Style:
-- Feels like modern LinkedIn/consulting nonsense.
-- Prefer "Verb Noun", "Noun Noun", or "Adjective Noun".
-- Clever portmanteaus welcome (e.g., Virtuewashing, Roadmapfication), but keep readable.`
+Hard rules:
+- Output ONLY the phrase. No punctuation. No quotes. No emojis. No hashtags.
+- Title Case. Maximum 4 words.
+- Keep PG-13. No profanity, slurs, harassment, politics, or references to protected classes.
+- Avoid personal names and sensitive identifiers.
+- Favor Verb Noun, Noun Noun, or Adjective Noun. Portmanteaus allowed if readable.
+
+If the request is risky or unclear, return a harmless, generic buzzword.`
       },
       {
         role: 'user',
