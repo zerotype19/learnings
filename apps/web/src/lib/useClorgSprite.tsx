@@ -10,7 +10,8 @@ type ClorgOptions = {
 
 export function useClorgSprite(opts: ClorgOptions = {}) {
   useEffect(() => {
-    console.log('useClorgSprite hook called with opts:', opts);
+    console.log('🎯 USECLORGSPRITE HOOK CALLED WITH OPTS:', opts);
+    console.log('🎯 Current URL:', window.location.href);
     try {
       const url = new URL(window.location.href);
       if (url.searchParams.get("noclorg") === "1") {
@@ -188,7 +189,13 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       container.appendChild(bubble);
       document.body.appendChild(container);
       
-      console.log('Clorg sprite created and added to DOM:', container);
+      console.log('🎯 CLORG SPRITE CREATED AND ADDED TO DOM:', container);
+      console.log('🎯 Container position:', container.style.left, container.style.top);
+      console.log('🎯 Container size:', container.offsetWidth, 'x', container.offsetHeight);
+      
+      // Add a very obvious visual indicator
+      container.style.border = '5px solid red';
+      container.style.backgroundColor = 'rgba(255,0,0,0.3)';
 
       // Entrance animation (respect reduced motion)
       const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -217,7 +224,8 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
 
       // Dismiss on click
       const dismiss = () => {
-        console.log('Clorg sprite dismissing...');
+        console.log('🎯 CLORG SPRITE DISMISSING...');
+        alert('CLORG CLICKED! DISMISSING...');
         container.remove();
         localStorage.setItem("clorgSeenCount", String(seen + 1));
       };

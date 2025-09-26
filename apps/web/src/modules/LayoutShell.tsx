@@ -50,9 +50,9 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
 
   // Initialize Clorg sprite only when data is loaded
   useClorgSprite({
-    probability: 0.9, // Increased to 90% for testing
-    maxPerSession: 10, // Increased for testing
-    phrases: nonsenseData?.clorgPhrases || []
+    probability: 1.0, // Force 100% probability for testing
+    maxPerSession: 999, // Very high limit for testing
+    phrases: nonsenseData?.clorgPhrases || ["TEST PHRASE - CLICK ME TO DISMISS"]
   });
 
   // Corporate Mode temporarily disabled
