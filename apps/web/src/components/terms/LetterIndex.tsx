@@ -9,15 +9,15 @@ const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 export function LetterIndex({ activeLetter, onLetterClick }: LetterIndexProps) {
   return (
-    <div className="sticky top-20 z-30 bg-white/90 backdrop-blur border-b py-2">
-      <div className="flex flex-wrap justify-center gap-1 max-w-4xl mx-auto px-4">
+    <div className="sticky top-20 z-30 bg-white shadow-sm border-b py-3">
+      <div className="flex justify-center gap-2 max-w-4xl mx-auto px-4">
         <button
           onClick={() => onLetterClick('')}
           className={`
-            px-2 py-1 text-xs rounded-full transition-colors
+            px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200
             ${activeLetter === '' 
-              ? 'bg-brand-600 text-white' 
-              : 'hover:bg-neutral-100 text-neutral-600'
+              ? 'bg-purple-600 text-white shadow-sm' 
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }
           `}
         >
@@ -28,10 +28,10 @@ export function LetterIndex({ activeLetter, onLetterClick }: LetterIndexProps) {
             key={letter}
             onClick={() => onLetterClick(letter)}
             className={`
-              px-2 py-1 text-xs rounded-full transition-colors min-w-[28px]
+              w-8 h-8 text-sm font-medium rounded-full transition-all duration-200 flex items-center justify-center
               ${activeLetter === letter 
-                ? 'bg-brand-600 text-white' 
-                : 'hover:bg-neutral-100 text-neutral-600'
+                ? 'bg-purple-600 text-white shadow-sm' 
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }
             `}
           >
