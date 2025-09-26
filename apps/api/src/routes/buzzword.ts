@@ -123,16 +123,27 @@ app.post('/generate', async (c) => {
     const clientIP = c.req.header('CF-Connecting-IP') || c.req.header('X-Forwarded-For') || 'unknown';
     const isAuthenticated = false; // TODO: Add auth check when user system is implemented
     
-    // Check rate limits
-    const rateLimiter = createRateLimiter(c.env.BUZZWORD_RATELIMIT, isAuthenticated);
-    const rateLimitResult = await rateLimiter.checkLimit(clientIP, isAuthenticated);
+    // Check rate limits (with fallback if KV not available)
+    let rateLimitResult = { allowed: true, remaining: 100, resetTime: Date.now() + 86400000 };
     
-    if (!rateLimitResult.allowed) {
-      return c.json({ 
-        error: 'Rate limit exceeded',
-        remaining: rateLimitResult.remaining,
-        resetTime: rateLimitResult.resetTime
-      }, 429);
+    if (c.env.BUZZWORD_RATELIMIT) {
+      try {
+        const rateLimiter = createRateLimiter(c.env.BUZZWORD_RATELIMIT, isAuthenticated);
+        rateLimitResult = await rateLimiter.checkLimit(clientIP, isAuthenticated);
+        
+        if (!rateLimitResult.allowed) {
+          return c.json({ 
+            error: 'Rate limit exceeded',
+            remaining: rateLimitResult.remaining,
+            resetTime: rateLimitResult.resetTime
+          }, 429);
+        }
+      } catch (error) {
+        console.error('Rate limiting failed, allowing request:', error);
+        // Continue without rate limiting if KV fails
+      }
+    } else {
+      console.warn('BUZZWORD_RATELIMIT KV namespace not configured, skipping rate limiting');
     }
 
     // Initialize OpenAI client

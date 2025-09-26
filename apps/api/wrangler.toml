@@ -24,6 +24,10 @@ bucket_name = "learnings-assets"
 binding = "CACHE"
 id = "5c2b6e7727ec4a0bb520e720e8e35eae"
 
+[[kv_namespaces]]
+binding = "BUZZWORD_RATELIMIT"
+id = "d3a16d219adf453eaa361cb929c37426"
+
 [[queues.producers]]
 binding = "JOBS"
 queue = "learnings-jobs"
