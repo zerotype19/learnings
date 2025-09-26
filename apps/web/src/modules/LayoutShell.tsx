@@ -49,11 +49,12 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   useSectionStamps();
 
   // Initialize Clorg sprite only when data is loaded
-  useClorgSprite({
-    probability: 0.4, // Normal probability
-    maxPerSession: 5, // Normal session limit
-    phrases: nonsenseData?.clorgPhrases || []
-  });
+  // Temporarily disabled
+  // useClorgSprite({
+  //   probability: 0.4, // Normal probability
+  //   maxPerSession: 5, // Normal session limit
+  //   phrases: nonsenseData?.clorgPhrases || []
+  // });
 
   // Corporate Mode temporarily disabled
   // Re-apply header navigation on route changes when Corporate Mode is enabled
