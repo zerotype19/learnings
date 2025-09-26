@@ -153,16 +153,19 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       bubble.textContent = phrase;
       Object.assign(bubble.style, {
         position: "absolute",
-        maxWidth: "280px",
-        fontSize: "10px",
-        lineHeight: "1.1",
-        padding: "6px 8px",
-        borderRadius: "8px",
+        maxWidth: "320px",
+        minWidth: "200px",
+        fontSize: "12px",
+        lineHeight: "1.3",
+        padding: "12px 16px",
+        borderRadius: "20px",
         background: "rgba(255,255,255,.95)",
         color: "#0f172a",
-        boxShadow: "0 4px 15px rgba(0,0,0,.15)",
-        border: "1px solid rgba(0,0,0,.06)",
-        pointerEvents: "auto"
+        boxShadow: "0 6px 20px rgba(0,0,0,.2)",
+        border: "2px solid rgba(0,0,0,.1)",
+        pointerEvents: "auto",
+        textAlign: "center",
+        fontWeight: "500"
       } as CSSStyleDeclaration);
 
       // Dark mode support
@@ -182,14 +185,37 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       container.style.left = `${left}px`;
       container.style.top = `${top}px`;
 
-      // Bubble side based on quadrant
-      const bubbleOnLeft = left > vw / 2; // if on right half, bubble left side
-      Object.assign(bubble.style, bubbleOnLeft
-        ? { right: `${img.width + 8}px`, top: "0" }
-        : { left: `${img.width + 8}px`, top: "0" });
+      // Position bubble above Clorg's head
+      Object.assign(bubble.style, {
+        left: "50%",
+        top: "-10px",
+        transform: "translateX(-50%)",
+        marginBottom: "8px"
+      });
+
+      // Add speech bubble tail
+      const tail = document.createElement("div");
+      Object.assign(tail.style, {
+        position: "absolute",
+        left: "50%",
+        top: "100%",
+        transform: "translateX(-50%)",
+        width: "0",
+        height: "0",
+        borderLeft: "12px solid transparent",
+        borderRight: "12px solid transparent",
+        borderTop: "12px solid rgba(255,255,255,.95)",
+        filter: "drop-shadow(0 2px 4px rgba(0,0,0,.1))"
+      } as CSSStyleDeclaration);
+
+      // Dark mode tail
+      if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+        tail.style.borderTopColor = "rgba(24,24,27,.95)";
+      }
 
       // Append
       container.appendChild(img);
+      bubble.appendChild(tail);
       container.appendChild(bubble);
       document.body.appendChild(container);
 
