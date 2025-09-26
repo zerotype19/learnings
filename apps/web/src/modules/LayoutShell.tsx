@@ -7,7 +7,7 @@ import { useClorgSprite } from '../lib/useClorgSprite';
 import { initializeCorporateMode, corporatizeHeaderNav, isCorporateModeEnabled } from '../lib/corporateMode';
 import type { NonsenseData } from '../types/nonsense';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'about' | 'privacy' | 'terms' | 'contact';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'about' | 'privacy' | 'terms' | 'contact';
 
 interface LayoutShellProps {
   currentPage: Page;
@@ -269,6 +269,13 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               className="hover:text-slate-900 transition-colors"
             >
               About
+            </a>
+            <a 
+              href="/generators/buzzword" 
+              onClick={(e) => { e.preventDefault(); onPageChange('buzzword-generator'); }}
+              className="hover:text-slate-900 transition-colors font-medium text-brand-600"
+            >
+              🎯 Buzzword Generator
             </a>
             <a 
               href="/contact" 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getGenerators, runGenerator, trackEvent } from '../lib/api';
 import { SEO, SEOConfigs } from '../components/SEO';
+import { BuzzwordGenerator } from '../components/generators/BuzzwordGenerator';
 
 type Generator = {
   id: string;
@@ -169,7 +170,25 @@ export function GeneratorsHub() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          {/* Buzzword Generator - Featured */}
+          <div className="mb-12">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-semibold text-slate-900">Featured Generator</h2>
+              <a 
+                href="/generators/buzzword" 
+                className="text-brand-600 hover:text-brand-700 text-sm font-medium"
+              >
+                View Full Page →
+              </a>
+            </div>
+            <BuzzwordGenerator />
+          </div>
+
+          {/* Other Generators */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Other Generators</h2>
+          </div>
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Generator Selection & Input */}

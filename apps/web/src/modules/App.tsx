@@ -19,6 +19,7 @@ import { TermDetail } from '../pages/TermDetail';
 import { Submit } from '../pages/Submit';
 import { WallHub } from '../pages/WallHub';
 import { GeneratorsHub } from '../pages/GeneratorsHub';
+import { BuzzwordGeneratorPage } from '../pages/BuzzwordGeneratorPage';
 import { SearchResults } from '../pages/SearchResults';
 import { About } from '../pages/About';
 import { Privacy } from '../pages/Privacy';
@@ -27,7 +28,7 @@ import { Contact } from '../pages/Contact';
 import { ConfirmSubmission } from '../pages/ConfirmSubmission';
 import { useTooltips } from '../hooks/useTooltips';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -76,7 +77,11 @@ export function App() {
           setCurrentPage('bingo');
           break;
         case 'generators':
-          setCurrentPage('generators-hub');
+          if (params[0] === 'buzzword') {
+            setCurrentPage('buzzword-generator');
+          } else {
+            setCurrentPage('generators-hub');
+          }
           break;
         case 'linkedin':
           setCurrentPage('linkedin');
@@ -148,6 +153,7 @@ export function App() {
         case 'confirm': return '/confirm';
         case 'bingo': return '/bingo';
         case 'generators-hub': return '/generators';
+        case 'buzzword-generator': return '/generators/buzzword';
         case 'submit-v2': return '/submit';
         case 'admin-v2': return '/admin07932';
         case 'search': return '/search';
@@ -169,6 +175,7 @@ export function App() {
       {currentPage === 'submit-v2' && <Submit />}
       {currentPage === 'wall-hub' && <WallHub />}
       {currentPage === 'generators-hub' && <GeneratorsHub />}
+      {currentPage === 'buzzword-generator' && <BuzzwordGeneratorPage />}
       {currentPage === 'admin-v2' && <AdminV2 />}
       {currentPage === 'search' && <SearchResults />}
       {currentPage === 'about' && <About />}

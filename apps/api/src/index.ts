@@ -27,11 +27,13 @@ import track from './routes/track';
 import submissions from './routes/submissions';
 import contact from './routes/contact';
 import nonsense from './routes/nonsense';
+import buzzword from './routes/buzzword';
 
 export type Env = {
   DB: D1Database;
   R2: R2Bucket;
   CACHE: KVNamespace;
+  BUZZWORD_RATELIMIT: KVNamespace;
   JOBS: Queue;
   AI: any;  // Workers AI binding
   CORS_ORIGIN: string;
@@ -97,6 +99,7 @@ app.route('/api/submissions', submissions);
 app.route('/api/contact', contact);
 app.route('/api/challenges', challengesV2);
 app.route('/api/nonsense', nonsense);
+app.route('/api/buzzword', buzzword);
 
 export default {
   fetch: app.fetch,
