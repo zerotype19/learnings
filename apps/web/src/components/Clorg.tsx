@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { ClorgLine, NonsenseData } from '../types/nonsense';
+import { trackEvent } from '../lib/api';
 
 const ClorgSVG = () => (
   <svg width="40" height="40" viewBox="0 0 40 40" className="drop-shadow-sm">
@@ -179,15 +180,11 @@ export function Clorg() {
       timestamp: Date.now()
     };
 
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon('/api/nonsense/track', JSON.stringify(event));
-    } else {
-      fetch('/api/nonsense/track', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(event)
-      }).catch(() => {});
-    }
+    trackEvent('clorg_interaction', {
+      action: 'click',
+      phrase: line.text,
+      path: window.location.pathname
+    });
   };
 
   // Handle escape key

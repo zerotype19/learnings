@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import tippy, { Instance } from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import type { NonsenseData, NonsenseTip } from '../types/nonsense';
+import { trackEvent } from '../lib/api';
 
 // Custom theme for Learnings tooltips
 const createTooltipTheme = () => {
@@ -170,16 +171,12 @@ export function useTooltips() {
         timestamp: Date.now()
       };
 
-      // Use sendBeacon if available, otherwise fetch
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/nonsense/track', JSON.stringify(event));
-      } else {
-        fetch('/api/nonsense/track', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(event)
-        }).catch(() => {}); // Fire and forget
-      }
+      // Track the tooltip interaction
+      trackEvent('tooltip_interaction', {
+        selector: tip.selector,
+        text: tip.text,
+        path: window.location.pathname
+      });
     };
 
     loadNonsenseData();

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { trackEvent } from '../lib/api';
 import { setCorporateMode, initializeCorporateMode } from '../lib/corporateMode';
 
 export function EnterpriseToggle() {
@@ -25,22 +26,10 @@ export function EnterpriseToggle() {
   };
 
   const trackToggle = (enabled: boolean) => {
-    const event = {
-      type: 'enterprise_toggle',
+    trackEvent('enterprise_toggle', {
       enabled,
-      path: window.location.pathname,
-      timestamp: Date.now()
-    };
-
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon('/api/nonsense/track', JSON.stringify(event));
-    } else {
-      fetch('/api/nonsense/track', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(event)
-      }).catch(() => {});
-    }
+      path: window.location.pathname
+    });
   };
 
   return (
