@@ -48,11 +48,11 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   // Initialize section stamps
   useSectionStamps();
 
-  // Initialize Clorg sprite
+  // Initialize Clorg sprite only when data is loaded
   useClorgSprite({
     probability: 0.8, // Doubled from 0.4 to 0.8
     maxPerSession: 5,
-    phrases: nonsenseData?.clorgPhrases
+    phrases: nonsenseData?.clorgPhrases || []
   });
 
   // Corporate Mode temporarily disabled

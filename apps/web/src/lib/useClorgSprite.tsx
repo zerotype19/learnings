@@ -65,22 +65,27 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
       // Debug: Log available phrases
       console.log('Clorg phrases loaded:', phrases.length, 'phrases available');
       console.log('Sample phrases:', phrases.slice(0, 5));
+      console.log('All phrases:', phrases);
       
+      // TEMPORARY: Disable session storage to test phrase variety
       // Use session storage to track recently used phrases to avoid repetition
-      const recentPhrases = JSON.parse(sessionStorage.getItem('clorgRecentPhrases') || '[]');
-      const availablePhrases = phrases.filter(p => !recentPhrases.includes(p));
+      // const recentPhrases = JSON.parse(sessionStorage.getItem('clorgRecentPhrases') || '[]');
+      // const availablePhrases = phrases.filter(p => !recentPhrases.includes(p));
       
-      // If we've used all phrases, reset the recent list
-      if (availablePhrases.length === 0) {
-        sessionStorage.setItem('clorgRecentPhrases', '[]');
-        availablePhrases.push(...phrases);
-      }
+      // // If we've used all phrases, reset the recent list
+      // if (availablePhrases.length === 0) {
+      //   sessionStorage.setItem('clorgRecentPhrases', '[]');
+      //   availablePhrases.push(...phrases);
+      // }
       
-      const phrase = availablePhrases[Math.floor(Math.random() * availablePhrases.length)];
+      // const phrase = availablePhrases[Math.floor(Math.random() * availablePhrases.length)];
       
-      // Add this phrase to recent list (keep last 10)
-      const newRecent = [...recentPhrases, phrase].slice(-10);
-      sessionStorage.setItem('clorgRecentPhrases', JSON.stringify(newRecent));
+      // // Add this phrase to recent list (keep last 10)
+      // const newRecent = [...recentPhrases, phrase].slice(-10);
+      // sessionStorage.setItem('clorgRecentPhrases', JSON.stringify(newRecent));
+      
+      // Simple random selection for testing
+      const phrase = phrases[Math.floor(Math.random() * phrases.length)];
       
       console.log('Clorg selected phrase:', phrase);
 
@@ -188,5 +193,5 @@ export function useClorgSprite(opts: ClorgOptions = {}) {
     } catch {
       // no-op
     }
-  }, [opts.probability, opts.maxPerSession]);
+  }, [opts.probability, opts.maxPerSession, opts.phrases]);
 }
