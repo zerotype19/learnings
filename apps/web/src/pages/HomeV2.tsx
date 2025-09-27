@@ -111,7 +111,7 @@ export function HomeV2() {
       <div className="bg-white">
         <div className="text-center py-4 md:py-6">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
-            Operationalizing the Learnings Layer
+            Operationalizing the <a href="/origin-story" className="text-brand-600 hover:text-brand-700 underline">Learnings</a> Layer
           </h1>
           <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
             We harmonize disruption with practical nonsense, so your decks ship themselves.

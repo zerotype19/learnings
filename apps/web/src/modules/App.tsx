@@ -26,9 +26,10 @@ import { Privacy } from '../pages/Privacy';
 import { Terms } from '../pages/Terms';
 import { Contact } from '../pages/Contact';
 import { ConfirmSubmission } from '../pages/ConfirmSubmission';
+import { OriginStory } from '../pages/OriginStory';
 import { useTooltips } from '../hooks/useTooltips';
 
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm';
+type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm' | 'origin-story';
 
 export function App() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -95,6 +96,9 @@ export function App() {
         case 'search':
           setCurrentPage('search');
           break;
+        case 'origin-story':
+          setCurrentPage('origin-story');
+          break;
         default:
           setCurrentPage('home-v2');
       }
@@ -157,6 +161,7 @@ export function App() {
         case 'submit-v2': return '/submit';
         case 'admin-v2': return '/admin07932';
         case 'search': return '/search';
+        case 'origin-story': return '/origin-story';
         default: return '/';
       }
     };
@@ -183,6 +188,7 @@ export function App() {
       {currentPage === 'terms' && <Terms />}
       {currentPage === 'contact' && <Contact />}
       {currentPage === 'confirm' && <ConfirmSubmission />}
+      {currentPage === 'origin-story' && <OriginStory />}
       
       {/* Legacy Pages */}
       {currentPage === 'home' && (
