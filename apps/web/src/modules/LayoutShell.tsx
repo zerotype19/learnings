@@ -306,7 +306,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
           </div>
           
           <div className="text-center text-sm text-slate-500">
-            © 2025 Learnings Dot Org — Speak fluent corporate. Ironically.
+            © 2008-2025 Learnings Dot Org — Speak fluent corporate. Ironically.
           </div>
         </div>
       </footer>
