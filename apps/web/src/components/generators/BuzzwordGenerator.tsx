@@ -122,6 +122,42 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
       </div>
 
       <div className="space-y-4">
+        {/* Result Display */}
+        {buzzword && (
+          <div className="bg-slate-50 rounded-xl p-6">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-slate-900 mb-2 select-all cursor-pointer" onClick={handleCopy}>
+                {buzzword}
+              </div>
+              {why && (
+                <div className="text-sm text-slate-600 mb-4" title={why}>
+                  {why}
+                </div>
+              )}
+              <div className="flex gap-2 justify-center">
+                <button
+                  onClick={handleRegenerate}
+                  className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors"
+                >
+                  Regenerate
+                </button>
+                <button
+                  onClick={handleCopy}
+                  className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg transition-colors"
+                >
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+                <button
+                  onClick={() => setShowSaveModal(true)}
+                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
+                >
+                  Save to Terms
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Scenario Input */}
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -215,42 +251,6 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
             ))}
           </div>
         </div>
-
-        {/* Result Display */}
-        {buzzword && (
-          <div className="bg-slate-50 rounded-xl p-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-slate-900 mb-2 select-all cursor-pointer" onClick={handleCopy}>
-                {buzzword}
-              </div>
-              {why && (
-                <div className="text-sm text-slate-600 mb-4" title={why}>
-                  {why}
-                </div>
-              )}
-              <div className="flex gap-2 justify-center">
-                <button
-                  onClick={handleRegenerate}
-                  className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors"
-                >
-                  Regenerate
-                </button>
-                <button
-                  onClick={handleCopy}
-                  className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg transition-colors"
-                >
-                  {copied ? 'Copied!' : 'Copy'}
-                </button>
-                <button
-                  onClick={() => setShowSaveModal(true)}
-                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
-                >
-                  Save to Terms
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Save Modal - We'll implement this next */}
