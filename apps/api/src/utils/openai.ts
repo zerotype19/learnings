@@ -13,7 +13,7 @@ export async function callOpenAI(
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      model: 'gpt-5', // Latest and most capable model
+      model: 'gpt-4o-mini', // Cost-effective but high quality
       messages,
       max_tokens: maxTokens,
       temperature,

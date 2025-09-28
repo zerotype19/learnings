@@ -32,22 +32,7 @@ const helperPrompts = [
   "Pilots that never launch",
   "New logo instead of strategy",
   "Process added until nothing ships",
-  "Rightsizing used to mask layoffs",
-  "OKRs rewritten weekly",
-  "New Slack channels instead of decisions",
-  "Support rebranded as success with no change",
-  "Roadmap changes every sprint",
-  "Buying tools to avoid training",
-  "Simple task becomes cross-functional saga",
-  "Only positive metrics reported",
-  "Press release posing as strategy",
-  "Minor update sold as breakthrough",
-  "Mandatory office sold as flexibility",
-  "Renaming layoffs as redeployment",
-  "Endless discovery, no delivery",
-  "Brainstorm replaces commitment",
-  "Vendor demo promises everything",
-  "Spreadsheets treated as truth"
+  "Rightsizing used to mask layoffs"
 ];
 
 export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
@@ -159,22 +144,6 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
           </div>
         </div>
 
-        {/* Helper Prompts */}
-        <div>
-          <p className="text-sm text-slate-600 mb-2">Try these examples:</p>
-          <div className="flex flex-wrap gap-2">
-            {helperPrompts.map((prompt, index) => (
-              <button
-                key={index}
-                onClick={() => handleHelperClick(prompt)}
-                className="px-3 py-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition-colors"
-              >
-                {prompt}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Style Options */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
@@ -230,6 +199,22 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
         >
           {loading ? 'Generating...' : 'Generate Buzzword'}
         </button>
+
+        {/* Helper Prompts */}
+        <div>
+          <p className="text-sm text-slate-600 mb-2">Try these examples:</p>
+          <div className="flex flex-wrap gap-2">
+            {helperPrompts.map((prompt, index) => (
+              <button
+                key={index}
+                onClick={() => handleHelperClick(prompt)}
+                className="px-3 py-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition-colors"
+              >
+                {prompt}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Result Display */}
         {buzzword && (
