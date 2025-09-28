@@ -24,10 +24,27 @@ interface BuzzwordResponse {
 
 const app = new Hono<{ Bindings: Env }>();
 
-// Helper function to build the prompt
+// Helper function to build the prompt with randomization
 function buildPrompt(request: BuzzwordRequest): string {
   const { scenario, tone, format, edge } = request;
 
+  // Add randomization elements to encourage variety
+  const randomElements = [
+    "Think creatively and avoid obvious choices.",
+    "Consider alternative corporate language patterns.",
+    "Look for unexpected word combinations.",
+    "Focus on the most absurd corporate tendencies.",
+    "Emphasize the theatrical nature of corporate speak.",
+    "Consider what would sound most pretentious.",
+    "Think about what executives would say to sound smart.",
+    "Focus on the most meaningless corporate concepts."
+  ];
+  
+  const randomElement = randomElements[Math.floor(Math.random() * randomElements.length)];
+
+  // Add timestamp for additional variation
+  const timestamp = Date.now();
+  
   return `Scenario:
 ${scenario}
 
@@ -36,9 +53,15 @@ Tone: ${tone}
 Format: ${format}
 Edge: ${edge}
 
+${randomElement}
+
 Constraints:
 - Return exactly ONE phrase, 1–4 words, Title Case.
 - No punctuation, quotes, emojis, or hashtags.
+- Make it different from typical corporate buzzwords.
+- Generate something unique and creative.
+
+Context: ${timestamp}
 Now generate.`;
 }
 
@@ -151,12 +174,31 @@ app.post('/generate', async (c) => {
       apiKey: c.env.OPENAI_API_KEY
     });
 
-    // Generate buzzword
+    // Generate buzzword with retry logic for variety
     const prompt = buildPrompt(body);
     let buzzword = await openai.generateBuzzword(prompt);
     
     // Sanitize the result
     buzzword = sanitizeBuzzword(buzzword);
+    
+    // Check for recent duplicates and regenerate if needed
+    const recentBuzzwords = await c.env.DB.prepare(`
+      SELECT buzzword FROM buzzword_generations 
+      WHERE scenario_hash = ? AND created_at > datetime('now', '-1 hour')
+      ORDER BY created_at DESC LIMIT 5
+    `).bind(generateScenarioHash(sanitizedScenario)).all();
+    
+    const recentTerms = recentBuzzwords.results?.map((r: any) => r.buzzword.toLowerCase()) || [];
+    let attempts = 0;
+    const maxAttempts = 3;
+    
+    while (recentTerms.includes(buzzword.toLowerCase()) && attempts < maxAttempts) {
+      console.log(`Regenerating buzzword to avoid duplicate: ${buzzword}`);
+      const newPrompt = buildPrompt(body);
+      buzzword = await openai.generateBuzzword(newPrompt);
+      buzzword = sanitizeBuzzword(buzzword);
+      attempts++;
+    }
     
     // Check for forbidden content
     if (containsForbiddenContent(buzzword)) {

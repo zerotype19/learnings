@@ -55,10 +55,10 @@ If the request is risky or unclear, return a harmless, generic buzzword.`
     ];
 
     const request: ChatCompletionRequest = {
-      model: 'gpt-4o-mini',
+      model: 'gpt-5',
       messages,
       max_tokens: 16,
-      temperature: 0.8,
+      temperature: 0.9, // Increased from 0.8 for more creativity
       stop: ['\n']
     };
 
@@ -97,7 +97,7 @@ If the request is risky or unclear, return a harmless, generic buzzword.`
     ];
 
     const request: ChatCompletionRequest = {
-      model: 'gpt-4o-mini',
+      model: 'gpt-5',
       messages,
       max_tokens: 100,
       temperature: 0.8
@@ -138,7 +138,7 @@ If the request is risky or unclear, return a harmless, generic buzzword.`
     ];
 
     const request: ChatCompletionRequest = {
-      model: 'gpt-4o-mini',
+      model: 'gpt-5',
       messages,
       max_tokens: 50,
       temperature: 0.8
