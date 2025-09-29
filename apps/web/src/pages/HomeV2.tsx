@@ -49,7 +49,9 @@ type QuickAction = {
 
 export function HomeV2() {
   const [showQuickActions, setShowQuickActions] = useState(true);
-  const [currentSubheadline, setCurrentSubheadline] = useState(0);
+  const [currentSubheadline, setCurrentSubheadline] = useState(() => 
+    Math.floor(Math.random() * subheadlines.length)
+  );
 
   useEffect(() => {
     // Track home page view
@@ -57,10 +59,14 @@ export function HomeV2() {
   }, []);
 
   useEffect(() => {
-    // Rotate subheadlines every 3 seconds
+    // Rotate subheadlines every 4 seconds
     const interval = setInterval(() => {
-      setCurrentSubheadline(prev => (prev + 1) % subheadlines.length);
-    }, 3000);
+      setCurrentSubheadline(prev => {
+        const next = (prev + 1) % subheadlines.length;
+        console.log('Rotating subheadline to:', next, subheadlines[next]);
+        return next;
+      });
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);

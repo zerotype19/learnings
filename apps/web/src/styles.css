@@ -94,7 +94,7 @@
 }
 
 .animate-ticker {
-  animation: ticker 60s linear infinite;
+  animation: ticker 90s linear infinite;
 }
 
 /* Corporate Mode Styles - Updated v3 - Force New Build */
@@ -140,7 +140,7 @@ html.corp-mode .btn-primary {
 
 /* Ticker Turbo for Corporate Mode */
 html.corp-mode .animate-ticker {
-  animation: ticker 48s linear infinite; /* 60s / 1.25 = 48s */
+  animation: ticker 72s linear infinite; /* 90s / 1.25 = 72s */
 }
 
 /* Corporate Header Navigation */
