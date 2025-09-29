@@ -5,6 +5,40 @@ import { SearchBox } from '../components/SearchBox';
 import { SEO, SEOConfigs } from '../components/SEO';
 import { getApiUrl } from '../utils/getApiUrl';
 
+const subheadlines = [
+  "We harmonize disruption with practical nonsense, so your decks ship themselves.",
+  "We translate vibes into frameworks that ship.",
+  "We operationalize nonsense into measurable learnings.",
+  "We align stakeholders via arrows and triangles.",
+  "We turn paragraphs into nine bullet points.",
+  "We orchestrate cross-functional momentum without drama.",
+  "We prototype the narrative before building reality.",
+  "We convert hot takes into executive summaries.",
+  "We synthesize chaos into slides that feel inevitable.",
+  "We make decks write themselves, almost.",
+  "We transform ambiguity into small, testable moves.",
+  "We optimize buzzwords for maximum clarity per slide.",
+  "We upgrade ideas with tasteful corporate gravity.",
+  "We harmonize humans, acronyms, and timelines.",
+  "We automate the pre-read for the meeting.",
+  "We teach KPIs to behave like stories.",
+  "We spin up tiger teams, but nice ones.",
+  "We scale learnings faster than meetings multiply.",
+  "We chase outcomes and let outputs follow.",
+  "We build runway while the plane presents.",
+  "We convert friction into onboarding opportunities.",
+  "We re-vector projects toward confident inevitability.",
+  "We collapse meetings into asynchronous progress logs.",
+  "We make the ambiguous legible, then actionable.",
+  "We couple delight with compliance, peacefully.",
+  "We ship value, not bricks of features.",
+  "We hide complexity behind suspiciously friendly buttons.",
+  "We measure alignment in arrows per slide.",
+  "We sprinkle ™ judiciously for enterprise flavor.",
+  "We deliver strategy at the speed of copy.",
+  "We turn buzzword fatigue into comic relief."
+];
+
 type QuickAction = {
   id: string;
   label: string;
@@ -15,10 +49,20 @@ type QuickAction = {
 
 export function HomeV2() {
   const [showQuickActions, setShowQuickActions] = useState(true);
+  const [currentSubheadline, setCurrentSubheadline] = useState(0);
 
   useEffect(() => {
     // Track home page view
     trackEvent('home_view');
+  }, []);
+
+  useEffect(() => {
+    // Rotate subheadlines every 3 seconds
+    const interval = setInterval(() => {
+      setCurrentSubheadline(prev => (prev + 1) % subheadlines.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const quickActions: QuickAction[] = [
@@ -113,8 +157,8 @@ export function HomeV2() {
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
             Operationalizing the <a href="/origin-story" className="text-brand-600 hover:text-brand-700 underline">Learnings</a> Layer
           </h1>
-          <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
-            We harmonize disruption with practical nonsense, so your decks ship themselves.
+          <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto transition-opacity duration-500">
+            {subheadlines[currentSubheadline]}
           </p>
             
           {/* Global Search */}
