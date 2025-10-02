@@ -104,12 +104,12 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               e.preventDefault();
               onPageChange('home-v2');
             }}
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center hover:opacity-80 transition-opacity -m-2 p-2"
           >
             <img 
               src="/learnings_dot_org_logo.png" 
               alt="Learnings Dot Org" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </a>
           
