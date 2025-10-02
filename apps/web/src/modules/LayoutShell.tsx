@@ -104,9 +104,13 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               e.preventDefault();
               onPageChange('home-v2');
             }}
-            className="text-xl font-semibold tracking-tight text-slate-900 hover:text-brand transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            Learnings Dot Org
+            <img 
+              src="/learnings_dot_org_logo.png" 
+              alt="Learnings Dot Org" 
+              className="h-8 w-auto"
+            />
           </a>
           
           {/* Global Search */}
