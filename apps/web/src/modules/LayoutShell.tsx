@@ -109,7 +109,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
             <img 
               src="/learnings_dot_org_logo.png" 
               alt="Learnings Dot Org" 
-              className="h-12 w-auto"
+              className="h-14 w-auto"
             />
           </a>
           
