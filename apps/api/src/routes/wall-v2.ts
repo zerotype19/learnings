@@ -70,6 +70,8 @@ router.get('/', async (c) => {
     const range = c.req.query('range') || 'all';
     const cursor = c.req.query('cursor');
     const limit = Math.min(Number(c.req.query('limit') || '20'), 50);
+    
+    console.log('Received cursor:', cursor);
 
     // Tag filtering
     if (tag) {
@@ -115,17 +117,10 @@ router.get('/', async (c) => {
 
     // Cursor-based pagination
     if (cursor) {
-      const cursorParts = cursor.split(':');
-      if (cursorParts.length === 2) {
-        const [cursorSort, cursorValue] = cursorParts;
-        if (sort === 'trending') {
-          query += ' AND (hot_score < ? OR (hot_score = ? AND created_at < ?))';
-          params.push(parseFloat(cursorValue), parseFloat(cursorValue), cursorSort);
-        } else {
-          query += ' AND created_at < ?';
-          params.push(cursorValue);
-        }
-      }
+      // Decode the cursor in case it's URL encoded
+      const decodedCursor = decodeURIComponent(cursor);
+      query += ' AND created_at < ?';
+      params.push(decodedCursor);
     }
 
     query += ' LIMIT ?';
