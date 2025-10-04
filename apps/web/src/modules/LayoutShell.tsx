@@ -24,20 +24,24 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
 
   // Track page view for analytics
   const trackPageView = (path: string) => {
-    // Track for Optiview Analytics
-    if (typeof window !== 'undefined' && (window as any).optiview) {
-      (window as any).optiview('track', 'page_view', {
-        url: window.location.origin + path,
-        path: path,
-        title: document.title
-      });
-    }
-    
-    // Track for Google Analytics
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('config', 'G-85HGDX0LS9', {
-        page_path: path
-      });
+    try {
+      // Track for Optiview Analytics
+      if (typeof window !== 'undefined' && (window as any).optiview) {
+        (window as any).optiview('track', 'page_view', {
+          url: window.location.origin + path,
+          path: path,
+          title: document.title
+        });
+      }
+      
+      // Track for Google Analytics
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('config', 'G-85HGDX0LS9', {
+          page_path: path
+        });
+      }
+    } catch (error) {
+      console.warn('Analytics tracking error:', error);
     }
   };
 
@@ -140,7 +144,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                   // Use pushState to navigate to search page
                   window.history.pushState({}, '', url);
                   onPageChange('search');
-                  trackPageView(url);
+                  setTimeout(() => trackPageView(url), 100);
                 } else {
                   // Handle internal navigation
                   const path = url.replace(/^\/+/, '');
@@ -155,8 +159,8 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
                     window.dispatchEvent(new CustomEvent('route-params', { 
                       detail: { slug } 
                     }));
-                    // Track the specific term page view
-                    trackPageView(url);
+                    // Track the specific term page view (with small delay)
+                    setTimeout(() => trackPageView(url), 100);
                   } else if (path === 'wall') {
                     onPageChange('wall-hub');
                   } else if (path === 'generators') {
