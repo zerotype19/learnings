@@ -41,6 +41,25 @@ export function App() {
   // Initialize tooltips
   useTooltips();
 
+  // Track page view for analytics
+  const trackPageView = (path: string) => {
+    // Track for Optiview Analytics
+    if (typeof window !== 'undefined' && (window as any).optiview) {
+      (window as any).optiview('track', 'page_view', {
+        url: window.location.origin + path,
+        path: path,
+        title: document.title
+      });
+    }
+    
+    // Track for Google Analytics
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', 'G-85HGDX0LS9', {
+        page_path: path
+      });
+    }
+  };
+
   // Handle browser history routing
   useEffect(() => {
     const handleRouteChange = () => {
@@ -102,6 +121,9 @@ export function App() {
         default:
           setCurrentPage('home-v2');
       }
+      
+      // Track page view for analytics
+      trackPageView(path);
     };
 
     // Handle route parameters from search navigation
@@ -169,6 +191,9 @@ export function App() {
     const path = getPath(page);
     window.history.pushState({}, '', path);
     setCurrentPage(page);
+    
+    // Track page view for analytics
+    trackPageView(path);
   };
 
   return (
