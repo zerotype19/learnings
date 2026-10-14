@@ -7,11 +7,11 @@ const frozen = Object.fromEntries(await Promise.all(['feed','term','related','va
 let mode='ok'; let calls=[];
 globalThis.fetch=async(url,opts)=>{
   assert.equal(new URL(url).origin,'https://api.learnings.org');
-  assert.deepEqual(opts.headers,{accept:'application/json'}); assert.equal(opts.redirect,'error');
+  assert.deepEqual(opts.headers,{accept:'application/json'}); assert.equal(opts.redirect,'manual');
   calls.push(url);
   if(mode==='unavailable') return new Response('down',{status:503});
   if(mode==='not-found') return new Response('missing',{status:404});
-  if(mode==='redirect') throw new TypeError('redirect rejected');
+  if(mode==='redirect') return new Response(null,{status:302,headers:{location:'https://untrusted.invalid/'}});
   let key=url.includes('home-feed')?'feed':url.includes('/related?')?'related':url.includes('/variations/')?'variations':'term';
   let data=structuredClone(frozen[key]);
   if(key==='feed'){
@@ -47,6 +47,8 @@ await check('frozen feed all 20 cards rendered with exact titles and term destin
 await check('term definition, related content and own canonical in initial HTML',async()=>{
  mode='ok';const r=await run('/term/leverage');assert.equal(r.status,200);const html=await r.text();assert.ok(html.includes(frozen.term.item.definition));assert.ok(html.includes('rel="canonical" href="https://learnings.org/term/leverage"'));
  assert.ok(!html.includes('rel="canonical" href="https://learnings.org/"'));
+ assert.ok(html.includes('property="og:title" content="Leverage | Learnings Dot Org"'));
+ assert.ok(html.includes('name="twitter:title" content="Leverage | Learnings Dot Org"'));
  await fs.writeFile(new URL('candidate-term.html',root),html);
 });
 for(const negative of ['unavailable','redirect','partial','duplicate','error','unsafe','invalid','missing-link','missing-feed'])await check(negative+' fails closed',async()=>{mode=negative;const r=await run();assert.equal(r.status,503);assert.equal(r.headers.get('cache-control'),'no-store');assert.ok(!(await r.text()).includes('learnings-initial-data'));});

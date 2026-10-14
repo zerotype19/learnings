@@ -15,7 +15,7 @@ class SourceError extends Error { constructor(public status: number) { super('Pu
 // user-agent, query parameters, or arbitrary destinations to the content API.
 async function readPublic(path: string) {
   const response = await fetch(API + path, {
-    headers: { accept: 'application/json' }, redirect: 'error',
+    headers: { accept: 'application/json' }, redirect: 'manual',
     signal: AbortSignal.timeout(8000)
   });
   if (!response.ok) throw new SourceError(response.status === 404 ? 404 : 503);
@@ -103,9 +103,9 @@ export async function renderPage(request: Request, env: Env) {
         (html.match(/<link rel="canonical"[^>]*>/g) || []).length !== 1) throw new SourceError(503);
     html = html.replace(/<title>[^<]*<\/title>/, `<title>${escape(title)}</title>`)
       .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonical}" />`)
-      .replace(/(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*/, (_match, prefix) => prefix + escape(description))
-      .replace(/(<meta (?:name|property)="(?:og:title|twitter:title)" content=")[^"]*/, (_match, prefix) => prefix + escape(title))
-      .replace(/(<meta property="og:url" content=")[^"]*/, (_match, prefix) => prefix + canonical)
+      .replace(/(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*/g, (_match, prefix) => prefix + escape(description))
+      .replace(/(<meta (?:name|property)="(?:og:title|twitter:title)" content=")[^"]*/g, (_match, prefix) => prefix + escape(title))
+      .replace(/(<meta property="og:url" content=")[^"]*/g, (_match, prefix) => prefix + canonical)
       .replace('</head>', `<script type="application/ld+json">${serialize(structured)}</script></head>`)
       .replace('<div id="root"></div>', () => `<div id="root">${markup}</div><script id="learnings-initial-data" type="application/json">${serialize(initial)}</script>`);
     const headers = new Headers(templateResponse.headers);
