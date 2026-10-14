@@ -1,3 +1,4 @@
+import { useInitialData } from '../server/initial-data';
 import React, { useEffect, useState } from 'react';
 import { TermCard } from '@learnings/ui';
 import type { Term } from '@learnings/lib';
@@ -32,11 +33,13 @@ import { useTooltips } from '../hooks/useTooltips';
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm' | 'origin-story';
 
 export function App() {
+  const initial = useInitialData();
+  const initialSlug = initial?.path.match(/^\/term\/([^/]+)$/)?.[1];
   const [terms, setTerms] = useState<Term[]>([]);
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [currentPage, setCurrentPage] = useState<Page>(initialSlug ? 'term-detail' : initial?.path === '/' ? 'home-v2' : 'home');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [routeParams, setRouteParams] = useState<Record<string, string>>({});
+  const [routeParams, setRouteParams] = useState<Record<string, string>>(initialSlug ? { slug: initialSlug } : {});
 
   // Initialize tooltips
   useTooltips();

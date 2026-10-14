@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-14T09:34:36.092Z",
+  "receipts": [
+    {
+      "name": "frozen feed all 20 cards rendered with exact titles and term destinations",
+      "pass": true
+    },
+    {
+      "name": "term definition, related content and own canonical in initial HTML",
+      "pass": true
+    },
+    {
+      "name": "unavailable fails closed",
+      "pass": true
+    },
+    {
+      "name": "redirect fails closed",
+      "pass": true
+    },
+    {
+      "name": "partial fails closed",
+      "pass": true
+    },
+    {
+      "name": "duplicate fails closed",
+      "pass": true
+    },
+    {
+      "name": "error fails closed",
+      "pass": true
+    },
+    {
+      "name": "unsafe fails closed",
+      "pass": true
+    },
+    {
+      "name": "invalid fails closed",
+      "pass": true
+    },
+    {
+      "name": "missing-link fails closed",
+      "pass": true
+    },
+    {
+      "name": "missing-feed fails closed",
+      "pass": true
+    },
+    {
+      "name": "bad-tags fails closed",
+      "pass": true
+    },
+    {
+      "name": "bad-term-link fails closed",
+      "pass": true
+    },
+    {
+      "name": "wrong term identity fails closed",
+      "pass": true
+    },
+    {
+      "name": "missing term is 404",
+      "pass": true
+    },
+    {
+      "name": "serialized hostile title cannot break out of JSON script",
+      "pass": true
+    },
+    {
+      "name": "HEAD has no body and POST is rejected",
+      "pass": true
+    },
+    {
+      "name": "other routes use unchanged asset handler",
+      "pass": true
+    }
+  ]
+}

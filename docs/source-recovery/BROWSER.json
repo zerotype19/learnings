@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-14T09:33:06.541Z",
+  "environment": "local frozen SSR fixture, CSP blocks external network",
+  "home": {
+    "cards": 20,
+    "linkedCards": 20,
+    "hydrationErrorsObserved": false
+  },
+  "term": {
+    "canonical": "https://learnings.org/term/leverage",
+    "definition": true,
+    "heading": "Leverage",
+    "relatedLinks": [
+      "/term/crypto-architecture",
+      "/term/seamless-blueprint",
+      "/term/mission-critical",
+      "/term/strategic-north-star-v67",
+      "/term/ai-hallucination"
+    ],
+    "title": "Leverage | Learnings Dot Org"
+  },
+  "limitation": "Existing unused App terms fetch and analytics are blocked by preview CSP. No live API/provider browser calls authorized by this preview."
+}

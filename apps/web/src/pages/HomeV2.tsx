@@ -49,9 +49,7 @@ type QuickAction = {
 
 export function HomeV2() {
   const [showQuickActions, setShowQuickActions] = useState(true);
-  const [currentSubheadline, setCurrentSubheadline] = useState(() => 
-    Math.floor(Math.random() * subheadlines.length)
-  );
+  const [currentSubheadline, setCurrentSubheadline] = useState(0);
 
   useEffect(() => {
     // Track home page view

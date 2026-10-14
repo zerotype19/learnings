@@ -5,7 +5,7 @@
  */
 export function getApiUrl(): string {
   // In production, always use the production API
-  if (import.meta.env.PROD || window.location.hostname === 'learnings.org') {
+  if (import.meta.env.PROD || (typeof window !== 'undefined' && window.location.hostname === 'learnings.org')) {
     return 'https://api.learnings.org';
   }
   

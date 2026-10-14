@@ -1,3 +1,4 @@
+import { useInitialData } from '../../server/initial-data';
 import React, { useState, useEffect, useCallback } from 'react';
 import { homeFeed, trackEvent } from '../../lib/api';
 import { getShortDescription } from '../../utils/textUtils';
@@ -9,7 +10,7 @@ function formatDate(dateString: string): string {
     if (isNaN(date.getTime())) {
       return 'Recently';
     }
-    return date.toLocaleDateString();
+    return date.toLocaleDateString('en-US', { timeZone: 'UTC' });
   } catch (error) {
     return 'Recently';
   }
@@ -27,9 +28,10 @@ type FeedListProps = {
 };
 
 export function FeedList({ onItemClick, className = '' }: FeedListProps) {
-  const [items, setItems] = useState<FeedItem[]>([]);
+  const initialFeed = useInitialData()?.feed;
+  const [items, setItems] = useState<FeedItem[]>(initialFeed?.items || []);
   const [loading, setLoading] = useState(false);
-  const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [nextCursor, setNextCursor] = useState<string | null>(initialFeed?.nextCursor || null);
   const [seenItems, setSeenItems] = useState<Set<string>>(new Set());
 
   const getKey = useCallback((item: FeedItem) => `${item.type}:${item.data.id}`, []);
@@ -79,7 +81,7 @@ export function FeedList({ onItemClick, className = '' }: FeedListProps) {
 
   // Load initial items
   useEffect(() => {
-    loadItems(true);
+    if (!initialFeed) loadItems(true);
   }, []);
 
   // Intersection observer for infinite scroll
@@ -226,7 +228,7 @@ function TermFeedCard({ item, onClick }: FeedCardProps) {
             <span className="text-xs text-slate-500">{formatDate(item.ts)}</span>
           </div>
           <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
-            {term.title}
+            <a href={`/term/${encodeURIComponent(term.slug)}`} onClick={e => e.stopPropagation()}>{term.title}</a>
           </h3>
           <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {term.summary || getShortDescription(term.definition, 8) || 'No description available'}
@@ -263,7 +265,7 @@ function WallFeedCard({ item, onClick }: FeedCardProps) {
             <span className="text-xs text-slate-500">{formatDate(item.ts)}</span>
           </div>
           <h3 className="text-xl font-semibold tracking-tight group-hover:text-brand transition-colors mb-3">
-            {post.title}
+            {post.source_url ? <a href={post.source_url} onClick={e => e.stopPropagation()}>{post.title}</a> : post.title}
           </h3>
           <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {post.og_desc || post.summary || 'View this wall post...'}

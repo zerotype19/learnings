@@ -52,7 +52,12 @@ export function SEO({
     // Basic meta tags
     updateMetaTag('description', description);
     if (keywords) updateMetaTag('keywords', keywords);
-    if (fullCanonical) updateMetaTag('canonical', fullCanonical);
+    if (fullCanonical) {
+      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+      link.href = fullCanonical;
+      document.querySelector('meta[name="canonical"]')?.remove();
+    }
     
     // Robots
     updateMetaTag('robots', noindex ? 'noindex,nofollow' : 'index,follow');

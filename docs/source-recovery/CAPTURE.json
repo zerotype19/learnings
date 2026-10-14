@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-14T09:29:38.019Z",
+  "credentialless": true,
+  "receipts": [
+    {
+      "name": "feed",
+      "url": "https://api.learnings.org/api/home-feed",
+      "status": 200,
+      "sha256": "fb18b9dff02d372cd474d12bdda0c16fce8b36cdc754a7529ff30064cc2abb02",
+      "bytes": 7972,
+      "contentType": "application/json"
+    },
+    {
+      "name": "term",
+      "url": "https://api.learnings.org/api/terms/leverage",
+      "status": 200,
+      "sha256": "eb887a63030fd3c34ce9bb2953af46b56046ef1bb7b67ab0bba9d2b0164010d6",
+      "bytes": 418,
+      "contentType": "application/json"
+    },
+    {
+      "name": "related",
+      "url": "https://api.learnings.org/api/terms/leverage/related?limit=5",
+      "status": 200,
+      "sha256": "33d63be3541e07efd2dc8e725e7072ba76ed4d0395d57b02c66c2f509bd7cffe",
+      "bytes": 1424,
+      "contentType": "application/json"
+    },
+    {
+      "name": "variations",
+      "url": "https://api.learnings.org/api/terms/variations/leverage",
+      "status": 200,
+      "sha256": "572441a1ff70cf075e8cb016d13d17aee7ed1977619f872ea9075594c0f25866",
+      "bytes": 447,
+      "contentType": "application/json"
+    },
+    {
+      "name": "home",
+      "url": "https://learnings.org/",
+      "status": 200,
+      "sha256": "63c05fa71631dd414d93abc9ad237cf08a152a28c7d4433827e06589bfa1f4bc",
+      "bytes": 3157,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "detail",
+      "url": "https://learnings.org/term/leverage",
+      "status": 200,
+      "sha256": "63c05fa71631dd414d93abc9ad237cf08a152a28c7d4433827e06589bfa1f4bc",
+      "bytes": 3157,
+      "contentType": "text/html; charset=utf-8"
+    }
+  ]
+}

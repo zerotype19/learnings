@@ -1,3 +1,4 @@
+import { useInitialData } from '../../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { getApiUrl } from '../../utils/getApiUrl';
 
@@ -18,14 +19,17 @@ type TermVariationsProps = {
 };
 
 export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
-  const [variations, setVariations] = useState<TermVariation[]>([]);
-  const [loading, setLoading] = useState(true);
+  const initial = useInitialData();
+  const initialItems = initial?.term?.slug === currentSlug ? initial.variations : undefined;
+  const [variations, setVariations] = useState<TermVariation[]>(initialItems || []);
+  const [loading, setLoading] = useState(!initialItems);
   const [error, setError] = useState<string | null>(null);
 
   const apiUrl = getApiUrl();
 
   useEffect(() => {
-    loadVariations();
+    if (initialItems) { setVariations(initialItems); setLoading(false); setError(null); }
+    else loadVariations();
   }, [currentSlug]);
 
   const loadVariations = async () => {
@@ -89,10 +93,10 @@ export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
       </h3>
       <div className="space-y-4">
         {variations.map((variation) => (
-          <div
+          <a
             key={variation.id}
             className="bg-white rounded-xl p-4 border border-slate-200 hover:border-slate-300 transition-colors cursor-pointer group"
-            onClick={() => handleVariationClick(variation.slug)}
+            href={`/term/${encodeURIComponent(variation.slug)}`}
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
@@ -113,7 +117,7 @@ export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <div className="mt-6">

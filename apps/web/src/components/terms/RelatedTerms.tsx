@@ -1,3 +1,4 @@
+import { useInitialData } from '../../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { getApiUrl } from '../../utils/getApiUrl';
 import { getShortDescription } from '../../utils/textUtils';
@@ -16,14 +17,17 @@ type RelatedTermsProps = {
 };
 
 export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
-  const [relatedTerms, setRelatedTerms] = useState<RelatedTerm[]>([]);
-  const [loading, setLoading] = useState(true);
+  const initial = useInitialData();
+  const initialItems = initial?.term?.slug === currentSlug ? initial.related : undefined;
+  const [relatedTerms, setRelatedTerms] = useState<RelatedTerm[]>(initialItems || []);
+  const [loading, setLoading] = useState(!initialItems);
   const [error, setError] = useState<string | null>(null);
 
   const apiUrl = getApiUrl();
 
   useEffect(() => {
-    loadRelatedTerms();
+    if (initialItems) { setRelatedTerms(initialItems); setLoading(false); setError(null); }
+    else loadRelatedTerms();
   }, [currentSlug]);
 
   const loadRelatedTerms = async () => {
@@ -80,9 +84,9 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
       </h3>
       <div className="space-y-3">
         {relatedTerms.map((term) => (
-          <button
+          <a
             key={term.id}
-            onClick={() => handleTermClick(term.slug)}
+            href={`/term/${encodeURIComponent(term.slug)}`}
             className="w-full text-left bg-white rounded-xl p-4 border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all duration-200 group"
           >
             <div className="flex items-start justify-between">
@@ -112,7 +116,7 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
                 </div>
               </div>
             </div>
-          </button>
+          </a>
         ))}
       </div>
       <div className="mt-4 pt-4 border-t border-slate-200">

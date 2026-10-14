@@ -1,3 +1,4 @@
+import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { SearchBox } from '../components/SearchBox';
 import { EnterpriseToggle } from '../components/EnterpriseToggle';
@@ -17,10 +18,11 @@ interface LayoutShellProps {
 
 export function LayoutShell({ currentPage, onPageChange, children }: LayoutShellProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [nonsenseData, setNonsenseData] = useState<NonsenseData | null>(null);
+  const [nonsenseData, setNonsenseData] = useState<NonsenseData | null>(useInitialData()?.nonsense || null);
   
   // Check for admin access
-  const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => setIsAdmin(new URLSearchParams(window.location.search).get('admin') === '1'), []);
 
   // Track page view for analytics
   const trackPageView = (path: string) => {
@@ -62,7 +64,8 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
       }
     };
 
-    loadNonsenseData();
+    if (nonsenseData) (window as any).__NONSENSE__ = nonsenseData;
+    else loadNonsenseData();
     
     // Corporate Mode temporarily disabled
     // initializeCorporateMode();

@@ -1,3 +1,4 @@
+import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { getShortDescription } from '../utils/textUtils';
 import { TermVariations } from '../components/terms/TermVariations';
@@ -37,15 +38,18 @@ type TermDetailProps = {
 };
 
 export function TermDetail({ slug }: TermDetailProps) {
-  const [term, setTerm] = useState<TermDetail | null>(null);
-  const [loading, setLoading] = useState(true);
+  const initial = useInitialData();
+  const initialTerm = initial?.term?.slug === slug ? initial.term : undefined;
+  const [term, setTerm] = useState<TermDetail | null>(initialTerm || null);
+  const [loading, setLoading] = useState(!initialTerm);
   const [error, setError] = useState<string | null>(null);
   const [showLinkForm, setShowLinkForm] = useState(false);
 
   const apiUrl = getApiUrl();
 
   useEffect(() => {
-    loadTerm();
+    if (initialTerm) { setTerm(initialTerm); setLoading(false); setError(null); }
+    else loadTerm();
   }, [slug]);
 
   const loadTerm = async () => {
@@ -196,7 +200,7 @@ export function TermDetail({ slug }: TermDetailProps) {
                 {term.views} views • Created {(() => {
                   try {
                     const date = new Date(term.created_at);
-                    return isNaN(date.getTime()) ? 'Unknown date' : date.toLocaleDateString();
+                    return isNaN(date.getTime()) ? 'Unknown date' : date.toLocaleDateString('en-US', { timeZone: 'UTC' });
                   } catch {
                     return 'Unknown date';
                   }
