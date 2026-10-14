@@ -29,7 +29,9 @@ globalThis.fetch=async(url,opts)=>{
   return new Response(mode==='invalid'?'not json':JSON.stringify(data),{headers:{'content-type':'application/json'}});
 };
 const assets={fetch:async request=>{
-  const path=new URL(request.url).pathname;
+  const requested=new URL(request.url).pathname;
+  if(requested==='/index.html')return new Response(null,{status:308,headers:{location:'/'}});
+  const path=requested==='/'?'/index.html':requested;
   return new Response(await fs.readFile(new URL(`../apps/web/dist${path}`,import.meta.url)),{headers:{'content-type':path.endsWith('.json')?'application/json':'text/html'}});
 }};
 const receipts=[];

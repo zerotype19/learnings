@@ -62,7 +62,7 @@ export async function renderPage(request: Request, env: Env) {
   if (request.method !== 'GET' && request.method !== 'HEAD') return new Response('Method not allowed', { status: 405, headers: { Allow: 'GET, HEAD' } });
   try {
     const asset = (path: string) => env.ASSETS.fetch(new Request(new URL(path, url), { headers: { accept: 'text/html, application/json' } }));
-    const [templateResponse, nonsenseResponse] = await Promise.all([asset('/index.html'), asset('/nonsense.json')]);
+    const [templateResponse, nonsenseResponse] = await Promise.all([asset('/'), asset('/nonsense.json')]);
     if (!templateResponse.ok || !nonsenseResponse.ok) throw new SourceError(503);
     const initial: InitialData = { path: url.pathname, nonsense: await nonsenseResponse.json() };
     if (!Array.isArray(initial.nonsense?.ticker)) throw new SourceError(503);
