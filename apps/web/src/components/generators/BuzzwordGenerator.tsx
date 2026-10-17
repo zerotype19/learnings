@@ -1,3 +1,5 @@
+import { useDialog } from '../../hooks/useDialog';
+import { Feedback, useFeedback } from '../Feedback';
 import React, { useState } from 'react';
 import { getApiUrl } from '../../utils/getApiUrl';
 
@@ -267,6 +269,9 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
 
 // Save to Terms Modal
 function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; scenario: string; onClose: () => void }) {
+  const dialogRef = useDialog(true, onClose);
+  const [savedUrl, setSavedUrl] = useState('');
+  const { feedback, notify } = useFeedback();
   const [definition, setDefinition] = useState('');
   const [example, setExample] = useState('');
   const [tags, setTags] = useState('buzzword,generator');
@@ -347,14 +352,9 @@ function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; s
 
       const data = await response.json();
       
-      // Show success and close modal
-      alert(`"${buzzword}" has been saved to the terms database!`);
-      onClose();
-      
-      // Optionally redirect to the new term
-      if (data.url) {
-        window.open(data.url, '_blank');
-      }
+      notify(`“${buzzword}” was saved to the dictionary.`);
+      const destination = typeof data.url === 'string' ? new URL(data.url, 'https://learnings.org') : null;
+      setSavedUrl(destination?.origin === 'https://learnings.org' ? destination.pathname : '/terms');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to save term');
     } finally {
@@ -364,7 +364,9 @@ function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; s
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Save buzzword" tabIndex={-1} className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90dvh] overflow-y-auto">
+        <Feedback value={feedback} />
+        {savedUrl && <a className="block mb-4 text-brand-600 underline" href={savedUrl}>View saved term</a>}
         <h3 className="text-2xl font-semibold mb-4">Save "{buzzword}" to Terms</h3>
         
         <div className="space-y-4">
@@ -419,7 +421,7 @@ function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; s
             </button>
             <button
               onClick={handleSave}
-              disabled={saving || loading || !definition.trim()}
+              disabled={saving || loading || !!savedUrl || !definition.trim()}
               className="px-6 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg transition-colors disabled:opacity-50"
             >
               {saving ? 'Saving...' : loading ? 'Generating...' : 'Save to Terms'}

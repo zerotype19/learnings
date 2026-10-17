@@ -18,11 +18,11 @@ export function TermsHub() {
         letters: [...new Set<string>(data.terms.map((t: CatalogTerm) => t.title[0].toUpperCase()))].sort() });
     }).catch(() => setError(true));
   }, [initial]);
-  if (!directory) return <main className="max-w-6xl mx-auto p-8"><h1>Corporate Buzzword Dictionary</h1><p>{error ? 'The dictionary is temporarily unavailable. Please reload to try again.' : 'Loading dictionary…'}</p></main>;
+  if (!directory) return <section className="max-w-6xl mx-auto p-8"><h1>Corporate Buzzword Dictionary</h1><p>{error ? 'The dictionary is temporarily unavailable. Please reload to try again.' : 'Loading dictionary…'}</p></section>;
   const { terms, letter, page, total, letters } = directory;
   const pages = Math.ceil(total / PAGE_SIZE);
   const title = `${letter ? `${letter} — ` : ''}Corporate Buzzword Dictionary${page > 1 ? ` — Page ${page}` : ''} | Learnings.org`;
-  return <main className="max-w-6xl mx-auto px-4 py-10">
+  return <section className="max-w-6xl mx-auto px-4 py-10">
     <SEO title={title} description={`Browse ${total} corporate buzzwords${letter ? ` beginning with ${letter}` : ''}, with definitions and related business jargon.${page > 1 ? ` Page ${page}.` : ''}`} canonical={directoryPath(letter, page)} />
     <h1 className="text-4xl font-semibold text-slate-900 mb-4">{letter ? `Corporate buzzwords beginning with ${letter}` : 'Corporate Buzzword Dictionary'}</h1>
     <p className="text-slate-600 mb-6">Decode business jargon with satirical definitions and related terms. Browse {total.toLocaleString('en-US')} entries{page > 1 ? ` — page ${page} of ${pages}` : ''}.</p>
@@ -41,5 +41,5 @@ export function TermsHub() {
       {Array.from({ length: pages }, (_, i) => i + 1).map(n => <a className={`border rounded p-2 ${n === page ? 'bg-brand-600 text-white' : ''}`} key={n} href={directoryPath(letter, n)} aria-current={n === page ? 'page' : undefined}>{n}</a>)}
       {page < pages && <a className="border rounded p-2" href={directoryPath(letter, page + 1)} rel="next">Next</a>}
     </nav>}
-  </main>;
+  </section>;
 }

@@ -1,188 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import type { SearchResult } from '@learnings/lib';
-
+import React, { useEffect, useState } from 'react';
+import { getApiUrl } from '../utils/getApiUrl';
+import { SEO } from '../components/SEO';
+type Result = { title: string; description: string; url: string; type: string };
 export function SearchResults() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [total, setTotal] = useState(0);
-
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://api.learnings.org';
-
-  // Get query from URL parameters
+  const [results, setResults] = useState<Result[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [visible, setVisible] = useState(20);
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchQuery = urlParams.get('q') || '';
-    console.log('SearchResults: URL params:', window.location.search);
-    console.log('SearchResults: Search query:', searchQuery);
-    setQuery(searchQuery);
-    
-    if (searchQuery) {
-      performSearch(searchQuery);
+    const q = new URLSearchParams(window.location.search).get('q')?.trim() || '';
+    setQuery(q);
+    if (!q) { setLoading(false); return; }
+    const controller = new AbortController();
+    async function search() {
+      try {
+        const response = await fetch('/catalog.json', { signal: controller.signal });
+        if (!response.ok) throw new Error('Dictionary unavailable');
+        const catalog = await response.json();
+        const needle = q.toLocaleLowerCase('en-US');
+        const terms = catalog.terms.filter((t: any) => `${t.title} ${t.definition}`.toLocaleLowerCase('en-US').includes(needle));
+        const rank = (title: string) => title.toLocaleLowerCase('en-US') === needle ? 0 : title.toLocaleLowerCase('en-US').startsWith(needle) ? 1 : title.toLocaleLowerCase('en-US').includes(needle) ? 2 : 3;
+        terms.sort((a: any, b: any) => rank(a.title) - rank(b.title) || a.title.localeCompare(b.title));
+        const dictionary = terms.map((t: any) => ({ title: t.title, description: t.definition, url: `/term/${t.slug}`, type: 'Dictionary' }));
+        if (!controller.signal.aborted) { setResults(dictionary); setLoading(false); }
+        // Optional wall matches must not block dictionary search.
+        try {
+          const wall = await fetch(`${getApiUrl()}/api/search?q=${encodeURIComponent(q)}&type=wall&limit=20`, { signal: controller.signal });
+          if (wall.ok) {
+            const data = await wall.json();
+            const matches = (data.items || []).filter((r: any) => r.type === 'wall').map((r: any) => ({ ...r, type: 'Jargon Wall', url: '/wall' }));
+            if (!controller.signal.aborted) setResults([...dictionary, ...matches]);
+          }
+        } catch { /* Dictionary results remain usable when the wall service is unavailable. */ }
+      } catch { if (!controller.signal.aborted) setError('Search is temporarily unavailable. Please reload or browse the dictionary.'); }
+      finally { if (!controller.signal.aborted) setLoading(false); }
     }
+    search();
+    return () => controller.abort();
   }, []);
-
-  const performSearch = async (searchQuery: string) => {
-    if (!searchQuery.trim()) {
-      setResults([]);
-      setTotal(0);
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(searchQuery)}&limit=20`);
-      console.log('SearchResults: API response status:', response.status);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-      
-      const data = await response.json();
-      console.log('SearchResults: API data:', data);
-      setResults(data.items || []);
-      setTotal(data.total || 0);
-    } catch (err) {
-      console.error('Search error:', err);
-      setError('Search failed. Please try again.');
-      setResults([]);
-      setTotal(0);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'term': return '📚';
-      case 'wall': return '📸';
-      case 'generator': return '🤖';
-      case 'challenge': return '🏆';
-      default: return '📄';
-    }
-  };
-
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'term': return 'Term';
-      case 'wall': return 'Wall Post';
-      case 'generator': return 'Generator';
-      case 'challenge': return 'Challenge';
-      default: return 'Content';
-    }
-  };
-
-  const handleResultClick = (result: SearchResult) => {
-    const url = result.url || `/${result.type}/${result.id}`;
-    window.location.href = url;
-  };
-
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      {/* Search Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-ink mb-2">
-          {query ? `Search results for "${query}"` : 'Search'}
-        </h1>
-        {total > 0 && (
-          <p className="text-neutral-600">
-            Found {total} result{total !== 1 ? 's' : ''}
-          </p>
-        )}
-      </div>
-
-      {/* Loading State */}
-      {loading && (
-        <div className="flex items-center justify-center py-12">
-          <div className="animate-spin h-8 w-8 border-2 border-brand-500 border-t-transparent rounded-full"></div>
-          <span className="ml-3 text-neutral-600">Searching...</span>
-        </div>
-      )}
-
-      {/* Error State */}
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-          <p className="text-red-600">{error}</p>
-        </div>
-      )}
-
-      {/* No Results */}
-      {!loading && !error && results.length === 0 && query && (
-        <div className="text-center py-12">
-          <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-xl font-semibold text-ink mb-2">No results found</h3>
-          <p className="text-neutral-600 mb-4">
-            We couldn't find anything matching "{query}"
-          </p>
-          <p className="text-sm text-neutral-500">
-            Try different keywords or check your spelling
-          </p>
-        </div>
-      )}
-
-      {/* Empty State */}
-      {!loading && !error && !query && (
-        <div className="text-center py-12">
-          <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-xl font-semibold text-ink mb-2">Start searching</h3>
-          <p className="text-neutral-600">
-            Enter a search term to find terms, wall posts, and more
-          </p>
-        </div>
-      )}
-
-      {/* Search Results */}
-      {!loading && !error && results.length > 0 && (
-        <div className="space-y-4">
-          {results.map((result) => (
-            <button
-              key={`${result.type}-${result.id}`}
-              onClick={() => handleResultClick(result)}
-              className="w-full text-left p-4 bg-white border border-neutral-200 rounded-lg hover:border-brand-300 hover:shadow-sm transition-all group"
-            >
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0 mt-1">
-                  {getTypeIcon(result.type)}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold text-ink group-hover:text-brand-600 transition-colors">
-                      {result.title}
-                    </h3>
-                    <span className="px-2 py-1 text-xs bg-neutral-100 text-neutral-600 rounded-full">
-                      {getTypeLabel(result.type)}
-                    </span>
-                  </div>
-                  {result.description && (
-                    <p className="text-sm text-neutral-600 line-clamp-2">
-                      {result.description}
-                    </p>
-                  )}
-                  {result.relevance_score && (
-                    <div className="mt-2 text-xs text-neutral-500">
-                      Relevance: {Math.round(result.relevance_score * 100)}%
-                    </div>
-                  )}
-                </div>
-                <div className="flex-shrink-0 text-neutral-400 group-hover:text-brand-500 transition-colors">
-                  →
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Load More Button (if needed) */}
-      {!loading && !error && results.length > 0 && results.length < total && (
-        <div className="text-center mt-8">
-          <button className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors">
-            Load More Results
-          </button>
-        </div>
-      )}
-    </div>
-  );
+  return <section className="mx-auto max-w-4xl py-6">
+    <SEO title={query ? `Search results for ${query}` : 'Search'} description="Search corporate buzzwords and business jargon." canonical="/search" noindex />
+    <h1 className="text-3xl font-semibold mb-5">{query ? `Search results for “${query}”` : 'Search the dictionary'}</h1>
+    <form action="/search" className="flex gap-2 mb-6"><label className="sr-only" htmlFor="search-query">Search words</label><input className="min-w-0 flex-1 border rounded-lg px-4 py-3" id="search-query" type="search" name="q" defaultValue={query} key={query} required /><button className="bg-brand-600 text-white rounded-lg px-4">Search</button></form>
+    {loading && <p role="status">Searching…</p>}
+    {error && <p role="alert" className="text-red-700">{error} <a href="/terms" className="underline">Browse the dictionary</a>.</p>}
+    {!loading && !error && query && <p className="text-slate-600 mb-4" role="status">{results.length ? `${results.length} results. Showing ${Math.min(visible, results.length)}.` : 'No matches. Try a shorter phrase or check the spelling.'}</p>}
+    <div className="space-y-4">{results.slice(0, visible).map((r, i) => <article key={`${r.url}-${i}`} className="bg-white border rounded-xl p-5"><span className="text-xs text-slate-500">{r.type}</span><h2 className="text-xl font-semibold mt-1"><a className="text-brand-600 underline" href={r.url}>{r.title}</a></h2><p className="text-slate-600 mt-2">{r.description?.length > 250 ? r.description.slice(0, 247) + '…' : r.description}</p></article>)}</div>
+    {visible < results.length && <button onClick={() => setVisible(n => n + 20)} className="mt-6 rounded-lg border bg-white px-5 py-3">Show 20 more results</button>}
+    {!query && !loading && <p className="text-slate-600">Enter a word or phrase, or <a className="text-brand-600 underline" href="/terms">browse the A–Z dictionary</a>.</p>}
+  </section>;
 }

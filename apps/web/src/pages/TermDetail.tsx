@@ -1,3 +1,4 @@
+import { Feedback, useFeedback } from '../components/Feedback';
 import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { getShortDescription } from '../utils/textUtils';
@@ -38,6 +39,7 @@ type TermDetailProps = {
 };
 
 export function TermDetail({ slug }: TermDetailProps) {
+  const { feedback, notify } = useFeedback();
   const initial = useInitialData();
   const initialTerm = initial?.term?.slug === slug ? initial.term : undefined;
   const [term, setTerm] = useState<TermDetail | null>(initialTerm || null);
@@ -77,25 +79,6 @@ export function TermDetail({ slug }: TermDetailProps) {
       setError('Failed to load term');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const copyLink = () => {
-    const url = `${window.location.origin}/term/${slug}`;
-    navigator.clipboard.writeText(url);
-    alert('Link copied to clipboard!');
-  };
-
-  const shareLink = () => {
-    const url = `${window.location.origin}/term/${slug}`;
-    if (navigator.share) {
-      navigator.share({
-        title: term?.title,
-        text: term?.definition,
-        url
-      });
-    } else {
-      copyLink();
     }
   };
 
@@ -154,6 +137,7 @@ export function TermDetail({ slug }: TermDetailProps) {
           }
         }}
       />
+      <Feedback value={feedback} />
       <div className="min-h-screen bg-neutral-50">
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Header */}
@@ -239,7 +223,7 @@ export function TermDetail({ slug }: TermDetailProps) {
                 </button>
               </div>
 
-              {showLinkForm && <LinkSubmissionForm termId={term.id} onSubmit={() => setShowLinkForm(false)} />}
+              {showLinkForm && <LinkSubmissionForm termId={term.id} onSubmit={() => { setShowLinkForm(false); notify("Example submitted for review."); }} />}
 
               {(!term.links || term.links.length === 0) ? (
                 <div className="text-center py-8 text-neutral-500">
@@ -312,13 +296,13 @@ export function TermDetail({ slug }: TermDetailProps) {
                   onClick={() => window.location.href = '/generators'}
                   className="w-full px-3 py-2 text-sm border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors"
                 >
-                  📝 Generate LinkedIn Post
+                  📝 Open Writing Tools
                 </button>
                 <button
                   onClick={() => window.location.href = '/bingo'}
                   className="w-full px-3 py-2 text-sm border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors"
                 >
-                  🎯 Add to Bingo Card
+                  🎯 Play Buzzword Bingo
                 </button>
               </div>
             </div>
@@ -331,6 +315,7 @@ export function TermDetail({ slug }: TermDetailProps) {
 }
 
 function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: () => void }) {
+  const { feedback, notify } = useFeedback();
   const [url, setUrl] = useState('');
   const [platform, setPlatform] = useState('other');
   const [title, setTitle] = useState('');
@@ -358,7 +343,7 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
       });
 
       if (response.ok) {
-        alert('Link submitted for review!');
+        notify('Link submitted for review!');
         setUrl('');
         setTitle('');
         setNote('');
@@ -368,7 +353,7 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
       }
     } catch (error) {
       console.error('Link submission failed:', error);
-      alert('Failed to submit link. Please try again.');
+      notify('Failed to submit link. Please try again.', 'error');
     } finally {
       setSubmitting(false);
     }
@@ -376,6 +361,7 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
 
   return (
     <form onSubmit={handleSubmit} className="border border-neutral-200 rounded-xl p-4 mb-4 bg-neutral-50">
+      <Feedback value={feedback} />
       <h4 className="font-medium mb-3">Add an example from the wild</h4>
       
       <div className="space-y-3">

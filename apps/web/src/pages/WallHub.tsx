@@ -1,3 +1,4 @@
+import { Feedback, useFeedback } from '../components/Feedback';
 import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { listWall, vote, getPopularTags, getVoteCount } from '../lib/api';
@@ -30,6 +31,7 @@ type FilterState = {
 };
 
 export function WallHub() {
+  const { feedback, notify } = useFeedback();
   const initial = useInitialData();
   const firstLoad = React.useRef(true);
   const [posts, setPosts] = useState<WallPost[]>(initial?.wall?.items || []);
@@ -106,7 +108,7 @@ export function WallHub() {
       }
     } catch (error) {
       console.error('Vote failed:', error);
-      alert('Failed to vote. Please try again.');
+      notify('Failed to vote. Please try again.', 'error');
     }
   };
 
@@ -128,6 +130,7 @@ export function WallHub() {
   return (
     <>
       <SEO {...SEOConfigs.wall} />
+      <Feedback value={feedback} />
       <div className="min-h-screen bg-neutral-50">
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
@@ -259,28 +262,18 @@ type WallCardProps = {
 };
 
 function WallCard({ post, onVote, getDomainFromUrl }: WallCardProps) {
+  const { feedback, share } = useFeedback();
   const [showFullContent, setShowFullContent] = useState(false);
   
   const domain = getDomainFromUrl(post.source_url);
   const description = post.og_desc || post.body || '';
   const shouldTruncate = description.length > 200;
 
-  const handleShare = () => {
-    const url = `${window.location.origin}/wall`;
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        text: description,
-        url
-      });
-    } else {
-      navigator.clipboard.writeText(url);
-      alert('Link copied to clipboard!');
-    }
-  };
+  const handleShare = () => share({ title: post.title, text: description, url: post.source_url });
 
   return (
     <div className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+      <Feedback value={feedback} />
       {/* Source Badge */}
       <div className="flex items-center justify-between mb-3">
         <a

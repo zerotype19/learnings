@@ -1,7 +1,7 @@
+import { Feedback, useFeedback } from '../components/Feedback';
 import React, { useState } from 'react';
 import { submitWallPost } from '../lib/api';
 import { SEO, SEOConfigs } from '../components/SEO';
-import { burstAt } from '../utils/confetti';
 
 type SubmitTab = 'term' | 'wall';
 
@@ -67,6 +67,7 @@ export function Submit() {
 }
 
 function TermSubmissionForm() {
+  const { feedback, notify, clearFeedback } = useFeedback();
   const [formData, setFormData] = useState({
     title: '',
     definition: '',
@@ -83,6 +84,8 @@ function TermSubmissionForm() {
     e.preventDefault();
     if (!formData.title.trim() || !formData.definition.trim() || !formData.email.trim()) return;
 
+    if (submitting) return;
+    clearFeedback();
     setSubmitting(true);
     try {
       // Parse tags and links
@@ -105,13 +108,8 @@ function TermSubmissionForm() {
 
       if (response.ok) {
         const result = await response.json();
-        alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
+        notify(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
         
-        // Add confetti celebration
-        const button = document.querySelector('button[type="submit"]') as HTMLElement;
-        if (button) {
-          burstAt(button, { count: 30, duration: 800 });
-        }
         
         setFormData({
           title: '',
@@ -127,7 +125,7 @@ function TermSubmissionForm() {
       }
     } catch (error) {
       console.error('Term submission failed:', error);
-      alert('Failed to submit term. Please check your input and try again.');
+      notify('Failed to submit term. Please check your input and try again.', 'error');
     } finally {
       setSubmitting(false);
     }
@@ -164,6 +162,7 @@ function TermSubmissionForm() {
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        <Feedback value={feedback} />
         <div>
           <label className="block text-sm font-medium mb-1">Term *</label>
           <input
@@ -294,6 +293,7 @@ function TermSubmissionForm() {
 }
 
 function WallSubmissionForm() {
+  const { feedback, notify, clearFeedback } = useFeedback();
   const [formData, setFormData] = useState({
     title: '',
     body: '',
@@ -309,10 +309,12 @@ function WallSubmissionForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title.trim() || !formData.source_url.trim() || !formData.email.trim()) {
-      alert('Please fill in all required fields (Title, Email, and Source URL)');
+      notify('Please fill in all required fields (Title, Email, and Source URL)', 'error');
       return;
     }
 
+    if (submitting) return;
+    clearFeedback();
     setSubmitting(true);
     try {
       // Parse tags and suggested terms
@@ -328,7 +330,6 @@ function WallSubmissionForm() {
         suggested_terms: suggestedTerms.length > 0 ? suggestedTerms : undefined
       };
 
-      console.log('Submitting wall post:', submissionData);
 
       const response = await fetch(`${apiUrl}/api/submissions/wall/submit`, {
         method: 'POST',
@@ -339,13 +340,8 @@ function WallSubmissionForm() {
 
       if (response.ok) {
         const result = await response.json();
-        alert(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
+        notify(result.message || 'Confirmation email sent! Please check your email to complete your submission.');
         
-        // Add confetti celebration
-        const button = document.querySelector('button[type="submit"]') as HTMLElement;
-        if (button) {
-          burstAt(button, { count: 30, duration: 800 });
-        }
       } else {
         const error = await response.json();
         console.error('Wall submission error:', error);
@@ -361,7 +357,7 @@ function WallSubmissionForm() {
       });
     } catch (error) {
       console.error('Wall submission failed:', error);
-      alert('Failed to submit wall post. Please check your input and try again.');
+      notify('Failed to submit wall post. Please check your input and try again.', 'error');
     } finally {
       setSubmitting(false);
     }
@@ -375,6 +371,7 @@ function WallSubmissionForm() {
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        <Feedback value={feedback} />
         <div>
           <label className="block text-sm font-medium mb-1">Title *</label>
           <input
