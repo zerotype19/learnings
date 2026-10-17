@@ -68,6 +68,7 @@ export async function renderPage(request: Request, env: Env) {
     return new Response(response.body, { status: response.status, headers });
   }
   if (url.pathname.length > 1 && url.pathname.endsWith('/')) return Response.redirect(new URL(url.pathname.slice(0, -1) + url.search, url).href, 301);
+  if (/^\/bingo\/[a-zA-Z0-9_-]+$/.test(url.pathname)) return Response.redirect(new URL('/bingo?board=' + url.pathname.split('/')[2], url).href, 301);
   if (url.pathname.startsWith('/wall/')) return Response.redirect(new URL('/wall', url).href, 301);
   if (url.pathname.startsWith('/l/')) return env.ASSETS.fetch(request);
   if (!publicRoutes[url.pathname] && !match && url.pathname !== '/sitemap.xml') return new Response(request.method === 'HEAD' ? null : '<!doctype html><html lang="en"><head><title>Page not found | Learnings.org</title><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><main><h1>Page not found</h1><p>This page does not exist.</p><a href="/terms">Browse the buzzword dictionary</a></main></body></html>', { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' } });
@@ -92,10 +93,9 @@ export async function renderPage(request: Request, env: Env) {
       const xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + entries.map(e => `<url><loc>${escape('https://learnings.org' + e.path)}</loc>${e.modified ? `<lastmod>${e.modified}</lastmod>` : ''}</url>`).join('') + '</urlset>';
       return new Response(request.method === 'HEAD' ? null : xml, { headers: { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=300' } });
     }
-    const [templateResponse, nonsenseResponse] = await Promise.all([asset('/'), asset('/nonsense.json')]);
-    if (!templateResponse.ok || !nonsenseResponse.ok) throw new SourceError(503);
-    const initial: InitialData = { path: url.pathname, nonsense: await nonsenseResponse.json() };
-    if (!Array.isArray(initial.nonsense?.ticker)) throw new SourceError(503);
+    const templateResponse = await asset('/');
+    if (!templateResponse.ok) throw new SourceError(503);
+    const initial: InitialData = { path: url.pathname };
     let title = publicRoutes[url.pathname]?.title || SEOConfigs.home.title;
     let description = publicRoutes[url.pathname]?.description || SEOConfigs.home.description;
     let canonical = `https://learnings.org${url.pathname}`;
@@ -175,6 +175,7 @@ export async function renderPage(request: Request, env: Env) {
     headers.set('content-type', 'text/html; charset=utf-8');
     headers.set('cache-control', 'public, max-age=0, s-maxage=60');
     headers.set('x-learnings-source', 'public-pages-v2');
+    if (url.pathname === '/bingo' && url.searchParams.has('board')) headers.set('x-robots-tag', 'noindex, follow');
     for (const name of ['etag', 'content-length', 'content-encoding', 'last-modified']) headers.delete(name);
     return new Response(request.method === 'HEAD' ? null : html, { status: 200, headers });
   } catch (error) {

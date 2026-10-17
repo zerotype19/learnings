@@ -40,10 +40,11 @@ for (const path of ['/about','/privacy','/terms-of-service','/contact','/submit'
   assert.ok(!html.includes('<div id="root"></div>'), path);
 }
 for (const path of ['/missing-page','/terms?page=999','/terms?letter=XX','/terms?page=-1','/generators/missing']) assert.equal((await request(path)).status, 404, path);
-for (const [path, destination] of [['/terms?page=1','/terms'],['/terms?letter=a','/terms?letter=A'],['/about/','/about'],['/wall/old-article','/wall']]) {
+for (const [path, destination] of [['/terms?page=1','/terms'],['/terms?letter=a','/terms?letter=A'],['/about/','/about'],['/wall/old-article','/wall'],['/bingo/example123','/bingo?board=example123']]) {
   const r = await request(path); assert.equal(r.status, 301, path); assert.equal(r.headers.get('location'), 'https://learnings.org' + destination);
 }
 assert.equal(await (await request('/terms', 'HEAD')).text(), '');
 assert.equal((await request('/terms', 'POST')).status, 405);
 assert.equal((await request('/search?q=test')).headers.get('X-Robots-Tag'), 'noindex, follow');
+assert.equal((await request('/bingo?board=example123')).headers.get('X-Robots-Tag'), 'noindex, follow');
 console.log(`PASS: ${catalog.terms.length} terms reachable, ${urls.length} sitemap URLs, all directory pages, static SSR, canonicals, redirects, status codes, HEAD and noindex.`);

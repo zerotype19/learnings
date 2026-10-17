@@ -1,3 +1,4 @@
+import { Feedback, useFeedback } from '../components/Feedback';
 import React, { useState, useEffect } from 'react';
 import { SEO, SEOConfigs } from '../components/SEO';
 import { getApiUrl } from '../utils/getApiUrl';
@@ -5,6 +6,7 @@ import { getApiUrl } from '../utils/getApiUrl';
 type BingoSquare = { title: string; slug: string; isFree: boolean };
 
 export function Bingo() {
+  const { feedback, notify, share, clearFeedback } = useFeedback();
   const [board, setBoard] = useState<BingoSquare[]>([]);
   const [boardId, setBoardId] = useState<string>('');
   const [marked, setMarked] = useState<Set<number>>(new Set());
@@ -13,25 +15,45 @@ export function Bingo() {
   
   // Auto-generate board on component mount
   useEffect(() => {
-    generateBoard();
+    const id = new URLSearchParams(window.location.search).get('board');
+    if (id) loadBoard(id); else generateBoard();
   }, []);
   
+  const loadBoard = async (id: string) => {
+    setLoading(true); clearFeedback();
+    try {
+      if (!/^[a-zA-Z0-9_-]{1,64}$/.test(id)) throw new Error('Invalid board');
+      const response = await fetch(`${apiUrl}/v1/bingo/${encodeURIComponent(id)}`);
+      if (!response.ok) throw new Error('Board unavailable');
+      const data = await response.json();
+      if (!Array.isArray(data.board) || data.board.length !== 25) throw new Error('Invalid board');
+      setBoard(data.board); setBoardId(data.boardId); setMarked(new Set([12]));
+    } catch { notify('This shared board is unavailable or has expired. Shared boards last seven days. You can generate a new one below.', 'error'); }
+    finally { setLoading(false); }
+  };
+
   const generateBoard = async () => {
+    if (loading) return;
+    clearFeedback();
     setLoading(true);
     try {
       const response = await fetch(apiUrl + '/v1/bingo/generate');
+      if (!response.ok) throw new Error('Board generation failed');
       const data = await response.json();
+      if (!Array.isArray(data.board) || data.board.length !== 25) throw new Error('Invalid board');
       setBoard(data.board);
       setBoardId(data.boardId);
+      if (new URLSearchParams(window.location.search).has("board")) window.history.replaceState({}, "", `/bingo?board=${encodeURIComponent(data.boardId)}`);
       setMarked(new Set([12])); // Mark the FREE space
     } catch (error) {
-      console.error('Failed to generate bingo board:', error);
+      notify('Could not generate a board. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
   };
   
   const toggleSquare = (index: number) => {
+    if (index === 12) return;
     const newMarked = new Set(marked);
     if (newMarked.has(index)) {
       newMarked.delete(index);
@@ -41,20 +63,8 @@ export function Bingo() {
     setMarked(newMarked);
   };
   
-  const shareBoard = () => {
-    const url = `${location.origin}/bingo/${boardId}`;
-    if (navigator.share) {
-      navigator.share({
-        title: 'Corporate Buzzword Bingo',
-        text: 'Test your corporate jargon knowledge!',
-        url
-      });
-    } else {
-      navigator.clipboard.writeText(url);
-      alert('Bingo board link copied to clipboard!');
-    }
-  };
-  
+  const shareBoard = () => share({ title: 'Corporate Buzzword Bingo', text: 'Play this buzzword bingo board. Shared boards last seven days.', url: `${window.location.origin}/bingo?board=${encodeURIComponent(boardId)}` });
+
   const checkWin = () => {
     if (marked.size < 5) return false;
     
@@ -114,6 +124,7 @@ export function Bingo() {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 py-8">
+          <Feedback value={feedback} />
           {!board.length && loading ? (
             <div className="text-center">
               <div className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 text-white">
@@ -144,6 +155,8 @@ export function Bingo() {
             {board.map((square, index) => (
               <button
                 key={index}
+                aria-pressed={marked.has(index)}
+                aria-label={`${square.title}${square.isFree ? " (free space)" : ""}`}
                 onClick={() => toggleSquare(index)}
                 className={`
                   aspect-square p-2 text-xs font-medium rounded-lg border-2 transition-all
@@ -159,9 +172,11 @@ export function Bingo() {
             ))}
           </div>
           
-          <div className="text-center space-x-4">
+          <p className="text-center text-sm text-slate-500 mb-4">Shared boards are available for seven days.</p>
+          <div className="flex flex-wrap justify-center gap-3">
             <button 
               onClick={generateBoard}
+              disabled={loading}
               className="rounded-xl border px-4 py-2 hover:bg-neutral-50 transition-colors"
             >
               🎲 New Board

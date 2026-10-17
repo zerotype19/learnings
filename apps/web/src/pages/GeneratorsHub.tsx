@@ -1,3 +1,4 @@
+import { Feedback, useFeedback } from '../components/Feedback';
 import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { getGenerators, runGenerator, trackEvent } from '../lib/api';
@@ -23,6 +24,7 @@ type GeneratorRun = {
 };
 
 export function GeneratorsHub() {
+  const { feedback, notify, copy, clearFeedback } = useFeedback();
   const initial = useInitialData();
   const [generators, setGenerators] = useState<Generator[]>(initial?.generators || []);
   const [activeGenerator, setActiveGenerator] = useState<string>(initial?.generators?.[0]?.slug || '');
@@ -64,6 +66,8 @@ export function GeneratorsHub() {
   const handleGenerate = async () => {
     if (!activeGenerator || !inputs || Object.keys(inputs).length === 0) return;
 
+    if (loading) return;
+    clearFeedback();
     setLoading(true);
     try {
       const generator = generators.find(g => g.slug === activeGenerator);
@@ -85,15 +89,14 @@ export function GeneratorsHub() {
 
     } catch (error) {
       console.error('Generation failed:', error);
-      alert('Generation failed. Please try again.');
+      notify('Generation failed. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
   };
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    alert('Copied to clipboard!');
+    void copy(text);
   };
 
   const getGenerateButtonText = (generatorName: string) => {
@@ -158,6 +161,7 @@ export function GeneratorsHub() {
   return (
     <>
       <SEO {...SEOConfigs.generators} />
+      <Feedback value={feedback} />
       <div className="min-h-screen bg-slate-50">
         {/* Header */}
         <div className="bg-white border-b border-slate-200">

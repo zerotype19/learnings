@@ -1,3 +1,5 @@
+import { useDialog } from '../../hooks/useDialog';
+import { Feedback, useFeedback } from '../Feedback';
 import React, { useState } from 'react';
 
 type Generator = {
@@ -16,6 +18,8 @@ type GeneratorModalProps = {
 };
 
 export function GeneratorModal({ generator, isOpen, onClose, initialInputs = {} }: GeneratorModalProps) {
+  const dialogRef = useDialog(isOpen, onClose);
+  const { feedback, notify, copy, share } = useFeedback();
   const [inputs, setInputs] = useState<Record<string, string>>(initialInputs);
   const [options, setOptions] = useState<Record<string, any>>({});
   const [output, setOutput] = useState<string>('');
@@ -31,7 +35,7 @@ export function GeneratorModal({ generator, isOpen, onClose, initialInputs = {} 
     const schema = generator.options_schema || {};
     for (const [key, config] of Object.entries(schema)) {
       if (config.required && !inputs[key]?.trim()) {
-        alert(`${config.label || key} is required`);
+        notify(`${config.label || key} is required`, 'error');
         return;
       }
     }
@@ -77,21 +81,10 @@ export function GeneratorModal({ generator, isOpen, onClose, initialInputs = {} 
   };
 
   const copyOutput = () => {
-    navigator.clipboard.writeText(output);
-    alert('Output copied to clipboard!');
+    void copy(output);
   };
 
-  const shareOutput = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: `${generator.name} Output`,
-        text: output.substring(0, 200),
-        url: window.location.href
-      });
-    } else {
-      copyOutput();
-    }
-  };
+  const shareOutput = () => share({ title: `${generator.name} Output`, text: output.substring(0, 200), url: window.location.href });
 
   if (!isOpen) return null;
 
@@ -99,7 +92,8 @@ export function GeneratorModal({ generator, isOpen, onClose, initialInputs = {} 
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Writing generator" tabIndex={-1} className="bg-white rounded-2xl max-w-2xl w-full max-h-[90dvh] overflow-y-auto">
+        <Feedback value={feedback} />
         {/* Header */}
         <div className="border-b p-6">
           <div className="flex justify-between items-start">

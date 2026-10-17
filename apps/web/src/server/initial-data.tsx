@@ -1,9 +1,7 @@
 import React, { createContext, useContext } from 'react';
-import type { NonsenseData } from '../types/nonsense';
 
 export type InitialData = {
   path: string;
-  nonsense: NonsenseData;
   letters?: string[];
   directory?: { terms: any[]; letter: string; page: number; total: number; letters: string[] };
   wall?: { items: any[]; nextCursor?: string };

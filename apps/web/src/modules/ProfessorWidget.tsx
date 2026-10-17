@@ -1,3 +1,5 @@
+import { useDialog } from '../hooks/useDialog';
+import { Feedback, useFeedback } from '../components/Feedback';
 import React, { useState } from 'react';
 
 type Message = {
@@ -7,7 +9,9 @@ type Message = {
 };
 
 export function ProfessorWidget() {
+  const { feedback, notify, copy, clearFeedback } = useFeedback();
   const [open, setOpen] = useState(false);
+  const dialogRef = useDialog(open, () => setOpen(false));
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
@@ -17,6 +21,7 @@ export function ProfessorWidget() {
   React.useEffect(() => {
     const handlePrefill = (e: CustomEvent) => {
       setInput(e.detail);
+      setMode('translate');
       setOpen(true);
     };
     window.addEventListener('professor:prefill', handlePrefill as EventListener);
@@ -24,7 +29,8 @@ export function ProfessorWidget() {
   }, []);
 
   async function ask() {
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
+    clearFeedback();
     
     const userMessage: Message = {
       role: 'user',
@@ -54,12 +60,14 @@ export function ProfessorWidget() {
             conversation_history: conversationHistory
           }) 
         });
+        if (!r.ok) throw new Error(`Request failed (${r.status})`);
         const d = await r.json();
         
+        if (typeof d.response !== 'string') throw new Error('Invalid response');
         const assistantMessage: Message = {
           role: 'assistant',
           content: d.response,
-          timestamp: d.timestamp
+          timestamp: d.timestamp || new Date().toISOString()
         };
         
         setMessages(prev => [...prev, assistantMessage]);
@@ -71,8 +79,10 @@ export function ProfessorWidget() {
           headers: { 'Content-Type': 'application/json' }, 
           body: JSON.stringify({ text: input }) 
         });
+        if (!r.ok) throw new Error(`Request failed (${r.status})`);
         const d = await r.json();
         
+        if (![d.original_jargon, d.plain_english, d.normal_language].every(value => typeof value === "string")) throw new Error("Invalid translation");
         const assistantMessage: Message = {
           role: 'assistant',
           content: `**Original Jargon:** ${d.original_jargon}\n\n**Plain English:** ${d.plain_english}\n\n**Normal Language:** ${d.normal_language}`,
@@ -81,17 +91,13 @@ export function ProfessorWidget() {
         
         setMessages(prev => [...prev, assistantMessage]);
       }
+      setInput('');
     } catch (error) {
       console.error('Request failed:', error);
-      const errorMessage: Message = {
-        role: 'assistant',
-        content: "I'm experiencing a paradigm shift in my neural networks right now. Could you try that again? 🤖",
-        timestamp: new Date().toISOString()
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages(prev => prev.filter(message => message !== userMessage));
+      notify('The professor is temporarily unavailable. Your text is still here; please try again.', 'error');
     } finally {
       setLoading(false);
-      setInput('');
     }
   }
 
@@ -100,8 +106,7 @@ export function ProfessorWidget() {
   };
 
   const copyMessage = (content: string) => {
-    navigator.clipboard.writeText(content);
-    alert('Message copied to clipboard!');
+    void copy(content);
   };
 
   return (
@@ -126,7 +131,7 @@ export function ProfessorWidget() {
             }
           }}
         >
-          <div className="w-full max-w-2xl h-[600px] rounded-2xl border bg-white shadow-xl flex flex-col">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Corporate Professor" tabIndex={-1} className="w-full max-w-2xl h-[600px] max-h-[90dvh] rounded-2xl border bg-white shadow-xl flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b">
               <div>
@@ -142,6 +147,7 @@ export function ProfessorWidget() {
                   Clear
                 </button>
                 <button 
+                  aria-label="Close professor"
                   onClick={() => setOpen(false)}
                   className="text-neutral-400 hover:text-neutral-600 text-xl"
                 >
@@ -150,6 +156,7 @@ export function ProfessorWidget() {
               </div>
             </div>
 
+            <div className="px-4"><Feedback value={feedback} /></div>
             {/* Mode Toggle */}
             <div className="p-3 border-b">
               <div className="flex bg-gray-100 rounded-lg p-1">
@@ -225,11 +232,12 @@ export function ProfessorWidget() {
             <div className="p-4 border-t">
               <div className="flex gap-2">
                 <input
-                  className="flex-1 border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-100 focus:border-brand-300"
+                  className="min-w-0 flex-1 border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-100 focus:border-brand-300"
+                  aria-label={mode === 'chat' ? 'Message for the professor' : 'Jargon to translate'}
                   placeholder={mode === 'chat' ? "Ask me anything..." : "Paste corporate jargon here..."}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && ask()}
+                  onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing && ask()}
                   disabled={loading}
                 />
                 <button 

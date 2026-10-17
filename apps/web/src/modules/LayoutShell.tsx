@@ -1,295 +1,55 @@
-import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { SearchBox } from '../components/SearchBox';
-import { BuzzwordTicker } from '../components/BuzzwordTicker';
-import type { NonsenseData } from '../types/nonsense';
-
-type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'about' | 'privacy' | 'terms' | 'contact';
 
 interface LayoutShellProps {
-  currentPage: Page;
-  onPageChange: (page: Page) => void;
+  currentPage: string;
+  onPageChange: (page: any) => void;
   children: React.ReactNode;
 }
-
-export function LayoutShell({ currentPage, onPageChange, children }: LayoutShellProps) {
+const navigation = [
+  { id: 'home-v2', label: 'Home', href: '/' },
+  { id: 'terms-hub', label: 'Dictionary', href: '/terms' },
+  { id: 'wall-hub', label: 'Jargon Wall', href: '/wall' },
+  { id: 'bingo', label: 'Bingo', href: '/bingo' },
+  { id: 'generators-hub', label: 'Tools', href: '/generators' },
+  { id: 'submit-v2', label: 'Contribute', href: '/submit' },
+  { id: 'search', label: 'Search', href: '/search' }
+];
+export function LayoutShell({ currentPage, children }: LayoutShellProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [nonsenseData, setNonsenseData] = useState<NonsenseData | null>(useInitialData()?.nonsense || null);
-  
-  // Check for admin access
   const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => setIsAdmin(new URLSearchParams(window.location.search).get('admin') === '1'), []);
-
-  // Track page view for analytics
-  const trackPageView = (path: string) => {
-    try {
-      // Track for Optiview Analytics
-      if (typeof window !== 'undefined' && (window as any).optiview) {
-        (window as any).optiview('track', 'page_view', {
-          url: window.location.origin + path,
-          path: path,
-          title: document.title
-        });
-      }
-      
-      // Track for Google Analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('config', 'G-85HGDX0LS9', {
-          page_path: path
-        });
-      }
-    } catch (error) {
-      console.warn('Analytics tracking error:', error);
-    }
-  };
-
-  // Load nonsense data
+  const items = isAdmin ? [...navigation, { id: 'admin-v2', label: 'Admin', href: '/admin07932' }] : navigation;
+  const active = (id: string) => currentPage === id || (id === 'terms-hub' && currentPage === 'term-detail') || (id === 'generators-hub' && currentPage === 'buzzword-generator');
   useEffect(() => {
-    const loadNonsenseData = async () => {
-      try {
-        const response = await fetch('/nonsense.json');
-        const data: NonsenseData = await response.json();
-        setNonsenseData(data);
-        
-      } catch (error) {
-        console.error('Failed to load nonsense data:', error);
-      }
-    };
-
-    if (!nonsenseData) loadNonsenseData();
+    const close = (event: KeyboardEvent) => { if (event.key === 'Escape') setMobileMenuOpen(false); };
+    window.addEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', close);
   }, []);
-
-  const navigation = [
-    { id: 'home-v2', label: 'Home', icon: '🏠' },
-    { id: 'terms-hub', label: 'Terms', icon: '📚' },
-    { id: 'wall-hub', label: 'Wall', icon: '📸' },
-    { id: 'bingo', label: 'Bingo', icon: '🎯' },
-    { id: 'generators-hub', label: 'Generators', icon: '📝' },
-    { id: 'submit-v2', label: 'Submit', icon: '💡' },
-    ...(isAdmin ? [{ id: 'admin-v2', label: 'Admin', icon: '🛡️' }] : [])
-  ];
-
-  return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Sticky Header */}
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <a 
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onPageChange('home-v2');
-            }}
-            className="flex items-center hover:opacity-80 transition-opacity -m-2 p-2"
-          >
-            <img 
-              src="/learnings_dot_org_logo.png" 
-              alt="Learnings Dot Org" 
-              className="h-14 w-auto"
-            />
-          </a>
-          
-          {/* Global Search */}
-          <div className="hidden md:block flex-1 max-w-sm mx-8">
-            <SearchBox
-              onNavigate={(url) => {
-                if (url.startsWith('/search')) {
-                  // Use pushState to navigate to search page
-                  window.history.pushState({}, '', url);
-                  onPageChange('search');
-                  setTimeout(() => trackPageView(url), 100);
-                } else {
-                  // Handle internal navigation
-                  const path = url.replace(/^\/+/, '');
-                  if (path === '') {
-                    onPageChange('home-v2');
-                  } else if (path.startsWith('term/')) {
-                    // Extract slug from /term/slug URL
-                    const slug = path.replace('term/', '');
-                    window.history.pushState({}, '', url);
-                    onPageChange('term-detail');
-                    // Set the slug parameter for the term detail page
-                    window.dispatchEvent(new CustomEvent('route-params', { 
-                      detail: { slug } 
-                    }));
-                    // Track the specific term page view (with small delay)
-                    setTimeout(() => trackPageView(url), 100);
-                  } else if (path === 'wall') {
-                    onPageChange('wall-hub');
-                  } else if (path === 'generators') {
-                    onPageChange('generators-hub');
-                  } else {
-                    window.location.href = url;
-                  }
-                }
-              }}
-              placeholder="Search terms, wall posts..."
-            />
-          </div>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden gap-2 sm:flex">
-            {navigation.map((nav) => {
-              // Map page IDs to URL paths
-              const getHref = (id: string) => {
-                switch (id) {
-                  case 'home-v2': return '/';
-                  case 'terms-hub': return '/terms';
-                  case 'wall-hub': return '/wall';
-                  case 'bingo': return '/bingo';
-                  case 'generators-hub': return '/generators';
-                  case 'submit-v2': return '/submit';
-                  case 'admin-v2': return '/admin07932';
-                  default: return '/';
-                }
-              };
-
-              const isTermsHub = nav.id === 'terms-hub';
-              const isActive = currentPage === nav.id;
-
-              return (
-                <a
-                  key={nav.id}
-                  href={getHref(nav.id)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onPageChange(nav.id as Page);
-                  }}
-                  className={`inline-flex items-center gap-2 rounded-xl2 px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                    isTermsHub && isActive
-                      ? 'bg-brand text-white shadow-soft hover:shadow-lg hover:-translate-y-0.5'
-                      : isActive
-                        ? 'bg-brand-100 text-brand-700' 
-                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                  }`}
-                >
-                  <span className="sm:hidden">{nav.icon}</span>
-                  <span className="hidden sm:inline">{nav.label}</span>
-                </a>
-              );
-            })}
-          </nav>
-          
-          {/* Right Actions */}
-          <div className="flex items-center gap-3">
-            {/* Mobile hamburger */}
-            <button 
-              className="sm:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              ☰
-            </button>
-          </div>
-        </div>
-        
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="border-t border-slate-200 bg-white sm:hidden">
-            <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-              <div className="grid grid-cols-2 gap-3">
-                {navigation.map((nav) => {
-                  // Map page IDs to URL paths
-                  const getHref = (id: string) => {
-                    switch (id) {
-                      case 'home-v2': return '/';
-                      case 'terms-hub': return '/terms';
-                      case 'wall-hub': return '/wall';
-                      case 'bingo': return '/bingo';
-                      case 'generators-hub': return '/generators';
-                      case 'submit-v2': return '/submit';
-                      case 'admin-v2': return '/admin07932';
-                      default: return '/';
-                    }
-                  };
-
-                  const isTermsHub = nav.id === 'terms-hub';
-                  const isActive = currentPage === nav.id;
-
-                  return (
-                    <a
-                      key={nav.id}
-                      href={getHref(nav.id)}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        onPageChange(nav.id as Page);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`inline-flex items-center gap-2 rounded-xl2 px-4 py-3 text-sm font-medium transition-all duration-200 ${
-                        isTermsHub && isActive
-                          ? 'bg-brand text-white shadow-soft'
-                          : isActive
-                            ? 'bg-brand-100 text-brand-700' 
-                            : 'text-slate-600 hover:bg-slate-100'
-                      }`}
-                    >
-                      {nav.icon} {nav.label}
-                    </a>
-                  );
-                })}
-              </div>
-            </nav>
-          </div>
-        )}
-      </header>
-      
-      {/* Buzzword Ticker */}
-      {nonsenseData?.ticker && (
-        <BuzzwordTicker items={nonsenseData.ticker} />
-      )}
-      
-      {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        {children}
-      </main>
-      
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex justify-center gap-8 text-sm text-slate-600 mb-6">
-            <a 
-              href="/about" 
-              onClick={(e) => { e.preventDefault(); onPageChange('about'); }}
-              className="hover:text-slate-900 transition-colors"
-            >
-              About
-            </a>
-            <a 
-              href="/generators/buzzword" 
-              onClick={(e) => { e.preventDefault(); onPageChange('buzzword-generator'); }}
-              className="hover:text-slate-900 transition-colors font-medium text-brand-600"
-            >
-              🎯 Buzzword Generator
-            </a>
-            <a 
-              href="/contact" 
-              onClick={(e) => { e.preventDefault(); onPageChange('contact'); }}
-              className="hover:text-slate-900 transition-colors"
-            >
-              Contact
-            </a>
-            <a 
-              href="/terms-of-service"
-              onClick={(e) => { e.preventDefault(); onPageChange('terms'); }}
-              className="hover:text-slate-900 transition-colors"
-            >
-              Terms
-            </a>
-            <a 
-              href="/privacy" 
-              onClick={(e) => { e.preventDefault(); onPageChange('privacy'); }}
-              className="hover:text-slate-900 transition-colors"
-            >
-              Privacy
-            </a>
-          </div>
-          
-          <div className="text-center text-sm text-slate-500">
-            © 2008-2025 Learnings Dot Org — Speak fluent corporate. Ironically.
-          </div>
-        </div>
-      </footer>
-      
-    </div>
-  );
+  return <div className="min-h-screen bg-slate-50">
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
+      <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <a href="/" className="shrink-0 p-1" aria-label="Learnings.org home"><img src="/learnings_dot_org_logo.png" alt="Learnings Dot Org" width="959" height="351" className="h-12 w-auto" /></a>
+        <div className="hidden xl:block flex-1 max-w-xs"><SearchBox placeholder="Search the dictionary…" /></div>
+        <nav aria-label="Main navigation" className="hidden lg:flex gap-1">
+          {items.map(item => <a key={item.id} href={item.href} aria-current={active(item.id) ? 'page' : undefined} className={`rounded-xl px-3 py-2 text-sm font-medium ${active(item.id) ? 'bg-brand-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{item.label}</a>)}
+        </nav>
+        <button type="button" aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" className="lg:hidden rounded-lg border px-3 py-2 text-slate-700" onClick={() => setMobileMenuOpen(v => !v)}>{mobileMenuOpen ? 'Close' : 'Menu'}</button>
+      </div>
+      {mobileMenuOpen && <nav id="mobile-navigation" aria-label="Mobile navigation" className="lg:hidden border-t p-4">
+        <SearchBox placeholder="Search the dictionary…" />
+        <div className="grid grid-cols-2 gap-2 mt-4">{items.map(item => <a key={item.id} href={item.href} aria-current={active(item.id) ? 'page' : undefined} className={`rounded-lg p-3 ${active(item.id) ? 'bg-brand-600 text-white' : 'bg-slate-50'}`}>{item.label}</a>)}</div>
+      </nav>}
+    </header>
+    <main id="main-content" tabIndex={-1} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">{children}</main>
+    <footer className="border-t border-slate-200 bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-10">
+        <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-slate-600 mb-6">
+          <a href="/about">About</a><a href="/terms">Dictionary</a><a href="/generators/buzzword">Buzzword Generator</a><a href="/contact">Contact</a><a href="/terms-of-service">Terms of Service</a><a href="/privacy">Privacy</a>
+        </nav>
+        <p className="text-center text-sm text-slate-500">© 2008–{new Date().getUTCFullYear()} Learnings Dot Org — Speak fluent corporate. Ironically.</p>
+      </div>
+    </footer>
+  </div>;
 }
