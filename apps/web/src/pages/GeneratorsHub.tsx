@@ -117,7 +117,7 @@ export function GeneratorsHub() {
     
     if (schema.type === 'textarea') {
       return (
-        <textarea
+        <textarea id={`generator-${key}`}
           value={value}
           onChange={(e) => handleInputChange(key, e.target.value)}
           placeholder={schema.placeholder || `Enter ${schema.label?.toLowerCase() || key}`}
@@ -128,7 +128,7 @@ export function GeneratorsHub() {
     }
     
     return (
-      <input
+      <input id={`generator-${key}`}
         type="text"
         value={value}
         onChange={(e) => handleInputChange(key, e.target.value)}
@@ -181,9 +181,9 @@ export function GeneratorsHub() {
         <div className="max-w-6xl mx-auto px-4 py-8">
           {/* Buzzword Generator - Featured */}
           <div className="mb-12">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-wrap gap-4 items-center justify-between mb-4">
               <h2 className="text-2xl font-semibold text-slate-900">Featured Generator</h2>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <BuzzwordGeneratorShare />
                 <a 
                   href="/generators/buzzword" 
@@ -232,7 +232,7 @@ export function GeneratorsHub() {
               <div className="space-y-4">
                 {Object.entries(currentGenerator.options_schema).map(([key, schema]: [string, any]) => (
                   <div key={key}>
-                    <label className="block text-sm font-medium mb-2">
+                    <label htmlFor={`generator-${key}`} className="block text-sm font-medium mb-2">
                       {schema.label || key}
                       {schema.required && <span className="text-red-500 ml-1">*</span>}
                     </label>

@@ -64,7 +64,7 @@ export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
 
   if (loading) {
     return (
-      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+      <div className="bg-slate-50 rounded-2xl p-4 sm:p-6 border border-slate-200">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">
           Other Definitions of "{baseTerm}"
         </h3>
@@ -87,7 +87,7 @@ export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
   }
 
   return (
-    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+    <div className="bg-slate-50 rounded-2xl p-4 sm:p-6 border border-slate-200">
       <h3 className="text-lg font-semibold text-slate-900 mb-4">
         Other Definitions of "{baseTerm}"
       </h3>
@@ -95,11 +95,11 @@ export function TermVariations({ currentSlug, baseTerm }: TermVariationsProps) {
         {variations.map((variation) => (
           <a
             key={variation.id}
-            className="bg-white rounded-xl p-4 border border-slate-200 hover:border-slate-300 transition-colors cursor-pointer group"
+            className="block bg-white rounded-xl p-4 border border-slate-200 hover:border-slate-300 transition-colors cursor-pointer group"
             href={`/term/${encodeURIComponent(variation.slug)}`}
           >
             <div className="flex items-start justify-between">
-              <div className="flex-1">
+              <div className="min-w-0 flex-1">
                 <p className="text-slate-700 text-sm leading-relaxed mb-2 group-hover:text-slate-900 transition-colors">
                   {variation.definition}
                 </p>

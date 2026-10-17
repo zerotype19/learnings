@@ -22,11 +22,11 @@ export function TermsHub() {
   const { terms, letter, page, total, letters } = directory;
   const pages = Math.ceil(total / PAGE_SIZE);
   const title = `${letter ? `${letter} — ` : ''}Corporate Buzzword Dictionary${page > 1 ? ` — Page ${page}` : ''} | Learnings.org`;
-  return <section className="max-w-6xl mx-auto px-4 py-10">
+  return <section className="max-w-6xl mx-auto sm:px-4 py-6 sm:py-10">
     <SEO title={title} description={`Browse ${total} corporate buzzwords${letter ? ` beginning with ${letter}` : ''}, with definitions and related business jargon.${page > 1 ? ` Page ${page}.` : ''}`} canonical={directoryPath(letter, page)} />
     <h1 className="text-4xl font-semibold text-slate-900 mb-4">{letter ? `Corporate buzzwords beginning with ${letter}` : 'Corporate Buzzword Dictionary'}</h1>
     <p className="text-slate-600 mb-6">Decode business jargon with satirical definitions and related terms. Browse {total.toLocaleString('en-US')} entries{page > 1 ? ` — page ${page} of ${pages}` : ''}.</p>
-    <form action="/search" method="get" className="flex gap-2 mb-6"><label className="sr-only" htmlFor="dictionary-search">Search buzzwords</label><input id="dictionary-search" name="q" type="search" placeholder="Search buzzwords…" className="border rounded-lg p-3 flex-1" required /><button className="bg-brand-600 text-white rounded-lg px-4">Search</button></form>
+    <form action="/search" method="get" className="flex gap-2 mb-6"><label className="sr-only" htmlFor="dictionary-search">Search buzzwords</label><input id="dictionary-search" name="q" type="search" placeholder="Search buzzwords…" className="min-w-0 border rounded-lg p-3 flex-1" required /><button className="bg-brand-600 text-white rounded-lg px-4">Search</button></form>
     <nav aria-label="Dictionary alphabet" className="flex flex-wrap gap-2 mb-8">
       {['', ...letters].map(l => <a key={l} href={directoryPath(l)} aria-current={letter === l ? 'page' : undefined} className={`border rounded px-3 py-2 ${letter === l ? 'bg-brand-600 text-white' : 'bg-white'}`}>{l || 'All'}</a>)}
     </nav>

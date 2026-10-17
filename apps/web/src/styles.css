@@ -132,3 +132,10 @@ html.corp-mode header nav a:hover {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Allow grid content and long user-submitted text to fit narrow screens. */
+#main-content { overflow-wrap: anywhere; }
+#main-content .grid > * { min-width: 0; }
+@media (max-width: 639px) {
+  input, textarea, select { font-size: 16px !important; }
+}
