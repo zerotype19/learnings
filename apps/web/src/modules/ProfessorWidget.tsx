@@ -112,13 +112,13 @@ export function ProfessorWidget() {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-4 right-4 z-40">
+      <div className="mt-6 flex justify-end sm:fixed sm:bottom-4 sm:right-4 sm:z-40">
         <button 
           aria-label="Ask the Professor"
           className="flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full bg-brand-600 px-3 sm:px-4 py-2 text-white shadow-lg hover:bg-brand-700 transition-colors"
           onClick={() => setOpen(true)}
         >
-          <span aria-hidden="true">🎓</span><span className="hidden sm:inline">Ask the Professor</span>
+          <span aria-hidden="true">🎓</span><span>Ask the Professor</span>
         </button>
       </div>
 
