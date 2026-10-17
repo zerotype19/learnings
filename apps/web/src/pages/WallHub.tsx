@@ -1,3 +1,4 @@
+import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { listWall, vote, getPopularTags, getVoteCount } from '../lib/api';
 import { SEO, SEOConfigs } from '../components/SEO';
@@ -29,9 +30,11 @@ type FilterState = {
 };
 
 export function WallHub() {
-  const [posts, setPosts] = useState<WallPost[]>([]);
+  const initial = useInitialData();
+  const firstLoad = React.useRef(true);
+  const [posts, setPosts] = useState<WallPost[]>(initial?.wall?.items || []);
   const [loading, setLoading] = useState(false);
-  const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [nextCursor, setNextCursor] = useState<string | null>(initial?.wall?.nextCursor || null);
   const [filters, setFilters] = useState<FilterState>({
     sort: 'new',
     range: 'all'
@@ -78,6 +81,8 @@ export function WallHub() {
 
   // Load posts when filters change
   useEffect(() => {
+    if (firstLoad.current && initial?.wall) { firstLoad.current = false; return; }
+    firstLoad.current = false;
     setPosts([]);
     setNextCursor(null);
     loadPosts(true);

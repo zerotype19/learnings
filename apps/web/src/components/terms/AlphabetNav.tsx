@@ -1,4 +1,5 @@
 import React from 'react';
+import { useInitialData } from '../../server/initial-data';
 
 type AlphabetNavProps = {
   activeLetter?: string;
@@ -7,13 +8,13 @@ type AlphabetNavProps = {
 };
 
 export function AlphabetNav({ activeLetter = '', onLetterClick, className = '' }: AlphabetNavProps) {
-  const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const LETTERS = useInitialData()?.letters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   return (
     <div className={`bg-white shadow-sm border-b py-3 ${className}`}>
-      <div className="flex justify-center gap-2 max-w-4xl mx-auto px-4">
-        <button
-          onClick={() => onLetterClick('')}
+      <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto px-4">
+        <a
+          href="/terms"
           className={`
             px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-200
             ${activeLetter === '' 
@@ -23,11 +24,11 @@ export function AlphabetNav({ activeLetter = '', onLetterClick, className = '' }
           `}
         >
           All
-        </button>
+        </a>
         {LETTERS.map(letter => (
-          <button
+          <a
             key={letter}
-            onClick={() => onLetterClick(letter)}
+            href={`/terms?letter=${letter}`}
             className={`
               w-8 h-8 text-sm font-medium rounded-full transition-all duration-200 flex items-center justify-center
               ${activeLetter === letter 
@@ -37,7 +38,7 @@ export function AlphabetNav({ activeLetter = '', onLetterClick, className = '' }
             `}
           >
             {letter}
-          </button>
+          </a>
         ))}
       </div>
     </div>

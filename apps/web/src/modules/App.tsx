@@ -27,6 +27,7 @@ import { Privacy } from '../pages/Privacy';
 import { Terms } from '../pages/Terms';
 import { Contact } from '../pages/Contact';
 import { ConfirmSubmission } from '../pages/ConfirmSubmission';
+import { publicRoutes } from '../shared/public-routes';
 import { OriginStory } from '../pages/OriginStory';
 import { useTooltips } from '../hooks/useTooltips';
 
@@ -36,7 +37,7 @@ export function App() {
   const initial = useInitialData();
   const initialSlug = initial?.path.match(/^\/term\/([^/]+)$/)?.[1];
   const [terms, setTerms] = useState<Term[]>([]);
-  const [currentPage, setCurrentPage] = useState<Page>(initialSlug ? 'term-detail' : initial?.path === '/' ? 'home-v2' : 'home');
+  const [currentPage, setCurrentPage] = useState<Page>(initialSlug ? 'term-detail' : (publicRoutes[initial?.path || '']?.page as Page) || 'home');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [routeParams, setRouteParams] = useState<Record<string, string>>(initialSlug ? { slug: initialSlug } : {});
@@ -75,6 +76,9 @@ export function App() {
       const [page, ...params] = parts;
       
       switch (page) {
+        case 'terms-of-service':
+          setCurrentPage('terms');
+          break;
         case 'terms':
           setCurrentPage('terms-hub');
           break;
@@ -153,6 +157,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
+    if (currentPage !== 'home') return;
     const apiUrl = getApiUrl();
     console.log('API URL:', apiUrl); // Debug log
     fetch(apiUrl + '/api/terms')
@@ -181,7 +186,7 @@ export function App() {
         case 'wall-hub': return '/wall';
         case 'about': return '/about';
         case 'privacy': return '/privacy';
-        case 'terms': return '/terms';
+        case 'terms': return '/terms-of-service';
         case 'contact': return '/contact';
         case 'confirm': return '/confirm';
         case 'bingo': return '/bingo';
@@ -196,11 +201,7 @@ export function App() {
     };
 
     const path = getPath(page);
-    window.history.pushState({}, '', path);
-    setCurrentPage(page);
-    
-    // Track page view for analytics (with small delay to ensure page is loaded)
-    setTimeout(() => trackPageView(path), 100);
+    window.location.assign(path);
   };
 
   return (

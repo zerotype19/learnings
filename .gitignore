@@ -6,3 +6,5 @@ apps/web/dist
 apps/api/.wrangler
 apps/api/dist
 infra/wrangler/.secrets
+
+apps/web/public/catalog.json

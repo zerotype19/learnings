@@ -159,12 +159,13 @@ export function HomeV2() {
       <div className="bg-white">
         <div className="text-center py-4 md:py-6">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
-            Operationalizing the <a href="/origin-story" className="text-brand-600 hover:text-brand-700 underline">Learnings</a> Layer
+            Corporate Buzzword Dictionary
           </h1>
           <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto transition-opacity duration-500">
             {subheadlines[currentSubheadline]}
           </p>
             
+          <p className="text-slate-600 mb-6">Satirical definitions of business jargon, workplace examples, and related terms. <a href="/terms" className="text-brand-600 underline">Browse the full A–Z dictionary</a> or <a href="/origin-story" className="text-brand-600 underline">read our origin story</a>.</p>
           {/* Global Search */}
           <div className="max-w-lg mx-auto mb-6">
             <SearchBox
@@ -191,7 +192,7 @@ export function HomeV2() {
                   }
                 }
               }}
-              placeholder="Search 2,000+ buzzwords…"
+              placeholder="Search corporate buzzwords…"
               className="w-full"
             />
           </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { publicRoutes } from '../shared/public-routes';
 
 interface SEOProps {
   title: string;
@@ -17,7 +18,7 @@ export function SEO({
   description,
   keywords,
   canonical,
-  ogImage = 'https://learnings.org/og-image.png',
+  ogImage = 'https://learnings.org/learnings_dot_org_logo.png',
   ogType = 'website',
   twitterCard = 'summary_large_image',
   structuredData,
@@ -71,10 +72,10 @@ export function SEO({
     updateMetaTag('og:site_name', 'Learnings Dot Org', true);
 
     // Twitter Card tags
-    updateMetaTag('twitter:card', twitterCard, true);
-    updateMetaTag('twitter:title', fullTitle, true);
-    updateMetaTag('twitter:description', description, true);
-    updateMetaTag('twitter:image', ogImage, true);
+    updateMetaTag('twitter:card', twitterCard);
+    updateMetaTag('twitter:title', fullTitle);
+    updateMetaTag('twitter:description', description);
+    updateMetaTag('twitter:image', ogImage);
 
     // Additional SEO tags
     updateMetaTag('author', 'Learnings Dot Org');
@@ -109,8 +110,8 @@ export function SEO({
 // Predefined SEO configurations for common pages
 export const SEOConfigs = {
   home: {
-    title: 'Learnings Dot Org — Corporate Buzzword Dictionary',
-    description: 'The ultimate corporate buzzword dictionary. Decode business jargon, understand corporate speak, and master the art of professional communication. Powered by AI.',
+    title: publicRoutes['/'].title,
+    description: publicRoutes['/'].description,
     keywords: 'corporate buzzwords, business jargon, corporate dictionary, professional communication, business terms, corporate speak, workplace language',
     canonical: '/',
     structuredData: {

@@ -318,7 +318,7 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
               Contact
             </a>
             <a 
-              href="/terms" 
+              href="/terms-of-service"
               onClick={(e) => { e.preventDefault(); onPageChange('terms'); }}
               className="hover:text-slate-900 transition-colors"
             >

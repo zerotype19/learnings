@@ -12,7 +12,8 @@
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
     "migrate:local": "cd apps/api && wrangler d1 execute learnings --local --file=../../infra/d1-migrations/001_init.sql && wrangler d1 execute learnings --local --file=../../infra/d1-migrations/002_seed.sql",
-    "migrate:prod": "cd apps/api && wrangler d1 execute learnings --file=../../infra/d1-migrations/001_init.sql && wrangler d1 execute learnings --file=../../infra/d1-migrations/002_seed.sql"
+    "migrate:prod": "cd apps/api && wrangler d1 execute learnings --file=../../infra/d1-migrations/001_init.sql && wrangler d1 execute learnings --file=../../infra/d1-migrations/002_seed.sql",
+    "test:seo": "node scripts/test-source-recovery.mjs && node scripts/test-seo.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
