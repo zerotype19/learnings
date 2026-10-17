@@ -139,7 +139,7 @@ export function TermDetail({ slug }: TermDetailProps) {
       />
       <Feedback value={feedback} />
       <div className="min-h-screen bg-neutral-50">
-      <div className="max-w-6xl mx-auto px-4 py-6">
+      <div className="max-w-6xl mx-auto py-2 sm:px-4 sm:py-6">
         {/* Header */}
         <div className="mb-6">
           {/* Alphabet Navigation */}
@@ -152,7 +152,7 @@ export function TermDetail({ slug }: TermDetailProps) {
             />
           </div>
           
-          <div className="bg-white rounded-2xl border p-6">
+          <div className="bg-white rounded-2xl border p-4 sm:p-6">
             <div className="mb-4">
               <h1 className="text-3xl font-bold">{term.title}</h1>
             </div>
@@ -179,7 +179,7 @@ export function TermDetail({ slug }: TermDetailProps) {
               </div>
             )}
 
-            <div className="flex justify-between items-center">
+            <div className="flex flex-wrap gap-3 justify-between items-center">
               <div className="text-xs text-neutral-500">
                 {term.views} views • Created {(() => {
                   try {
@@ -204,7 +204,7 @@ export function TermDetail({ slug }: TermDetailProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content */}
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             {/* Term Variations */}
             <TermVariations currentSlug={term.slug} baseTerm={term.title} />
             
@@ -212,8 +212,8 @@ export function TermDetail({ slug }: TermDetailProps) {
             <RelatedTerms currentSlug={term.slug} />
             
             {/* In the Wild Links */}
-            <div className="bg-white rounded-2xl border p-6 mb-6 mt-6">
-              <div className="flex justify-between items-center mb-4">
+            <div className="bg-white rounded-2xl border p-4 sm:p-6 mb-6 mt-6">
+              <div className="flex flex-wrap gap-3 justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold">🌍 In the Wild</h2>
                 <button
                   onClick={() => setShowLinkForm(!showLinkForm)}
@@ -234,7 +234,7 @@ export function TermDetail({ slug }: TermDetailProps) {
                   {term.links.map(link => (
                     <div key={link.id} className="border border-neutral-200 rounded-xl p-3">
                       <div className="flex justify-between items-start">
-                        <div className="flex-1">
+                        <div className="min-w-0 flex-1">
                           <a 
                             href={link.url} 
                             target="_blank" 
@@ -262,7 +262,7 @@ export function TermDetail({ slug }: TermDetailProps) {
           <div className="lg:col-span-1">
             {/* Related Terms */}
             {term.related_terms && term.related_terms.length > 0 && (
-              <div className="bg-white rounded-2xl border p-6 mb-6">
+              <div className="bg-white rounded-2xl border p-4 sm:p-6 mb-6">
                 <h3 className="font-semibold mb-4">Related Terms</h3>
                 <div className="space-y-2">
                   {term.related_terms.map(relatedTerm => (
@@ -280,7 +280,7 @@ export function TermDetail({ slug }: TermDetailProps) {
             )}
 
             {/* Generator Shortcuts */}
-            <div className="bg-white rounded-2xl border p-6">
+            <div className="bg-white rounded-2xl border p-4 sm:p-6">
               <h3 className="font-semibold mb-4">🤖 AI Tools</h3>
               <div className="space-y-2">
                 <button
@@ -366,20 +366,20 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
       
       <div className="space-y-3">
         <div>
-          <label className="block text-sm font-medium mb-1">URL *</label>
-          <input
+          <label htmlFor="example-field-1" className="block text-sm font-medium mb-1">URL *</label>
+          <input id="example-field-1"
             type="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://..."
+            aria-label="Source link URL" placeholder="https://..."
             required
             className="w-full px-3 py-2 border border-neutral-200 rounded-lg text-sm"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Platform</label>
-          <select
+          <label htmlFor="example-field-2" className="block text-sm font-medium mb-1">Platform</label>
+          <select id="example-field-2"
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
             className="w-full px-3 py-2 border border-neutral-200 rounded-lg text-sm"
@@ -394,8 +394,8 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Title (optional)</label>
-          <input
+          <label htmlFor="example-field-3" className="block text-sm font-medium mb-1">Title (optional)</label>
+          <input id="example-field-3"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -406,8 +406,8 @@ function LinkSubmissionForm({ termId, onSubmit }: { termId: string; onSubmit: ()
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Note (optional)</label>
-          <textarea
+          <label htmlFor="example-field-4" className="block text-sm font-medium mb-1">Note (optional)</label>
+          <textarea id="example-field-4"
             value={note}
             onChange={(e) => setNote(e.target.value)}
             placeholder="Why is this a good example?"

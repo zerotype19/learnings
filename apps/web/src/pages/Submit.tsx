@@ -30,7 +30,7 @@ export function Submit() {
         <div className="max-w-4xl mx-auto px-4 py-8">
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-6">
+        <div className="flex flex-wrap gap-4 mb-6">
           <button
             onClick={() => setActiveTab('term')}
             className={`
@@ -164,8 +164,8 @@ function TermSubmissionForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <Feedback value={feedback} />
         <div>
-          <label className="block text-sm font-medium mb-1">Term *</label>
-          <input
+          <label htmlFor="submit-field-1" className="block text-sm font-medium mb-1">Term *</label>
+          <input id="submit-field-1"
             type="text"
             value={formData.title}
             onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
@@ -177,8 +177,8 @@ function TermSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Email *</label>
-          <input
+          <label htmlFor="submit-field-2" className="block text-sm font-medium mb-1">Email *</label>
+          <input id="submit-field-2"
             type="email"
             value={formData.email}
             onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -192,8 +192,8 @@ function TermSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Full Definition *</label>
-          <textarea
+          <label htmlFor="submit-field-3" className="block text-sm font-medium mb-1">Full Definition *</label>
+          <textarea id="submit-field-3"
             value={formData.definition}
             onChange={(e) => setFormData(prev => ({ ...prev, definition: e.target.value }))}
             placeholder="Detailed explanation of this corporate buzzword..."
@@ -208,8 +208,8 @@ function TermSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Example Usage</label>
-          <textarea
+          <label htmlFor="submit-field-4" className="block text-sm font-medium mb-1">Example Usage</label>
+          <textarea id="submit-field-4"
             value={formData.examples}
             onChange={(e) => setFormData(prev => ({ ...prev, examples: e.target.value }))}
             placeholder="Example sentences or usage scenarios..."
@@ -220,8 +220,8 @@ function TermSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Tags</label>
-          <input
+          <label htmlFor="submit-field-5" className="block text-sm font-medium mb-1">Tags</label>
+          <input id="submit-field-5"
             type="text"
             value={formData.tags}
             onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
@@ -232,22 +232,22 @@ function TermSubmissionForm() {
 
         {/* Source Links */}
         <div>
-          <label className="block text-sm font-medium mb-2">Source Links (optional)</label>
+          <label htmlFor="submit-field-6" className="block text-sm font-medium mb-2">Source Links (optional)</label>
           {formData.links.map((link, index) => (
-            <div key={index} className="flex gap-2 mb-2">
+            <div key={index} className="flex flex-wrap sm:flex-nowrap gap-2 mb-3">
               <input
                 type="url"
                 value={link.url}
                 onChange={(e) => updateLink(index, 'url', e.target.value)}
-                placeholder="https://..."
-                className="flex-1 px-3 py-2 border border-neutral-200 rounded-lg text-sm"
+                aria-label="Source link URL" placeholder="https://..."
+                className="min-w-0 w-full sm:flex-1 px-3 py-2 border border-neutral-200 rounded-lg text-sm"
               />
               <input
                 type="text"
                 value={link.label}
                 onChange={(e) => updateLink(index, 'label', e.target.value)}
-                placeholder="Label"
-                className="w-32 px-3 py-2 border border-neutral-200 rounded-lg text-sm"
+                aria-label="Source link label" placeholder="Label"
+                className="min-w-0 flex-1 sm:flex-none sm:w-32 px-3 py-2 border border-neutral-200 rounded-lg text-sm"
               />
               {formData.links.length > 1 && (
                 <button
@@ -271,7 +271,7 @@ function TermSubmissionForm() {
           )}
         </div>
 
-        <div className="flex gap-4 pt-4">
+        <div className="flex flex-wrap gap-4 pt-4">
           <button
             type="submit"
             disabled={submitting || !formData.title.trim() || !formData.definition.trim()}
@@ -374,7 +374,7 @@ function WallSubmissionForm() {
         <Feedback value={feedback} />
         <div>
           <label className="block text-sm font-medium mb-1">Title *</label>
-          <input
+          <input id="submit-field-6"
             type="text"
             value={formData.title}
             onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
@@ -386,8 +386,8 @@ function WallSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Email *</label>
-          <input
+          <label htmlFor="submit-field-7" className="block text-sm font-medium mb-1">Email *</label>
+          <input id="submit-field-7"
             type="email"
             value={formData.email}
             onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -401,8 +401,8 @@ function WallSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Source URL *</label>
-          <input
+          <label htmlFor="submit-field-8" className="block text-sm font-medium mb-1">Source URL *</label>
+          <input id="submit-field-8"
             type="url"
             value={formData.source_url}
             onChange={(e) => setFormData(prev => ({ ...prev, source_url: e.target.value }))}
@@ -416,8 +416,8 @@ function WallSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Description (optional)</label>
-          <textarea
+          <label htmlFor="submit-field-9" className="block text-sm font-medium mb-1">Description (optional)</label>
+          <textarea id="submit-field-9"
             value={formData.body}
             onChange={(e) => setFormData(prev => ({ ...prev, body: e.target.value }))}
             placeholder="Context about where you found this or why it's noteworthy..."
@@ -431,8 +431,8 @@ function WallSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Tags</label>
-          <input
+          <label htmlFor="submit-field-10" className="block text-sm font-medium mb-1">Tags</label>
+          <input id="submit-field-10"
             type="text"
             value={formData.tags}
             onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
@@ -442,8 +442,8 @@ function WallSubmissionForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Related Terms</label>
-          <input
+          <label htmlFor="submit-field-11" className="block text-sm font-medium mb-1">Related Terms</label>
+          <input id="submit-field-11"
             type="text"
             value={formData.suggested_terms}
             onChange={(e) => setFormData(prev => ({ ...prev, suggested_terms: e.target.value }))}
@@ -455,7 +455,7 @@ function WallSubmissionForm() {
           </div>
         </div>
 
-        <div className="flex gap-4 pt-4">
+        <div className="flex flex-wrap gap-4 pt-4">
           <button
             type="submit"
             disabled={submitting || !formData.title.trim() || !formData.source_url.trim()}

@@ -29,7 +29,7 @@ export function BuzzwordGeneratorPage() {
 
         {/* Generator */}
         <div className="max-w-4xl mx-auto px-4 py-12">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex flex-col items-start sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
             <h2 className="text-2xl font-semibold text-slate-900">Generate Your Buzzword</h2>
             <BuzzwordGeneratorShare />
           </div>

@@ -110,7 +110,7 @@ export function Bingo() {
       <div className="min-h-screen bg-slate-50">
         {/* Header */}
         <div className="bg-white border-b border-slate-200">
-          <div className="max-w-4xl mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto px-0 sm:px-4 py-8">
             <div className="text-center mb-8">
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
                 🎯 Corporate Buzzword Bingo
@@ -123,7 +123,7 @@ export function Bingo() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-0 sm:px-4 py-8">
           <Feedback value={feedback} />
           {!board.length && loading ? (
             <div className="text-center">
@@ -151,7 +151,7 @@ export function Bingo() {
             </div>
           )}
           
-          <div className="grid grid-cols-5 gap-2 mb-6 max-w-lg mx-auto">
+          <div className="grid grid-cols-5 gap-1 sm:gap-2 mb-6 max-w-lg mx-auto">
             {board.map((square, index) => (
               <button
                 key={index}
@@ -159,7 +159,7 @@ export function Bingo() {
                 aria-label={`${square.title}${square.isFree ? " (free space)" : ""}`}
                 onClick={() => toggleSquare(index)}
                 className={`
-                  aspect-square p-2 text-xs font-medium rounded-lg border-2 transition-all
+                  min-w-0 min-h-14 sm:aspect-square p-1 sm:p-2 break-words text-[10px] min-[375px]:text-[11px] sm:text-xs font-medium rounded-lg border-2 transition-all
                   ${marked.has(index) 
                     ? 'bg-brand-100 border-brand-300 text-brand-700' 
                     : 'bg-white border-neutral-200 hover:border-neutral-300'

@@ -51,7 +51,7 @@ export function Contact() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-6">
             Contact Us
@@ -63,9 +63,9 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-soft">
+          <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-8 shadow-soft">
             <h2 className="text-2xl font-semibold text-slate-900 mb-6">Send us a message</h2>
             
             {submitStatus === 'success' && (
@@ -186,7 +186,7 @@ export function Contact() {
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-soft">
+            <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-8 shadow-soft">
               <h3 className="text-xl font-semibold text-slate-900 mb-4">Get in touch</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -221,7 +221,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-soft">
+            <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-8 shadow-soft">
               <h3 className="text-xl font-semibold text-slate-900 mb-4">What we love to hear</h3>
               <ul className="space-y-3 text-slate-600">
                 <li className="flex items-start gap-2">
@@ -247,7 +247,7 @@ export function Contact() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-r from-brand-50 to-accent-pink/10 rounded-2xl border border-brand-200 p-8">
+            <div className="bg-gradient-to-r from-brand-50 to-accent-pink/10 rounded-2xl border border-brand-200 p-4 sm:p-8">
               <h3 className="text-xl font-semibold text-slate-900 mb-4">Response time</h3>
               <p className="text-slate-600">
                 We typically respond within 24-48 hours. For urgent matters, 

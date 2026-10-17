@@ -162,10 +162,10 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
 
         {/* Scenario Input */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label htmlFor="buzzword-field-1" className="block text-sm font-medium text-slate-700 mb-2">
             Describe the corporate phenomenon
           </label>
-          <textarea
+          <textarea id="buzzword-field-1"
             value={scenario}
             onChange={(e) => setScenario(e.target.value)}
             placeholder="e.g., Managers renaming layoffs as 'talent mobility'"
@@ -185,10 +185,10 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
         {/* Style Options */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="buzzword-field-2" className="block text-sm font-medium text-slate-700 mb-2">
               Tone
             </label>
-            <select
+            <select id="buzzword-field-2"
               value={tone}
               onChange={(e) => setTone(e.target.value as 'straight' | 'snarky')}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
@@ -199,10 +199,10 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="buzzword-field-3" className="block text-sm font-medium text-slate-700 mb-2">
               Format
             </label>
-            <select
+            <select id="buzzword-field-3"
               value={format}
               onChange={(e) => setFormat(e.target.value as any)}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
@@ -215,10 +215,10 @@ export function BuzzwordGenerator({ className = '' }: BuzzwordGeneratorProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="buzzword-field-4" className="block text-sm font-medium text-slate-700 mb-2">
               Edge
             </label>
-            <select
+            <select id="buzzword-field-4"
               value={edge}
               onChange={(e) => setEdge(e.target.value as 'safe' | 'spicy')}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
@@ -371,10 +371,10 @@ function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; s
         
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="buzzword-field-5" className="block text-sm font-medium text-slate-700 mb-2">
               Definition *
             </label>
-            <textarea
+            <textarea id="buzzword-field-5"
               value={definition}
               onChange={(e) => setDefinition(e.target.value)}
               placeholder="Enter a witty definition..."
@@ -383,10 +383,10 @@ function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; s
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="buzzword-field-6" className="block text-sm font-medium text-slate-700 mb-2">
               Example (optional)
             </label>
-            <textarea
+            <textarea id="buzzword-field-6"
               value={example}
               onChange={(e) => setExample(e.target.value)}
               placeholder="Enter an example sentence..."
@@ -395,10 +395,10 @@ function SaveToTermsModal({ buzzword, scenario, onClose }: { buzzword: string; s
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label htmlFor="buzzword-field-7" className="block text-sm font-medium text-slate-700 mb-2">
               Tags (comma-separated)
             </label>
-            <input
+            <input id="buzzword-field-7"
               type="text"
               value={tags}
               onChange={(e) => setTags(e.target.value)}

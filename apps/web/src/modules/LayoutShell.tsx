@@ -37,14 +37,14 @@ export function LayoutShell({ currentPage, children }: LayoutShellProps) {
         </nav>
         <button type="button" aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" className="lg:hidden rounded-lg border px-3 py-2 text-slate-700" onClick={() => setMobileMenuOpen(v => !v)}>{mobileMenuOpen ? 'Close' : 'Menu'}</button>
       </div>
-      {mobileMenuOpen && <nav id="mobile-navigation" aria-label="Mobile navigation" className="lg:hidden border-t p-4">
+      {mobileMenuOpen && <nav id="mobile-navigation" aria-label="Mobile navigation" className="lg:hidden border-t p-4 max-h-[calc(100dvh-4rem)] overflow-y-auto">
         <SearchBox placeholder="Search the dictionary…" />
         <div className="grid grid-cols-2 gap-2 mt-4">{items.map(item => <a key={item.id} href={item.href} aria-current={active(item.id) ? 'page' : undefined} className={`rounded-lg p-3 ${active(item.id) ? 'bg-brand-600 text-white' : 'bg-slate-50'}`}>{item.label}</a>)}</div>
       </nav>}
     </header>
     <main id="main-content" tabIndex={-1} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">{children}</main>
     <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-10">
+      <div className="mx-auto max-w-7xl px-4 pt-10 pb-24">
         <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-slate-600 mb-6">
           <a href="/about">About</a><a href="/terms">Dictionary</a><a href="/generators/buzzword">Buzzword Generator</a><a href="/contact">Contact</a><a href="/terms-of-service">Terms of Service</a><a href="/privacy">Privacy</a>
         </nav>

@@ -57,7 +57,7 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
 
   if (loading) {
     return (
-      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+      <div className="bg-slate-50 rounded-2xl p-4 sm:p-6 border border-slate-200">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">
           Related Terms
         </h3>
@@ -78,7 +78,7 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
   }
 
   return (
-    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+    <div className="bg-slate-50 rounded-2xl p-4 sm:p-6 border border-slate-200">
       <h3 className="text-lg font-semibold text-slate-900 mb-4">
         Related Terms
       </h3>
@@ -87,10 +87,10 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
           <a
             key={term.id}
             href={`/term/${encodeURIComponent(term.slug)}`}
-            className="w-full text-left bg-white rounded-xl p-4 border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all duration-200 group"
+            className="block w-full text-left bg-white rounded-xl p-4 border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all duration-200 group"
           >
             <div className="flex items-start justify-between">
-              <div className="flex-1">
+              <div className="min-w-0 flex-1">
                 <h4 className="font-medium text-slate-900 group-hover:text-brand-600 transition-colors mb-1">
                   {term.title}
                 </h4>
@@ -98,11 +98,11 @@ export function RelatedTerms({ currentSlug }: RelatedTermsProps) {
                   {getShortDescription(term.definition, 12)}
                 </p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-slate-500">
                     {term.views} views
                   </span>
                   {term.tags && term.tags.length > 0 && (
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-slate-500">
                       • {term.tags.slice(0, 2).join(', ')}
                     </span>
                   )}
