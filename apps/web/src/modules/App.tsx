@@ -29,7 +29,6 @@ import { Contact } from '../pages/Contact';
 import { ConfirmSubmission } from '../pages/ConfirmSubmission';
 import { publicRoutes } from '../shared/public-routes';
 import { OriginStory } from '../pages/OriginStory';
-import { useTooltips } from '../hooks/useTooltips';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'profile' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'search' | 'about' | 'privacy' | 'terms' | 'contact' | 'confirm' | 'origin-story';
 
@@ -41,9 +40,6 @@ export function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [routeParams, setRouteParams] = useState<Record<string, string>>(initialSlug ? { slug: initialSlug } : {});
-
-  // Initialize tooltips
-  useTooltips();
 
   // Track page view for analytics
   const trackPageView = (path: string) => {

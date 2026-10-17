@@ -1,11 +1,7 @@
 import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { SearchBox } from '../components/SearchBox';
-import { EnterpriseToggle } from '../components/EnterpriseToggle';
 import { BuzzwordTicker } from '../components/BuzzwordTicker';
-import { useSectionStamps } from '../hooks/useSectionStamps';
-import { useClorgSprite } from '../lib/useClorgSprite';
-import { initializeCorporateMode, corporatizeHeaderNav, isCorporateModeEnabled } from '../lib/corporateMode';
 import type { NonsenseData } from '../types/nonsense';
 
 type Page = 'home' | 'home-v2' | 'wall' | 'wall-hub' | 'bingo' | 'linkedin' | 'suggest' | 'admin' | 'admin-v2' | 'terms-hub' | 'term-detail' | 'submit-v2' | 'generators-hub' | 'buzzword-generator' | 'about' | 'privacy' | 'terms' | 'contact';
@@ -51,63 +47,18 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
   useEffect(() => {
     const loadNonsenseData = async () => {
       try {
-        console.log('Loading nonsense data...');
         const response = await fetch('/nonsense.json');
         const data: NonsenseData = await response.json();
-        console.log('Loaded nonsense data:', data);
         setNonsenseData(data);
         
-        // Set global window object for Clorg to access
-        (window as any).__NONSENSE__ = data;
       } catch (error) {
         console.error('Failed to load nonsense data:', error);
       }
     };
 
-    if (nonsenseData) (window as any).__NONSENSE__ = nonsenseData;
-    else loadNonsenseData();
-    
-    // Corporate Mode temporarily disabled
-    // initializeCorporateMode();
+    if (!nonsenseData) loadNonsenseData();
   }, []);
 
-  // Initialize section stamps
-  useSectionStamps();
-
-  // Initialize Clorg sprite only when data is loaded
-  // Temporarily disabled
-  // useClorgSprite({
-  //   probability: 0.4, // Normal probability
-  //   maxPerSession: 5, // Normal session limit
-  //   phrases: nonsenseData?.clorgPhrases || []
-  // });
-
-  // Corporate Mode temporarily disabled
-  // Re-apply header navigation on route changes when Corporate Mode is enabled
-  // useEffect(() => {
-  //   const handleRouteChange = () => {
-  //     if (isCorporateModeEnabled()) {
-  //       // Small delay to ensure DOM is updated
-  //       setTimeout(() => {
-  //         corporatizeHeaderNav();
-  //       }, 100);
-  //     }
-  //   };
-
-  //   // Listen for route changes (custom event from App.tsx)
-  //   window.addEventListener('route-params', handleRouteChange);
-    
-  //   // Also listen for hash changes and popstate
-  //   window.addEventListener('hashchange', handleRouteChange);
-  //   window.addEventListener('popstate', handleRouteChange);
-
-  //   return () => {
-  //     window.removeEventListener('route-params', handleRouteChange);
-  //     window.removeEventListener('hashchange', handleRouteChange);
-  //     window.removeEventListener('popstate', handleRouteChange);
-  //   };
-  // }, []);
-  
   const navigation = [
     { id: 'home-v2', label: 'Home', icon: '🏠' },
     { id: 'terms-hub', label: 'Terms', icon: '📚' },
@@ -331,11 +282,6 @@ export function LayoutShell({ currentPage, onPageChange, children }: LayoutShell
             >
               Privacy
             </a>
-          </div>
-          
-          {/* Enterprise Mode Toggle */}
-          <div className="flex justify-center mb-6">
-            <EnterpriseToggle />
           </div>
           
           <div className="text-center text-sm text-slate-500">
