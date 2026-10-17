@@ -1,5 +1,4 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
-import { getApiUrl } from '../utils/getApiUrl';
 type Suggestion = { id: string; type: string; title: string; description?: string; url: string };
 interface SearchBoxProps { onNavigate?: (url: string) => void; placeholder?: string; className?: string }
 export function SearchBox({ onNavigate, placeholder = 'Search the dictionary…', className = '' }: SearchBoxProps) {
@@ -19,10 +18,14 @@ export function SearchBox({ onNavigate, placeholder = 'Search the dictionary…'
     const timer = setTimeout(async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${getApiUrl()}/api/search/suggest?q=${encodeURIComponent(query.trim())}&limit=8`, { signal: controller.signal });
+        const response = await fetch('/catalog.json', { signal: controller.signal });
         if (!response.ok) throw new Error('Search unavailable');
         const data = await response.json();
-        if (!controller.signal.aborted) { setSuggestions((data.suggestions || []).filter((s: Suggestion) => typeof s.url === 'string' && s.url.startsWith('/') && !s.url.startsWith('//'))); setOpen(true); }
+        const needle = query.trim().toLocaleLowerCase('en-US');
+        const matches = data.terms.filter((term: { title: string }) => term.title.toLocaleLowerCase('en-US').includes(needle));
+        const rank = (title: string) => title.toLocaleLowerCase('en-US') === needle ? 0 : title.toLocaleLowerCase('en-US').startsWith(needle) ? 1 : 2;
+        matches.sort((a: { title: string }, b: { title: string }) => rank(a.title) - rank(b.title) || a.title.localeCompare(b.title));
+        if (!controller.signal.aborted) { setSuggestions(matches.slice(0, 8).map((term: { slug: string; title: string; definition: string }) => ({ id: term.slug, type: 'term', title: term.title, description: term.definition, url: `/term/${term.slug}` }))); setOpen(true); }
       } catch { if (!controller.signal.aborted) { setError(true); setOpen(true); } }
       finally { if (!controller.signal.aborted) setLoading(false); }
     }, 250);
