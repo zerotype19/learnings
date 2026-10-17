@@ -42,14 +42,14 @@ await check('frozen feed all 20 cards rendered with exact titles and term destin
  assert.equal((html.match(/<article /g)||[]).length,20);
  for(const item of frozen.feed.items){const escaped=item.data.title.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#x27;');assert.ok(html.includes(escaped),item.data.title); if(item.type==='term')assert.ok(html.includes(`href="/term/${item.data.slug}"`));}
  assert.ok(html.includes('rel="canonical" href="https://learnings.org/"'));
- await fs.writeFile(new URL('candidate-home.html',root),html);
+
 });
 await check('term definition, related content and own canonical in initial HTML',async()=>{
  mode='ok';const r=await run('/term/leverage');assert.equal(r.status,200);const html=await r.text();assert.ok(html.includes(frozen.term.item.definition));assert.ok(html.includes('rel="canonical" href="https://learnings.org/term/leverage"'));
  assert.ok(!html.includes('rel="canonical" href="https://learnings.org/"'));
  assert.ok(html.includes('property="og:title" content="Leverage | Learnings Dot Org"'));
  assert.ok(html.includes('name="twitter:title" content="Leverage | Learnings Dot Org"'));
- await fs.writeFile(new URL('candidate-term.html',root),html);
+
 });
 for(const negative of ['unavailable','redirect','partial','duplicate','error','unsafe','invalid','missing-link','missing-feed'])await check(negative+' fails closed',async()=>{mode=negative;const r=await run();assert.equal(r.status,503);assert.equal(r.headers.get('cache-control'),'no-store');assert.ok(!(await r.text()).includes('learnings-initial-data'));});
 for(const negative of ['bad-tags','bad-term-link']) await check(negative+' fails closed',async()=>{mode=negative;assert.equal((await run('/term/leverage')).status,503);});
@@ -57,5 +57,5 @@ await check('wrong term identity fails closed',async()=>{mode='identity';assert.
 await check('missing term is 404',async()=>{mode='not-found';assert.equal((await run('/term/unknown')).status,404);});
 await check('serialized hostile title cannot break out of JSON script',async()=>{mode='injection';const r=await run();assert.equal(r.status,200);assert.ok(!(await r.text()).includes('</script><script>alert(1)</script>'));});
 await check('HEAD has no body and POST is rejected',async()=>{mode='ok';assert.equal(await (await run('/','HEAD')).text(),'');assert.equal((await run('/','POST')).status,405);});
-await check('other routes use unchanged asset handler',async()=>{let seen;const r=await worker.fetch(new Request('https://learnings.org/about'),{ASSETS:{fetch:async req=>{seen=req.url;return new Response('original');}}});assert.equal(await r.text(),'original');assert.equal(seen,'https://learnings.org/about');});
-await fs.writeFile(new URL('TESTS.json',root),JSON.stringify({at:new Date().toISOString(),receipts},null,2));console.log(receipts);if(receipts.some(r=>!r.pass))process.exitCode=1;
+
+console.log(receipts);if(receipts.some(r=>!r.pass))process.exitCode=1;

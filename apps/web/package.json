@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --config vite.ssr.config.ts",
+    "build": "node ../../scripts/build-catalog.mjs && vite build && vite build --config vite.ssr.config.ts",
     "preview": "vite preview"
   },
   "dependencies": {

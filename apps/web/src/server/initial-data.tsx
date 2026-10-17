@@ -4,6 +4,10 @@ import type { NonsenseData } from '../types/nonsense';
 export type InitialData = {
   path: string;
   nonsense: NonsenseData;
+  letters?: string[];
+  directory?: { terms: any[]; letter: string; page: number; total: number; letters: string[] };
+  wall?: { items: any[]; nextCursor?: string };
+  generators?: any[];
   feed?: { items: any[]; nextCursor?: string | null };
   term?: any;
   related?: any[];

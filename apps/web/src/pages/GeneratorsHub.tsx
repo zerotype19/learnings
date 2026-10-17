@@ -1,3 +1,4 @@
+import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
 import { getGenerators, runGenerator, trackEvent } from '../lib/api';
 import { SEO, SEOConfigs } from '../components/SEO';
@@ -22,15 +23,17 @@ type GeneratorRun = {
 };
 
 export function GeneratorsHub() {
-  const [generators, setGenerators] = useState<Generator[]>([]);
-  const [activeGenerator, setActiveGenerator] = useState<string>('');
+  const initial = useInitialData();
+  const [generators, setGenerators] = useState<Generator[]>(initial?.generators || []);
+  const [activeGenerator, setActiveGenerator] = useState<string>(initial?.generators?.[0]?.slug || '');
   const [inputs, setInputs] = useState<Record<string, any>>({});
   const [result, setResult] = useState<GeneratorRun | null>(null);
   const [loading, setLoading] = useState(false);
-  const [generatorsLoading, setGeneratorsLoading] = useState(true);
+  const [generatorsLoading, setGeneratorsLoading] = useState(!initial?.generators);
 
   // Load generators on mount
   useEffect(() => {
+    if (initial?.generators) return;
     const loadGenerators = async () => {
       try {
         const data = await getGenerators();
