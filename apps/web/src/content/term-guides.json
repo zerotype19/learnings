@@ -47,7 +47,7 @@
     ],
     "sources": [
       {
-        "title": "LinkedIn: Always-On Marketing\u2014What It Is and How to Do It",
+        "title": "LinkedIn: Always-On Marketing—What It Is and How to Do It",
         "url": "https://www.linkedin.com/business/marketing/blog/content-marketing/always-on-marketing-what-it-is-and-how-to-do-it-featuring-matt-heinz"
       }
     ]
@@ -90,6 +90,112 @@
       {
         "title": "HubSpot: Demand generation vs. lead generation",
         "url": "https://blog.hubspot.com/sales/lead-generation-vs-demand-generation"
+      }
+    ]
+  },
+  "rto-return-to-office": {
+    "updated": "2026-11-02",
+    "meaning": "RTO means return to office: a change in work arrangements that brings employees back to a physical workplace after a period of remote or less frequent on-site work.",
+    "context": "An RTO policy can require some office days or full-time attendance. The abbreviation alone does not specify the schedule, which locations count, or which roles are covered. For example, Microsoft announced a phased three-days-per-week office expectation in September 2025; that announcement illustrates one approach, not a universal definition of RTO.",
+    "example": "A team that previously worked remotely agrees to meet at its office on Tuesdays and Thursdays. Its written policy identifies the start date, covered roles, office location, and how schedule exceptions are handled.",
+    "distinction": "Hybrid work describes an arrangement combining remote and on-site work. RTO describes the move toward more office attendance, so an RTO policy can still be hybrid. In technology recovery plans, RTO can instead mean recovery time objective; check the context.",
+    "plainPhrase": "Specify when and where we need to work in person.",
+    "related": [
+      "hybrid-workforce"
+    ],
+    "sources": [
+      {
+        "title": "Microsoft: Flexible work update, September 2025",
+        "url": "https://blogs.microsoft.com/blog/2025/09/09/flexible-work-update/"
+      },
+      {
+        "title": "HR Cloud: Return to office meaning and models",
+        "url": "https://www.hrcloud.com/resources/glossary/return-to-office-rto"
+      },
+      {
+        "title": "AWS: Recovery time objective, the technology meaning of RTO",
+        "url": "https://aws.amazon.com/what-is/recovery-time-objective/"
+      }
+    ]
+  },
+  "deliverable": {
+    "updated": "2026-11-02",
+    "meaning": "A deliverable is a specific output that a project or task is expected to produce, such as an approved report, a working feature, a training session, or a completed design.",
+    "context": "A useful deliverable description says what will be handed over, who owns it, when it is due, and what makes it acceptable. Deliverables can serve an internal team or an external customer. Naming an output makes progress easier to review than saying only that a team will work on a topic.",
+    "example": "For a website launch, the deliverable is a tested contact form that sends submissions to the support inbox and displays a confirmation. Writing the code and reviewing the design are tasks needed to produce that output.",
+    "distinction": "A task is work you perform; a deliverable is the output. A milestone marks a point in the schedule, such as launch approval. An outcome is the change you hope the work produces, such as fewer missed customer enquiries. Completing a deliverable does not by itself prove the outcome occurred.",
+    "plainPhrase": "What exactly will we produce, and how will we know it is done?",
+    "related": [
+      "deliverables",
+      "scope",
+      "preso"
+    ],
+    "sources": [
+      {
+        "title": "Atlassian: What are project deliverables?",
+        "url": "https://www.atlassian.com/work-management/project-management/project-deliverables"
+      }
+    ]
+  },
+  "churn": {
+    "updated": "2026-11-02",
+    "meaning": "Customer churn is the loss of customers over a specified period. A customer churn rate expresses those losses as a percentage of a defined starting customer base.",
+    "context": "A common calculation is customers lost during the period divided by customers at the start, multiplied by 100. State the period and what counts as lost: cancellation, non-renewal, or inactivity can produce different measures. Subscription tools can also use their own reporting conventions, so check the denominator before comparing dashboards.",
+    "example": "A service starts a month with 400 customers and loses 12 of those customers during the month. Using the starting-base formula, monthly customer churn is 12 / 400 × 100 = 3%. New customers acquired during the month are tracked separately in this calculation.",
+    "distinction": "Customer churn counts customers; revenue churn measures lost recurring revenue. Losing one large account can matter more financially than losing several small ones. Employee churn refers to staff departures and needs its own workforce definition. These measures are not interchangeable.",
+    "plainPhrase": "How many customers did we lose, over what period, and why?",
+    "related": [
+      "churn-mitigation",
+      "customer-led-growth",
+      "customer-intimacy"
+    ],
+    "sources": [
+      {
+        "title": "Stripe: How to calculate customer churn rates",
+        "url": "https://stripe.com/resources/more/how-to-calculate-churn-rates"
+      },
+      {
+        "title": "Stripe: Subscriber churn reporting conventions",
+        "url": "https://support.stripe.com/questions/calculating-subscriber-churn-rate-in-billing?locale=en-GB"
+      }
+    ]
+  },
+  "preso": {
+    "updated": "2026-11-02",
+    "meaning": "Preso is informal English workplace shorthand for a presentation. Depending on the conversation, it can mean the talk itself or the slides prepared for it.",
+    "context": "The term appears in casual messages such as requests to review a presentation before a meeting. It does not identify a particular file format, audience, or length. When a colleague asks for a preso, clarify whether they want the slide file, a rehearsal, or the finished presentation delivered to an audience.",
+    "example": "A manager writes, “Can you send the client preso before lunch?” The team replies with the slide deck and asks whether speaker notes should be included. In a formal project plan, they call the output a client presentation.",
+    "distinction": "A slide deck is the collection of slides. A presentation is the broader act or material used to communicate an idea and may include a demonstration or discussion. Preso is a casual abbreviation, so spelling out presentation is clearer for unfamiliar audiences.",
+    "plainPhrase": "Please send me the presentation.",
+    "related": [
+      "deliverable"
+    ],
+    "sources": [
+      {
+        "title": "Wiktionary: Preso, English usage and dated examples",
+        "url": "https://en.wiktionary.org/wiki/preso#English"
+      }
+    ]
+  },
+  "fire-drill": {
+    "updated": "2026-11-02",
+    "meaning": "In workplace slang, a fire drill is a sudden rush to handle an urgent request that disrupts planned work, often with hurried coordination or unclear priorities.",
+    "context": "The expression can imply that the urgency was avoidable, but it does not prove someone planned badly: an external deadline or new information may be real. To make the request actionable, identify the actual deadline, the decision needed, the person coordinating it, and which existing work should pause.",
+    "example": "An executive asks for a revised forecast an hour before a meeting. Three teams stop their planned work to reconcile different spreadsheets. A colleague calls the scramble a fire drill; the coordinator narrows the request to the two numbers needed for the decision.",
+    "distinction": "A literal fire drill is an exercise to practise a safe response to a fire, including evacuation. The workplace metaphor is different from that planned safety exercise and from an actual emergency. In safety communications, use the precise meaning rather than office slang.",
+    "plainPhrase": "We have an urgent unplanned request; clarify what must be done first.",
+    "related": [
+      "deliverable",
+      "scope"
+    ],
+    "sources": [
+      {
+        "title": "Cambridge Dictionary: Fire drill, literal meaning",
+        "url": "https://dictionary.cambridge.org/us/dictionary/english/fire-drill"
+      },
+      {
+        "title": "Jargonish: Fire drill, workplace usage",
+        "url": "https://jargonish.com/term/fire-drill"
       }
     ]
   }
