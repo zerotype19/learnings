@@ -1,0 +1,96 @@
+{
+  "customer-intimacy": {
+    "updated": "2026-11-02",
+    "meaning": "Customer intimacy is a business strategy built around understanding a particular customer's needs and tailoring products, service, or support to fit them.",
+    "context": "It is more specific than being friendly or sending personalized emails. The practical question is whether what you learn about customers changes how you serve them. Treacy and Wiersema describe customer intimacy as one of three value disciplines, alongside operational excellence and product leadership.",
+    "example": "A software supplier learns that a customer's main problem is onboarding new staff, then adapts its training and support plan around that workflow instead of offering the same package to every account.",
+    "distinction": "Customer satisfaction describes how customers feel about an experience. Customer intimacy describes a strategic approach to understanding and serving them; a satisfaction survey alone does not establish it.",
+    "plainPhrase": "Understand our customers and tailor our service to their needs.",
+    "related": [
+      "customer-led-growth"
+    ],
+    "sources": [
+      {
+        "title": "Treacy and Wiersema: Customer Intimacy and Other Value Disciplines (Ivey Publishing)",
+        "url": "https://www.iveypublishing.ca/s/product/customer-intimacy-and-other-value-disciplines/01t5c00000CwXYOAA3"
+      }
+    ]
+  },
+  "lean-strategy": {
+    "updated": "2026-11-02",
+    "meaning": "A lean strategy focuses an organization on delivering customer value while reducing wasted work, delays, and resources through continuous improvement.",
+    "context": "Start with what the customer needs, examine how work moves through the organization, and improve the steps that prevent value from reaching the customer. Calling a budget cut 'lean' does not make it a lean strategy: removing useful capacity can create more waiting, rework, and defects.",
+    "example": "A support team maps the path from a customer's question to a resolution. It removes duplicate approvals, gives agents the information they need, and checks whether customers receive correct answers sooner.",
+    "distinction": "Lean focuses on customer value and waste across a process. A cost-cutting exercise focuses on spending. They can overlap, but a lower budget is not evidence of a better process.",
+    "plainPhrase": "Improve how we deliver value and stop doing unnecessary work.",
+    "related": [
+      "customer-intimacy"
+    ],
+    "sources": [
+      {
+        "title": "Lean Enterprise Institute: Value",
+        "url": "https://www.lean.org/lexicon-terms/value/"
+      }
+    ]
+  },
+  "always-on": {
+    "updated": "2026-11-02",
+    "meaning": "Always-on marketing is a continuing program of marketing activity that helps customers discover, evaluate, and use a product between individual campaigns.",
+    "context": "Search content, automated welcome emails, and ongoing customer communications can form an always-on program. The activity still needs maintenance, measurement, and a budget. In operational contexts, 'always-on' can instead mean a service remains available continuously; the intended meaning depends on the sentence.",
+    "example": "A business keeps its product guides and welcome-email sequence running throughout the year, while adding a separate, time-limited campaign for a new product launch.",
+    "distinction": "A campaign has a defined objective and timeframe. Always-on activity provides a continuing baseline. It does not mean employees must answer messages around the clock.",
+    "plainPhrase": "Keep our core marketing running between campaigns.",
+    "related": [
+      "always-on-audiences",
+      "demand-capture",
+      "customer-led-growth"
+    ],
+    "sources": [
+      {
+        "title": "LinkedIn: Always-On Marketing\u2014What It Is and How to Do It",
+        "url": "https://www.linkedin.com/business/marketing/blog/content-marketing/always-on-marketing-what-it-is-and-how-to-do-it-featuring-matt-heinz"
+      }
+    ]
+  },
+  "customer-led-growth": {
+    "updated": "2026-11-02",
+    "meaning": "Customer-led growth is an approach to business growth that uses evidence about customers' needs, experiences, and outcomes to guide product, marketing, sales, and retention decisions.",
+    "context": "Customer research is useful when it changes a decision. Teams can connect what customers say with what they do, identify where they struggle, and prioritize improvements. The term covers several approaches rather than one universally agreed method; a named consultancy framework may use a narrower definition.",
+    "example": "Interviews and support requests reveal that new customers cannot complete setup. The company simplifies onboarding and checks activation and retention before spending more to acquire additional customers.",
+    "distinction": "Product-led growth emphasizes the product as a driver of acquisition and expansion. Customer-led growth emphasizes customer evidence as an input to decisions. A business can use both approaches.",
+    "plainPhrase": "Use customer evidence to decide how to grow.",
+    "related": [
+      "customer-intimacy",
+      "product-led-growth",
+      "churn"
+    ],
+    "sources": [
+      {
+        "title": "Gartner: Customer-Led Growth Strategies Primer for 2024",
+        "url": "https://www.gartner.com/en/documents/5114631"
+      },
+      {
+        "title": "Customer-Led: customer research and growth methodology",
+        "url": "https://customerled.com/"
+      }
+    ]
+  },
+  "demand-capture": {
+    "updated": "2026-11-02",
+    "meaning": "Demand capture is marketing aimed at people who already want a solution, helping them find, evaluate, and buy an appropriate offering.",
+    "context": "A person comparing products or searching for a supplier is showing existing intent. Useful comparison pages, clear pricing information, and relevant search advertising can help that person take the next step. The goal is to meet demand that already exists, rather than assume every visitor is ready to buy.",
+    "example": "A buyer searches for appointment-booking software with calendar integration. A comparison page explains the integration, shows the price, and offers a relevant trial.",
+    "distinction": "Demand generation builds awareness and interest. Demand capture serves people already looking for a solution. A healthy marketing program may need both; capturing existing interest does not create an unlimited supply of buyers.",
+    "plainPhrase": "Help people who are already looking choose our solution.",
+    "related": [
+      "always-on",
+      "customer-led-growth"
+    ],
+    "sources": [
+      {
+        "title": "HubSpot: Demand generation vs. lead generation",
+        "url": "https://blog.hubspot.com/sales/lead-generation-vs-demand-generation"
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 // Build from the public listing endpoint (does not increment individual term views).
 // Fail the deployment rather than silently publish a partial dictionary/sitemap.
-import { writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+const guides = JSON.parse(await readFile(new URL('../apps/web/src/content/term-guides.json', import.meta.url), 'utf8'));
 const api = 'https://api.learnings.org';
 async function read(path) {
   const r = await fetch(api + path, { signal: AbortSignal.timeout(20000), redirect: 'error' });
@@ -22,7 +23,7 @@ do {
   for (const t of data.items) {
     if (!/^[a-zA-Z0-9_-]+$/.test(t.slug) || seen.has(t.slug) || typeof t.definition !== 'string' || !Array.isArray(t.tags)) throw new Error('Invalid or duplicate catalog term');
     seen.add(t.slug);
-    terms.push({ slug: t.slug, title: t.title, definition: t.definition, tags: t.tags, updated_at: t.updated_at });
+    terms.push({ slug: t.slug, title: t.title, definition: guides[t.slug]?.meaning || t.definition, tags: t.tags, updated_at: guides[t.slug] && Date.parse(guides[t.slug].updated) > Date.parse(t.updated_at || "1970-01-01") ? guides[t.slug].updated : t.updated_at });
   }
   if (data.nextCursor && (data.nextCursor === cursor || !data.items.length)) throw new Error('Catalog pagination did not advance');
   cursor = data.nextCursor;

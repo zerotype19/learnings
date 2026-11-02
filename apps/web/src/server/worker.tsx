@@ -1,3 +1,4 @@
+import { termGuides, termTitle, termSchema } from '../shared/term-seo';
 import React from 'react';
 import { renderToReadableStream } from 'react-dom/server.browser';
 import { App } from '../modules/App';
@@ -58,6 +59,7 @@ function validTerm(term: any) {
 }
 export async function renderPage(request: Request, env: Env) {
   const url = new URL(request.url);
+  if (/^\/default\.asp$/i.test(url.pathname)) return Response.redirect('https://learnings.org/', 301);
   const match = url.pathname.match(/^\/term\/([a-zA-Z0-9_-]+)$/);
   if (url.pathname.startsWith('/assets/') || /\.(?:png|jpg|jpeg|webp|gif|svg|ico|css|js|json|txt|woff2?)$/.test(url.pathname)) return env.ASSETS.fetch(request);
   if (/^\/(?:search|admin07932|confirm|linkedin|suggest)(?:\/|$)/.test(url.pathname)) {
@@ -119,10 +121,9 @@ export async function renderPage(request: Request, env: Env) {
       initial.term = term.item;
       initial.related = related.related;
       initial.variations = variations.variations.filter((t: any) => t.slug !== slug);
-      title = `${term.item.title} | Learnings Dot Org`;
-      description = getShortDescription(term.item.definition, 20);
-      structured = { '@context': 'https://schema.org', '@type': 'Article', headline: term.item.title, description,
-        url: `https://learnings.org/term/${slug}`, datePublished: term.item.created_at, dateModified: term.item.updated_at };
+      title = termTitle(term.item.title, slug);
+      description = getShortDescription(termGuides[slug]?.meaning || term.item.definition, 28);
+      structured = termSchema(term.item);
     } else if (url.pathname === '/') {
       const feed = await readPublic('/api/home-feed');
       if (feed.error || !Array.isArray(feed.items) || feed.items.length > 20 || !feed.items.every(validFeedItem) ||

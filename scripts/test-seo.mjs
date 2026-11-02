@@ -40,7 +40,7 @@ for (const path of ['/about','/privacy','/terms-of-service','/contact','/submit'
   assert.ok(!html.includes('<div id="root"></div>'), path);
 }
 for (const path of ['/missing-page','/terms?page=999','/terms?letter=XX','/terms?page=-1','/generators/missing']) assert.equal((await request(path)).status, 404, path);
-for (const [path, destination] of [['/terms?page=1','/terms'],['/terms?letter=a','/terms?letter=A'],['/about/','/about'],['/wall/old-article','/wall'],['/bingo/example123','/bingo?board=example123']]) {
+for (const [path, destination] of [['/terms?page=1','/terms'],['/terms?letter=a','/terms?letter=A'],['/about/','/about'],['/wall/old-article','/wall'],['/Default.asp','/'],['/default.asp?old=1','/'],['/bingo/example123','/bingo?board=example123']]) {
   const r = await request(path); assert.equal(r.status, 301, path); assert.equal(r.headers.get('location'), 'https://learnings.org' + destination);
 }
 assert.equal(await (await request('/terms', 'HEAD')).text(), '');
