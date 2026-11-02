@@ -1,3 +1,4 @@
+import { FeaturedGuides } from '../components/FeaturedGuides';
 import React, { useState, useEffect } from 'react';
 import { FeedList } from '../components/feed/FeedList';
 import { trackEvent } from '../lib/api';
@@ -235,6 +236,7 @@ export function HomeV2() {
           </p>
         </div>
 
+        <FeaturedGuides />
         <FeedList onItemClick={handleFeedItemClick} />
       </div>
     </div>

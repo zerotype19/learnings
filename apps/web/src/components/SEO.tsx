@@ -61,7 +61,7 @@ export function SEO({
     }
     
     // Robots
-    updateMetaTag('robots', noindex ? 'noindex,nofollow' : 'index,follow');
+    updateMetaTag('robots', noindex ? 'noindex,follow' : 'index,follow');
 
     // Open Graph tags
     updateMetaTag('og:title', fullTitle, true);

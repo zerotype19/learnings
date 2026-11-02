@@ -1,3 +1,4 @@
+import { termGuides, termTitle, termSchema } from '../shared/term-seo';
 import { Feedback, useFeedback } from '../components/Feedback';
 import { useInitialData } from '../server/initial-data';
 import React, { useState, useEffect } from 'react';
@@ -106,40 +107,21 @@ export function TermDetail({ slug }: TermDetailProps) {
     );
   }
 
+  const guide = termGuides[slug];
   return (
     <>
       <SEO 
-        title={term.title}
-        description={getShortDescription(term.definition, 20)}
+        title={termTitle(term.title, slug)}
+        description={getShortDescription(guide?.meaning || term.definition, 28)}
         keywords={`${term.title}, corporate buzzword, business jargon, ${term.tags.join(', ')}`}
         canonical={`/term/${term.slug}`}
         ogType="article"
-        structuredData={{
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: term.title,
-          description: getShortDescription(term.definition, 20),
-          url: `https://learnings.org/term/${term.slug}`,
-          author: {
-            '@type': 'Organization',
-            name: 'Learnings Dot Org'
-          },
-          publisher: {
-            '@type': 'Organization',
-            name: 'Learnings Dot Org',
-            url: 'https://learnings.org'
-          },
-          datePublished: term.created_at,
-          dateModified: term.updated_at,
-          mainEntityOfPage: {
-            '@type': 'WebPage',
-            '@id': `https://learnings.org/term/${term.slug}`
-          }
-        }}
+        structuredData={termSchema(term)}
       />
       <Feedback value={feedback} />
       <div className="min-h-screen bg-neutral-50">
       <div className="max-w-6xl mx-auto py-2 sm:px-4 sm:py-6">
+        <nav aria-label="Breadcrumb" className="flex flex-wrap gap-2 text-sm text-slate-600 mb-4"><a href="/" className="underline">Home</a><span aria-hidden="true">/</span><a href="/terms" className="underline">Dictionary</a><span aria-hidden="true">/</span><span aria-current="page">{term.title}</span></nav>
         {/* Header */}
         <div className="mb-6">
           {/* Alphabet Navigation */}
@@ -157,11 +139,20 @@ export function TermDetail({ slug }: TermDetailProps) {
               <h1 className="text-3xl font-bold">{term.title}</h1>
             </div>
 
-            <div className="text-lg text-neutral-700 mb-4">{term.definition}</div>
+            {guide ? <section aria-label="Meaning and usage" className="space-y-5 mb-6">
+              <div><h2 className="font-semibold text-xl mb-2">What does {term.title} mean?</h2><p className="text-lg text-neutral-700">{guide.meaning}</p></div>
+              <p className="text-neutral-700 leading-relaxed">{guide.context}</p>
+              <div><h2 className="font-semibold mb-2">Illustrative workplace example</h2><p className="text-neutral-700">{guide.example}</p></div>
+              <div><h2 className="font-semibold mb-2">How it differs from related ideas</h2><p className="text-neutral-700">{guide.distinction}</p></div>
+              <div className="rounded-xl bg-brand-50 p-4"><h2 className="font-semibold mb-2">Say it in plain English</h2><p>{guide.plainPhrase}</p></div>
+              <details className="rounded-lg border p-3"><summary className="cursor-pointer font-medium">Original dictionary entry</summary><p className="mt-2 text-neutral-600">{term.definition}</p></details>
+              <nav aria-label="Related concepts" className="flex flex-wrap gap-3">{guide.related.map(related => <a key={related} className="capitalize underline text-brand-700" href={`/term/${related}`}>{related.replaceAll('-', ' ')}</a>)}</nav>
+              <div><h2 className="font-semibold mb-2">Sources and further reading</h2><ul className="list-disc pl-5 space-y-2">{guide.sources.map(source => <li key={source.url}><a className="underline text-brand-700" href={source.url} rel="noopener noreferrer" target="_blank">{source.title}</a></li>)}</ul><p className="mt-3 text-sm text-slate-500">Expanded November 2, 2026. Examples are illustrative, not accounts of specific companies.</p></div>
+            </section> : <div className="text-lg text-neutral-700 mb-4">{term.definition}</div>}
 
             {term.examples && (
               <div className="mb-4">
-                <h3 className="font-semibold mb-2">Examples</h3>
+                <h3 className="font-semibold mb-2">{guide ? 'Satirical usage' : 'Examples'}</h3>
                 <div className="text-neutral-600 whitespace-pre-wrap">{term.examples.replace(/\\n/g, '\n')}</div>
               </div>
             )}
@@ -193,7 +184,7 @@ export function TermDetail({ slug }: TermDetailProps) {
               <SocialShare 
                 term={{
                   title: term.title,
-                  definition: term.definition,
+                  definition: guide?.meaning || term.definition,
                   examples: term.examples,
                   slug: term.slug
                 }}

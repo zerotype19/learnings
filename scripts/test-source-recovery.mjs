@@ -47,8 +47,8 @@ await check('frozen feed all 20 cards rendered with exact titles and term destin
 await check('term definition, related content and own canonical in initial HTML',async()=>{
  mode='ok';const r=await run('/term/leverage');assert.equal(r.status,200);const html=await r.text();assert.ok(html.includes(frozen.term.item.definition));assert.ok(html.includes('rel="canonical" href="https://learnings.org/term/leverage"'));
  assert.ok(!html.includes('rel="canonical" href="https://learnings.org/"'));
- assert.ok(html.includes('property="og:title" content="Leverage | Learnings Dot Org"'));
- assert.ok(html.includes('name="twitter:title" content="Leverage | Learnings Dot Org"'));
+ assert.ok(html.includes('property="og:title" content="Leverage: Meaning | Learnings.org"'));
+ assert.ok(html.includes('name="twitter:title" content="Leverage: Meaning | Learnings.org"'));
 
 });
 for(const negative of ['unavailable','redirect','partial','duplicate','error','unsafe','invalid','missing-link','missing-feed'])await check(negative+' fails closed',async()=>{mode=negative;const r=await run();assert.equal(r.status,503);assert.equal(r.headers.get('cache-control'),'no-store');assert.ok(!(await r.text()).includes('learnings-initial-data'));});
