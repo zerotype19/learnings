@@ -198,5 +198,50 @@
         "url": "https://jargonish.com/term/fire-drill"
       }
     ]
+  },
+  "office-drone": {
+    "updated": "2026-11-12",
+    "meaning": "An office drone is an informal, usually unflattering term for someone whose office work seems repetitive, monotonous, or lacking in independence. Corporate drone is a similar expression.",
+    "context": "People may use the phrase about themselves to joke about a day spent on routine tasks, or use it dismissively about someone else. It describes a perception of the work or workplace, not a job title or a reliable judgment of someone’s ability. Calling a colleague a drone can sound insulting even when the speaker intends humor.",
+    "example": "After copying the same figures into three weekly reports, an analyst says, “I felt like an office drone all afternoon.” The complaint is about duplicated work. A useful response is to ask which reports are actually needed, rather than assume the analyst lacks motivation.",
+    "distinction": "Office worker is neutral; office drone adds a negative judgment about routine or autonomy. Paper pusher emphasizes administrative paperwork, while cog in the machine emphasizes being a small part of a larger organization. These expressions overlap, but none proves that the person’s contribution is unimportant.",
+    "plainPhrase": "My work feels repetitive, and I want more room to use my judgment.",
+    "related": [
+      "rto-return-to-office",
+      "fire-drill"
+    ],
+    "sources": [
+      {
+        "title": "Merriam-Webster: Drone, informal senses referring to routine work",
+        "url": "https://www.merriam-webster.com/dictionary/drone"
+      },
+      {
+        "title": "Reverso Dictionary: Office drone",
+        "url": "https://dictionary.reverso.net/english-definition/office%2Bdrone"
+      }
+    ]
+  },
+  "seamless-integration": {
+    "updated": "2026-11-12",
+    "meaning": "Seamless integration means connecting systems, services, or processes so that people can move between them with little noticeable interruption or manual work.",
+    "context": "In software, integration lets applications exchange information or coordinate a workflow. Seamless describes the intended experience, not a guarantee that setup or maintenance requires no effort. A connection may exist while users still have to copy data, correct mismatched fields, or wait for updates. Ask which workflow is smooth, for whom, and under what conditions.",
+    "example": "When a customer submits an order, the sales system creates the matching fulfillment record without an employee retyping the address. To test the claim, the team checks whether changes reach both systems, duplicate orders are avoided, and a failed transfer produces a clear recovery path. This is an illustrative test, not a claim about a particular product.",
+    "distinction": "Integration describes the connection; automation describes work performed without repeated manual action. An integration can require manual steps, and automation can happen within one application. Seamless is a judgment about the experience. It does not establish that a connection is real-time, bidirectional, secure, or compatible with every version.",
+    "plainPhrase": "The systems work together smoothly, without making people re-enter the same information. Shorter alternatives include smooth integration or connected workflows; name the actual benefit when possible.",
+    "related": [
+      "seamless",
+      "api-first",
+      "deliverable"
+    ],
+    "sources": [
+      {
+        "title": "IBM: What is application integration?",
+        "url": "https://www.ibm.com/think/topics/application-integration"
+      },
+      {
+        "title": "Cambridge Dictionary: Seamless, the uninterrupted-experience meaning",
+        "url": "https://dictionary.cambridge.org/dictionary/english/seamless"
+      }
+    ]
   }
 }
