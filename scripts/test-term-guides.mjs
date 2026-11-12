@@ -21,6 +21,7 @@ for (const [slug, guide] of Object.entries(guides)) {
   assert.ok(html.includes('Illustrative workplace example'));
   assert.ok(html.includes('Original dictionary definition.'));
   assert.ok(html.includes('Sources and further reading'));
+  assert.ok(html.includes(`<time dateTime="${guide.updated}">`) || html.includes(`<time datetime="${guide.updated}">`), 'Visible update date must match each guide, not a fixed release date');
   assert.ok(html.includes('aria-label="Breadcrumb"'));
   for (const source of guide.sources) assert.ok(html.includes(source.url));
   const structured = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
