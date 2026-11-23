@@ -243,5 +243,27 @@
         "url": "https://dictionary.cambridge.org/dictionary/english/seamless"
       }
     ]
+  },
+  "loop-in": {
+    "updated": "2026-11-23",
+    "meaning": "To loop someone in means to give them information about something, often by bringing them into a conversation or sharing an update.",
+    "context": "In workplace messages, “I’ll loop you in” usually means “I’ll include you or tell you what is happening.” The phrase is informal. If you need someone to make a decision or complete a task, say that explicitly rather than assuming an update assigns responsibility.",
+    "example": "A designer writes: “I’m looping Maya in on the launch discussion. Maya, could you check the delivery date by Thursday?” The first sentence introduces Maya; the second makes the request clear.",
+    "distinction": "“Loop someone in” describes bringing them up to date or including them. “Keep someone in the loop” asks for continuing updates. Neither phrase, by itself, explains what action the person should take.",
+    "plainPhrase": "Please include me in the discussion and send me the latest update.",
+    "related": [
+      "touch-base",
+      "circle-back"
+    ],
+    "sources": [
+      {
+        "title": "Oxford Learner’s Dictionaries: loop somebody in",
+        "url": "https://www.oxfordlearnersdictionaries.com/definition/english/loop-in"
+      },
+      {
+        "title": "Cambridge Dictionary: Keep me in the loop",
+        "url": "https://dictionaryblog.cambridge.org/2018/01/10/keep-me-in-the-loop-words-and-phrases-related-to-knowledge/"
+      }
+    ]
   }
 }
